@@ -26,7 +26,7 @@
       <el-form-item prop="password">
         <el-input
           v-model="signin_form.password"
-          :show-password="!showPwd"
+          show-password
           placeholder="请输入密码"
         >
           <i
@@ -44,14 +44,19 @@
       </el-form-item>
     </el-form>
     <div class="tip">
-      <p>用户：admin</p>
-      <p>密码：123456</p>
+      <p>管理员：admin 密码：123456</p>
+      <p>超级管理员：superadmin 密码：123456</p>
     </div>
   </div>
 </template>
 
 <script>
 import { signinRules } from '@/rules'
+
+const roleArr = [
+  { role: '管理员', userName: 'admin', password: '123456' },
+  { role: '超级管理员', userName: 'superadmin', password: '123456' }
+]
 
 export default {
   name: 'signin',
@@ -60,25 +65,24 @@ export default {
     signin_form: {
       userName: 'admin',
       password: '123456'
-    },
-    showPwd: false
+    }
   }),
   methods: {
-    changeShowPwd (show) {
-      this.showPwd = show
-    },
-
     signin (formName) {
-      const { userName, password } = this.signin_form
-
       this.$refs[formName].validate(valid => {
         if (valid) {
-          if (userName === 'admin' && password === '123456') {
-            this.$message.success('登录成功')
+          const currentRole = this.validateRole(this.signin_form)
 
-            setTimeout(() => {
-              this.$router.push('/')
-            }, 2000)
+          if (currentRole) {
+            this.$message.success(`登录成功，欢迎您，${currentRole.role}`)
+            this.$store.dispatch('signin', {
+              currentRole,
+              redirect: () => {
+                setTimeout(() => {
+                  this.$router.push('/')
+                }, 2000)
+              }
+            })
           } else {
             this.$message.error('用户名或密码错误，请重新输入！')
           }
@@ -86,6 +90,12 @@ export default {
           this.$message.error('输入信息格式不对，请重新输入！')
         }
       })
+    },
+
+    validateRole (roleObj) {
+      const currentRole = roleArr.find(role => roleObj.userName === role.userName && roleObj.password === role.password)
+
+      return currentRole
     }
   }
 }

@@ -1,24 +1,17 @@
 import accountRouters from './modules/accountRouters'
 import errorRouters from './modules/errorRouters'
 
-// layouts
 const DefaultLayout = () => import('@/layouts/default')
 
-// view components
 const Home = () => import('@/views/home')
-
-// chrildren of RootRoute
 
 const HomeRoute = {
   path: '/',
   name: 'Home',
-  component: Home,
-  meta: {
-    requiresAuth: false
-  }
+  component: Home
 }
 
-const RootRoute = {
+const DefaultRouters = {
   path: '/',
   component: DefaultLayout,
   redirect: '/home',
@@ -28,7 +21,7 @@ const RootRoute = {
 }
 
 export default [
-  RootRoute,
+  DefaultRouters,
   accountRouters,
   errorRouters
 ]

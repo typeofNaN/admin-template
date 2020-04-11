@@ -21,7 +21,9 @@ export default {
 
 <style scoped>
 .main {
-  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
   height: 100vh;
   background: url(../assets/img/account_bg.jpg) center no-repeat;
@@ -29,7 +31,7 @@ export default {
 }
 
 .box {
-  margin: 50px auto;
+  margin: 20px auto;
   padding: 20px;
   width: 500px;
   height: 500px;
