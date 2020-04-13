@@ -1,27 +1,13 @@
 import accountRouters from './modules/accountRouters'
 import errorRouters from './modules/errorRouters'
-
-const DefaultLayout = () => import('@/layouts/default')
-
-const Home = () => import('@/views/home')
-
-const HomeRoute = {
-  path: '/',
-  name: 'Home',
-  component: Home
-}
-
-const DefaultRouters = {
-  path: '/',
-  component: DefaultLayout,
-  redirect: '/home',
-  children: [
-    HomeRoute
-  ]
-}
+import homeRouters from './modules/homeRouters'
+import orderRouters from './modules/orderRouters'
+import customerRouters from './modules/customerRouters'
 
 export default [
-  DefaultRouters,
+  homeRouters,
   accountRouters,
-  errorRouters
+  errorRouters,
+  orderRouters,
+  customerRouters
 ]

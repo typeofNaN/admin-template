@@ -12,6 +12,9 @@ const AccountRoute = {
   path: '/account',
   component: AccountLayout,
   redirect: '/account/signin',
+  meta: {
+    showInHome: false
+  },
   children: [
     SigninRoute
   ]
