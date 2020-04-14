@@ -17,7 +17,7 @@
         <span>{{ route.name }}</span>
       </div>
     </div>
-    <tool-bar></tool-bar>
+    <tool-bar />
   </div>
 </template>
 

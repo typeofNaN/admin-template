@@ -1,13 +1,13 @@
 <template>
   <div id="toolBar">
     <div class="tool_box home">
-      <i class="el-icon-house"></i>
+      <i class="el-icon-house" />
     </div>
     <div class="tool_box clear">
-      <i class="el-icon-delete"></i>
+      <i class="el-icon-delete" />
     </div>
     <div class="tool_box full_screen">
-      <screen-full></screen-full>
+      <screen-full />
     </div>
     <el-popover
       placement="bottom"
@@ -43,10 +43,8 @@
         <span>{{ userName }}</span>
       </div>
     </el-popover>
-    <div
-      class="tool_box setting"
-    >
-      <setting-bar></setting-bar>
+    <div class="tool_box setting">
+      <setting-bar />
     </div>
   </div>
 </template>
