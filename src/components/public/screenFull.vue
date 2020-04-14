@@ -1,5 +1,5 @@
 <template>
-  <i :class="isFullscreen ? 'el-icon-aim' : 'el-icon-full-screen'" @click="screenFull"></i>
+  <i :class="isFullscreen ? 'el-icon-aim' : 'el-icon-full-screen'" @click="screenFull" />
 </template>
 
 <script>
@@ -27,14 +27,17 @@ export default {
       }
       screenfull.toggle()
     },
+
     change () {
       this.isFullscreen = screenfull.isFullscreen
     },
+
     init () {
       if (screenfull.isEnabled) {
         screenfull.on('change', this.change)
       }
     },
+
     destroy () {
       if (screenfull.isEnabled) {
         screenfull.off('change', this.change)

@@ -3,7 +3,7 @@
     <i
       @click="settingBar = true"
       class="el-icon-setting"
-    ></i>
+    />
     <el-drawer
       :visible.sync="settingBar"
       derection="rtl"
@@ -24,13 +24,13 @@
             active-color="#13ce66"
             inactive-color="#ff4949"
             @change="changeFixedHeader"
-          ></el-switch>
+          />
         </el-form-item>
         <el-form-item label="系统皮肤">
           <el-color-picker
             v-model="settingForm.themeColor"
             @change="changeThemeColor"
-          ></el-color-picker>
+          />
         </el-form-item>
       </el-form>
     </el-drawer>
@@ -51,6 +51,7 @@ export default {
       this.$store.commit('changeFixedHeader', fixed)
       this.$message.success(`头部已${fixed ? '成功' : '取消'}固定！`)
     },
+
     changeThemeColor (color) {
       this.$store.commit('changeThemeColor', color)
       this.$message.success('主题色修改成功！')
