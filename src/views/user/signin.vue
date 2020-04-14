@@ -75,6 +75,11 @@ export default {
 
           if (currentRole) {
             this.$message.success(`登录成功，欢迎您，${currentRole.role}`)
+
+            let now = new Date().toLocaleString()
+
+            currentRole.signinTime = now
+
             this.$store.dispatch('signin', {
               currentRole,
               redirect: () => {

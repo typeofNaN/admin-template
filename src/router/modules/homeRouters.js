@@ -8,7 +8,8 @@ const HomeRoute = {
   component: Home,
   icon: 'el-icon-s-home',
   meta: {
-    group: 'home'
+    group: 'home',
+    affix: true
   }
 }
 

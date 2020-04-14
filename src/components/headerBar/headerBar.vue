@@ -17,11 +17,14 @@
         <span>{{ route.name }}</span>
       </div>
     </div>
+    <tool-bar></tool-bar>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+
+import ToolBar from '@/components/toolBar/toolBar'
 
 export default {
   props: {
@@ -30,17 +33,15 @@ export default {
       default: null
     }
   },
+  components: {
+    ToolBar
+  },
   computed: {
     ...mapGetters({
       getSlideBar: 'slideBar'
     })
   },
   methods: {
-    signout () {
-      this.$router.replace('/account/signin')
-      this.$store.dispatch('signout')
-    },
-
     changeAslide () {
       this.$store.commit('changeSliderBar')
     },
@@ -78,6 +79,7 @@ export default {
 
 .top_routers {
   display: flex;
+  width: calc(100% - 400px);
 }
 
 .top_router_item {

@@ -1,15 +1,23 @@
 <template>
   <div id="layout_default">
     <el-container>
-      <el-aside :width="getSlideBar ? '200px' : '64px'">
+      <el-aside
+        class="slider_bar"
+        :width="getSlideBar ? '200px' : '64px'"
+        :style="{backgroundColor: getThemeColor}"
+      >
         <slide-bar :aslide-routers="aslideRouters"></slide-bar>
       </el-aside>
-      <el-container>
-        <el-header>
+      <el-container :style="{paddingTop: fixedHeader ? '90px' : '0', marginLeft: getSlideBar ? '200px' : '64px'}">
+        <el-header
+          :style="{backgroundColor: getThemeColor, width: fixedHeader ? (getSlideBar ? 'calc(100% - 200px)' : 'calc(100% - 64px)') : '100%', height: '90px'}"
+          :class="fixedHeader ? 'fixedHeader' : 'noFixedheader'"
+        >
           <header-bar
             :top-routers="topRouters"
             @changeSlideRouter="changeSlideRouter"
           />
+          <tag-view></tag-view>
         </el-header>
         <el-main>
           <router-view />
@@ -24,6 +32,7 @@ import { mapGetters } from 'vuex'
 
 import HeaderBar from '@/components/headerBar/headerBar'
 import SlideBar from '@/components/slideBar/slideBar'
+import TagView from '@/components/tagView/tagView'
 
 export default {
   name: 'default',
@@ -32,11 +41,14 @@ export default {
   }),
   components: {
     HeaderBar,
-    SlideBar
+    SlideBar,
+    TagView
   },
   computed: {
     ...mapGetters({
-      getSlideBar: 'slideBar'
+      getSlideBar: 'slideBar',
+      getThemeColor: 'getThemeColor',
+      fixedHeader: 'getFixedHeader'
     }),
     topRouters () {
       const allRouter = this.$router.options.routes
@@ -59,12 +71,27 @@ export default {
 </script>
 
 <style scoped>
+.fixedHeader {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+}
+
+.noFixedheader {
+  position: static;
+}
+
+.slider_bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+}
 </style>
 
 <style>
 .el-header {
   padding: 0;
-  height: 80px;
-  background-color: #454545;
 }
 </style>

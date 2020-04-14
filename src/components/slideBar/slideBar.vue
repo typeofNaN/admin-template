@@ -1,12 +1,15 @@
 <template>
-  <div id="slidebar">
+  <div
+    id="slidebar"
+    :style="{backgroundColor: getThemeColor}"
+  >
     <div class="slide_header">
       {{ getSlideBar ? 'Admin' : 'Ad' }}
     </div>
     <el-menu
       :collapse="!getSlideBar"
       :collapse-transition="false"
-      background-color="#454545"
+      :background-color="getThemeColor"
       text-color="#fff"
       active-text-color="#ffd04b"
       class="el-menu-vertical"
@@ -74,7 +77,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getSlideBar: 'slideBar'
+      getSlideBar: 'slideBar',
+      getThemeColor: 'getThemeColor'
     }),
 
     slideRouters () {
@@ -96,7 +100,7 @@ export default {
 <style scoped>
 #slidebar {
   height: 100vh;
-  background-color: #454545;
+  /* background-color: #454545; */
 }
 
 #slidebar a {
@@ -107,7 +111,7 @@ export default {
 
 .slide_header {
   height: 60px;
-  background-color: #454545;
+  /* background-color: #454545; */
   color: #fff;
   line-height: 60px;
   text-align: center;
@@ -119,7 +123,12 @@ export default {
 <style>
 .el-menu-vertical:not(.el-menu--collapse) {
   width: 200px;
-  min-height: 400px;
+  min-height: calc(100vh - 60px);
+  border-right: none;
+}
+
+.el-menu {
+  border-right: none;
 }
 
 .el-menu--collapse .el-submenu__title span,
