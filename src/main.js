@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import ElementUI from 'element-ui'
+import VueI18n from 'vue-i18n'
 import 'element-ui/lib/theme-chalk/index.css'
 
 import App from './App'
@@ -13,10 +14,20 @@ import '@/assets/style/style.css'
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
+Vue.use(VueI18n)
+
+const i18n = new VueI18n({
+  locale: localStorage.getItem('LOCAL_LANG') || 'zh', // default zh
+  messages: {
+    zh: require('@/language/zh'),
+    en: require('@/language/en')
+  }
+})
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  i18n,
   router,
   store,
   components: { App },
