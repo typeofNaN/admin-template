@@ -1,6 +1,12 @@
 <template>
-  <div id="tags-view-container" class="tags-view-container">
-    <scroll-pane ref="scrollPane" class="tags-view-wrapper">
+  <div
+    id="tags-view-container"
+    class="tags-view-container"
+  >
+    <scroll-pane
+      ref="scrollPane"
+      class="tags-view-wrapper"
+    >
       <router-link
         v-for="tag in visitedViews"
         ref="tag"
@@ -8,18 +14,29 @@
         :class="isActive(tag) ? 'active' : ''"
         :to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }"
         tag="span"
-        :style="{backgroundColor: isActive(tag) ? getThemeColor : '', borderColor: isActive(tag) ? getThemeColor : ''}"
+        :style="{ backgroundColor: isActive(tag) ? getThemeHeaderBGColor : '', borderColor: isActive(tag) ? getThemeHeaderBGColor : '' }"
         class="tags-view-item"
         @click.middle.native="!isAffix(tag) ? closeSelectedTag(tag) : ''"
         @contextmenu.prevent.native="openMenu(tag,$event)"
       >
-        {{ tag.title }}
-        <span v-if="!isAffix(tag)" class="el-icon-close" @click.prevent.stop="closeSelectedTag(tag)" />
+        {{ generateTitle(tag.title) }}
+        <span
+          v-if="!isAffix(tag)"
+          class="el-icon-close"
+          @click.prevent.stop="closeSelectedTag(tag)"
+        />
       </router-link>
     </scroll-pane>
-    <ul v-show="visible" :style="{left:left+'px',top:top+'px'}" class="contextmenu">
+    <ul
+      v-show="visible"
+      :style="{ left: left + 'px', top: top + 'px' }"
+      class="contextmenu"
+    >
       <li @click="refreshSelectedTag(selectedTag)">刷新</li>
-      <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">关闭</li>
+      <li
+        v-if="!isAffix(selectedTag)"
+        @click="closeSelectedTag(selectedTag)"
+      >关闭</li>
       <li @click="closeOthersTags">关闭其他</li>
       <li @click="closeAllTags(selectedTag)">关闭所有</li>
     </ul>
@@ -31,8 +48,10 @@ import path from 'path'
 import { mapGetters } from 'vuex'
 
 import ScrollPane from './scrollPane'
+import { generateTitle } from '@/utils/i18n'
 
 export default {
+  name: 'TagView',
   data: () => ({
     visible: false,
     top: 0,
@@ -44,7 +63,10 @@ export default {
     ScrollPane
   },
   computed: {
-    ...mapGetters(['visitedViews', 'getThemeColor']),
+    ...mapGetters([
+      'visitedViews',
+      'getThemeHeaderBGColor'
+    ]),
     routes () {
       return this.$router.options.routes
     }
@@ -144,27 +166,30 @@ export default {
     },
 
     closeSelectedTag (view) {
-      this.$store.dispatch('delView', view).then(({ visitedViews }) => {
-        if (this.isActive(view)) {
-          this.toLastView(visitedViews, view)
-        }
-      })
+      this.$store.dispatch('delView', view)
+        .then(({ visitedViews }) => {
+          if (this.isActive(view)) {
+            this.toLastView(visitedViews, view)
+          }
+        })
     },
 
     closeOthersTags () {
       this.$router.push(this.selectedTag)
-      this.$store.dispatch('delOthersViews', this.selectedTag).then(() => {
-        this.moveToCurrentTag()
-      })
+      this.$store.dispatch('delOthersViews', this.selectedTag)
+        .then(() => {
+          this.moveToCurrentTag()
+        })
     },
 
     closeAllTags (view) {
-      this.$store.dispatch('delAllViews').then(({ visitedViews }) => {
-        if (this.affixTags.some(tag => tag.path === view.path)) {
-          return
-        }
-        this.toLastView(visitedViews, view)
-      })
+      this.$store.dispatch('delAllViews')
+        .then(({ visitedViews }) => {
+          if (this.affixTags.some(tag => tag.path === view.path)) {
+            return
+          }
+          this.toLastView(visitedViews, view)
+        })
     },
 
     toLastView (visitedViews, view) {
@@ -197,7 +222,9 @@ export default {
 
     closeMenu () {
       this.visible = false
-    }
+    },
+
+    generateTitle
   }
 }
 </script>

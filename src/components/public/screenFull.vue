@@ -1,5 +1,8 @@
 <template>
-  <i :class="isFullscreen ? 'el-icon-aim' : 'el-icon-full-screen'" @click="screenFull" />
+  <i
+    :class="isFullscreen ? 'el-icon-aim' : 'el-icon-full-screen'"
+    @click="screenFull"
+  />
 </template>
 
 <script>

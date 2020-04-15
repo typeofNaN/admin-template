@@ -1,24 +1,29 @@
+import config from '@/config/appConfig'
+
 const state = {
   openSlideBar: true,
-  themeColor: '#454545',
-  fixedHeader: true
+  fixedHeader: true,
+  theme: {...config.defaultTheme}
 }
 
 const getters = {
-  slideBar: state => state.openSlideBar,
-  getThemeColor: state => state.themeColor,
-  getFixedHeader: state => state.fixedHeader
+  getSlideBar: state => state.openSlideBar,
+  getFixedHeader: state => state.fixedHeader,
+  getThemeLogoBGColor: state => state.theme.logoBGColor,
+  getThemeHeaderBGColor: state => state.theme.headerBGColor,
+  getThemeSlideBGColor: state => state.theme.slideBGColor,
+  getThemeTextColor: state => state.theme.textColor
 }
 
 const mutations = {
   changeSliderBar (state) {
     state.openSlideBar = !state.openSlideBar
   },
-  changeThemeColor (state, color) {
-    state.themeColor = color
-  },
   changeFixedHeader (state, fixed) {
     state.fixedHeader = fixed
+  },
+  changeThemeColor (state, theme) {
+    state.theme = { ...theme }
   }
 }
 

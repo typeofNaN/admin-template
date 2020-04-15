@@ -12,8 +12,6 @@
 </template>
 
 <script>
-// https://source.unsplash.com/random/1920x950
-
 export default {
   name: 'account'
 }

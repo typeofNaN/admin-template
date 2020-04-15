@@ -13,6 +13,7 @@ const Customer11Route = {
   icon: 'el-icon-user-solid',
   component: Customer11,
   meta: {
+    title: 'customer11',
     group: 'customer'
   }
 }
@@ -23,6 +24,7 @@ const Customer12Route = {
   icon: 'el-icon-user-solid',
   component: Customer12,
   meta: {
+    title: 'customer12',
     group: 'customer'
   }
 }
@@ -33,6 +35,7 @@ const Customer13Route = {
   icon: 'el-icon-user-solid',
   component: Customer13,
   meta: {
+    title: 'customer13',
     group: 'customer'
   }
 }
@@ -44,6 +47,7 @@ const Customer1Route = {
   component: Customer1,
   redirect: '/customer/customer11',
   meta: {
+    title: 'customer1',
     group: 'customer'
   },
   children: [
@@ -59,6 +63,7 @@ const Customer2Route = {
   icon: 'el-icon-user-solid',
   component: Customer2,
   meta: {
+    title: 'customer2',
     group: 'customer'
   }
 }
@@ -69,17 +74,19 @@ const Customer3Route = {
   icon: 'el-icon-user-solid',
   component: Customer3,
   meta: {
+    title: 'customer3',
     group: 'customer'
   }
 }
 
 const CustomerRoute = {
   path: '/customer/customer1',
-  name: '客户',
+  name: 'customer',
   icon: 'el-icon-user-solid',
   component: DefaultLayout,
   redirect: '/customer/customer1',
   meta: {
+    title: 'customer',
     group: 'customer',
     showInHome: true
   },
