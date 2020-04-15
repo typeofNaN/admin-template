@@ -4,20 +4,20 @@
       <el-aside
         class="slider_bar"
         :width="getSlideBar ? '200px' : '64px'"
-        :style="{backgroundColor: getThemeColor}"
+        :style="{ backgroundColor: getThemeSlideBGColor }"
       >
-        <slide-bar :aslide-routers="aslideRouters"></slide-bar>
+        <slide-bar :aslide-routers="aslideRouters"/>
       </el-aside>
-      <el-container :style="{paddingTop: fixedHeader ? '90px' : '0', marginLeft: getSlideBar ? '200px' : '64px'}">
+      <el-container :style="{ paddingTop: getFixedHeader ? '90px' : '0', marginLeft: getSlideBar ? '200px' : '64px' }">
         <el-header
-          :style="{backgroundColor: getThemeColor, width: fixedHeader ? (getSlideBar ? 'calc(100% - 200px)' : 'calc(100% - 64px)') : '100%', height: '90px'}"
-          :class="fixedHeader ? 'fixedHeader' : 'noFixedheader'"
+          :style="{ backgroundColor: getThemeHeaderBGColor, width: getFixedHeader ? (getSlideBar ? 'calc(100% - 200px)' : 'calc(100% - 64px)') : '100%', height: '90px' }"
+          :class="getFixedHeader ? 'fixedHeader' : 'noFixedheader'"
         >
           <header-bar
             :top-routers="topRouters"
             @changeSlideRouter="changeSlideRouter"
           />
-          <tag-view></tag-view>
+          <tag-view/>
         </el-header>
         <el-main>
           <router-view />
@@ -45,11 +45,12 @@ export default {
     TagView
   },
   computed: {
-    ...mapGetters({
-      getSlideBar: 'slideBar',
-      getThemeColor: 'getThemeColor',
-      fixedHeader: 'getFixedHeader'
-    }),
+    ...mapGetters([
+      'getSlideBar',
+      'getThemeSlideBGColor',
+      'getThemeHeaderBGColor',
+      'getFixedHeader'
+    ]),
     topRouters () {
       const allRouter = this.$router.options.routes
       const filterRouter = allRouter.filter(route => route.meta.showInHome)

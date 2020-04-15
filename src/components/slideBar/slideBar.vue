@@ -1,30 +1,35 @@
 <template>
-  <div
-    id="slidebar"
-    :style="{backgroundColor: getThemeColor}"
-  >
-    <div class="slide_header">
-      {{ getSlideBar ? 'Admin' : 'Ad' }}
+  <div id="slidebar">
+    <div
+      class="slide_header"
+      :style="{ backgroundColor: getThemeLogoBGColor }"
+    >
+      <el-image
+        class="slide_logo"
+        :src="logoUrl"
+      />
+      <span v-show="getSlideBar">Admin</span>
     </div>
     <el-menu
       :collapse="!getSlideBar"
       :collapse-transition="false"
-      :background-color="getThemeColor"
-      text-color="#fff"
+      :background-color="getThemeSlideBGColor"
+      :text-color="getThemeTextColor"
       active-text-color="#ffd04b"
       class="el-menu-vertical"
     >
-      <template
-        v-for="(route, index) in routers"
-      >
+      <template v-for="(route, index) in routers">
         <el-submenu
           v-if="route.children"
           :key="index"
           :index="route.path"
         >
           <template slot="title">
-            <i :class="route.icon"></i>
-            <span slot="title">{{ route.name }}</span>
+            <i
+              :class="route.icon"
+              :style="{ color: getThemeTextColor }"
+            />
+            <span slot="title">{{ generateTitle(route.meta.title) }}</span>
           </template>
           <template>
             <el-menu-item-group
@@ -36,8 +41,11 @@
                 @click="toRoute(routeChild.path)"
               >
                 <template #title>
-                  <i :class="routeChild.icon"></i>
-                  <span>{{ routeChild.name }}</span>
+                  <i
+                    :class="routeChild.icon"
+                    :style="{ color: getThemeTextColor }"
+                  />
+                  <span>{{ generateTitle(routeChild.meta.title) }}</span>
                 </template>
               </el-menu-item>
             </el-menu-item-group>
@@ -49,8 +57,11 @@
           :index="route.path"
           @click="toRoute(route.path)"
         >
-          <i :class="route.icon"></i>
-          <span>{{ route.name }}</span>
+          <i
+            :class="route.icon"
+            :style="{ color: getThemeTextColor }"
+          />
+          <span>{{ generateTitle(route.meta.title) }}</span>
         </el-menu-item>
       </template>
     </el-menu>
@@ -60,7 +71,11 @@
 <script>
 import { mapGetters } from 'vuex'
 
+import { generateTitle } from '@/utils/i18n'
+import logo from '@/assets/img/logo.png'
+
 export default {
+  name: 'SliderBar',
   props: {
     aslideRouters: {
       type: Array,
@@ -68,6 +83,7 @@ export default {
     }
   },
   data: () => ({
+    logoUrl: logo,
     routers: []
   }),
   watch: {
@@ -76,10 +92,12 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({
-      getSlideBar: 'slideBar',
-      getThemeColor: 'getThemeColor'
-    }),
+    ...mapGetters([
+      'getSlideBar',
+      'getThemeSlideBGColor',
+      'getThemeLogoBGColor',
+      'getThemeTextColor'
+    ]),
 
     slideRouters () {
       return this.aslideRouters
@@ -92,7 +110,9 @@ export default {
       if (currentRoutePath !== path) {
         this.$router.push(path)
       }
-    }
+    },
+
+    generateTitle
   }
 }
 </script>
@@ -100,23 +120,30 @@ export default {
 <style scoped>
 #slidebar {
   height: 100vh;
-  /* background-color: #454545; */
 }
 
 #slidebar a {
   color: #fff;
   text-decoration: none;
-  /* font-size: 16px; */
 }
 
 .slide_header {
+  display: flex;
+  justify-content: center;;
+  align-items: center;
   height: 60px;
-  /* background-color: #454545; */
   color: #fff;
-  line-height: 60px;
-  text-align: center;
   font-size: 30px;
-  font-weight: 700;
+  font-weight: 500;
+}
+
+.slide_logo {
+  width: 50px;
+  height: 50px;
+}
+
+.slide_header span {
+  margin-left: 10px;
 }
 </style>
 

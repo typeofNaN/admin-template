@@ -2,7 +2,8 @@
   <div id="headerBar">
     <div class="change_aslide">
       <i
-        :class="(getSlideBar ? 'el-icon-s-fold' : 'el-icon-s-unfold') + ' change_aslide_icon'"
+        :class="(getSlideBar ? 'el-icon-s-fold' : 'el-icon-s-unfold')"
+        class="change_aslide_icon"
         @click="changeAslide"
       />
     </div>
@@ -14,7 +15,7 @@
         @click="handleRouter(route)"
       >
         <i :class="route.icon"></i>
-        <span>{{ route.name }}</span>
+        <span>{{ generateTitle(route.meta.title) }}</span>
       </div>
     </div>
     <tool-bar />
@@ -25,8 +26,10 @@
 import { mapGetters } from 'vuex'
 
 import ToolBar from '@/components/toolBar/toolBar'
+import { generateTitle } from '@/utils/i18n'
 
 export default {
+  name: 'HeaderBar',
   props: {
     topRouters: {
       type: Array,
@@ -37,9 +40,10 @@ export default {
     ToolBar
   },
   computed: {
-    ...mapGetters({
-      getSlideBar: 'slideBar'
-    })
+    ...mapGetters([
+      'getSlideBar',
+      'getThemeTextColor'
+    ])
   },
   methods: {
     changeAslide () {
@@ -53,7 +57,9 @@ export default {
       if (currentRoutePath !== route.path) {
         this.$router.push(route.path)
       }
-    }
+    },
+
+    generateTitle
   }
 }
 </script>
@@ -61,6 +67,7 @@ export default {
 <style scoped>
 #headerBar {
   display: flex;
+  color: #fff;
 }
 
 .change_aslide {
@@ -73,7 +80,6 @@ export default {
 }
 
 .change_aslide_icon {
-  color: #fff;
   font-size: 30px;
 }
 
@@ -88,7 +94,10 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100%;
-  color: #fff;
   cursor: pointer;
+}
+
+.top_router_item i {
+  margin-right: 4px;
 }
 </style>

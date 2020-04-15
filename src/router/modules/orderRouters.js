@@ -13,6 +13,7 @@ const Order11Route = {
   icon: 'el-icon-s-order',
   component: Order11,
   meta: {
+    title: 'order11',
     group: 'order'
   }
 }
@@ -23,6 +24,7 @@ const Order12Route = {
   icon: 'el-icon-s-order',
   component: Order12,
   meta: {
+    title: 'order12',
     group: 'order'
   }
 }
@@ -33,6 +35,7 @@ const Order13Route = {
   icon: 'el-icon-s-order',
   component: Order13,
   meta: {
+    title: 'order13',
     group: 'order'
   }
 }
@@ -44,6 +47,7 @@ const Order1Route = {
   component: Order1,
   redirect: '/order/order11',
   meta: {
+    title: 'order1',
     group: 'order'
   },
   children: [
@@ -59,6 +63,7 @@ const Order2Route = {
   icon: 'el-icon-s-order',
   component: Order2,
   meta: {
+    title: 'order2',
     group: 'order'
   }
 }
@@ -69,17 +74,19 @@ const Order3Route = {
   icon: 'el-icon-s-order',
   component: Order3,
   meta: {
+    title: 'order3',
     group: 'order'
   }
 }
 
 const OrderRoute = {
   path: '/order/order1',
-  name: '订单',
+  name: 'order',
   icon: 'el-icon-s-order',
   component: DefaultLayout,
   redirect: '/order/order1',
   meta: {
+    title: 'order',
     group: 'order',
     showInHome: true
   },
