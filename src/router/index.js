@@ -7,8 +7,8 @@ import beforeRouterCheck from './beforeRouterCheck'
 Vue.use(Router)
 
 const router = new Router({
-  routes,
-  mode: 'history'
+  routes
+  // mode: 'history'
 })
 
 router.beforeEach(beforeRouterCheck)

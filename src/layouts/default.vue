@@ -3,14 +3,14 @@
     <el-container>
       <el-aside
         class="slider_bar"
-        :width="getSlideBar ? '200px' : '64px'"
+        :width="getSlideBar ? '230px' : '50px'"
         :style="{ backgroundColor: getThemeSlideBGColor }"
       >
         <slide-bar :aslide-routers="aslideRouters"/>
       </el-aside>
-      <el-container :style="{ paddingTop: getFixedHeader ? '90px' : '0', marginLeft: getSlideBar ? '200px' : '64px' }">
+      <el-container :style="{ paddingTop: getFixedHeader ? '80px' : '0', marginLeft: getSlideBar ? '230px' : '50px' }">
         <el-header
-          :style="{ backgroundColor: getThemeHeaderBGColor, width: getFixedHeader ? (getSlideBar ? 'calc(100% - 200px)' : 'calc(100% - 64px)') : '100%', height: '90px' }"
+          :style="{ backgroundColor: getThemeHeaderBGColor, width: getFixedHeader ? (getSlideBar ? 'calc(100% - 230px)' : 'calc(100% - 50px)') : '100%', height: '80px' }"
           :class="getFixedHeader ? 'fixedHeader' : 'noFixedheader'"
         >
           <header-bar

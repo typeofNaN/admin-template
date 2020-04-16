@@ -72,6 +72,7 @@
 import { mapGetters } from 'vuex'
 
 import { generateTitle } from '@/utils/i18n'
+import logo from '@/assets/img/logo.png'
 
 export default {
   name: 'SliderBar',
@@ -82,7 +83,7 @@ export default {
     }
   },
   data: () => ({
-    logoUrl: require('@/assets/img/logo.png'),
+    logoUrl: logo,
     routers: []
   }),
   watch: {
@@ -129,14 +130,14 @@ export default {
     display: flex;
     justify-content: center;;
     align-items: center;
-    height: 60px;
+    height: 50px;
     color: #fff;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 500;
 
     .slide_logo {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
     }
 
     span {
@@ -148,7 +149,7 @@ export default {
 
 <style lang="scss">
 .el-menu-vertical:not(.el-menu--collapse) {
-  width: 200px;
+  width: 230px;
   min-height: calc(100vh - 60px);
   border-right: none;
 }
@@ -158,6 +159,7 @@ export default {
 }
 
 .el-menu--collapse {
+  width: 50px;
   .el-submenu__title {
     .el-submenu__icon-arrow,
     span,
@@ -167,6 +169,12 @@ export default {
   }
 
   .el-menu-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 45px;
+
     > a {
       display: none !important;
     }

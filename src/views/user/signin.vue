@@ -65,6 +65,7 @@
 
 <script>
 import formatterDate from '@/utils/formatterDate'
+import logo from '@/assets/img/logo.png'
 
 const roleArr = [
   { role: '管理员', userName: 'admin', password: '123456' },
@@ -74,7 +75,7 @@ const roleArr = [
 export default {
   name: 'SignIn',
   data: () => ({
-    logoUrl: require('@/assets/img/logo.png'),
+    logoUrl: logo,
     signin_form: {
       userName: 'admin',
       password: '123456'

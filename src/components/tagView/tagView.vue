@@ -65,6 +65,8 @@ export default {
   computed: {
     ...mapGetters([
       'visitedViews',
+      'getSlideBar',
+      'getFixedHeader',
       'getThemeHeaderBGColor'
     ]),
     routes () {
@@ -207,7 +209,8 @@ export default {
       const offsetLeft = this.$el.getBoundingClientRect().left
       const offsetWidth = this.$el.offsetWidth
       const maxLeft = offsetWidth - menuMinWidth
-      const left = e.clientX - offsetLeft + 15
+      const offset = this.getFixedHeader ? 0 : this.getSlideBar ? 230 : 50
+      const left = e.clientX - offsetLeft + 15 + offset
 
       if (left > maxLeft) {
         this.left = maxLeft
