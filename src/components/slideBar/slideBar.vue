@@ -8,7 +8,7 @@
         class="slide_logo"
         :src="logoUrl"
       />
-      <span v-show="getSlideBar">Admin</span>
+      <span v-show="getSlideBar">Zegobird</span>
     </div>
     <el-menu
       :collapse="!getSlideBar"
@@ -131,7 +131,7 @@ export default {
     align-items: center;
     height: 60px;
     color: #fff;
-    font-size: 30px;
+    font-size: 24px;
     font-weight: 500;
 
     .slide_logo {

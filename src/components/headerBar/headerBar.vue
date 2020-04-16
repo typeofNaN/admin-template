@@ -12,7 +12,10 @@
         v-for="(route, index) in topRouters"
         :key="index"
         class="top_router_item"
-        @click="handleRouter(route)"
+        ref="route_item"
+        @mouseenter="mouseEnter(true, index)"
+        @mouseleave="mouseEnter(false, index)"
+        @click="handleRouter(route, index)"
       >
         <i :class="route.icon"></i>
         <span>{{ generateTitle(route.meta.title) }}</span>
@@ -42,20 +45,50 @@ export default {
   computed: {
     ...mapGetters([
       'getSlideBar',
+      'getThemeLogoBGColor',
+      'getThemeHeaderBGColor',
       'getThemeTextColor'
-    ])
+    ]),
+    currentRouterIndex () {
+      const currentRouter = this.$route
+      const currentRouterIndex = this.topRouters.findIndex(a => a.meta.group === currentRouter.meta.group)
+
+      return currentRouterIndex
+    }
+  },
+  watch: {
+    getThemeLogoBGColor (val) {
+      this.$refs.route_item.forEach(item => {
+        item.style.backgroundColor = this.getThemeHeaderBGColor
+      })
+      this.$refs.route_item[this.currentRouterIndex].style.backgroundColor = val
+    }
+  },
+  mounted () {
+    this.$refs.route_item[this.currentRouterIndex].style.backgroundColor = this.getThemeLogoBGColor
   },
   methods: {
     changeAslide () {
       this.$store.commit('changeSliderBar')
     },
 
-    handleRouter (route) {
-      const currentRoutePath = this.$route.path
+    handleRouter (route, index) {
+      const currentRoute = this.$route
 
-      this.$emit('changeSlideRouter', route)
-      if (currentRoutePath !== route.path) {
+      if (currentRoute.meta.group !== route.meta.group) {
+        this.$refs.route_item[this.currentRouterIndex].style.backgroundColor = this.getThemeHeaderBGColor
+        this.$refs.route_item[index].style.backgroundColor = this.getThemeLogoBGColor
+
+        this.$emit('changeSlideRouter', route)
         this.$router.push(route.path)
+      }
+    },
+
+    mouseEnter (enter, index) {
+      if (index !== this.currentRouterIndex) {
+        this.$refs.route_item[index].style.backgroundColor = enter
+          ? this.getThemeLogoBGColor
+          : this.getThemeHeaderBGColor
       }
     },
 
