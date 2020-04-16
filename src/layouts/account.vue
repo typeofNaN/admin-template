@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .main {
   display: flex;
   flex-direction: column;
@@ -26,21 +26,21 @@ export default {
   height: 100vh;
   background: url(../assets/img/account_bg.jpg) center no-repeat;
   background-size: cover;
-}
 
-.box {
-  margin: 20px auto;
-  padding: 20px;
-  width: 500px;
-  height: 500px;
-  background-color: rgba(0, 0, 0, .6);
-  border-radius: 20px;
-  box-shadow: 0 0 2px 4px rgba(0, 0, 0, .2);
-}
+  .box {
+    margin: 20px auto;
+    padding: 20px;
+    width: 500px;
+    height: 500px;
+    background-color: rgba(0, 0, 0, .6);
+    border-radius: 20px;
+    box-shadow: 0 0 2px 4px rgba(0, 0, 0, .2);
+  }
 
-.copyright {
-  text-align: center;
-  font-size: 20px;
-  color: #fff;
+  .copyright {
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+  }
 }
 </style>

@@ -64,40 +64,40 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 #headerBar {
   display: flex;
   color: #fff;
-}
 
-.change_aslide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
-}
+  .change_aslide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
 
-.change_aslide_icon {
-  font-size: 30px;
-}
+    .change_aslide_icon {
+      font-size: 30px;
+    }
+  }
 
-.top_routers {
-  display: flex;
-  width: calc(100% - 400px);
-}
+  .top_routers {
+    display: flex;
+    width: calc(100% - 400px);
 
-.top_router_item {
-  display: flex;
-  padding: 0 10px;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  cursor: pointer;
-}
+    .top_router_item {
+      display: flex;
+      padding: 0 10px;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      cursor: pointer;
 
-.top_router_item i {
-  margin-right: 4px;
+      i {
+        margin-right: 4px;
+      }
+    }
+  }
 }
 </style>

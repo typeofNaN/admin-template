@@ -179,70 +179,74 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .theme_colors {
   padding: 20px;
   color: #fff;
-}
 
-.theme_colors h4 {
-  margin-bottom: 10px;
-}
+  h4 {
+    margin-bottom: 10px;
+  }
 
-.theme_box {
-  padding: 10px 10px 4px 10px;
-}
+  .theme_box {
+    padding: 10px 10px 4px 10px;
 
-.theme_box span {
-  display: block;
-  float: left;
-}
+    span {
+      display: block;
+      float: left;
+    }
 
-.theme_box .logo_span,
-.theme_box .slide_span {
-  width: 20%;
-}
+    .logo_span,
+    .slide_span {
+      width: 20%;
+    }
 
-.theme_box .header_span,
-.theme_box .main_span {
-  width: 80%;
-}
+    .header_span,
+    .main_span {
+      width: 80%;
+    }
 
-.theme_box .logo_span,
-.theme_box .header_span {
-  height: 7px;
-}
+    .logo_span,
+    .header_span {
+      height: 7px;
+    }
 
-.theme_box .slide_span,
-.theme_box .main_span {
-  height: 30px;
-}
+    .slide_span,
+    .main_span {
+      height: 30px;
+    }
 
-.theme_box .main_span {
-  background-color: #f4f5f7;
-}
+    .main_span {
+      background-color: #f4f5f7;
+    }
+  }
 
-.theme_colors p {
-  font-size: 12px;
-  text-align: center;
+  p {
+    font-size: 12px;
+    text-align: center;
+  }
 }
 </style>
 
-<style>
+<style lang="scss">
 /* 去除el-drawer title默认蓝色边框 */
-#settingBar .el-drawer__header > span {
-  outline: 0;
-}
+#settingBar {
+  .el-drawer__header {
+    color: #fff;
 
-#settingBar .el-drawer.rtl {
-  background-color: #454545;
-}
+    > span {
+      outline: 0;
+    }
+  }
 
-#settingBar .el-drawer__header {
-  color: #fff;
-}
+  .el-drawer {
+    &.rtl {
+      background-color: #454545;
+    }
+  }
 
-#settingBar .el-form-item__label {
-  color: #fff;
+  .el-form-item__label {
+    color: #fff;
+  }
 }
 </style>

@@ -67,12 +67,11 @@ import { mapGetters } from 'vuex'
 
 import ScreenFull from '@/components/public/screenFull'
 import SettingBar from '@/components/public/settingBar'
-import avatar from '@/assets/img/avatar.jpg'
 
 export default {
   name: 'ToolBar',
   data: () => ({
-    avatarUrl: avatar
+    avatarUrl: require('@/assets/img/avatar.jpg')
   }),
   components: {
     ScreenFull,
@@ -113,32 +112,34 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 #toolBar {
   display: flex;
   color: #fff;
   justify-content: flex-end;
   align-items: center;
   width: 360px;
-}
 
-.tool_box {
-  padding: 10px;
-  cursor: pointer;
-}
+  .tool_box {
+    padding: 10px;
+    cursor: pointer;
+  }
 
-.change_lang i {
-  color: #fff;
-  font-size: 16px;
-}
+  .change_lang {
+    i {
+      color: #fff;
+      font-size: 16px;
+    }
+  }
 
-.user_info {
-  display: flex;
-  align-items: center;
-}
+  .user_info {
+    display: flex;
+    align-items: center;
 
-.user_icon {
-  margin-right: 10px;
+    .user_icon {
+      margin-right: 10px;
+    }
+  }
 }
 
 .user_box {
@@ -147,10 +148,10 @@ export default {
   justify-content: space-around;
   align-items: center;
   padding-top: 20px;
-}
 
-.user_box p {
-  margin-top: 10px;
+  p {
+    margin-top: 10px;
+  }
 }
 
 .ctrl_btns {

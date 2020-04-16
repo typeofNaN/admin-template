@@ -72,7 +72,6 @@
 import { mapGetters } from 'vuex'
 
 import { generateTitle } from '@/utils/i18n'
-import logo from '@/assets/img/logo.png'
 
 export default {
   name: 'SliderBar',
@@ -83,7 +82,7 @@ export default {
     }
   },
   data: () => ({
-    logoUrl: logo,
+    logoUrl: require('@/assets/img/logo.png'),
     routers: []
   }),
   watch: {
@@ -117,37 +116,37 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 #slidebar {
   height: 100vh;
-}
 
-#slidebar a {
-  color: #fff;
-  text-decoration: none;
-}
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
 
-.slide_header {
-  display: flex;
-  justify-content: center;;
-  align-items: center;
-  height: 60px;
-  color: #fff;
-  font-size: 30px;
-  font-weight: 500;
-}
+  .slide_header {
+    display: flex;
+    justify-content: center;;
+    align-items: center;
+    height: 60px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 500;
 
-.slide_logo {
-  width: 50px;
-  height: 50px;
-}
+    .slide_logo {
+      width: 50px;
+      height: 50px;
+    }
 
-.slide_header span {
-  margin-left: 10px;
+    span {
+      margin-left: 10px;
+    }
+  }
 }
 </style>
 
-<style>
+<style lang="scss">
 .el-menu-vertical:not(.el-menu--collapse) {
   width: 200px;
   min-height: calc(100vh - 60px);
@@ -158,14 +157,20 @@ export default {
   border-right: none;
 }
 
-.el-menu--collapse .el-submenu__title span,
-.el-menu--collapse .el-submenu__title a,
-.el-menu--collapse .el-menu-item > a {
-  display: none !important;
-}
+.el-menu--collapse {
+  .el-submenu__title {
+    .el-submenu__icon-arrow,
+    span,
+    a {
+      display: none !important;
+    }
+  }
 
-.el-menu--collapse .el-submenu__title .el-submenu__icon-arrow {
-  display: none !important;
+  .el-menu-item {
+    > a {
+      display: none !important;
+    }
+  }
 }
 
 .el-submenu__title > i,

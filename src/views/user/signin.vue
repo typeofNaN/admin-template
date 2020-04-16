@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import logo from '@/assets/img/logo.png'
+import formatterDate from '@/utils/formatterDate'
 
 const roleArr = [
   { role: '管理员', userName: 'admin', password: '123456' },
@@ -74,7 +74,7 @@ const roleArr = [
 export default {
   name: 'SignIn',
   data: () => ({
-    logoUrl: logo,
+    logoUrl: require('@/assets/img/logo.png'),
     signin_form: {
       userName: 'admin',
       password: '123456'
@@ -116,9 +116,7 @@ export default {
             let msg = this.$t('signin_page.signin_success')
             this.$message.success(`${msg} ${currentRole.userName}`)
 
-            let now = new Date().toLocaleString()
-
-            currentRole.signinTime = now
+            currentRole.signinTime = formatterDate(new Date(), 'yyyy-MM-dd HH:mm:ss')
 
             this.$store.dispatch('signin', {
               currentRole,
@@ -155,66 +153,67 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 #signin {
   position: relative;
   color: #fff;
-}
 
-.signin_logo,
-.signin_title {
-  text-align: center;
-}
+  .signin_logo,
+  .signin_title {
+    text-align: center;
+  }
 
-.signin_logo {
-  margin: 0 auto;
-  width: 100px;
-  height: 100px;
-}
+  .signin_logo {
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+  }
 
-.lang_setting_box {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
+  .lang_setting_box {
+    position: absolute;
+    top: 20px;
+    right: 20px;
 
-.lang_setting_box span,
-.lang_setting_box i {
-  color: #fff;
-  font-size: 16px;
-}
+    span,
+    i {
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  }
 
-.signin_title {
-  margin: 20px;
-  color: #fff;
-  font-weight: 500;
-}
-.el-icon-user-solid,
-.el-icon-lock {
-  margin-top: 6px;
-  font-size: 30px;
-}
-.showPwd_icon {
-  margin-top: 4px;
-  cursor: pointer;
-}
-.signin_btn {
-  width: 100%;
-  height: 50px;
-  font-size: 24px;
+  .signin_title {
+    margin: 20px;
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .el-icon-user-solid,
+  .el-icon-lock {
+    margin-top: 6px;
+    font-size: 30px;
+  }
+
+  .signin_btn {
+    width: 100%;
+    height: 50px;
+    font-size: 24px;
+  }
 }
 </style>
 
-<style>
-#signin .el-form-item__content {
-  line-height: 50px;
-}
+<style lang="scss">
+#signin {
+  .el-form-item__content {
+    line-height: 50px;
+  }
 
-#signin .el-input__inner {
-  height: 50px;
-  background-color: rgba(255, 255, 255, .4);
-  color: #fff;
-  font-size: 20px;
-  text-indent: 10px;
+  .el-input__inner {
+    height: 50px;
+    background-color: rgba(255, 255, 255, .4);
+    color: #fff;
+    font-size: 20px;
+    text-indent: 10px;
+  }
 }
 </style>

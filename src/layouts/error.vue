@@ -15,14 +15,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 #layout_error {
   display: flex;
-  height: 100vh
-}
+  height: 100vh;
 
-.error-message {
-  margin: auto;
-  text-align: center
+  .error-message {
+    margin: auto;
+    text-align: center
+  }
 }
 </style>

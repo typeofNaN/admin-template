@@ -71,27 +71,29 @@ export default {
 }
 </script>
 
-<style scoped>
-.fixedHeader {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 99;
-}
+<style lang="scss" scoped>
+#layout_default {
+  .slider_bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+  }
 
-.noFixedheader {
-  position: static;
-}
+  .fixedHeader {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+  }
 
-.slider_bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
+  .noFixedheader {
+    position: static;
+  }
 }
 </style>
 
-<style>
+<style lang="scss">
 .el-header {
   padding: 0;
 }
