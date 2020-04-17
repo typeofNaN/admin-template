@@ -1,9 +1,11 @@
 <template>
   <div id="settingBar">
-    <i
+    <div
+      class="setting_icon"
       @click="settingBar = true"
-      class="el-icon-setting"
-    />
+    >
+      <i class="el-icon-setting" />
+    </div>
     <el-drawer
       :visible.sync="settingBar"
       derection="rtl"
@@ -180,6 +182,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.setting_icon {
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+}
+
 .theme_colors {
   padding: 20px;
   color: #fff;

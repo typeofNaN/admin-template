@@ -60,6 +60,12 @@
         <el-col :span="12">{{ $t('signin_page.password') }}：123456</el-col>
       </el-row>
     </div>
+    <div
+      v-if="loading"
+      class="loading"
+    >
+      <i class="el-icon-loading"></i>
+    </div>
   </div>
 </template>
 
@@ -79,7 +85,8 @@ export default {
     signin_form: {
       userName: 'admin',
       password: '123456'
-    }
+    },
+    loading: false
   }),
   computed: {
     signinRules () {
@@ -114,6 +121,8 @@ export default {
           const currentRole = this.validateRole(this.signin_form)
 
           if (currentRole) {
+            this.loading = true
+
             let msg = this.$t('signin_page.signin_success')
             this.$message.success(`${msg} ${currentRole.userName}`)
 
@@ -199,6 +208,25 @@ export default {
     width: 100%;
     height: 50px;
     font-size: 24px;
+  }
+
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: -20px;
+    width: calc(100% + 40px);
+    height: calc(100% + 60px);
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, .7);
+
+    i {
+      font-size: 90px;
+      color: #409eff;
+    }
   }
 }
 </style>

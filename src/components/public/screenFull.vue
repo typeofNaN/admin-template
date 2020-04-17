@@ -1,8 +1,13 @@
 <template>
-  <i
-    :class="isFullscreen ? 'el-icon-aim' : 'el-icon-full-screen'"
+  <div
+    id="screen_full"
     @click="screenFull"
-  />
+  >
+    <svg-icon
+      class-name="screenfull-icon"
+      :icon-class="isFullscreen ? 'smallscreen-white' : 'fullscreen-white'"
+    />
+  </div>
 </template>
 
 <script>
@@ -49,3 +54,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+#screen_full {
+  padding: 10px;
+}
+</style>

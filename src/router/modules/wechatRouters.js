@@ -3,23 +3,25 @@ const DefaultLayout = () => import('@/layouts/default')
 const Home = () => import('@/views/home')
 
 const HomeRoute = {
-  path: '/home9',
-  name: 'home9',
+  path: '/wechat',
+  name: 'wechat',
   component: Home,
-  icon: 'el-icon-s-home',
   meta: {
-    title: 'home9',
-    group: 'home9'
+    icon_white: 'wechat-white',
+    icon_black: 'wechat-black',
+    title: 'wechat',
+    group: 'wechat'
   }
 }
 
 const HomeRouters = {
-  path: '/home9',
+  path: '/wechat',
   component: DefaultLayout,
-  icon: 'el-icon-s-home',
   meta: {
-    title: 'home9',
-    group: 'home9',
+    icon_white: 'wechat-white',
+    icon_black: 'wechat-black',
+    title: 'wechat',
+    group: 'wechat',
     showInHome: true
   },
   children: [

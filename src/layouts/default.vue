@@ -8,9 +8,26 @@
       >
         <slide-bar :aslide-routers="aslideRouters"/>
       </el-aside>
-      <el-container :style="{ paddingTop: getFixedHeader ? '80px' : '0', marginLeft: getSlideBar ? '230px' : '50px' }">
+      <el-container
+        :style="{
+          paddingTop: getFixedHeader
+            ? '80px'
+            : '0',
+          marginLeft: getSlideBar
+            ? '230px'
+            : '50px'
+          }"
+        >
         <el-header
-          :style="{ backgroundColor: getThemeHeaderBGColor, width: getFixedHeader ? (getSlideBar ? 'calc(100% - 230px)' : 'calc(100% - 50px)') : '100%', height: '80px' }"
+          :style="{
+            backgroundColor: getThemeHeaderBGColor,
+            width: getFixedHeader
+            ? (getSlideBar
+              ? 'calc(100% - 230px)'
+              : 'calc(100% - 50px)')
+            : '100%',
+            height: '80px'
+          }"
           :class="getFixedHeader ? 'fixedHeader' : 'noFixedheader'"
         >
           <header-bar

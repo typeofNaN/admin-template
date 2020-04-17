@@ -15,7 +15,7 @@
       :collapse-transition="false"
       :background-color="getThemeSlideBGColor"
       :text-color="getThemeTextColor"
-      active-text-color="#ffd04b"
+      :active-text-color="getThemeSlideBGColor === '#f9fafc' ? '#606266' : '#fff'"
       class="el-menu-vertical"
     >
       <template v-for="(route, index) in routers">
@@ -24,13 +24,32 @@
           :key="index"
           :index="route.path"
         >
-          <template slot="title">
-            <i
-              :class="route.icon"
-              :style="{ color: getThemeTextColor }"
+          <div
+            class="submenu_title"
+            slot="title"
+            :style="{
+              borderLeft: route.isActive
+                ? '4px solid ' + getThemeLogoBGColor
+                : '',
+              backgroundColor: route.isActive
+                ? getThemeSlideBGColor === '#f9fafc'
+                  ? 'rgb(249, 250, 252)'
+                  :'rgb(27, 36, 40)'
+                : ''
+            }"
+          >
+            <svg-icon
+              v-if="getThemeSlideBGColor === '#f9fafc'"
+              class-name="slide_icon"
+              :icon-class="route.meta.icon_black"
+            />
+            <svg-icon
+              v-else
+              class-name="slide_icon"
+              :icon-class="route.meta.icon_white"
             />
             <span slot="title">{{ generateTitle(route.meta.title) }}</span>
-          </template>
+          </div>
           <template>
             <el-menu-item-group
               v-for="(routeChild, idx) in route.children"
@@ -39,11 +58,27 @@
               <el-menu-item
                 :index="routeChild.path"
                 @click="toRoute(routeChild.path)"
+                :style="{
+                  borderLeft: routeChild.isActive
+                    ? '4px solid ' + getThemeLogoBGColor
+                    : '',
+                  backgroundColor: routeChild.isActive
+                    ? getThemeSlideBGColor === '#f9fafc'
+                      ? 'rgb(249, 250, 252)'
+                      :'rgb(27, 36, 40)'
+                    : ''
+                }"
               >
                 <template #title>
-                  <i
-                    :class="routeChild.icon"
-                    :style="{ color: getThemeTextColor }"
+                  <svg-icon
+                    v-if="getThemeSlideBGColor === '#f9fafc'"
+                    class-name="slide_icon"
+                    :icon-class="routeChild.meta.icon_black"
+                  />
+                  <svg-icon
+                    v-else
+                    class-name="slide_icon"
+                    :icon-class="routeChild.meta.icon_white"
                   />
                   <span>{{ generateTitle(routeChild.meta.title) }}</span>
                 </template>
@@ -56,10 +91,17 @@
           :key="index"
           :index="route.path"
           @click="toRoute(route.path)"
+          :style="{ borderLeft: route.isActive ? '4px solid ' + getThemeLogoBGColor : '' }"
         >
-          <i
-            :class="route.icon"
-            :style="{ color: getThemeTextColor }"
+          <svg-icon
+            v-if="getThemeSlideBGColor === '#f9fafc'"
+            class-name="slide_icon"
+            :icon-class="route.meta.icon_black"
+          />
+          <svg-icon
+            v-else
+            class-name="slide_icon"
+            :icon-class="route.meta.icon_white"
           />
           <span>{{ generateTitle(route.meta.title) }}</span>
         </el-menu-item>
@@ -84,12 +126,86 @@ export default {
   },
   data: () => ({
     logoUrl: logo,
-    routers: []
+    routers: [],
+    darkTheme: true
   }),
   watch: {
     aslideRouters (val) {
       this.routers = val
+    },
+
+    $route (val) {
+      setTimeout(() => {
+        const currentRoute = this.$route
+        const handleRouters = this.aslideRouters.map(item => {
+          if (item.children && item.children.length > 0) {
+            if (item.name === currentRoute.name) {
+              item.isActive = true
+            } else {
+              item.isActive = false
+            }
+            item.children = item.children.map(i => {
+              if (i.name === currentRoute.name) {
+                item.isActive = true
+              }
+              if (i.path === currentRoute.path) {
+                i.isActive = true
+              } else {
+                i.isActive = false
+              }
+
+              return i
+            })
+          } else {
+            if (item.name === currentRoute.name) {
+              item.isActive = true
+            } else {
+              item.isActive = false
+            }
+          }
+
+          return item
+        })
+
+        this.routers = handleRouters
+      }, 1)
     }
+  },
+  mounted () {
+    setTimeout(() => {
+      const currentRoute = this.$route
+      const handleRouters = this.aslideRouters.map(item => {
+        if (item.children && item.children.length > 0) {
+          if (item.name === currentRoute.name) {
+            item.isActive = true
+          } else {
+            item.isActive = false
+          }
+          item.children = item.children.map(i => {
+            if (i.name === currentRoute.name) {
+              item.isActive = true
+            }
+            if (i.path === currentRoute.path) {
+              i.isActive = true
+            } else {
+              i.isActive = false
+            }
+
+            return i
+          })
+        } else {
+          if (item.name === currentRoute.name) {
+            item.isActive = true
+          } else {
+            item.isActive = false
+          }
+        }
+
+        return item
+      })
+
+      this.routers = handleRouters
+    }, 0)
   },
   computed: {
     ...mapGetters([
@@ -144,6 +260,11 @@ export default {
       margin-left: 10px;
     }
   }
+
+  .slide_icon {
+    width: 14px;
+    height: 14px;
+  }
 }
 </style>
 
@@ -156,11 +277,39 @@ export default {
 
 .el-menu {
   border-right: none;
+
+  .el-submenu__title {
+    padding: 0;
+    padding-left: 0 !important;
+
+    .submenu_title {
+      padding-left: 20px;
+      width: 100%;
+      height: 100%;
+    }
+  }
 }
 
 .el-menu--collapse {
   width: 50px;
+
   .el-submenu__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 45px;
+    padding: 0 !important;
+
+    .submenu_title {
+      padding-left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
     .el-submenu__icon-arrow,
     span,
     a {
@@ -174,9 +323,16 @@ export default {
     align-items: center;
     width: 50px;
     height: 45px;
+    padding: 0;
+    padding-left: 0 !important;
 
     > a {
       display: none !important;
+    }
+
+    .slide_icon {
+      width: 14px;
+      height: 14px;
     }
   }
 }

@@ -4,12 +4,13 @@ const Home = () => import('@/views/home')
 
 const HomeRoute = {
   path: '/',
-  name: 'home',
+  name: 'control',
   component: Home,
-  icon: 'el-icon-s-home',
   meta: {
-    title: 'home',
-    group: 'home',
+    icon_white: 'control-white',
+    icon_black: 'control-black',
+    title: 'control',
+    group: 'control',
     affix: true
   }
 }
@@ -17,10 +18,11 @@ const HomeRoute = {
 const HomeRouters = {
   path: '/',
   component: DefaultLayout,
-  icon: 'el-icon-s-home',
   meta: {
-    title: 'home',
-    group: 'home',
+    icon_white: 'control-white',
+    icon_black: 'control-black',
+    title: 'control',
+    group: 'control',
     showInHome: true
   },
   children: [

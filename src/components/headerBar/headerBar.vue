@@ -21,14 +21,23 @@
         @mouseleave="mouseEnter(false, index)"
         @click="handleRouter(route, index)"
       >
-        <i :class="route.icon"></i>
+        <svg-icon
+          class-name="top_router_icon"
+          :icon-class="route.meta.icon_white"
+        />
         <span>{{ generateTitle(route.meta.title) }}</span>
       </div>
       <div class="hide_top_routes">
         <el-dropdown trigger="click" @command="handleHideTopRouter">
           <span class="el-dropdown-link">
-            <i class="el-icon-s-operation"></i>
-            <i class="el-icon-arrow-down el-icon--right"></i>
+            <svg-icon
+              class-name="menu-icon"
+              icon-class="menu-white"
+            />
+            <svg-icon
+              class-name="dropdown-icon"
+              icon-class="dropdown-white"
+            />
           </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item
@@ -36,7 +45,10 @@
               :key="index"
               :command="item"
             >
-              <i :class="item.icon"></i>
+              <svg-icon
+                class-name="hide_router_icon"
+                :icon-class="item.meta.icon_black"
+              />
               {{ generateTitle(item.meta.title) }}
             </el-dropdown-item>
           </el-dropdown-menu>
@@ -78,7 +90,9 @@ export default {
     ]),
     currentRouterIndex () {
       const currentRouter = this.$route
-      const currentRouterIndex = this.topRouters.findIndex(a => a.meta.group === currentRouter.meta.group)
+      const currentRouterIndex = this.topRouters.findIndex(a =>
+        a.meta.group === currentRouter.meta.group
+      )
 
       return currentRouterIndex
     }
@@ -88,7 +102,29 @@ export default {
       this.$refs.route_item.forEach(item => {
         item.style.backgroundColor = this.getThemeHeaderBGColor
       })
-      this.$refs.route_item[this.currentRouterIndex].style.backgroundColor = val
+      if (this.currentRouterIndex < this.showTopRouters.length) {
+        this.$refs.route_item[this.currentRouterIndex].style.backgroundColor = val
+      }
+    },
+    $route (newRoute, oldRouter) {
+      const newRouteIndex = this.showTopRouters.findIndex(item =>
+        item.meta.group === newRoute.meta.group
+      )
+      const oldRouterIndex = this.showTopRouters.findIndex(item =>
+        item.meta.group === oldRouter.meta.group
+      )
+
+      if (newRouteIndex >= 0 && newRouteIndex <= this.showTopRouters.length) {
+        this.$refs.route_item[newRouteIndex].style.backgroundColor = this.getThemeLogoBGColor
+      }
+
+      if (oldRouterIndex >= 0 && oldRouterIndex <= this.showTopRouters.length) {
+        this.$refs.route_item[oldRouterIndex].style.backgroundColor = this.getThemeHeaderBGColor
+      }
+
+      const parentRouter = this.topRouters.find(item => item.meta.group === newRoute.meta.group)
+
+      this.$emit('changeSlideRouter', parentRouter)
     }
   },
   mounted () {
@@ -97,7 +133,7 @@ export default {
     const allTopRoutersNum = this.topRouters.length
 
     erd.listenTo(document.getElementById('top_routers'), element => {
-      const showNum = ~~(element.offsetWidth / 103) - 1
+      const showNum = ~~(element.offsetWidth / 110) - 1
       this.showTopRouters = this.topRouters.slice(0, showNum)
       this.hideTopRouters = this.topRouters.slice(showNum, allTopRoutersNum)
       if (this.currentRouterIndex < showNum) {
@@ -129,7 +165,9 @@ export default {
       const currentRoute = this.$route
 
       if (currentRoute.meta.group !== route.meta.group) {
-        this.$refs.route_item[this.currentRouterIndex].style.backgroundColor = this.getThemeHeaderBGColor
+        if (this.currentRouterIndex < this.showTopRouters.length) {
+          this.$refs.route_item[this.currentRouterIndex].style.backgroundColor = this.getThemeHeaderBGColor
+        }
         this.$emit('changeSlideRouter', route)
         this.$router.push(route.path)
       }
@@ -160,6 +198,7 @@ export default {
     align-items: center;
     width: 45px;
     height: 50px;
+    border-right: 1px solid rgba(0, 0, 0, .05);
     cursor: pointer;
 
     .change_aslide_icon {
@@ -178,10 +217,13 @@ export default {
       align-items: center;
       height: 100%;
       font-size: 13px;
+      border-right: 1px solid rgba(0, 0, 0, .05);
       cursor: pointer;
 
-      i {
+      .top_router_icon {
         margin-right: 4px;
+        width: 16px;
+        height: 16px;
       }
     }
 
@@ -191,18 +233,23 @@ export default {
       justify-self: flex-end;
       justify-content: flex-end;
       align-items: center;
+      padding-right: 10px;
+      width: 50px;
+      border-right: 1px solid rgba(0, 0, 0, .05);
 
       .el-dropdown-link {
         cursor: pointer;
 
-        .el-icon-s-operation {
-          color: #fff;
-          font-size: 18px;
+        .menu-icon {
+          width: 24px;
+          height: 24px;
+          vertical-align: middle;
         }
 
-        .el-icon-arrow-down {
-          margin-left: 0;
-          color: #fff;
+        .dropdown-icon {
+          width: 6px;
+          height: 6px;
+          vertical-align: middle;
         }
       }
     }

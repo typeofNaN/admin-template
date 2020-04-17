@@ -14,11 +14,14 @@
         :class="isActive(tag) ? 'active' : ''"
         :to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }"
         tag="span"
-        :style="{ backgroundColor: isActive(tag) ? getThemeHeaderBGColor : '', borderColor: isActive(tag) ? getThemeHeaderBGColor : '' }"
         class="tags-view-item"
         @click.middle.native="!isAffix(tag) ? closeSelectedTag(tag) : ''"
         @contextmenu.prevent.native="openMenu(tag,$event)"
       >
+        <svg-icon
+          class-name="tagview_icon"
+          :icon-class="tag.icon"
+        />
         {{ generateTitle(tag.title) }}
         <span
           v-if="!isAffix(tag)"
@@ -234,7 +237,8 @@ export default {
 
 <style lang="scss" scoped>
 .tags-view-container {
-  height: 34px;
+  padding: 5px 10px;
+  height: 44px;
   width: 100%;
   background: #fff;
   border-bottom: 1px solid #d8dce5;
@@ -244,34 +248,25 @@ export default {
     .tags-view-item {
       display: inline-block;
       position: relative;
-      margin-top: 4px;
-      margin-left: 5px;
-      padding: 0 8px;
-      height: 26px;
-      line-height: 26px;
+      margin: 2px 5px 2px 0;
+      padding: 0 15px;
+      height: 30px;
+      line-height: 30px;
       font-size: 12px;
-      border: 1px solid #d8dce5;
+      border: 1px solid #eee;
       color: #495060;
       background: #fff;
+      border-radius: 3px;
       cursor: pointer;
 
-      &:first-of-type {
-        margin-left: 15px;
+      .tagview_icon {
+        width: 14px;
+        height: 14px;
       }
 
       &.active {
-        color: #fff;
-
-        &:before {
-          content: '';
-          background: #fff;
-          display: inline-block;
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          position: relative;
-          margin-right: 2px;
-        }
+        border-color: #bdbebd;
+        background-color: #f7f7f7;
       }
     }
   }
@@ -305,9 +300,21 @@ export default {
 <style lang="scss">
 .tags-view-wrapper {
   .tags-view-item {
+    position: relative;
+
+    &:hover {
+      .el-icon-close {
+        display: block;
+      }
+    }
+
     .el-icon-close {
-      width: 16px;
-      height: 16px;
+      display: none;
+      position: absolute;
+      top: 7px;
+      right: 0px;
+      width: 20px;
+      height: 20px;
       vertical-align: 2px;
       border-radius: 50%;
       text-align: center;
@@ -315,14 +322,9 @@ export default {
       transform-origin: 100% 50%;
 
       &:before {
-        transform: scale(.6);
+        transform: scale(1);
         display: inline-block;
         vertical-align: -3px;
-      }
-
-      &:hover {
-        background-color: #b4bccc;
-        color: #fff;
       }
     }
   }

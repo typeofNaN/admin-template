@@ -3,23 +3,25 @@ const DefaultLayout = () => import('@/layouts/default')
 const Home = () => import('@/views/home')
 
 const HomeRoute = {
-  path: '/home4',
-  name: 'home4',
+  path: '/dataSafe',
+  name: 'dataSafe',
   component: Home,
-  icon: 'el-icon-s-home',
   meta: {
-    title: 'home4',
-    group: 'home4'
+    icon_white: 'safe-white',
+    icon_black: 'safe-black',
+    title: 'dataSafe',
+    group: 'dataSafe'
   }
 }
 
 const HomeRouters = {
-  path: '/home4',
+  path: '/dataSafe',
   component: DefaultLayout,
-  icon: 'el-icon-s-home',
   meta: {
-    title: 'home4',
-    group: 'home4',
+    icon_white: 'safe-white',
+    icon_black: 'safe-black',
+    title: 'dataSafe',
+    group: 'dataSafe',
     showInHome: true
   },
   children: [

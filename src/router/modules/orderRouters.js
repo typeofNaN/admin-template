@@ -10,9 +10,10 @@ const Order13 = () => import('@/views/order/order1-3')
 const Order11Route = {
   path: '/order/order11',
   name: 'order11',
-  icon: 'el-icon-s-order',
   component: Order11,
   meta: {
+    icon_white: 'order-white',
+    icon_black: 'order-black',
     title: 'order11',
     group: 'order'
   }
@@ -21,9 +22,10 @@ const Order11Route = {
 const Order12Route = {
   path: '/order/order12',
   name: 'order12',
-  icon: 'el-icon-s-order',
   component: Order12,
   meta: {
+    icon_white: 'order-white',
+    icon_black: 'order-black',
     title: 'order12',
     group: 'order'
   }
@@ -32,9 +34,10 @@ const Order12Route = {
 const Order13Route = {
   path: '/order/order13',
   name: 'order13',
-  icon: 'el-icon-s-order',
   component: Order13,
   meta: {
+    icon_white: 'order-white',
+    icon_black: 'order-black',
     title: 'order13',
     group: 'order'
   }
@@ -43,10 +46,11 @@ const Order13Route = {
 const Order1Route = {
   path: '/order/order1',
   name: 'order1',
-  icon: 'el-icon-s-order',
   component: Order1,
   redirect: '/order/order11',
   meta: {
+    icon_white: 'order-white',
+    icon_black: 'order-black',
     title: 'order1',
     group: 'order'
   },
@@ -60,9 +64,10 @@ const Order1Route = {
 const Order2Route = {
   path: '/order/order2',
   name: 'order2',
-  icon: 'el-icon-s-order',
   component: Order2,
   meta: {
+    icon_white: 'order-white',
+    icon_black: 'order-black',
     title: 'order2',
     group: 'order'
   }
@@ -71,9 +76,10 @@ const Order2Route = {
 const Order3Route = {
   path: '/order/order3',
   name: 'order3',
-  icon: 'el-icon-s-order',
   component: Order3,
   meta: {
+    icon_white: 'order-white',
+    icon_black: 'order-black',
     title: 'order3',
     group: 'order'
   }
@@ -82,10 +88,11 @@ const Order3Route = {
 const OrderRoute = {
   path: '/order/order1',
   name: 'order',
-  icon: 'el-icon-s-order',
   component: DefaultLayout,
   redirect: '/order/order1',
   meta: {
+    icon_white: 'order-white',
+    icon_black: 'order-black',
     title: 'order',
     group: 'order',
     showInHome: true

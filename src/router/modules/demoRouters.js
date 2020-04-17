@@ -3,23 +3,25 @@ const DefaultLayout = () => import('@/layouts/default')
 const Home = () => import('@/views/home')
 
 const HomeRoute = {
-  path: '/home12',
-  name: 'home12',
+  path: '/demo',
+  name: 'demo',
   component: Home,
-  icon: 'el-icon-s-home',
   meta: {
-    title: 'home12',
-    group: 'home12'
+    icon_white: 'classification-white',
+    icon_black: 'classification-black',
+    title: 'demo',
+    group: 'demo'
   }
 }
 
 const HomeRouters = {
-  path: '/home12',
+  path: '/demo',
   component: DefaultLayout,
-  icon: 'el-icon-s-home',
   meta: {
-    title: 'home12',
-    group: 'home12',
+    icon_white: 'classification-white',
+    icon_black: 'classification-black',
+    title: 'demo',
+    group: 'demo',
     showInHome: true
   },
   children: [

@@ -1,17 +1,51 @@
 <template>
   <div id="toolBar">
-    <div class="tool_box home">
-      <i class="el-icon-house" />
+    <div
+      class="tool_box home"
+      ref="tool_box0"
+      @mouseenter="enter(true, 0)"
+      @mouseleave="enter(false, 0)"
+    >
+      <svg-icon
+        class-name="home-icon"
+        icon-class="home-white"
+      />
     </div>
-    <div class="tool_box clear">
-      <i class="el-icon-delete" />
+    <div
+      class="tool_box clear"
+      ref="tool_box1"
+      @mouseenter="enter(true, 1)"
+      @mouseleave="enter(false, 1)"
+    >
+      <svg-icon
+        class-name="delete-icon"
+        icon-class="delete-white"
+      />
     </div>
-    <div class="tool_box full_screen">
+    <div
+      ref="tool_box2"
+      @mouseenter="enter(true, 2)"
+      @mouseleave="enter(false, 2)"
+      class="tool_box full_screen"
+    >
       <screen-full />
     </div>
-    <div class="tool_box change_lang">
-      <el-dropdown @command="changeLanguage">
-        <i class="el-icon-guide" />
+    <div
+      class="tool_box change_lang"
+      ref="tool_box3"
+      @mouseenter="enter(true, 3)"
+      @mouseleave="enter(false, 3)"
+    >
+      <el-dropdown
+      trigger="click"
+        @command="changeLanguage"
+      >
+        <span>
+          <svg-icon
+            class-name="i18n-icon"
+            icon-class="i18n-white"
+          />
+        </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item command="zh">简体中文</el-dropdown-item>
           <el-dropdown-item command="en">English</el-dropdown-item>
@@ -48,6 +82,9 @@
       <div
         class="tool_box user_info"
         slot="reference"
+        ref="tool_box4"
+        @mouseenter="enter(true, 4)"
+        @mouseleave="enter(false, 4)"
       >
         <el-avatar
           class="user_icon"
@@ -56,7 +93,12 @@
         <span>{{ userName }}</span>
       </div>
     </el-popover>
-    <div class="tool_box setting">
+    <div
+      class="tool_box setting"
+      ref="tool_box5"
+      @mouseenter="enter(true, 5)"
+      @mouseleave="enter(false, 5)"
+    >
       <setting-bar />
     </div>
   </div>
@@ -79,7 +121,11 @@ export default {
     SettingBar
   },
   computed: {
-    ...mapGetters(['getCurrentUser']),
+    ...mapGetters([
+      'getCurrentUser',
+      'getThemeLogoBGColor',
+      'getThemeHeaderBGColor'
+    ]),
 
     userName () {
       return this.getCurrentUser.userName
@@ -87,6 +133,13 @@ export default {
 
     signinTime () {
       return this.getCurrentUser.signinTime
+    }
+  },
+  watch: {
+    getThemeHeaderBGColor (val) {
+      for (let i = 0; i < 6; i++) {
+        this.$refs['tool_box' + i].style.backgroundColor = val
+      }
     }
   },
   methods: {
@@ -108,6 +161,12 @@ export default {
       this.$i18n.locale = command
       localStorage.setItem('LOCAL_LANG', command)
       this.$message.success(this.$t('change_lang_success'))
+    },
+
+    enter (bool, index) {
+      this.$refs['tool_box' + index].style.backgroundColor = bool
+        ? this.getThemeLogoBGColor
+        : this.getThemeHeaderBGColor
     }
   }
 }
@@ -122,14 +181,28 @@ export default {
   width: 290px;
 
   .tool_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 10px;
+    height: 50px;
     cursor: pointer;
+
+    &.setting,
+    &.full_screen {
+      padding: 0;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
   }
 
   .change_lang {
-    i {
-      color: #fff;
-      font-size: 16px;
+    .i18n-icon {
+      width: 16px;
+      height: 16px;
     }
   }
 
@@ -141,6 +214,10 @@ export default {
       margin-right: 10px;
       width: 25px;
       height: 25px;
+    }
+
+    span {
+      font-size: 13px;
     }
   }
 }
