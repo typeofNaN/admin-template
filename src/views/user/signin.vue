@@ -224,7 +224,7 @@ export default {
     background-color: rgba(255, 255, 255, .7);
 
     i {
-      font-size: 90px;
+      font-size: 70px;
       color: #409eff;
     }
   }

@@ -30,10 +30,10 @@
             :style="{
               borderLeft: route.isActive
                 ? '4px solid ' + getThemeLogoBGColor
-                : '',
+                : '0px solid ' + getThemeLogoBGColor,
               backgroundColor: route.isActive
                 ? getThemeSlideBGColor === '#f9fafc'
-                  ? 'rgb(249, 250, 252)'
+                  ? 'rgb(199, 200, 202)'
                   :'rgb(27, 36, 40)'
                 : ''
             }"
@@ -59,28 +59,34 @@
                 :index="routeChild.path"
                 @click="toRoute(routeChild.path)"
                 :style="{
-                  borderLeft: routeChild.isActive
-                    ? '4px solid ' + getThemeLogoBGColor
-                    : '',
-                  backgroundColor: routeChild.isActive
-                    ? getThemeSlideBGColor === '#f9fafc'
-                      ? 'rgb(249, 250, 252)'
-                      :'rgb(27, 36, 40)'
-                    : ''
+                  borderLeft: '0px solid ' + getThemeLogoBGColor
                 }"
               >
                 <template #title>
-                  <svg-icon
-                    v-if="getThemeSlideBGColor === '#f9fafc'"
-                    class-name="slide_icon"
-                    :icon-class="routeChild.meta.icon_black"
-                  />
-                  <svg-icon
-                    v-else
-                    class-name="slide_icon"
-                    :icon-class="routeChild.meta.icon_white"
-                  />
-                  <span>{{ generateTitle(routeChild.meta.title) }}</span>
+                  <div
+                    class="submenu_item"
+                    :style="{
+                      backgroundColor: routeChild.isActive
+                        ? getThemeSlideBGColor === '#f9fafc'
+                          ? 'rgb(199, 200, 202) !important'
+                          :'rgb(27, 36, 40) !important'
+                        : '',
+                      margin: getSlideBar ? '0 -45px' : '0 -20px',
+                      padding: getSlideBar ? '0 45px' : '0 20px'
+                    }"
+                  >
+                    <svg-icon
+                      v-if="getThemeSlideBGColor === '#f9fafc'"
+                      class-name="slide_icon"
+                      :icon-class="routeChild.meta.icon_black"
+                    />
+                    <svg-icon
+                      v-else
+                      class-name="slide_icon"
+                      :icon-class="routeChild.meta.icon_white"
+                    />
+                    <span>{{ generateTitle(routeChild.meta.title) }}</span>
+                  </div>
                 </template>
               </el-menu-item>
             </el-menu-item-group>
@@ -91,19 +97,35 @@
           :key="index"
           :index="route.path"
           @click="toRoute(route.path)"
-          :style="{ borderLeft: route.isActive ? '4px solid ' + getThemeLogoBGColor : '' }"
+          :style="{
+            borderLeft: route.isActive
+              ? '4px solid ' + getThemeLogoBGColor
+              : '0px solid ' + getThemeLogoBGColor
+          }"
         >
-          <svg-icon
-            v-if="getThemeSlideBGColor === '#f9fafc'"
-            class-name="slide_icon"
-            :icon-class="route.meta.icon_black"
-          />
-          <svg-icon
-            v-else
-            class-name="slide_icon"
-            :icon-class="route.meta.icon_white"
-          />
-          <span>{{ generateTitle(route.meta.title) }}</span>
+          <div
+            :style="{
+              backgroundColor: route.isActive
+                ? getThemeSlideBGColor === '#f9fafc'
+                  ? 'rgb(199, 200, 202) !important'
+                  :'rgb(27, 36, 40) !important'
+                : '',
+              margin: getSlideBar ? '0 -20px' : '0 -14px',
+              padding: getSlideBar ? '0 20px' : '0 14px'
+            }"
+          >
+            <svg-icon
+              v-if="getThemeSlideBGColor === '#f9fafc'"
+              class-name="slide_icon"
+              :icon-class="route.meta.icon_black"
+            />
+            <svg-icon
+              v-else
+              class-name="slide_icon"
+              :icon-class="route.meta.icon_white"
+            />
+            <span>{{ generateTitle(route.meta.title) }}</span>
+          </div>
         </el-menu-item>
       </template>
     </el-menu>
@@ -278,15 +300,38 @@ export default {
 .el-menu {
   border-right: none;
 
+  .el-submenu {
+    .el-menu-item {
+      &:hover {
+        border-left-width: 0px !important;
+      }
+    }
+  }
+
   .el-submenu__title {
     padding: 0;
     padding-left: 0 !important;
+    height: 42px;
+    line-height: 42px;
 
     .submenu_title {
       padding-left: 20px;
       width: 100%;
       height: 100%;
     }
+  }
+
+  .el-menu-item {
+    height: 42px;
+    line-height: 42px;
+
+    &:hover {
+      border-left-width: 4px !important;
+    }
+  }
+
+  .el-menu-item-group__title {
+    padding: 2px;
   }
 }
 
