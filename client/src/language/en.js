@@ -12,6 +12,8 @@ module.exports = {
   // routers
   routes: {
     control: 'Control',
+    homeform: 'home form',
+    message_ayer: 'message layer',
     routineManage: 'routineManage',
     classification: 'classification',
     jurisdiction: 'jurisdiction',

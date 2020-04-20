@@ -23,6 +23,7 @@
           v-if="route.children"
           :key="index"
           :index="route.path"
+          :class="route.isActive ? 'act top1' : 'top1'"
         >
           <div
             class="submenu_title"
@@ -33,9 +34,21 @@
                 : '0px solid ' + getThemeLogoBGColor,
               backgroundColor: route.isActive
                 ? getThemeSlideBGColor === '#f9fafc'
-                  ? 'rgb(199, 200, 202)'
+                  ? 'rgb(244, 244, 245)'
                   :'rgb(27, 36, 40)'
-                : ''
+                : '',
+              padding: getSlideBar
+                ? route.isActive
+                  ? '0 16px'
+                  : '0 20px'
+                : '0 14px',
+              color: route.isActive
+                ? getThemeSlideBGColor === '#f9fafc'
+                  ? '#000000'
+                  : '#ffffff'
+                : getThemeSlideBGColor === '#f9fafc'
+                  ? '#777777'
+                  : '#b8c7ce'
             }"
           >
             <svg-icon
@@ -59,20 +72,28 @@
                 :index="routeChild.path"
                 @click="toRoute(routeChild.path)"
                 :style="{
-                  borderLeft: '0px solid ' + getThemeLogoBGColor
+                  borderLeft: '0px solid ' + getThemeLogoBGColor,
+                  backgroundColor: getThemeSlideBGColor === '#f9fafc'
+                    ? '#f4f4f5'
+                    : '#2c3b41'
                 }"
               >
                 <template #title>
                   <div
                     class="submenu_item"
                     :style="{
-                      backgroundColor: routeChild.isActive
-                        ? getThemeSlideBGColor === '#f9fafc'
-                          ? 'rgb(199, 200, 202) !important'
-                          :'rgb(27, 36, 40) !important'
-                        : '',
+                      backgroundColor: getThemeSlideBGColor === '#f9fafc'
+                        ? '#f4f4f5'
+                        : '#2c3b41',
                       margin: getSlideBar ? '0 -45px' : '0 -20px',
-                      padding: getSlideBar ? '0 45px' : '0 20px'
+                      padding: getSlideBar ? '0 45px' : '0 20px',
+                      color: routeChild.isActive
+                        ? getThemeSlideBGColor === '#f9fafc'
+                          ? '#000000'
+                          : '#ffffff'
+                        : getThemeSlideBGColor === '#f9fafc'
+                          ? '#777777'
+                          : '#b8c7ce'
                     }"
                   >
                     <svg-icon
@@ -96,6 +117,7 @@
           v-else
           :key="index"
           :index="route.path"
+          :class="route.isActive ? 'act top1' : 'top1'"
           @click="toRoute(route.path)"
           :style="{
             borderLeft: route.isActive
@@ -104,14 +126,26 @@
           }"
         >
           <div
+            class="menu_item"
             :style="{
               backgroundColor: route.isActive
                 ? getThemeSlideBGColor === '#f9fafc'
-                  ? 'rgb(199, 200, 202) !important'
+                  ? 'rgb(244, 244, 245) !important'
                   :'rgb(27, 36, 40) !important'
                 : '',
               margin: getSlideBar ? '0 -20px' : '0 -14px',
-              padding: getSlideBar ? '0 20px' : '0 14px'
+              padding: getSlideBar
+                ? route.isActive
+                  ? '0 16px'
+                  : '0 20px'
+                : '0 14px',
+              color: route.isActive
+                ? getThemeSlideBGColor === '#f9fafc'
+                  ? '#000000'
+                  : '#ffffff'
+                : getThemeSlideBGColor === '#f9fafc'
+                  ? '#777777'
+                  : '#b8c7ce'
             }"
           >
             <svg-icon
@@ -325,18 +359,41 @@ export default {
     height: 42px;
     line-height: 42px;
 
-    &:hover {
-      border-left-width: 4px !important;
+    &.top1 {
+      &:hover {
+        border-left-width: 4px !important;
+        padding-left: 16px !important;
+      }
+    }
+
+    &.act {
+      &:hover {
+        .menu_item {
+          margin-left: -16px !important;
+        }
+      }
     }
   }
 
   .el-menu-item-group__title {
-    padding: 2px;
+    padding: 0px;
   }
 }
 
 .el-menu--collapse {
   width: 50px;
+
+  .el-submenu {
+    .act {
+      .svg-icon {
+        margin-left: -3px !important;
+      }
+    }
+
+    .svg-icon {
+      margin-left: 2px !important;
+    }
+  }
 
   .el-submenu__title {
     display: flex;
@@ -379,6 +436,42 @@ export default {
       width: 14px;
       height: 14px;
     }
+
+    &.top1 {
+      .svg-icon {
+        margin-left: 4px;
+      }
+      &:hover {
+        border-left-width: 4px !important;
+        padding-left: 0px !important;
+
+        .svg-icon {
+          margin-left: 0px;
+        }
+      }
+    }
+
+    &.act {
+      .svg-icon {
+        margin-left: 2px !important;
+      }
+      &:hover {
+        .menu_item {
+          margin-left: -16px !important;
+        }
+
+        .svg-icon {
+          margin-left: 3px !important;
+        }
+      }
+    }
+  }
+
+  .menu_item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
   }
 }
 

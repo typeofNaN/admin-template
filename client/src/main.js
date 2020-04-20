@@ -8,11 +8,14 @@ import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
 import router from './router'
 import store from './store'
+import Api from './service'
 import './icons'
 
 import '@/assets/style/style.css'
 
 Vue.config.productionTip = false
+
+Vue.prototype.api = Api
 
 Vue.use(ElementUI)
 Vue.use(VueI18n)

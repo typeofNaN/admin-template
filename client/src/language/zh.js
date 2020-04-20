@@ -12,6 +12,8 @@ module.exports = {
   // routers
   routes: {
     control: '控制台',
+    homeform: '表单',
+    message_layer: '消息弹窗',
     routineManage: '常规管理',
     classification: '分类管理',
     jurisdiction: '权限管理',
