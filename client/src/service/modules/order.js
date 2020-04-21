@@ -3,9 +3,9 @@ import request from '@/utils/request'
 class Order {
   getOrderList (data) {
     return request({
-      method: 'GET',
+      method: 'POST',
       url: '/order/orderList',
-      params: data
+      data: data
     })
   }
 
@@ -13,7 +13,7 @@ class Order {
     return request({
       method: 'POST',
       url: '/order/addOrder',
-      params: data
+      data: data
     })
   }
 
@@ -21,7 +21,7 @@ class Order {
     return request({
       method: 'PUT',
       url: '/order/editOrder',
-      params: data
+      data: data
     })
   }
 
@@ -29,7 +29,7 @@ class Order {
     return request({
       method: 'DELETE',
       url: '/order/deleteOrder',
-      params: data
+      data: data
     })
   }
 }

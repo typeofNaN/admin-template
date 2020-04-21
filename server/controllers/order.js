@@ -4,22 +4,48 @@ var message = require('../message');
 
 module.exports = {
   orderList (req, res) {
-    const reqData = { ...req.query }
+    const reqData = { ...req.body }
     const page = reqData.page || 1
     const pageSize = reqData.pageSize || 10
     const skipNum = (page - 1) * pageSize
+
     delete reqData.page
     delete reqData.limit
 
-    Order.find(reqData, function(err, orderList) {
+    let queryData = {}
+
+    for (let i in reqData) {
+      if (reqData[i]) {
+        queryData[i] = reqData[i]
+      }
+    }
+
+    let query = Order.find({})
+
+    let count = 0
+
+    Order.find(queryData, function(err, orderList) {
       if (err) {
         res.send(400, message.failed(err));
       } else {
-        res.json(message.succeeded(orderList));
+        count = orderList.length
       }
     })
-    .skip(skipNum)
-    .limit(pageSize)
+
+    query.and(queryData)
+    query.skip(skipNum)
+    query.limit(pageSize)
+    query.sort('-utc_created')
+    query.exec((err, data) => {
+      if (err) {
+        res.send(400, message.failed(err));
+      } else {
+        res.json(message.succeeded({
+          list: [...data],
+          count
+        }))
+      }
+    })
   },
 
   addOrder (req, res) {

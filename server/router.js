@@ -9,7 +9,7 @@ router.use(function(req, res, next) {
 router
   .route('/order/orderList')
 
-  .get(orderController.orderList)
+  .post(orderController.orderList)
 
 router
   .route('/order/addOrder')

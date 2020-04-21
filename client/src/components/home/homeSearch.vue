@@ -1,0 +1,179 @@
+<template>
+  <div id="home_search">
+    <el-form
+      v-show="showSearch"
+      :inline="true"
+      :model="searchForm"
+      ref="searchForm"
+      label-width="100px"
+    >
+      <el-row>
+        <el-col :span="6">
+          <el-form-item
+            prop="_id"
+            label="ID"
+          >
+            <el-input
+              v-model="searchForm._id"
+              placeholder="ID"
+            ></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item
+            prop="a"
+            label="字段A"
+          >
+            <el-input
+              v-model="searchForm.a"
+              placeholder="字段A"
+            ></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item
+            prop="b"
+            label="字段B"
+          >
+            <el-input
+              v-model="searchForm.b"
+              placeholder="字段B"
+            ></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item
+            prop="c"
+            label="字段C"
+          >
+            <el-input
+              v-model="searchForm.c"
+              placeholder="字段C"
+            ></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item
+            prop="d"
+            label="字段D"
+          >
+            <el-input
+              v-model="searchForm.d"
+              placeholder="字段D"
+            ></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item
+            prop="e"
+            label="字段E"
+          >
+            <el-input
+              v-model="searchForm.e"
+              placeholder="字段E"
+            ></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item
+            prop="f"
+            label="字段F"
+          >
+            <el-input
+              v-model="searchForm.f"
+              placeholder="字段F"
+            ></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item
+            prop="g"
+            label="字段G"
+          >
+            <el-input
+              v-model="searchForm.g"
+              placeholder="字段G"
+            ></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item
+            prop="is_deleted"
+            label="是否删除"
+          >
+            <el-select
+              v-model="searchForm.is_deleted"
+              placeholder="是否删除"
+            >
+              <el-option label="是" :value="true"></el-option>
+              <el-option label="否" :value="false"></el-option>
+            </el-select>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item
+            prop="time"
+            label="时间"
+          >
+            <el-date-picker
+              v-model="searchForm.time"
+              type="daterange"
+              start-placeholder="开始日期"
+              end-placeholder="结束日期">
+            </el-date-picker>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item label=" ">
+            <el-button
+              @click="search"
+              type="primary"
+            >查询</el-button>
+            <el-button
+              @click="reset"
+              type="info"
+            >重置</el-button>
+          </el-form-item>
+        </el-col>
+      </el-row>
+    </el-form>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'homeSearch',
+  props: {
+    searchForm: {
+      type: Object,
+      default: null
+    }
+  },
+  data: () => ({
+    showSearch: true
+  }),
+  methods: {
+    search () {
+      this.$emit('search', this.searchForm)
+    },
+
+    reset () {
+      this.$refs.searchForm.resetFields()
+    },
+
+    showSearchForm () {
+      this.showSearch = !this.showSearch
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+#home_search {
+  .el-form--inline {
+    .el-form-item__content {
+      max-width: 202px;
+    }
+  }
+}
+</style>

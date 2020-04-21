@@ -1,0 +1,118 @@
+<template>
+  <div id="home_table">
+    <el-table
+      :data="tableData"
+      border
+      style="width: 100%"
+      @selection-change="handleSelect"
+    >
+       <el-table-column
+        type="selection"
+        width="40">
+      </el-table-column>
+      <el-table-column
+        prop="_id"
+        label="ID"
+        sortable
+        show-overflow-tooltip
+      ></el-table-column>
+      <el-table-column
+        prop="a"
+        label="字段A"
+        sortable
+      ></el-table-column>
+      <el-table-column
+        prop="b"
+        label="字段B"
+        sortable
+      ></el-table-column>
+      <el-table-column
+        prop="c"
+        label="字段C"
+        sortable
+      ></el-table-column>
+      <el-table-column
+        prop="d"
+        label="字段D"
+        sortable
+      ></el-table-column>
+      <el-table-column
+        prop="e"
+        label="字段E"
+        sortable
+      ></el-table-column>
+      <el-table-column
+        prop="f"
+        label="字段F"
+        sortable
+      ></el-table-column>
+      <el-table-column
+        prop="g"
+        label="字段G"
+        sortable
+      ></el-table-column>
+      <el-table-column
+        prop="utc_created"
+        label="创建时间"
+        sortable
+        show-overflow-tooltip
+        :formatter="formatterDate"
+      ></el-table-column>
+      <el-table-column label="是否删除">
+        <template slot-scope="scope">
+          {{ scope.is_deleted ? '是': '否' }}
+        </template>
+      </el-table-column>
+      <el-table-column label="操作">
+        <template slot-scope="scope">
+          <el-button
+            type="warning"
+            circle
+            size="small"
+            icon="el-icon-edit"
+            @click="editItem(scope)"
+          ></el-button>
+          <el-button
+            type="danger"
+            circle
+            size="small"
+            icon="el-icon-delete"
+            @click="deleteItem(scope)"
+          ></el-button>
+        </template>
+      </el-table-column>
+    </el-table>
+  </div>
+</template>
+
+<script>
+import formatter from '@/utils/formatterDate'
+
+export default {
+  name: 'homeTable',
+  props: {
+    tableData: {
+      type: Array,
+      default: null
+    }
+  },
+  data: () => ({
+    selection: []
+  }),
+  methods: {
+    formatterDate (obj) {
+      if (obj.utc_created) {
+        let date = new Date(obj.utc_created)
+        return formatter(date, 'yyyy-MM-dd HH:mm:ss')
+      } else {
+        return '--'
+      }
+    },
+
+    handleSelect (select) {
+      this.selection = select
+      this.$emit('selectChange', select)
+    }
+  }
+}
+</script>
