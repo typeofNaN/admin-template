@@ -10,7 +10,7 @@ module.exports = {
     const skipNum = (page - 1) * pageSize
 
     delete reqData.page
-    delete reqData.limit
+    delete reqData.pageSize
 
     let queryData = {}
 
