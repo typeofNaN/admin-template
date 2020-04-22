@@ -17,18 +17,24 @@
         <home-ctrl
           :selectData.sync="selectData"
           @showSearchForm="showSearchForm"
-          @refresh="search"
+          @refresh="refresh"
+          @exportExcel="exportExcel"
         ></home-ctrl>
         <home-table
+          ref="home_table"
           :tableData="tableData"
           @selectChange="selectChange"
         ></home-table>
         <div class="pagination">
           <el-pagination
             background
-            layout="prev, pager, next"
+            :page-sizes="[10, 30, 50, 100]"
+            :page-size="10"
+            layout="total, sizes, prev, pager, next, jumper"
             :total="count"
+            :current-page.sync="current"
             @current-change="currentChange"
+            @size-change="sizeChange"
           ></el-pagination>
         </div>
       </el-tab-pane>
@@ -72,11 +78,13 @@ export default {
       time: '',
       is_deleted: '',
       page: 1,
-      limit: 10
+      pageSize: 10
     },
     tableData: [],
     selectData: [],
-    count: 0
+    count: 0,
+    current: 1,
+    currentPageSize: 10
   }),
   components: {
     HomeForm,
@@ -91,16 +99,29 @@ export default {
     getData (searchData) {
       let postData = { ...searchData }
       this.api.orderApi.getOrderList(postData)
-        .then(res => {
-          if (res.data.code === 0) {
-            this.count = res.data.data.count
-            this.tableData = res.data.data.list
-          }
+        .then(data => {
+          this.count = data.count
+          this.tableData = data.list
         })
     },
 
     search (searchData) {
-      this.getData(searchData)
+      let postData = { ...searchData }
+      this.current = 1
+      postData.page = this.current
+      postData.pageSize = this.currentPageSize
+      this.getData(postData)
+    },
+
+    refresh () {
+      let postData = { ...this.searchData }
+      postData.page = this.current
+      postData.pageSize = this.currentPageSize
+      this.getData(postData)
+    },
+
+    exportExcel () {
+      this.$refs.home_table.exportExcel()
     },
 
     showSearchForm () {
@@ -112,10 +133,18 @@ export default {
     },
 
     currentChange (pageNum) {
-      let postData = {...this.searchData}
-      postData.page = pageNum
+      let postData = { ...this.searchData }
+      this.current = pageNum
+      postData.page = this.current
+      postData.pageSize = this.currentPageSize
+      this.getData(postData)
+    },
 
-      this.search(postData)
+    sizeChange (size) {
+      let postData = { ...this.searchData }
+      this.currentPageSize = size
+      postData.pageSize = this.currentPageSize
+      this.getData(postData)
     },
 
     changeTab (tab, event) {

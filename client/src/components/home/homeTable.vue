@@ -1,6 +1,7 @@
 <template>
   <div id="home_table">
     <el-table
+      id="dataTable"
       :data="tableData"
       border
       style="width: 100%"
@@ -86,6 +87,9 @@
 </template>
 
 <script>
+import FileSaver from 'file-saver'
+import XLSX from 'xlsx'
+
 import formatter from '@/utils/formatterDate'
 
 export default {
@@ -112,6 +116,29 @@ export default {
     handleSelect (select) {
       this.selection = select
       this.$emit('selectChange', select)
+    },
+
+    // 导出为excel表格
+    exportExcel () {
+      const tableDom = document.querySelector('#dataTable')
+      var wb = XLSX.utils.table_to_book(tableDom)
+
+      var wbout = XLSX.write(wb, {
+        bookType: 'xlsx',
+        bookSST: true,
+        type: 'array'
+      })
+
+      try {
+        FileSaver.saveAs(
+          new Blob([wbout], { type: 'application/octet-stream' }),
+          'sheetjs.xlsx'
+        )
+      } catch (e) {
+        console.log(e, wbout)
+      }
+
+      return wbout
     }
   }
 }

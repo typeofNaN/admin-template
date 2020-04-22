@@ -59,7 +59,7 @@
           <el-dropdown-item>CSV</el-dropdown-item>
           <el-dropdown-item>TXT</el-dropdown-item>
           <el-dropdown-item>MS-Word</el-dropdown-item>
-          <el-dropdown-item>MS-Excel</el-dropdown-item>
+          <el-dropdown-item @click.native="exportExcel">MS-Excel</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
       <el-button
@@ -232,6 +232,11 @@ export default {
           this.$message.danger('所填信息有误，请重新填写！')
         }
       })
+    },
+
+    exportExcel () {
+      console.log(1)
+      this.$emit('exportExcel')
     }
   }
 }
