@@ -10,6 +10,7 @@ import router from './router'
 import store from './store'
 import Api from './service'
 import './icons'
+import './mock'
 
 import '@/assets/style/style.css'
 
