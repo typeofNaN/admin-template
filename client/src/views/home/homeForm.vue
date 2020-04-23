@@ -6,7 +6,7 @@
       @tab-click="changeTab"
     >
       <el-tab-pane
-        label="tab1"
+        label="分页查询"
         name="tab1"
       >
         <home-search
@@ -25,29 +25,27 @@
           :tableData="tableData"
           @selectChange="selectChange"
         ></home-table>
-        <div class="pagination">
-          <el-pagination
-            background
-            :page-sizes="[10, 30, 50, 100]"
-            :page-size="10"
-            layout="total, sizes, prev, pager, next, jumper"
-            :total="count"
-            :current-page.sync="current"
-            @current-change="currentChange"
-            @size-change="sizeChange"
-          ></el-pagination>
-        </div>
+        <pagination
+          ref="pagination"
+          :count="count"
+          :currentPageSize="currentPageSize"
+          :addLength="tableData.length"
+          @currentChange="currentChange"
+          @sizeChange="sizeChange"
+        ></pagination>
       </el-tab-pane>
       <el-tab-pane
-        label="tab2"
+        label="表单"
         name="tab2"
       >
         <home-form></home-form>
       </el-tab-pane>
       <el-tab-pane
-        label="tab3"
+        label="表单验证"
         name="tab3"
-      >tab3</el-tab-pane>
+      >
+        <form-validate></form-validate>
+      </el-tab-pane>
       <el-tab-pane
         label="tab4"
         name="tab4"
@@ -57,10 +55,12 @@
 </template>
 
 <script>
-import HomeForm from '@/components/home/homeForm'
 import HomeSearch from '@/components/home/homeSearch'
 import HomeCtrl from '@/components/home/homeCtrl'
 import HomeTable from '@/components/home/homeTable'
+import HomeForm from '@/components/home/homeForm'
+import FormValidate from '@/components/home/formValidate'
+import Pagination from '@/components/public/pagination'
 
 export default {
   name: 'home',
@@ -87,27 +87,34 @@ export default {
     currentPageSize: 10
   }),
   components: {
-    HomeForm,
     HomeSearch,
     HomeCtrl,
-    HomeTable
+    HomeTable,
+    Pagination,
+    HomeForm,
+    FormValidate
   },
   mounted () {
     this.getData()
   },
   methods: {
     getData (searchData) {
+      this.$refs.home_table.openLoading()
       let postData = { ...searchData }
       this.api.orderApi.getOrderList(postData)
         .then(data => {
-          this.count = data.count
-          this.tableData = data.list
+          setTimeout(() => {
+            this.count = data.count
+            this.tableData = data.list
+            this.$refs.home_table.closeLoading()
+          }, 1000)
         })
     },
 
     search (searchData) {
       let postData = { ...searchData }
       this.current = 1
+      this.$refs.pagination.resetCurrentPage(this.current)
       postData.page = this.current
       postData.pageSize = this.currentPageSize
       this.getData(postData)
@@ -153,16 +160,6 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-#home {
-  .pagination {
-    display: flex;
-    justify-content: flex-end;
-    padding-top: 10px;
-  }
-}
-</style>
 
 <style lang="scss">
 #home {
