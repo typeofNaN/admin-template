@@ -1,6 +1,7 @@
 <template>
   <div id="toolBar">
     <div
+      v-if="!getIsMobile"
       class="tool_box home"
       ref="tool_box0"
       @mouseenter="enter(true, 0)"
@@ -12,6 +13,7 @@
       />
     </div>
     <div
+      v-if="!getIsMobile"
       class="tool_box clear"
       ref="tool_box1"
       @mouseenter="enter(true, 1)"
@@ -23,6 +25,7 @@
       />
     </div>
     <div
+      v-if="!getIsMobile"
       ref="tool_box2"
       @mouseenter="enter(true, 2)"
       @mouseleave="enter(false, 2)"
@@ -123,6 +126,7 @@ export default {
   computed: {
     ...mapGetters([
       'getCurrentUser',
+      'getIsMobile',
       'getThemeLogoBGColor',
       'getThemeHeaderBGColor'
     ]),

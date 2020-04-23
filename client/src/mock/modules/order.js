@@ -8,8 +8,13 @@ const orderList = req => {
   let reqData = JSON.parse(req.body)
 
   let list = []
+  let pageSize
 
-  let pageSize = reqData.pageSize || 10
+  if (reqData && reqData.pageSize) {
+    pageSize = reqData.pageSize
+  } else {
+    pageSize = 10
+  }
 
   let count = Random.integer(1000, 5000)
 

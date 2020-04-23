@@ -3,28 +3,31 @@
     <el-container>
       <el-aside
         class="slider_bar"
-        :width="getSlideBar ? '230px' : '50px'"
+        :width="getIsMobile
+          ? getSlideBar ? '230px' : '0px'
+          : getSlideBar ? '230px' : '50px'"
         :style="{ backgroundColor: getThemeSlideBGColor }"
       >
-        <slide-bar :aslide-routers="aslideRouters"/>
+        <slide-bar
+        :first-routers="topRouters"
+        :aslide-routers="aslideRouters"
+      />
       </el-aside>
       <el-container
         :style="{
-          paddingTop: getFixedHeader
-            ? '80px'
-            : '0',
-          marginLeft: getSlideBar
-            ? '230px'
-            : '50px'
+          paddingTop: getFixedHeader ? '80px' : '0',
+          marginLeft: getIsMobile
+            ? getSlideBar ? '230px' : '0px'
+            : getSlideBar ? '230px' : '50px'
           }"
         >
         <el-header
           :style="{
             backgroundColor: getThemeHeaderBGColor,
             width: getFixedHeader
-            ? (getSlideBar
-              ? 'calc(100% - 230px)'
-              : 'calc(100% - 50px)')
+            ? getIsMobile
+              ? getSlideBar ? 'calc(100% - 230px)' : 'calc(100% - 0px)'
+              : getSlideBar ? 'calc(100% - 230px)' : 'calc(100% - 50px)'
             : '100%',
             height: '80px'
           }"
@@ -64,6 +67,7 @@ export default {
   computed: {
     ...mapGetters([
       'getSlideBar',
+      'getIsMobile',
       'getThemeSlideBGColor',
       'getThemeHeaderBGColor',
       'getFixedHeader'
@@ -101,7 +105,7 @@ export default {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 99;
+    z-index: 200;
   }
 
   .noFixedheader {
@@ -113,5 +117,9 @@ export default {
 <style lang="scss">
 .el-header {
   padding: 0;
+}
+
+.el-main {
+  padding: 20px 8px;
 }
 </style>

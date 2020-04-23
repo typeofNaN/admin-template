@@ -235,7 +235,6 @@ export default {
     },
 
     exportExcel () {
-      console.log(1)
       this.$emit('exportExcel')
     }
   }
@@ -246,7 +245,12 @@ export default {
 #home_ctrl {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  flex-wrap: wrap;
+
+  .ctrl-left,
+  .ctrl-right {
+    margin-bottom: 10px;
+  }
 }
 </style>
 

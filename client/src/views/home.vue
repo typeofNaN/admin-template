@@ -6,11 +6,7 @@
 
 <script>
 export default {
-  mounted () {
-    this.api.orderApi.getOrderList().then(res => {
-      console.log(res)
-    })
-  }
+  name: 'homePage'
 }
 </script>
 

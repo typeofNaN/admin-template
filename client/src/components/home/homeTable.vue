@@ -5,52 +5,63 @@
       :data="tableData"
       border
       style="width: 100%"
+      v-loading="loading"
+      element-loading-background="rgba(255, 255, 255, 0.7)"
       @selection-change="handleSelect"
     >
        <el-table-column
         type="selection"
-        width="40">
-      </el-table-column>
+        width="40"
+        fixed="left"
+      ></el-table-column>
       <el-table-column
         prop="_id"
         label="ID"
         sortable
         show-overflow-tooltip
+        min-width="100"
       ></el-table-column>
       <el-table-column
         prop="a"
         label="字段A"
         sortable
+        min-width="100"
       ></el-table-column>
       <el-table-column
         prop="b"
         label="字段B"
         sortable
+        min-width="100"
       ></el-table-column>
       <el-table-column
         prop="c"
         label="字段C"
         sortable
+        min-width="100"
       ></el-table-column>
       <el-table-column
         prop="d"
         label="字段D"
         sortable
+        min-width="100"
       ></el-table-column>
       <el-table-column
         prop="e"
         label="字段E"
         sortable
+        min-width="100"
       ></el-table-column>
       <el-table-column
         prop="f"
         label="字段F"
         sortable
+        min-width="100"
       ></el-table-column>
       <el-table-column
         prop="g"
         label="字段G"
         sortable
+        min-width="100"
       ></el-table-column>
       <el-table-column
         prop="utc_created"
@@ -58,25 +69,33 @@
         sortable
         show-overflow-tooltip
         :formatter="formatterDate"
+        min-width="100"
       ></el-table-column>
-      <el-table-column label="是否删除">
+      <el-table-column
+        label="是否删除"
+        min-width="100"
+      >
         <template slot-scope="scope">
           {{ scope.is_deleted ? '是': '否' }}
         </template>
       </el-table-column>
-      <el-table-column label="操作">
+      <el-table-column
+        label="操作"
+        min-width="100"
+        fixed="right"
+      >
         <template slot-scope="scope">
           <el-button
             type="warning"
             circle
-            size="small"
+            size="mini"
             icon="el-icon-edit"
             @click="editItem(scope)"
           ></el-button>
           <el-button
             type="danger"
             circle
-            size="small"
+            size="mini"
             icon="el-icon-delete"
             @click="deleteItem(scope)"
           ></el-button>
@@ -101,7 +120,8 @@ export default {
     }
   },
   data: () => ({
-    selection: []
+    selection: [],
+    loading: true
   }),
   methods: {
     formatterDate (obj) {
@@ -111,6 +131,14 @@ export default {
       } else {
         return '--'
       }
+    },
+
+    openLoading () {
+      this.loading = true
+    },
+
+    closeLoading () {
+      this.loading = false
     },
 
     handleSelect (select) {
@@ -143,3 +171,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+#home_table {
+  .el-loading-mask {
+    z-index: 99;
+  }
+}
+</style>

@@ -8,7 +8,13 @@
       label-width="100px"
     >
       <el-row>
-        <el-col :span="6">
+        <el-col
+          :xl="6"
+          :lg="8"
+          :md="12"
+          :sm="24"
+          :xs="24"
+        >
           <el-form-item
             prop="_id"
             label="ID"
@@ -19,7 +25,13 @@
             ></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="6">
+        <el-col
+          :xl="6"
+          :lg="8"
+          :md="12"
+          :sm="24"
+          :xs="24"
+        >
           <el-form-item
             prop="a"
             label="字段A"
@@ -30,7 +42,13 @@
             ></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="6">
+        <el-col
+          :xl="6"
+          :lg="8"
+          :md="12"
+          :sm="24"
+          :xs="24"
+        >
           <el-form-item
             prop="b"
             label="字段B"
@@ -41,7 +59,13 @@
             ></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="6">
+        <el-col
+          :xl="6"
+          :lg="8"
+          :md="12"
+          :sm="24"
+          :xs="24"
+        >
           <el-form-item
             prop="c"
             label="字段C"
@@ -52,7 +76,13 @@
             ></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="6">
+        <el-col
+          :xl="6"
+          :lg="8"
+          :md="12"
+          :sm="24"
+          :xs="24"
+        >
           <el-form-item
             prop="d"
             label="字段D"
@@ -63,7 +93,13 @@
             ></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="6">
+        <el-col
+          :xl="6"
+          :lg="8"
+          :md="12"
+          :sm="24"
+          :xs="24"
+        >
           <el-form-item
             prop="e"
             label="字段E"
@@ -74,7 +110,13 @@
             ></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="6">
+        <el-col
+          :xl="6"
+          :lg="8"
+          :md="12"
+          :sm="24"
+          :xs="24"
+        >
           <el-form-item
             prop="f"
             label="字段F"
@@ -85,7 +127,13 @@
             ></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="6">
+        <el-col
+          :xl="6"
+          :lg="8"
+          :md="12"
+          :sm="24"
+          :xs="24"
+        >
           <el-form-item
             prop="g"
             label="字段G"
@@ -96,7 +144,13 @@
             ></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="6">
+        <el-col
+          :xl="6"
+          :lg="8"
+          :md="12"
+          :sm="24"
+          :xs="24"
+        >
           <el-form-item
             prop="is_deleted"
             label="是否删除"
@@ -105,12 +159,24 @@
               v-model="searchForm.is_deleted"
               placeholder="是否删除"
             >
-              <el-option label="是" :value="true"></el-option>
-              <el-option label="否" :value="false"></el-option>
+              <el-option
+                label="是"
+                :value="true"
+              ></el-option>
+              <el-option
+                label="否"
+                :value="false"
+              ></el-option>
             </el-select>
           </el-form-item>
         </el-col>
-        <el-col :span="12">
+        <el-col
+          :xl="12"
+          :lg="16"
+          :md="24"
+          :sm="24"
+          :xs="24"
+        >
           <el-form-item
             prop="time"
             label="时间"
@@ -123,7 +189,13 @@
             </el-date-picker>
           </el-form-item>
         </el-col>
-        <el-col :span="6">
+        <el-col
+          :xl="6"
+          :lg="8"
+          :md="12"
+          :sm="24"
+          :xs="24"
+        >
           <el-form-item label=" ">
             <el-button
               @click="search"

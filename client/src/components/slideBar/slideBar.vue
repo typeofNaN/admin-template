@@ -1,6 +1,7 @@
 <template>
   <div id="slidebar">
     <div
+      v-if="!getIsMobile"
       class="slide_header"
       :style="{ backgroundColor: getThemeLogoBGColor }"
     >
@@ -10,12 +11,36 @@
       />
       <span v-show="getSlideBar">Zegobird</span>
     </div>
+    <div
+      v-else
+      class="first_routers"
+    >
+      <el-row>
+        <el-col
+          :span="12"
+          v-for="(router, index) in firstRouters"
+          :key="index"
+        >
+          <div
+            class="first_router_box"
+            :style="{ backgroundColor: getIsThemeLight  ? '#222d32' : '#ffffff' }"
+            @click="handleRouter(router)"
+          >
+            <svg-icon
+              class-name="first_router_icon"
+              :icon-class="router.meta[getIsThemeLight ? 'icon_white' : 'icon_black']"
+            />
+            <p :style="{ color: getIsThemeLight ? '#ffffff' : '#606266' }">{{ generateTitle(router.meta.title) }}</p>
+          </div>
+        </el-col>
+      </el-row>
+    </div>
     <el-menu
       :collapse="!getSlideBar"
       :collapse-transition="false"
       :background-color="getThemeSlideBGColor"
       :text-color="getThemeTextColor"
-      :active-text-color="getThemeSlideBGColor === '#f9fafc' ? '#606266' : '#fff'"
+      :active-text-color="getIsThemeLight ? '#606266' : '#fff'"
       class="el-menu-vertical"
     >
       <template v-for="(route, index) in routers">
@@ -33,33 +58,21 @@
                 ? '4px solid ' + getThemeLogoBGColor
                 : '0px solid ' + getThemeLogoBGColor,
               backgroundColor: route.isActive
-                ? getThemeSlideBGColor === '#f9fafc'
+                ? getIsThemeLight
                   ? 'rgb(244, 244, 245)'
                   :'rgb(27, 36, 40)'
                 : '',
               padding: getSlideBar
-                ? route.isActive
-                  ? '0 16px'
-                  : '0 20px'
+                ? route.isActive ? '0 16px' : '0 20px'
                 : '0 14px',
               color: route.isActive
-                ? getThemeSlideBGColor === '#f9fafc'
-                  ? '#000000'
-                  : '#ffffff'
-                : getThemeSlideBGColor === '#f9fafc'
-                  ? '#777777'
-                  : '#b8c7ce'
+                ? getIsThemeLight ? '#000000' : '#ffffff'
+                : getIsThemeLight ? '#777777' : '#b8c7ce'
             }"
           >
             <svg-icon
-              v-if="getThemeSlideBGColor === '#f9fafc'"
               class-name="slide_icon"
-              :icon-class="route.meta.icon_black"
-            />
-            <svg-icon
-              v-else
-              class-name="slide_icon"
-              :icon-class="route.meta.icon_white"
+              :icon-class="route.meta[getIsThemeLight ? 'icon_black' : 'icon_white']"
             />
             <span slot="title">{{ generateTitle(route.meta.title) }}</span>
           </div>
@@ -73,38 +86,24 @@
                 @click="toRoute(routeChild.path)"
                 :style="{
                   borderLeft: '0px solid ' + getThemeLogoBGColor,
-                  backgroundColor: getThemeSlideBGColor === '#f9fafc'
-                    ? '#f4f4f5'
-                    : '#2c3b41'
+                  backgroundColor: getIsThemeLight ? '#f4f4f5' : '#2c3b41'
                 }"
               >
                 <template #title>
                   <div
                     class="submenu_item"
                     :style="{
-                      backgroundColor: getThemeSlideBGColor === '#f9fafc'
-                        ? '#f4f4f5'
-                        : '#2c3b41',
+                      backgroundColor: getIsThemeLight ? '#f4f4f5' : '#2c3b41',
                       margin: getSlideBar ? '0 -45px' : '0 -20px',
                       padding: getSlideBar ? '0 45px' : '0 20px',
                       color: routeChild.isActive
-                        ? getThemeSlideBGColor === '#f9fafc'
-                          ? '#000000'
-                          : '#ffffff'
-                        : getThemeSlideBGColor === '#f9fafc'
-                          ? '#777777'
-                          : '#b8c7ce'
+                        ? getIsThemeLight ? '#000000' : '#ffffff'
+                        : getIsThemeLight ? '#777777' : '#b8c7ce'
                     }"
                   >
                     <svg-icon
-                      v-if="getThemeSlideBGColor === '#f9fafc'"
                       class-name="slide_icon"
-                      :icon-class="routeChild.meta.icon_black"
-                    />
-                    <svg-icon
-                      v-else
-                      class-name="slide_icon"
-                      :icon-class="routeChild.meta.icon_white"
+                      :icon-class="routeChild.meta[getIsThemeLight ? 'icon_black' : 'icon_white']"
                     />
                     <span>{{ generateTitle(routeChild.meta.title) }}</span>
                   </div>
@@ -129,34 +128,22 @@
             class="menu_item"
             :style="{
               backgroundColor: route.isActive
-                ? getThemeSlideBGColor === '#f9fafc'
+                ? getIsThemeLight
                   ? 'rgb(244, 244, 245) !important'
                   :'rgb(27, 36, 40) !important'
                 : '',
               margin: getSlideBar ? '0 -20px' : '0 -14px',
               padding: getSlideBar
-                ? route.isActive
-                  ? '0 16px'
-                  : '0 20px'
+                ? route.isActive ? '0 16px' : '0 20px'
                 : '0 14px',
               color: route.isActive
-                ? getThemeSlideBGColor === '#f9fafc'
-                  ? '#000000'
-                  : '#ffffff'
-                : getThemeSlideBGColor === '#f9fafc'
-                  ? '#777777'
-                  : '#b8c7ce'
+                ? getIsThemeLight ? '#000000' : '#ffffff'
+                : getIsThemeLight ? '#777777' : '#b8c7ce'
             }"
           >
             <svg-icon
-              v-if="getThemeSlideBGColor === '#f9fafc'"
               class-name="slide_icon"
-              :icon-class="route.meta.icon_black"
-            />
-            <svg-icon
-              v-else
-              class-name="slide_icon"
-              :icon-class="route.meta.icon_white"
+              :icon-class="route.meta[getIsThemeLight ? 'icon_black' : 'icon_white']"
             />
             <span>{{ generateTitle(route.meta.title) }}</span>
           </div>
@@ -175,6 +162,10 @@ import logo from '@/assets/img/logo.png'
 export default {
   name: 'SliderBar',
   props: {
+    firstRouters: {
+      type: Array,
+      default: null
+    },
     aslideRouters: {
       type: Array,
       default: null
@@ -191,6 +182,41 @@ export default {
     },
 
     $route (val) {
+      this.handSlideRoutes(1)
+    }
+  },
+  mounted () {
+    this.handSlideRoutes(0)
+  },
+  computed: {
+    ...mapGetters([
+      'getSlideBar',
+      'getIsMobile',
+      'getIsThemeLight',
+      'getThemeSlideBGColor',
+      'getThemeLogoBGColor',
+      'getThemeTextColor'
+    ]),
+
+    slideRouters () {
+      return this.aslideRouters
+    }
+  },
+  methods: {
+    toRoute (path) {
+      const currentRoutePath = this.$route.path
+
+      if (currentRoutePath !== path) {
+        this.$router.push(path)
+      }
+    },
+
+    handleRouter (route) {
+      this.$emit('changeSlideRouter', route)
+      this.$router.push(route.path)
+    },
+
+    handSlideRoutes (timer) {
       setTimeout(() => {
         const currentRoute = this.$route
         const handleRouters = this.aslideRouters.map(item => {
@@ -224,64 +250,7 @@ export default {
         })
 
         this.routers = handleRouters
-      }, 1)
-    }
-  },
-  mounted () {
-    setTimeout(() => {
-      const currentRoute = this.$route
-      const handleRouters = this.aslideRouters.map(item => {
-        if (item.children && item.children.length > 0) {
-          if (item.name === currentRoute.name) {
-            item.isActive = true
-          } else {
-            item.isActive = false
-          }
-          item.children = item.children.map(i => {
-            if (i.name === currentRoute.name) {
-              item.isActive = true
-            }
-            if (i.path === currentRoute.path) {
-              i.isActive = true
-            } else {
-              i.isActive = false
-            }
-
-            return i
-          })
-        } else {
-          if (item.name === currentRoute.name) {
-            item.isActive = true
-          } else {
-            item.isActive = false
-          }
-        }
-
-        return item
-      })
-
-      this.routers = handleRouters
-    }, 0)
-  },
-  computed: {
-    ...mapGetters([
-      'getSlideBar',
-      'getThemeSlideBGColor',
-      'getThemeLogoBGColor',
-      'getThemeTextColor'
-    ]),
-
-    slideRouters () {
-      return this.aslideRouters
-    }
-  },
-  methods: {
-    toRoute (path) {
-      const currentRoutePath = this.$route.path
-
-      if (currentRoutePath !== path) {
-        this.$router.push(path)
-      }
+      }, timer)
     },
 
     generateTitle
@@ -317,6 +286,19 @@ export default {
     }
   }
 
+  .first_routers {
+    .first_router_box {
+      margin: 4px;
+      padding: 4px;
+      border-radius: 4px;
+
+      .first_router_icon {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
   .slide_icon {
     width: 14px;
     height: 14px;
@@ -327,7 +309,7 @@ export default {
 <style lang="scss">
 .el-menu-vertical:not(.el-menu--collapse) {
   width: 230px;
-  min-height: calc(100vh - 60px);
+  // min-height: calc(100vh - 60px);
   border-right: none;
 }
 

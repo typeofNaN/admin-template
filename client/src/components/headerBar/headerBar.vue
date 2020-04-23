@@ -8,9 +8,21 @@
       />
     </div>
     <div
+      v-if="getIsMobile"
+      class="mobile_logo"
+    >
+      <el-image
+        class="mobile_header_logo"
+        :src="logoUrl"
+      />
+      <span>ZegoBird</span>
+    </div>
+    <div
+      v-else
       id="top_routers"
       class="top_routers"
       ref="top_routers"
+      :style="{ opacity: topRoutersOpacity }"
     >
       <div
         v-for="(route, index) in showTopRouters"
@@ -27,7 +39,10 @@
         />
         <span>{{ generateTitle(route.meta.title) }}</span>
       </div>
-      <div class="hide_top_routes">
+      <div
+        v-if="hideTopRouters.length > 0"
+        class="hide_top_routes"
+      >
         <el-dropdown trigger="click" @command="handleHideTopRouter">
           <span class="el-dropdown-link">
             <svg-icon
@@ -65,6 +80,7 @@ import elementResizeDetectorMaker from 'element-resize-detector'
 
 import ToolBar from '@/components/toolBar/toolBar'
 import { generateTitle } from '@/utils/i18n'
+import logo from '@/assets/img/logo.png'
 
 export default {
   name: 'HeaderBar',
@@ -76,7 +92,9 @@ export default {
   },
   data: () => ({
     showTopRouters: [],
-    hideTopRouters: []
+    hideTopRouters: [],
+    topRoutersOpacity: 0,
+    logoUrl: logo
   }),
   components: {
     ToolBar
@@ -84,6 +102,7 @@ export default {
   computed: {
     ...mapGetters([
       'getSlideBar',
+      'getIsMobile',
       'getThemeLogoBGColor',
       'getThemeHeaderBGColor',
       'getThemeTextColor'
@@ -128,21 +147,27 @@ export default {
     }
   },
   mounted () {
-    this.showTopRouters = this.topRouters
-    const erd = elementResizeDetectorMaker()
-    const allTopRoutersNum = this.topRouters.length
+    if (!this.getIsMobile) {
+      this.showTopRouters = this.topRouters
+      const erd = elementResizeDetectorMaker()
+      const allTopRoutersNum = this.topRouters.length
 
-    erd.listenTo(document.getElementById('top_routers'), element => {
-      const showNum = ~~(element.offsetWidth / 110) - 1
-      this.showTopRouters = this.topRouters.slice(0, showNum)
-      this.hideTopRouters = this.topRouters.slice(showNum, allTopRoutersNum)
-      if (this.currentRouterIndex < showNum) {
-        // 异步处理
-        setTimeout(() => {
-          this.$refs.route_item[this.currentRouterIndex].style.backgroundColor = this.getThemeLogoBGColor
-        }, 0)
-      }
-    })
+      erd.listenTo(document.getElementById('top_routers'), element => {
+        const showNum = ~~(element.offsetWidth / (this.$i18n.locale === 'zh' ? 110 : 120))
+        this.showTopRouters = this.topRouters.slice(0, showNum)
+        this.hideTopRouters = this.topRouters.slice(showNum, allTopRoutersNum)
+        if (this.currentRouterIndex < showNum) {
+          // 异步处理
+          setTimeout(() => {
+            this.$refs.route_item[this.currentRouterIndex].style.backgroundColor = this.getThemeLogoBGColor
+          }, 0)
+        }
+      })
+
+      setTimeout(() => {
+        this.topRoutersOpacity = 1
+      }, 400)
+    }
   },
   methods: {
     changeAslide () {
@@ -252,6 +277,23 @@ export default {
           vertical-align: middle;
         }
       }
+    }
+  }
+
+  .mobile_logo {
+    display: flex;
+    align-items: center;
+    width: calc(100% - 330px);
+    font-size: 20px;
+    font-weight: 500;
+
+    .mobile_header_logo {
+      width: 40px;
+      height: 40px;
+    }
+
+    span {
+      margin-left: 10px;
     }
   }
 }
