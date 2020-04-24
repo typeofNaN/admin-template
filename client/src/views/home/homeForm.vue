@@ -9,6 +9,10 @@
         label="分页查询"
         name="tab1"
       >
+        <tips>
+          <h4 slot="title">分页查询</h4>
+          <p>输入分页查询搜索条件，表格数据可分页，可调整当前页面数据</p>
+        </tips>
         <home-search
           ref="home_search"
           :searchForm="searchData"
@@ -47,9 +51,11 @@
         <form-validate></form-validate>
       </el-tab-pane>
       <el-tab-pane
-        label="tab4"
+        label="简单表格"
         name="tab4"
-      >tab4</el-tab-pane>
+      >
+        <simple-table></simple-table>
+      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -58,9 +64,11 @@
 import HomeSearch from '@/components/home/homeSearch'
 import HomeCtrl from '@/components/home/homeCtrl'
 import HomeTable from '@/components/home/homeTable'
+import Pagination from '@/components/public/pagination'
 import HomeForm from '@/components/home/homeForm'
 import FormValidate from '@/components/home/formValidate'
-import Pagination from '@/components/public/pagination'
+import SimpleTable from '@/components/home/simpleTable'
+import Tips from '@/components/public/tips'
 
 export default {
   name: 'home',
@@ -92,7 +100,9 @@ export default {
     HomeTable,
     Pagination,
     HomeForm,
-    FormValidate
+    FormValidate,
+    SimpleTable,
+    Tips
   },
   mounted () {
     this.getData()

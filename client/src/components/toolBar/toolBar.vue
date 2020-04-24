@@ -12,7 +12,7 @@
         icon-class="home-white"
       />
     </div>
-    <div
+    <!-- <div
       v-if="!getIsMobile"
       class="tool_box clear"
       ref="tool_box1"
@@ -23,7 +23,7 @@
         class-name="delete-icon"
         icon-class="delete-white"
       />
-    </div>
+    </div> -->
     <div
       v-if="!getIsMobile"
       ref="tool_box2"
@@ -32,6 +32,17 @@
       class="tool_box full_screen"
     >
       <screen-full />
+    </div>
+    <div
+      class="tool_box message"
+      ref="tool_boxmsg"
+      @mouseenter="enter(true, 'msg')"
+      @mouseleave="enter(false, 'msg')"
+      @click="openNotice"
+    >
+      <el-badge is-dot>
+        <i class="el-icon-message-solid"></i>
+      </el-badge>
     </div>
     <div
       class="tool_box change_lang"
@@ -104,6 +115,10 @@
     >
       <setting-bar />
     </div>
+    <notice ref="notice">
+      <span slot="title">这是公告标题</span>
+      <p>这是公告内容</p>
+    </notice>
   </div>
 </template>
 
@@ -112,6 +127,7 @@ import { mapGetters } from 'vuex'
 
 import ScreenFull from '@/components/public/screenFull'
 import SettingBar from '@/components/public/settingBar'
+import Notice from '@/components/messages/notice'
 import avatar from '@/assets/img/avatar.jpg'
 
 export default {
@@ -121,7 +137,8 @@ export default {
   }),
   components: {
     ScreenFull,
-    SettingBar
+    SettingBar,
+    Notice
   },
   computed: {
     ...mapGetters([
@@ -147,6 +164,9 @@ export default {
     }
   },
   methods: {
+    openNotice () {
+      this.$refs.notice.open()
+    },
     signout () {
       this.$confirm(this.$t('setting.ask_sign_out'), this.$t('global.tips'), {
         confirmButtonText: this.$t('global.confirm'),

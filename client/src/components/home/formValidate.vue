@@ -11,7 +11,10 @@
         label="活动名称"
         prop="name"
       >
-        <el-input v-model="ruleForm.name"></el-input>
+        <el-input
+          v-model="ruleForm.name"
+          size="small"
+        ></el-input>
       </el-form-item>
       <el-form-item
         label="活动区域"
@@ -20,6 +23,7 @@
         <el-select
           v-model="ruleForm.region"
           placeholder="请选择活动区域"
+          size="small"
         >
           <el-option
             label="区域一"
@@ -41,6 +45,7 @@
               type="date"
               placeholder="选择日期"
               v-model="ruleForm.date1"
+              size="small"
             ></el-date-picker>
           </el-form-item>
         </el-col>
@@ -53,6 +58,7 @@
             <el-time-picker
               placeholder="选择时间"
               v-model="ruleForm.date2"
+              size="small"
             ></el-time-picker>
           </el-form-item>
         </el-col>
@@ -103,6 +109,7 @@
           v-model.number="ruleForm.number"
           placeholder="请输入数字"
           autocomplete="off"
+          size="small"
         ></el-input>
       </el-form-item>
       <el-form-item
@@ -112,6 +119,7 @@
         <el-input
           v-model="ruleForm.email"
           placeholder="请输入邮箱"
+          size="small"
         ></el-input>
       </el-form-item>
       <el-form-item
@@ -121,14 +129,16 @@
         <el-input
           type="textarea"
           v-model="ruleForm.desc"
+          size="small"
         ></el-input>
       </el-form-item>
       <el-form-item>
         <el-button
           type="primary"
+          size="small"
           @click="submitForm('ruleForm')"
         >立即创建</el-button>
-        <el-button @click="resetForm('ruleForm')">重置</el-button>
+        <el-button size="small" @click="resetForm('ruleForm')">重置</el-button>
       </el-form-item>
     </el-form>
   </div>

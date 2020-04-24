@@ -74,7 +74,14 @@
               class-name="slide_icon"
               :icon-class="route.meta[getIsThemeLight ? 'icon_black' : 'icon_white']"
             />
-            <span slot="title">{{ generateTitle(route.meta.title) }}</span>
+            <el-badge
+              v-if="route.meta.isNew"
+              value="new"
+              class="item_new"
+            >
+              <span slot="title">{{ generateTitle(route.meta.title) }}</span>
+            </el-badge>
+            <span v-else slot="title">{{ generateTitle(route.meta.title) }}</span>
           </div>
           <template>
             <el-menu-item-group
@@ -145,7 +152,14 @@
               class-name="slide_icon"
               :icon-class="route.meta[getIsThemeLight ? 'icon_black' : 'icon_white']"
             />
-            <span>{{ generateTitle(route.meta.title) }}</span>
+            <el-badge
+              v-if="route.meta.isNew"
+              value="new"
+              class="item_new"
+            >
+              <span>{{ generateTitle(route.meta.title) }}</span>
+            </el-badge>
+            <span v-else>{{ generateTitle(route.meta.title) }}</span>
           </div>
         </el-menu-item>
       </template>
@@ -322,6 +336,18 @@ export default {
         border-left-width: 0px !important;
       }
     }
+
+    .item_new {
+      span {
+        display: inline-block;
+        width: 150px;
+      }
+
+      .el-badge__content.is-fixed {
+        top: 50%;
+        line-height: 14px;
+      }
+    }
   }
 
   .el-submenu__title {
@@ -353,6 +379,18 @@ export default {
         .menu_item {
           margin-left: -16px !important;
         }
+      }
+    }
+
+    .item_new {
+      span {
+        display: inline-block;
+        width: 150px;
+      }
+
+      .el-badge__content.is-fixed {
+        top: 50%;
+        line-height: 14px;
       }
     }
   }

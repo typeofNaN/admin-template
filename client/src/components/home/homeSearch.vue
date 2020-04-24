@@ -22,6 +22,7 @@
             <el-input
               v-model="searchForm._id"
               placeholder="ID"
+              size="small"
             ></el-input>
           </el-form-item>
         </el-col>
@@ -39,6 +40,7 @@
             <el-input
               v-model="searchForm.a"
               placeholder="字段A"
+              size="small"
             ></el-input>
           </el-form-item>
         </el-col>
@@ -56,6 +58,7 @@
             <el-input
               v-model="searchForm.b"
               placeholder="字段B"
+              size="small"
             ></el-input>
           </el-form-item>
         </el-col>
@@ -73,6 +76,7 @@
             <el-input
               v-model="searchForm.c"
               placeholder="字段C"
+              size="small"
             ></el-input>
           </el-form-item>
         </el-col>
@@ -90,6 +94,7 @@
             <el-input
               v-model="searchForm.d"
               placeholder="字段D"
+              size="small"
             ></el-input>
           </el-form-item>
         </el-col>
@@ -107,6 +112,7 @@
             <el-input
               v-model="searchForm.e"
               placeholder="字段E"
+              size="small"
             ></el-input>
           </el-form-item>
         </el-col>
@@ -124,6 +130,7 @@
             <el-input
               v-model="searchForm.f"
               placeholder="字段F"
+              size="small"
             ></el-input>
           </el-form-item>
         </el-col>
@@ -141,6 +148,7 @@
             <el-input
               v-model="searchForm.g"
               placeholder="字段G"
+              size="small"
             ></el-input>
           </el-form-item>
         </el-col>
@@ -158,6 +166,7 @@
             <el-select
               v-model="searchForm.is_deleted"
               placeholder="是否删除"
+              size="small"
             >
               <el-option
                 label="是"
@@ -185,8 +194,9 @@
               v-model="searchForm.time"
               type="daterange"
               start-placeholder="开始日期"
-              end-placeholder="结束日期">
-            </el-date-picker>
+              end-placeholder="结束日期"
+              size="small"
+            ></el-date-picker>
           </el-form-item>
         </el-col>
         <el-col
@@ -200,10 +210,12 @@
             <el-button
               @click="search"
               type="primary"
+              size="small"
             >查询</el-button>
             <el-button
               @click="reset"
               type="info"
+              size="small"
             >重置</el-button>
           </el-form-item>
         </el-col>
