@@ -62,6 +62,18 @@
           <p>提示信息内容</p>
         </tips>
       </el-tab-pane>
+      <el-tab-pane
+        label="遮罩层"
+        name=tab8
+      >
+        <el-button @click="openZzc">弹出遮罩层</el-button>
+        <div
+          v-if="loading"
+          class="zzc"
+        >
+          <i class="el-icon-loading"></i>
+        </div>
+      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -78,7 +90,8 @@ import Tips from '@/components/public/tips'
 export default {
   name: 'home',
   data: () => ({
-    activeTabName: 'tab1'
+    activeTabName: 'tab1',
+    loading: false
   }),
   components: {
     Message,
@@ -92,6 +105,14 @@ export default {
   methods: {
     changeTab (tab, event) {
       console.log(tab, event)
+    },
+
+    openZzc () {
+      this.loading = true
+
+      setTimeout(() => {
+        this.loading = false
+      }, 3000)
     }
   }
 }
@@ -127,6 +148,24 @@ export default {
           background-color: #fff;
         }
       }
+    }
+  }
+
+  .zzc {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5000;
+
+    i {
+      font-size: 40px;
+      color: #409eff;
     }
   }
 }
