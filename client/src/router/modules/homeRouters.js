@@ -13,8 +13,7 @@ const HomeRoute = {
   name: 'control',
   component: Home,
   meta: {
-    icon_white: 'control-white',
-    icon_black: 'control-black',
+    icon: 'control',
     title: 'control',
     group: 'home',
     affix: true
@@ -26,8 +25,7 @@ const HomeFormRoute = {
   name: 'homeform',
   component: HomeForm,
   meta: {
-    icon_white: 'control-white',
-    icon_black: 'control-black',
+    icon: 'control',
     title: 'homeform',
     group: 'home'
   }
@@ -38,8 +36,7 @@ const MessageRoute = {
   name: 'message_layer',
   component: Message,
   meta: {
-    icon_white: 'control-white',
-    icon_black: 'control-black',
+    icon: 'control',
     title: 'message_layer',
     group: 'home',
     isNew: true
@@ -51,8 +48,7 @@ const CalendarRoute = {
   name: 'calendar',
   component: Calendar,
   meta: {
-    icon_white: 'control-white',
-    icon_black: 'control-black',
+    icon: 'control',
     title: 'calendar',
     group: 'home'
   }
@@ -63,8 +59,7 @@ const TagsRoute = {
   name: 'tags',
   component: Tags,
   meta: {
-    icon_white: 'control-white',
-    icon_black: 'control-black',
+    icon: 'control',
     title: 'tags',
     group: 'home',
     isNew: true
@@ -76,8 +71,7 @@ const EditorRoute = {
   name: 'editor',
   component: Editor,
   meta: {
-    icon_white: 'control-white',
-    icon_black: 'control-black',
+    icon: 'control',
     title: 'editor',
     group: 'home',
     isNew: true
@@ -89,8 +83,7 @@ const TabsRoute = {
   name: 'tabs',
   component: Tabs,
   meta: {
-    icon_white: 'control-white',
-    icon_black: 'control-black',
+    icon: 'control',
     title: 'tabs',
     group: 'home',
     isNew: true
@@ -101,8 +94,7 @@ const HomeRouters = {
   path: '/',
   component: DefaultLayout,
   meta: {
-    icon_white: 'control-white',
-    icon_black: 'control-black',
+    icon: 'control',
     title: 'control',
     group: 'home',
     showInHome: true

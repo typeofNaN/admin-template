@@ -7,8 +7,7 @@ const HomeRoute = {
   name: 'vip',
   component: Home,
   meta: {
-    icon_white: 'classification-white',
-    icon_black: 'classification-black',
+    icon: 'classification',
     title: 'vip',
     group: 'vip'
   }
@@ -18,8 +17,7 @@ const HomeRouters = {
   path: '/vip',
   component: DefaultLayout,
   meta: {
-    icon_white: 'classification-white',
-    icon_black: 'classification-black',
+    icon: 'classification',
     title: 'vip',
     group: 'vip',
     showInHome: true

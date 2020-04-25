@@ -9,7 +9,7 @@
     >
       <svg-icon
         class-name="home-icon"
-        icon-class="home-white"
+        icon-class="home"
       />
     </div>
     <!-- <div
@@ -21,23 +21,23 @@
     >
       <svg-icon
         class-name="delete-icon"
-        icon-class="delete-white"
+        icon-class="delete"
       />
     </div> -->
     <div
       v-if="!getIsMobile"
-      ref="tool_box2"
-      @mouseenter="enter(true, 2)"
-      @mouseleave="enter(false, 2)"
+      ref="tool_box1"
+      @mouseenter="enter(true, 1)"
+      @mouseleave="enter(false, 1)"
       class="tool_box full_screen"
     >
       <screen-full />
     </div>
     <div
       class="tool_box message"
-      ref="tool_boxmsg"
-      @mouseenter="enter(true, 'msg')"
-      @mouseleave="enter(false, 'msg')"
+      ref="tool_box2"
+      @mouseenter="enter(true, 2)"
+      @mouseleave="enter(false, 2)"
       @click="openNotice"
     >
       <el-badge is-dot>
@@ -54,10 +54,10 @@
       trigger="click"
         @command="changeLanguage"
       >
-        <span>
+        <span :style="{ color: '#ffffff' }">
           <svg-icon
             class-name="i18n-icon"
-            icon-class="i18n-white"
+            icon-class="i18n"
           />
         </span>
         <el-dropdown-menu slot="dropdown">

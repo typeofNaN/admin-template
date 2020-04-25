@@ -35,7 +35,7 @@
       >
         <svg-icon
           class-name="top_router_icon"
-          :icon-class="route.meta.icon_white"
+          :icon-class="route.meta.icon"
         />
         <span>{{ generateTitle(route.meta.title) }}</span>
       </div>
@@ -44,14 +44,17 @@
         class="hide_top_routes"
       >
         <el-dropdown trigger="click" @command="handleHideTopRouter">
-          <span class="el-dropdown-link">
+          <span
+            class="el-dropdown-link"
+            :style="{ color: '#ffffff' }"
+          >
             <svg-icon
               class-name="menu-icon"
-              icon-class="menu-white"
+              icon-class="menu"
             />
             <svg-icon
               class-name="dropdown-icon"
-              icon-class="dropdown-white"
+              icon-class="dropdown"
             />
           </span>
           <el-dropdown-menu slot="dropdown">
@@ -62,7 +65,7 @@
             >
               <svg-icon
                 class-name="hide_router_icon"
-                :icon-class="item.meta.icon_black"
+                :icon-class="item.meta.icon"
               />
               {{ generateTitle(item.meta.title) }}
             </el-dropdown-item>

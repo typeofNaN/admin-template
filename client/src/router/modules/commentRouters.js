@@ -7,8 +7,7 @@ const HomeRoute = {
   name: 'comment',
   component: Home,
   meta: {
-    icon_white: 'comment-white',
-    icon_black: 'comment-black',
+    icon: 'comment',
     title: 'comment',
     group: 'comment'
   }
@@ -18,8 +17,7 @@ const HomeRouters = {
   path: '/comment',
   component: DefaultLayout,
   meta: {
-    icon_white: 'comment-white',
-    icon_black: 'comment-black',
+    icon: 'comment',
     title: 'comment',
     group: 'comment',
     showInHome: true

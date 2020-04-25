@@ -262,6 +262,7 @@ export default {
       .tagview_icon {
         width: 14px;
         height: 14px;
+        color: #495060;
       }
 
       &.active {

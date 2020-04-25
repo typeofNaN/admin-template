@@ -7,8 +7,7 @@ const HomeRoute = {
   name: 'message',
   component: Home,
   meta: {
-    icon_white: 'message-white',
-    icon_black: 'message-black',
+    icon: 'message',
     title: 'message',
     group: 'message'
   }
@@ -18,8 +17,7 @@ const HomeRouters = {
   path: '/message',
   component: DefaultLayout,
   meta: {
-    icon_white: 'message-white',
-    icon_black: 'message-black',
+    icon: 'message',
     title: 'message',
     group: 'message',
     showInHome: true

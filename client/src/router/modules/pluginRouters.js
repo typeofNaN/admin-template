@@ -7,8 +7,7 @@ const HomeRoute = {
   name: 'plugin',
   component: Home,
   meta: {
-    icon_white: 'plugin-white',
-    icon_black: 'plugin-black',
+    icon: 'plugin',
     title: 'plugin',
     group: 'plugin'
   }
@@ -18,8 +17,7 @@ const HomeRouters = {
   path: '/plugin',
   component: DefaultLayout,
   meta: {
-    icon_white: 'plugin-white',
-    icon_black: 'plugin-black',
+    icon: 'plugin',
     title: 'plugin',
     group: 'plugin',
     showInHome: true

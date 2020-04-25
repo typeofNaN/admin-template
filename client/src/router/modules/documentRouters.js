@@ -7,8 +7,7 @@ const HomeRoute = {
   name: 'document',
   component: Home,
   meta: {
-    icon_white: 'document-white',
-    icon_black: 'document-black',
+    icon: 'document',
     title: 'document',
     group: 'document'
   }
@@ -18,8 +17,7 @@ const HomeRouters = {
   path: '/document',
   component: DefaultLayout,
   meta: {
-    icon_white: 'document-white',
-    icon_black: 'document-black',
+    icon: 'document',
     title: 'document',
     group: 'document',
     showInHome: true

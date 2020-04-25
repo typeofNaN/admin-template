@@ -7,8 +7,7 @@ const HomeRoute = {
   name: 'jurisdiction',
   component: Home,
   meta: {
-    icon_white: 'jurisdiction-white',
-    icon_black: 'jurisdiction-black',
+    icon: 'jurisdiction',
     title: 'jurisdiction',
     group: 'jurisdiction'
   }
@@ -18,8 +17,7 @@ const HomeRouters = {
   path: '/jurisdiction',
   component: DefaultLayout,
   meta: {
-    icon_white: 'jurisdiction-white',
-    icon_black: 'jurisdiction-black',
+    icon: 'jurisdiction',
     title: 'jurisdiction',
     group: 'jurisdiction',
     showInHome: true

@@ -12,8 +12,7 @@ const Customer11Route = {
   name: 'customer11',
   component: Customer11,
   meta: {
-    icon_white: 'customer-white',
-    icon_black: 'customer-black',
+    icon: 'customer',
     title: 'customer11',
     group: 'customer'
   }
@@ -24,8 +23,7 @@ const Customer12Route = {
   name: 'customer12',
   component: Customer12,
   meta: {
-    icon_white: 'customer-white',
-    icon_black: 'customer-black',
+    icon: 'customer',
     title: 'customer12',
     group: 'customer'
   }
@@ -36,8 +34,7 @@ const Customer13Route = {
   name: 'customer13',
   component: Customer13,
   meta: {
-    icon_white: 'customer-white',
-    icon_black: 'customer-black',
+    icon: 'customer',
     title: 'customer13',
     group: 'customer'
   }
@@ -49,8 +46,7 @@ const Customer1Route = {
   component: Customer1,
   redirect: '/customer/customer11',
   meta: {
-    icon_white: 'customer-white',
-    icon_black: 'customer-black',
+    icon: 'customer',
     title: 'customer1',
     group: 'customer'
   },
@@ -66,8 +62,7 @@ const Customer2Route = {
   name: 'customer2',
   component: Customer2,
   meta: {
-    icon_white: 'customer-white',
-    icon_black: 'customer-black',
+    icon: 'customer',
     title: 'customer2',
     group: 'customer'
   }
@@ -78,8 +73,7 @@ const Customer3Route = {
   name: 'customer3',
   component: Customer3,
   meta: {
-    icon_white: 'customer-white',
-    icon_black: 'customer-black',
+    icon: 'customer',
     title: 'customer3',
     group: 'customer'
   }
@@ -91,8 +85,7 @@ const CustomerRoute = {
   component: DefaultLayout,
   redirect: '/customer/customer1',
   meta: {
-    icon_white: 'customer-white',
-    icon_black: 'customer-black',
+    icon: 'customer',
     title: 'customer',
     group: 'customer',
     showInHome: true

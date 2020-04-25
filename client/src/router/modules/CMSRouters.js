@@ -7,8 +7,7 @@ const HomeRoute = {
   name: 'CMS',
   component: Home,
   meta: {
-    icon_white: 'classification-white',
-    icon_black: 'classification-black',
+    icon: 'classification',
     title: 'CMS',
     group: 'CMS'
   }
@@ -18,8 +17,7 @@ const HomeRouters = {
   path: '/CMS',
   component: DefaultLayout,
   meta: {
-    icon_white: 'classification-white',
-    icon_black: 'classification-black',
+    icon: 'classification',
     title: 'CMS',
     group: 'CMS',
     showInHome: true

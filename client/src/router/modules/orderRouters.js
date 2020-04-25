@@ -12,8 +12,7 @@ const Order11Route = {
   name: 'order11',
   component: Order11,
   meta: {
-    icon_white: 'order-white',
-    icon_black: 'order-black',
+    icon: 'order',
     title: 'order11',
     group: 'order'
   }
@@ -24,8 +23,7 @@ const Order12Route = {
   name: 'order12',
   component: Order12,
   meta: {
-    icon_white: 'order-white',
-    icon_black: 'order-black',
+    icon: 'order',
     title: 'order12',
     group: 'order'
   }
@@ -36,8 +34,7 @@ const Order13Route = {
   name: 'order13',
   component: Order13,
   meta: {
-    icon_white: 'order-white',
-    icon_black: 'order-black',
+    icon: 'order',
     title: 'order13',
     group: 'order'
   }
@@ -49,8 +46,7 @@ const Order1Route = {
   component: Order1,
   redirect: '/order/order11',
   meta: {
-    icon_white: 'order-white',
-    icon_black: 'order-black',
+    icon: 'order',
     title: 'order1',
     group: 'order'
   },
@@ -66,8 +62,7 @@ const Order2Route = {
   name: 'order2',
   component: Order2,
   meta: {
-    icon_white: 'order-white',
-    icon_black: 'order-black',
+    icon: 'order',
     title: 'order2',
     group: 'order'
   }
@@ -78,8 +73,7 @@ const Order3Route = {
   name: 'order3',
   component: Order3,
   meta: {
-    icon_white: 'order-white',
-    icon_black: 'order-black',
+    icon: 'order',
     title: 'order3',
     group: 'order'
   }
@@ -91,8 +85,7 @@ const OrderRoute = {
   component: DefaultLayout,
   redirect: '/order/order1',
   meta: {
-    icon_white: 'order-white',
-    icon_black: 'order-black',
+    icon: 'order',
     title: 'order',
     group: 'order',
     showInHome: true

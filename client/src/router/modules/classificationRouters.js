@@ -7,8 +7,7 @@ const HomeRoute = {
   name: 'classification',
   component: Home,
   meta: {
-    icon_white: 'classification-white',
-    icon_black: 'classification-black',
+    icon: 'classification',
     title: 'classification',
     group: 'classification'
   }
@@ -18,8 +17,7 @@ const HomeRouters = {
   path: '/classification',
   component: DefaultLayout,
   meta: {
-    icon_white: 'classification-white',
-    icon_black: 'classification-black',
+    icon: 'classification',
     title: 'classification',
     group: 'classification',
     showInHome: true

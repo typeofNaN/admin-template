@@ -7,8 +7,7 @@ const HomeRoute = {
   name: 'procedure',
   component: Home,
   meta: {
-    icon_white: 'classification-white',
-    icon_black: 'classification-black',
+    icon: 'classification',
     title: 'procedure',
     group: 'procedure'
   }
@@ -18,8 +17,7 @@ const HomeRouters = {
   path: '/procedure',
   component: DefaultLayout,
   meta: {
-    icon_white: 'classification-white',
-    icon_black: 'classification-black',
+    icon: 'classification',
     title: 'procedure',
     group: 'procedure',
     showInHome: true

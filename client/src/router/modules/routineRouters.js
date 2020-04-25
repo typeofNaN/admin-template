@@ -7,8 +7,7 @@ const HomeRoute = {
   name: 'routineManage',
   component: Home,
   meta: {
-    icon_white: 'setting-white',
-    icon_black: 'setting-black',
+    icon: 'setting',
     title: 'routineManage',
     group: 'routineManage'
   }
@@ -18,8 +17,7 @@ const HomeRouters = {
   path: '/routineManage',
   component: DefaultLayout,
   meta: {
-    icon_white: 'setting-white',
-    icon_black: 'setting-black',
+    icon: 'setting',
     title: 'routineManage',
     group: 'routineManage',
     showInHome: true

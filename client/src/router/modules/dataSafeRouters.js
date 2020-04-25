@@ -7,8 +7,7 @@ const HomeRoute = {
   name: 'dataSafe',
   component: Home,
   meta: {
-    icon_white: 'safe-white',
-    icon_black: 'safe-black',
+    icon: 'safe',
     title: 'dataSafe',
     group: 'dataSafe'
   }
@@ -18,8 +17,7 @@ const HomeRouters = {
   path: '/dataSafe',
   component: DefaultLayout,
   meta: {
-    icon_white: 'safe-white',
-    icon_black: 'safe-black',
+    icon: 'safe',
     title: 'dataSafe',
     group: 'dataSafe',
     showInHome: true

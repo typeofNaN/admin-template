@@ -5,7 +5,7 @@
   >
     <svg-icon
       class-name="screenfull-icon"
-      :icon-class="isFullscreen ? 'smallscreen-white' : 'fullscreen-white'"
+      :icon-class="isFullscreen ? 'smallscreen' : 'fullscreen'"
     />
   </div>
 </template>

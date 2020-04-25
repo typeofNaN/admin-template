@@ -23,14 +23,17 @@
         >
           <div
             class="first_router_box"
-            :style="{ backgroundColor: getIsThemeLight  ? '#222d32' : '#ffffff' }"
+            :style="{
+              backgroundColor: getIsThemeLight  ? '#222d32' : '#ffffff',
+              color: getIsThemeLight ? '#ffffff' : '#606266'
+            }"
             @click="handleRouter(router)"
           >
             <svg-icon
               class-name="first_router_icon"
-              :icon-class="router.meta[getIsThemeLight ? 'icon_white' : 'icon_black']"
+              :icon-class="router.meta.icon"
             />
-            <p :style="{ color: getIsThemeLight ? '#ffffff' : '#606266' }">{{ generateTitle(router.meta.title) }}</p>
+            <p>{{ generateTitle(router.meta.title) }}</p>
           </div>
         </el-col>
       </el-row>
@@ -72,7 +75,7 @@
           >
             <svg-icon
               class-name="slide_icon"
-              :icon-class="route.meta[getIsThemeLight ? 'icon_black' : 'icon_white']"
+              :icon-class="route.meta.icon"
             />
             <el-badge
               v-if="route.meta.isNew"
@@ -110,7 +113,7 @@
                   >
                     <svg-icon
                       class-name="slide_icon"
-                      :icon-class="routeChild.meta[getIsThemeLight ? 'icon_black' : 'icon_white']"
+                      :icon-class="routeChild.meta.icon"
                     />
                     <span>{{ generateTitle(routeChild.meta.title) }}</span>
                   </div>
@@ -150,7 +153,7 @@
           >
             <svg-icon
               class-name="slide_icon"
-              :icon-class="route.meta[getIsThemeLight ? 'icon_black' : 'icon_white']"
+              :icon-class="route.meta.icon"
             />
             <el-badge
               v-if="route.meta.isNew"

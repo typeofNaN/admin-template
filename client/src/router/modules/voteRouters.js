@@ -7,8 +7,7 @@ const HomeRoute = {
   name: 'vote',
   component: Home,
   meta: {
-    icon_white: 'statistics-white',
-    icon_black: 'statistics-black',
+    icon: 'statistics',
     title: 'vote',
     group: 'vote'
   }
@@ -18,8 +17,7 @@ const HomeRouters = {
   path: '/vote',
   component: DefaultLayout,
   meta: {
-    icon_white: 'statistics-white',
-    icon_black: 'statistics-black',
+    icon: 'statistics',
     title: 'vote',
     group: 'vote',
     showInHome: true

@@ -14,7 +14,7 @@ const mutations = {
     state.visitedViews.push(
       Object.assign({}, view, {
         title: view.name || 'no-name',
-        icon: view.meta.icon_black
+        icon: view.meta.icon
       })
     )
   },

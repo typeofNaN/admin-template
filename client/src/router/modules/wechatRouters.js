@@ -7,8 +7,7 @@ const HomeRoute = {
   name: 'wechat',
   component: Home,
   meta: {
-    icon_white: 'wechat-white',
-    icon_black: 'wechat-black',
+    icon: 'wechat',
     title: 'wechat',
     group: 'wechat'
   }
@@ -18,8 +17,7 @@ const HomeRouters = {
   path: '/wechat',
   component: DefaultLayout,
   meta: {
-    icon_white: 'wechat-white',
-    icon_black: 'wechat-black',
+    icon: 'wechat',
     title: 'wechat',
     group: 'wechat',
     showInHome: true
