@@ -12,7 +12,8 @@ import Api from './service'
 import './icons'
 import './mock'
 
-import '@/assets/style/style.css'
+import '@/assets/style/style.scss'
+import '@/assets/style/ele.scss'
 
 Vue.config.productionTip = false
 
