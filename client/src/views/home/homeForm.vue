@@ -1,5 +1,11 @@
 <template>
   <div id="home">
+    <div class="tips">
+      <tips>
+        <h4 slot="title">分页查询</h4>
+        <p>输入分页查询搜索条件，表格数据可分页，可调整当前页面数据</p>
+      </tips>
+    </div>
     <el-tabs
       v-model="activeTabName"
       type="border-card"
@@ -9,10 +15,6 @@
         label="分页查询"
         name="tab1"
       >
-        <tips>
-          <h4 slot="title">分页查询</h4>
-          <p>输入分页查询搜索条件，表格数据可分页，可调整当前页面数据</p>
-        </tips>
         <home-search
           ref="home_search"
           :searchForm="searchData"
@@ -173,8 +175,13 @@ export default {
 
 <style lang="scss">
 #home {
+  .tips {
+    padding: 10px;
+    background-color: #e8edf0;
+  }
+
   .el-tabs__header {
-    padding: 15px 15px 0 15px;
+    padding: 0 15px;
     background-color: #e8edf0;
 
     .el-tabs__item {

@@ -451,7 +451,9 @@ export default {
     padding: 0;
     padding-left: 0 !important;
 
-    > a {
+    > a,
+    span,
+    sup {
       display: none !important;
     }
 
