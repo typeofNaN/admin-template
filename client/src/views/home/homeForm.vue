@@ -58,6 +58,12 @@
       >
         <simple-table></simple-table>
       </el-tab-pane>
+      <el-tab-pane
+        label="复制文本"
+        name="tab5"
+      >
+        <copy-text></copy-text>
+      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -70,6 +76,7 @@ import Pagination from '@/components/public/pagination'
 import HomeForm from '@/components/home/homeForm'
 import FormValidate from '@/components/home/formValidate'
 import SimpleTable from '@/components/home/simpleTable'
+import CopyText from '@/components/public/copyText'
 import Tips from '@/components/public/tips'
 
 export default {
@@ -104,6 +111,7 @@ export default {
     HomeForm,
     FormValidate,
     SimpleTable,
+    CopyText,
     Tips
   },
   mounted () {
