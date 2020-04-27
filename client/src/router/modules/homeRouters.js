@@ -7,13 +7,14 @@ const Calendar = () => import('@/views/home/calendar')
 const Tags = () => import('@/views/home/tags')
 const Editor = () => import('@/views/home/richEditor')
 const Tabs = () => import('@/views/home/tabs')
+const Icons = () => import('@/views/home/icons')
 
 const HomeRoute = {
   path: '/',
   name: 'control',
   component: Home,
   meta: {
-    icon: 'control',
+    icon: 'dashboard',
     title: 'control',
     group: 'home',
     affix: true
@@ -25,7 +26,7 @@ const HomeFormRoute = {
   name: 'homeform',
   component: HomeForm,
   meta: {
-    icon: 'control',
+    icon: 'dashboard',
     title: 'homeform',
     group: 'home'
   }
@@ -36,7 +37,7 @@ const MessageRoute = {
   name: 'message_layer',
   component: Message,
   meta: {
-    icon: 'control',
+    icon: 'dashboard',
     title: 'message_layer',
     group: 'home',
     isNew: true
@@ -48,7 +49,7 @@ const CalendarRoute = {
   name: 'calendar',
   component: Calendar,
   meta: {
-    icon: 'control',
+    icon: 'dashboard',
     title: 'calendar',
     group: 'home'
   }
@@ -59,7 +60,7 @@ const TagsRoute = {
   name: 'tags',
   component: Tags,
   meta: {
-    icon: 'control',
+    icon: 'dashboard',
     title: 'tags',
     group: 'home',
     isNew: true
@@ -71,7 +72,7 @@ const EditorRoute = {
   name: 'editor',
   component: Editor,
   meta: {
-    icon: 'control',
+    icon: 'dashboard',
     title: 'editor',
     group: 'home',
     isNew: true
@@ -83,8 +84,20 @@ const TabsRoute = {
   name: 'tabs',
   component: Tabs,
   meta: {
-    icon: 'control',
+    icon: 'dashboard',
     title: 'tabs',
+    group: 'home',
+    isNew: true
+  }
+}
+
+const IconsRoute = {
+  path: '/icons',
+  name: 'icons',
+  component: Icons,
+  meta: {
+    icon: 'dashboard',
+    title: 'icons',
     group: 'home',
     isNew: true
   }
@@ -94,7 +107,7 @@ const HomeRouters = {
   path: '/',
   component: DefaultLayout,
   meta: {
-    icon: 'control',
+    icon: 'dashboard',
     title: 'control',
     group: 'home',
     showInHome: true
@@ -106,7 +119,8 @@ const HomeRouters = {
     CalendarRoute,
     TagsRoute,
     EditorRoute,
-    TabsRoute
+    TabsRoute,
+    IconsRoute
   ]
 }
 

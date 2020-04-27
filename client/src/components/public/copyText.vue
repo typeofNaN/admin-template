@@ -6,7 +6,7 @@
     <el-input
       v-model="value"
       placeholder="请输入"
-      :style="{ marginBottom: '10px' }"
+      style="margin-bottom: 10px"
     ></el-input>
     <el-button @click="copy2">复制输入文本</el-button>
     <h4>试验场</h4>

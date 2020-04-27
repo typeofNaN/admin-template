@@ -37,7 +37,7 @@
           class-name="top_router_icon"
           :icon-class="route.meta.icon"
         />
-        <span>{{ generateTitle(route.meta.title) }}</span>
+        <span>{{ i18nForRouteTitle(route.meta.title) }}</span>
       </div>
       <div
         v-if="hideTopRouters.length > 0"
@@ -46,7 +46,7 @@
         <el-dropdown trigger="click" @command="handleHideTopRouter">
           <span
             class="el-dropdown-link"
-            :style="{ color: '#ffffff' }"
+            style="color: #ffffff"
           >
             <svg-icon
               class-name="menu-icon"
@@ -67,7 +67,7 @@
                 class-name="hide_router_icon"
                 :icon-class="item.meta.icon"
               />
-              {{ generateTitle(item.meta.title) }}
+              {{ i18nForRouteTitle(item.meta.title) }}
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -82,7 +82,7 @@ import { mapGetters } from 'vuex'
 import elementResizeDetectorMaker from 'element-resize-detector'
 
 import ToolBar from '@/components/toolBar/toolBar'
-import { generateTitle } from '@/utils/i18n'
+import { i18nForRouteTitle } from '@/utils/i18n'
 import logo from '@/assets/img/logo.png'
 
 export default {
@@ -209,7 +209,7 @@ export default {
       }
     },
 
-    generateTitle
+    i18nForRouteTitle
   }
 }
 </script>

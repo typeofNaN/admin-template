@@ -18,6 +18,7 @@ module.exports = {
     tags: '标签',
     editor: '文本编辑器',
     tabs: '标签页',
+    icons: '图标',
     routineManage: '常规管理',
     classification: '分类管理',
     jurisdiction: '权限管理',

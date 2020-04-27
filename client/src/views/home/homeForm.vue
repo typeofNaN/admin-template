@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <div class="tips">
-      <tips>
+      <tips :border-color="getThemeHeaderBGColor">
         <h4 slot="title">分页查询</h4>
         <p>输入分页查询搜索条件，表格数据可分页，可调整当前页面数据</p>
       </tips>
@@ -69,6 +69,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import HomeSearch from '@/components/home/homeSearch'
 import HomeCtrl from '@/components/home/homeCtrl'
 import HomeTable from '@/components/home/homeTable'
@@ -113,6 +115,9 @@ export default {
     SimpleTable,
     CopyText,
     Tips
+  },
+  computed: {
+    ...mapGetters(['getThemeHeaderBGColor'])
   },
   mounted () {
     this.getData()
@@ -184,12 +189,12 @@ export default {
 <style lang="scss">
 #home {
   .tips {
-    padding: 10px;
+    margin-bottom: 10px;
     background-color: #e8edf0;
   }
 
   .el-tabs__header {
-    padding: 0 15px;
+    padding: 8px 0 0 0;
     background-color: #e8edf0;
 
     .el-tabs__item {

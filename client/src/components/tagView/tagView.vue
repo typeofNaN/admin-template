@@ -22,7 +22,7 @@
           class-name="tagview_icon"
           :icon-class="tag.icon"
         />
-        {{ generateTitle(tag.title) }}
+        {{ i18nForRouteTitle(tag.title) }}
         <span
           v-if="!isAffix(tag)"
           class="el-icon-close"
@@ -51,7 +51,7 @@ import path from 'path'
 import { mapGetters } from 'vuex'
 
 import ScrollPane from './scrollPane'
-import { generateTitle } from '@/utils/i18n'
+import { i18nForRouteTitle } from '@/utils/i18n'
 
 export default {
   name: 'TagView',
@@ -230,7 +230,7 @@ export default {
       this.visible = false
     },
 
-    generateTitle
+    i18nForRouteTitle
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div id="home">
+  <div id="message_layer">
     <el-tabs
       v-model="activeTabName"
       type="border-card"
@@ -74,6 +74,12 @@
           <i class="el-icon-loading"></i>
         </div>
       </el-tab-pane>
+      <el-tab-pane
+        label="步骤条"
+        name="tab9"
+      >
+        <step></step>
+      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -86,9 +92,10 @@ import Tooltip from '@/components/messages/tooltip'
 import Popover from '@/components/messages/popover'
 import Popconfirm from '@/components/messages/popconfirm'
 import Tips from '@/components/public/tips'
+import Step from '@/components/public/step'
 
 export default {
-  name: 'home',
+  name: 'messageLayer',
   data: () => ({
     activeTabName: 'tab1',
     loading: false
@@ -100,7 +107,8 @@ export default {
     Tooltip,
     Popover,
     Popconfirm,
-    Tips
+    Tips,
+    Step
   },
   methods: {
     changeTab (tab, event) {
@@ -119,9 +127,9 @@ export default {
 </script>
 
 <style lang="scss">
-#home {
+#message_layer {
   .el-tabs__header {
-    padding: 15px 15px 0 15px;
+    padding: 8px 0 0 0;
     background-color: #e8edf0;
 
     .el-tabs__item {
@@ -157,7 +165,7 @@ export default {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, .9);
+    background-color: rgba(0, 0, 0, .6);
     display: flex;
     justify-content: center;
     align-items: center;

@@ -4,7 +4,7 @@
       class="setting_icon"
       @click="settingBar = true"
     >
-      <i class="el-icon-setting" />
+      <svg-icon icon-class="setting"/>
     </div>
     <el-drawer
       :visible.sync="settingBar"

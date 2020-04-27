@@ -11,6 +11,10 @@
     <div class="notice_main">
       <slot></slot>
     </div>
+    <div class="tip_footer">
+      <span @click="iKnow">我知道了</span>
+      <span>查看更多>></span>
+    </div>
   </div>
 </template>
 
@@ -31,6 +35,9 @@ export default {
     },
     close () {
       this.show = false
+    },
+    iKnow () {
+      this.close()
     }
   }
 }
@@ -70,7 +77,23 @@ export default {
 
   .notice_main {
     padding: 10px;
+    height: 180px;
     color: #909399;
+  }
+
+  .tip_footer {
+    padding: 10px;
+    font-size: 14px;
+    height: 40px;
+    border-top: 1px solid #909399;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: chocolate;
+
+    span {
+      cursor: pointer;
+    }
   }
 }
 

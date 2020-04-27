@@ -33,7 +33,7 @@
               class-name="first_router_icon"
               :icon-class="router.meta.icon"
             />
-            <p>{{ generateTitle(router.meta.title) }}</p>
+            <p>{{ i18nForRouteTitle(router.meta.title) }}</p>
           </div>
         </el-col>
       </el-row>
@@ -82,9 +82,9 @@
               value="new"
               class="item_new"
             >
-              <span slot="title">{{ generateTitle(route.meta.title) }}</span>
+              <span slot="title">{{ i18nForRouteTitle(route.meta.title) }}</span>
             </el-badge>
-            <span v-else slot="title">{{ generateTitle(route.meta.title) }}</span>
+            <span v-else slot="title">{{ i18nForRouteTitle(route.meta.title) }}</span>
           </div>
           <template>
             <el-menu-item-group
@@ -115,7 +115,7 @@
                       class-name="slide_icon"
                       :icon-class="routeChild.meta.icon"
                     />
-                    <span>{{ generateTitle(routeChild.meta.title) }}</span>
+                    <span>{{ i18nForRouteTitle(routeChild.meta.title) }}</span>
                   </div>
                 </template>
               </el-menu-item>
@@ -160,9 +160,9 @@
               value="new"
               class="item_new"
             >
-              <span>{{ generateTitle(route.meta.title) }}</span>
+              <span>{{ i18nForRouteTitle(route.meta.title) }}</span>
             </el-badge>
-            <span v-else>{{ generateTitle(route.meta.title) }}</span>
+            <span v-else>{{ i18nForRouteTitle(route.meta.title) }}</span>
           </div>
         </el-menu-item>
       </template>
@@ -173,7 +173,7 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import { generateTitle } from '@/utils/i18n'
+import { i18nForRouteTitle } from '@/utils/i18n'
 import logo from '@/assets/img/logo.png'
 
 export default {
@@ -270,7 +270,7 @@ export default {
       }, timer)
     },
 
-    generateTitle
+    i18nForRouteTitle
   }
 }
 </script>

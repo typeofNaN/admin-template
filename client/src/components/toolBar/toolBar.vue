@@ -12,18 +12,6 @@
         icon-class="home"
       />
     </div>
-    <!-- <div
-      v-if="!getIsMobile"
-      class="tool_box clear"
-      ref="tool_box1"
-      @mouseenter="enter(true, 1)"
-      @mouseleave="enter(false, 1)"
-    >
-      <svg-icon
-        class-name="delete-icon"
-        icon-class="delete"
-      />
-    </div> -->
     <div
       v-if="!getIsMobile"
       ref="tool_box1"
@@ -54,10 +42,10 @@
       trigger="click"
         @command="changeLanguage"
       >
-        <span :style="{ color: '#ffffff' }">
+        <span style="color: #ffffff">
           <svg-icon
             class-name="i18n-icon"
-            icon-class="i18n"
+            icon-class="language"
           />
         </span>
         <el-dropdown-menu slot="dropdown">

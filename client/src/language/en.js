@@ -18,6 +18,7 @@ module.exports = {
     tags: 'tags',
     editor: 'editor',
     tabs: 'tabs',
+    icons: 'icons',
     routineManage: 'routineManage',
     classification: 'classification',
     jurisdiction: 'jurisdiction',

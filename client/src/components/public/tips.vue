@@ -16,7 +16,11 @@ export default {
   props: {
     tipType: {
       type: String,
-      default: 'info'
+      default: ''
+    },
+    borderColor: {
+      type: String,
+      default: ''
     }
   },
   computed: {
@@ -33,8 +37,11 @@ export default {
         case 'danger':
           color = '#f56c6c'
           break
-        default:
+        case 'info':
           color = '#909399'
+          break
+        default:
+          color = this.borderColor
           break
       }
 
