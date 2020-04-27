@@ -11,6 +11,10 @@
         type="primary"
         icon="el-icon-plus"
         size="small"
+        :style="{
+          backgroundColor: getThemeHeaderBGColor,
+          borderColor: getThemeHeaderBGColor
+        }"
         @click="add"
       >添 加</el-button>
       <el-button
@@ -164,6 +168,10 @@
         <el-button @click="dialogFormVisible = false">取 消</el-button>
         <el-button
           type="primary"
+          :style="{
+            backgroundColor: getThemeHeaderBGColor,
+            borderColor: getThemeHeaderBGColor
+          }"
           @click="submitForm('dialogForm')"
         >确 定</el-button>
       </div>
@@ -172,6 +180,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'homeCtrl',
   props: {
@@ -185,6 +195,9 @@ export default {
     dialogTitle: '',
     dialogForm: {}
   }),
+  computed: {
+    ...mapGetters(['getThemeHeaderBGColor'])
+  },
   methods: {
     showSearchForm () {
       this.$emit('showSearchForm')

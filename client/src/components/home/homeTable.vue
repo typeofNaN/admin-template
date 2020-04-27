@@ -31,12 +31,14 @@
         prop="b"
         label="字段B"
         sortable
+        show-overflow-tooltip
         min-width="100"
       ></el-table-column>
       <el-table-column
         prop="c"
         label="字段C"
         sortable
+        show-overflow-tooltip
         min-width="100"
       ></el-table-column>
       <el-table-column
@@ -61,6 +63,7 @@
         prop="g"
         label="字段G"
         sortable
+        show-overflow-tooltip
         min-width="100"
       ></el-table-column>
       <el-table-column

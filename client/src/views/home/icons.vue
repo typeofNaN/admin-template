@@ -129,7 +129,7 @@ export default {
 <style lang="scss">
 #icons {
   .el-tabs__header {
-    padding: 15px 15px 0 15px;
+    padding: 8px 0 0 0;
     background-color: #e8edf0;
 
     .el-tabs__item {

@@ -394,6 +394,7 @@ export default {
       .el-badge__content.is-fixed {
         top: 50%;
         line-height: 14px;
+        border: none;
       }
     }
   }

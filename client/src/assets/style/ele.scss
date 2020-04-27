@@ -1,3 +1,18 @@
+.el-form-item {
+  margin-bottom: 10px;
+}
+.el-table {
+  th,
+  td {
+    padding: 0;
+  }
+}
+
+.el-pagination.is-background .el-pager li:not(.disabled).active {
+  background-color: #909399;   // 进行修改背景和字体
+  color: #fff;
+}
+
 /* 覆盖element-ui el-dialog弹出动画*/
 .el-dialog__wrapper {
   transition-duration: 0.3s;

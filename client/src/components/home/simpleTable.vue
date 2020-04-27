@@ -51,6 +51,10 @@
     <el-button
       class="addBtn"
       type="primary"
+      :style="{
+        backgroundColor: getThemeHeaderBGColor,
+        borderColor: getThemeHeaderBGColor
+      }"
       @click="dialogVisible = true"
     >添加数据</el-button>
     <el-dialog
@@ -80,6 +84,10 @@
         <el-button
           type="primary"
           @click="add"
+          :style="{
+            backgroundColor: getThemeHeaderBGColor,
+            borderColor: getThemeHeaderBGColor
+          }"
         >确 定</el-button>
       </div>
     </el-dialog>
@@ -87,6 +95,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import avatar from '@/assets/img/avatar.jpg'
 
 export default {
@@ -112,6 +122,9 @@ export default {
       desc: ''
     }
   }),
+  computed: {
+    ...mapGetters(['getThemeHeaderBGColor'])
+  },
   methods: {
     add () {
       let obj = { ...this.form }
