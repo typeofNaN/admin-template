@@ -423,6 +423,7 @@ export default {
         top: 50%;
         line-height: 14px;
         border: none;
+        height: 18px;
       }
     }
   }
