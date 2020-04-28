@@ -11,6 +11,7 @@ import Api from './service'
 import i18n from './language'
 import './icons'
 import './mock'
+import './utils/directive'
 
 import '@/assets/style/style.scss'
 import '@/assets/style/ele.scss'

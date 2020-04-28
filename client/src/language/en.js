@@ -19,6 +19,7 @@ module.exports = {
     editor: 'editor',
     tabs: 'tabs',
     icons: 'icons',
+    treeTable: 'tree table',
     routineManage: 'routineManage',
     classification: 'classification',
     jurisdiction: 'jurisdiction',

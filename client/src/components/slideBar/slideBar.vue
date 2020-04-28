@@ -87,6 +87,20 @@
             <span v-else slot="title">{{ i18nForRouteTitle(route.meta.title) }}</span>
           </div>
           <template>
+            <el-menu-item-group class="coll">
+              <el-menu-item>
+                <div class="collapse_submenu_tite">
+                  <el-badge
+                    v-if="route.meta.isNew"
+                    value="new"
+                    class="item_new"
+                  >
+                    <span slot="title">{{ i18nForRouteTitle(route.meta.title) }}</span>
+                  </el-badge>
+                  <span v-else slot="title">{{ i18nForRouteTitle(route.meta.title) }}</span>
+                </div>
+              </el-menu-item>
+            </el-menu-item-group>
             <el-menu-item-group
               v-for="(routeChild, idx) in route.children"
               :key="idx"
@@ -163,6 +177,19 @@
               <span>{{ i18nForRouteTitle(route.meta.title) }}</span>
             </el-badge>
             <span v-else>{{ i18nForRouteTitle(route.meta.title) }}</span>
+            <div
+              class="collapse_title"
+              :style="{ backgroundColor: getIsThemeLight ? 'rgb(244, 244, 245)' : 'rgb(27, 36, 40)' }"
+            >
+              <el-badge
+                v-if="route.meta.isNew"
+                value="new"
+                class="item_new"
+              >
+                <span>{{ i18nForRouteTitle(route.meta.title) }}</span>
+              </el-badge>
+              <span v-else>{{ i18nForRouteTitle(route.meta.title) }}</span>
+            </div>
           </div>
         </el-menu-item>
       </template>
@@ -317,8 +344,9 @@ export default {
   }
 
   .slide_icon {
-    width: 14px;
-    height: 14px;
+    width: 13px;
+    height: 13px;
+    vertical-align: middle;
   }
 }
 </style>
@@ -498,6 +526,58 @@ export default {
     justify-content: center;
     align-items: center;
     height: 100%;
+    position: relative;
+    z-index: 999;
+
+    &:hover {
+      .collapse_title {
+        display: block;
+      }
+    }
+  }
+}
+.el-menu-item {
+  .menu_item {
+    .collapse_title {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 42px;
+      padding-left: 20px;
+      width: 200px;
+      height: 100%;
+      z-index: 999;
+
+      span,
+      sup {
+        display: block !important;
+        width: auto;
+        height: auto;
+        visibility: visible;
+      }
+
+      span {
+        width: 120px;
+      }
+
+      .sup {
+        right: 10px;
+      }
+    }
+  }
+}
+
+.collapse_submenu_tite {
+  padding-left: 18px;
+}
+
+.coll {
+  display: none;
+}
+
+.el-menu--vertical {
+  .coll {
+    display: block;
   }
 }
 

@@ -8,6 +8,7 @@ const Tags = () => import('@/views/home/tags')
 const Editor = () => import('@/views/home/richEditor')
 const Tabs = () => import('@/views/home/tabs')
 const Icons = () => import('@/views/home/icons')
+const TreeTable = () => import('@/views/home/treeTable')
 
 const HomeRoute = {
   path: '/',
@@ -26,7 +27,7 @@ const HomeFormRoute = {
   name: 'homeform',
   component: HomeForm,
   meta: {
-    icon: 'dashboard',
+    icon: 'form',
     title: 'homeform',
     group: 'home'
   }
@@ -37,7 +38,7 @@ const MessageRoute = {
   name: 'message_layer',
   component: Message,
   meta: {
-    icon: 'dashboard',
+    icon: 'message',
     title: 'message_layer',
     group: 'home',
     isNew: true
@@ -49,7 +50,7 @@ const CalendarRoute = {
   name: 'calendar',
   component: Calendar,
   meta: {
-    icon: 'dashboard',
+    icon: 'table',
     title: 'calendar',
     group: 'home'
   }
@@ -60,7 +61,7 @@ const TagsRoute = {
   name: 'tags',
   component: Tags,
   meta: {
-    icon: 'dashboard',
+    icon: 'guide',
     title: 'tags',
     group: 'home',
     isNew: true
@@ -72,7 +73,7 @@ const EditorRoute = {
   name: 'editor',
   component: Editor,
   meta: {
-    icon: 'dashboard',
+    icon: 'edit',
     title: 'editor',
     group: 'home',
     isNew: true
@@ -84,7 +85,7 @@ const TabsRoute = {
   name: 'tabs',
   component: Tabs,
   meta: {
-    icon: 'dashboard',
+    icon: 'tab',
     title: 'tabs',
     group: 'home',
     isNew: true
@@ -96,8 +97,20 @@ const IconsRoute = {
   name: 'icons',
   component: Icons,
   meta: {
-    icon: 'dashboard',
+    icon: 'icon',
     title: 'icons',
+    group: 'home',
+    isNew: true
+  }
+}
+
+const TreeTableRoute = {
+  path: '/treeTable',
+  name: 'treeTable',
+  component: TreeTable,
+  meta: {
+    icon: 'tree-table',
+    title: 'treeTable',
     group: 'home',
     isNew: true
   }
@@ -120,7 +133,8 @@ const HomeRouters = {
     TagsRoute,
     EditorRoute,
     TabsRoute,
-    IconsRoute
+    IconsRoute,
+    TreeTableRoute
   ]
 }
 

@@ -80,6 +80,12 @@
       >
         <step></step>
       </el-tab-pane>
+      <el-tab-pane
+        label="dialog弹窗"
+        name="tab10"
+      >
+        <d-dialog></d-dialog>
+      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -93,6 +99,7 @@ import Popover from '@/components/messages/popover'
 import Popconfirm from '@/components/messages/popconfirm'
 import Tips from '@/components/public/tips'
 import Step from '@/components/public/step'
+import DDialog from '@/components/messages/dialog'
 
 export default {
   name: 'messageLayer',
@@ -108,7 +115,8 @@ export default {
     Popover,
     Popconfirm,
     Tips,
-    Step
+    Step,
+    DDialog
   },
   methods: {
     changeTab (tab, event) {

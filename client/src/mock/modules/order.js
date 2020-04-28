@@ -5,7 +5,14 @@ const code = 0
 
 // 随机生成文章数据
 const orderList = req => {
+  let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
   let reqData = JSON.parse(req.body)
+
+  let dt = JSON.parse(req.body)
+
+  if (dt._id) {
+    arr = dt._id.split(',').filter(i => i.length === 1)
+  }
 
   let list = []
   let pageSize
@@ -20,7 +27,7 @@ const orderList = req => {
 
   for (let i = 0; i < pageSize; i++) {
     let order = {
-      _id: Random.string(20),
+      _id: arr[Math.floor(Math.random() * arr.length)],
       a: Random.cname(),
       b: Random.domain(),
       c: Random.email(),

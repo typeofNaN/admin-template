@@ -1,0 +1,125 @@
+<template>
+  <div id="tree">
+    <div class="tree_box">
+      <div
+        class="tree_title"
+        :style="{ backgroundColor: getThemeHeaderBGColor }"
+      >栏目列表</div>
+      <div class="tree_main">
+        <el-checkbox
+          v-model="checkAll"
+          @change="handleCheckAllChange"
+        >选中全部</el-checkbox>
+        <el-checkbox
+          v-model="expandAll"
+          @change="handleExpandAllChange"
+        >展开全部</el-checkbox>
+        <el-tree
+          ref="tree"
+          :data="data"
+          show-checkbox
+          node-key="id"
+          :props="defaultProps"
+          :default-expand-all="expandAll"
+          @check-change="checkChange"
+        ></el-tree>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+  name: 'tree',
+  data: () => ({
+    checkAll: false,
+    expandAll: true,
+    treeValueStr: '',
+    data: [{
+      id: '一级 1',
+      label: '一级 1',
+      children: [{
+        id: 1,
+        label: '1'
+      }, {
+        id: 2,
+        label: '2'
+      }, {
+        id: 3,
+        label: '3'
+      }]
+    }, {
+      id: '一级 2',
+      label: '一级 2',
+      children: [{
+        id: 4,
+        label: '4'
+      }, {
+        id: 5,
+        label: '5'
+      }]
+    }, {
+      id: '一级 3',
+      label: '一级 3',
+      children: [{
+        id: 6,
+        label: '6'
+      }, {
+        id: 7,
+        label: '7'
+      }]
+    }],
+    defaultProps: {
+      children: 'children',
+      label: 'label'
+    }
+  }),
+  computed: {
+    ...mapGetters(['getThemeHeaderBGColor'])
+  },
+  methods: {
+    handleCheckAllChange (val) {
+      if (this.checkAll) {
+        this.$refs.tree.setCheckedNodes(this.data)
+      } else {
+        this.$refs.tree.setCheckedKeys([])
+      }
+    },
+
+    handleExpandAllChange (val) {
+      this.expandAll = val
+      for (var i = 0; i < this.$refs.tree.store._getAllNodes().length; i++) {
+        this.$refs.tree.store._getAllNodes()[i].expanded = this.expandAll
+      }
+    },
+
+    checkChange (a, b, c) {
+      // let keys = this.$refs.tree.getCheckedKeys().concat(this.$refs.tree.getHalfCheckedKeys())
+      let keys = this.$refs.tree.getCheckedKeys()
+      this.treeValueStr = keys.join(',')
+
+      this.$emit('settreeValue', this.treeValueStr)
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+#tree {
+  .tree_box {
+    border: 1px solid #909399;
+
+    .tree_title {
+      padding: 10px;
+      color: #fff;
+      font-size: 20px;
+    }
+
+    .tree_main {
+      padding: 10px;
+    }
+  }
+}
+</style>

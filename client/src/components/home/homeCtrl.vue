@@ -73,9 +73,15 @@
       ></el-button>
     </div>
     <el-dialog
+      v-dialogDrag
       :visible.sync="dialogFormVisible"
-      :title="dialogTitle"
+      :close-on-click-modal="false"
     >
+      <div
+        slot="title"
+        class="dialog_title"
+        :style="{ backgroundColor: getThemeHeaderBGColor }"
+      >{{ dialogTitle }}</div>
       <el-form
         :model="dialogForm"
         ref="dialogForm"

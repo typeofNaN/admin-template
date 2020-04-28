@@ -122,4 +122,9 @@ export default {
 .el-main {
   padding: 20px 8px;
 }
+
+.el-aside {
+  overflow: visible;
+  z-index: 999;
+}
 </style>

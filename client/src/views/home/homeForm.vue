@@ -181,6 +181,16 @@ export default {
 
     changeTab (tab, event) {
       console.log(tab, event)
+    },
+
+    getTreeValue (val) {
+      let postData = { ...this.searchData }
+      this.current = 1
+      this.$refs.pagination.resetCurrentPage(this.current)
+      postData.page = this.current
+      postData._id = val
+      postData.pageSize = this.currentPageSize
+      this.getData(postData)
     }
   }
 }
