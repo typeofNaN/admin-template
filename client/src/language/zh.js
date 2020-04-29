@@ -35,6 +35,7 @@ module.exports = {
     demo: '示例管理',
     wechat: '微信管理',
     message: '消息管理',
+    error: '错误页面',
     order: '订单管理',
     order1: '订单管理1',
     order11: '订单管理11',
@@ -87,11 +88,13 @@ module.exports = {
     title: '系统登录',
     username_placeholder: '请输入用户名',
     password_placeholder: '请输入密码',
+    validcode_placeholder: '请输入验证码',
     signin_btn_text: '登 录',
     user_name: '用户名',
     password: '密码',
     signin_success: '登录成功，欢迎您，',
     name_pwd_error: '用户名或密码错误，请重新输入！',
+    valid_code_error: '验证码错误，请重新输入！',
     rule_error: '输入信息格式不对，请重新输入！',
     length_error: '长度在 6 到 18 个字符'
   }

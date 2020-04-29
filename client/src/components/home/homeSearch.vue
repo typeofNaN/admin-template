@@ -268,5 +268,9 @@ export default {
       max-width: 202px;
     }
   }
+
+  .el-form-item {
+    margin-bottom: 10px;
+  }
 }
 </style>

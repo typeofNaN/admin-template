@@ -251,3 +251,11 @@ export default {
   justify-content: space-between;
 }
 </style>
+
+<style lang="scss">
+#toolBar {
+  .el-badge__content.is-fixed {
+    border: none;
+  }
+}
+</style>

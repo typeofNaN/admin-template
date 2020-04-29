@@ -259,15 +259,20 @@ export default {
       border-radius: 3px;
       cursor: pointer;
 
+      &:hover {
+        border-color: #bdbebd;
+      }
+
       .tagview_icon {
-        width: 14px;
-        height: 14px;
+        width: 12px;
+        height: 12px;
+        margin-right: 2px;
         color: #495060;
       }
 
       &.active {
         border-color: #bdbebd;
-        background-color: #f7f7f7;
+        background-color: #f0f0f0;
       }
     }
   }
@@ -313,7 +318,7 @@ export default {
       display: none;
       position: absolute;
       top: 7px;
-      right: 0px;
+      right: -2px;
       width: 20px;
       height: 20px;
       vertical-align: 2px;

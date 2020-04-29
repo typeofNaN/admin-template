@@ -1,19 +1,53 @@
-.el-form-item {
-  margin-bottom: 10px;
-}
 .el-table {
   th,
   td {
-    padding: 0;
+    padding: 4px 0;
+    font-size: 13px;
+  }
+
+  th {
+    color: #333;
+    min-height: 40px;
+
+    .cell {
+      height: 32px;
+      line-height: 32px;
+    }
+
+    i {
+      color: #333;
+    }
+  }
+}
+
+.el-tabs--border-card {
+  border: none;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,.12), 0 0 10px 0 rgba(0,0,0,.04);
+}
+
+.el-upload-list {
+  .el-upload-list__item {
+    position: relative;
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+    }
   }
 }
 
 .el-pagination.is-background .el-pager li:not(.disabled).active {
-  background-color: #909399;   // 进行修改背景和字体
+  background-color: #909399;  // 进行修改背景和字体
   color: #fff;
 }
 
-/* 覆盖element-ui el-dialog弹出动画*/
+/* 覆盖element-ui el-dialog弹出动画 */
 .el-dialog__wrapper {
   transition-duration: 0.3s;
 }
@@ -42,11 +76,22 @@
 }
 
 @keyframes anim-open {
-  0% { opacity: 0;  transform: scale3d(0, 0, 1); }
-  100% { opacity: 1; transform: scale3d(1, 1, 1); }
+  0% {
+    opacity: 0;
+    transform: scale3d(0, 0, 1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
 }
 
 @keyframes anim-close {
-  0% { opacity: 1; }
-  100% { opacity: 0; transform: scale3d(0.5, 0.5, 1); }
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale3d(0.5, 0.5, 1);
+  }
 }

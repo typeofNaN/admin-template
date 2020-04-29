@@ -117,6 +117,7 @@ export default {
 <style lang="scss">
 .el-header {
   padding: 0;
+  height: 94px !important;
 }
 
 .el-main {

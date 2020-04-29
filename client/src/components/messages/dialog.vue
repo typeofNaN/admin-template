@@ -19,7 +19,7 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import TTable from '@/views/home/homeForm'
+import TTable from './dialogTable'
 
 export default {
   name: 'm_dialog',

@@ -137,8 +137,7 @@ export default {
 <style lang="scss">
 #message_layer {
   .el-tabs__header {
-    padding: 8px 0 0 0;
-    background-color: #e8edf0;
+    background-color: #f2f4f5;
 
     .el-tabs__item {
       margin-right: 4px;
@@ -147,12 +146,12 @@ export default {
       border: none;
       height: 40px;
       font-size: 13px;
-      background-color: #d8e0e6;
+      background-color: #e8edf0;
       color: #95a5a6;
 
       &:hover {
         color: #7b8a8b;
-        background-color: #b8c7ce;
+        background-color: #dee2e4;
       }
 
       &.is-active {

@@ -35,7 +35,31 @@
 
 .dialog_title {
   margin: -20px;
-  padding: 15px 20px;
+  padding: 10px 20px;
   color: #fff;
-  font-size: 20px;
+  font-size: 14px;
+}
+
+.custom_dialog {
+  .el-dialog__header {
+    .dialog_title {
+      position: relative;
+
+      .big_small {
+        position: absolute;
+        top: 14px;
+        right: 46px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+    }
+
+    .el-dialog__headerbtn {
+      top: 14px;
+    }
+
+    .el-icon-close {
+      color: #fff;
+    }
+  }
 }

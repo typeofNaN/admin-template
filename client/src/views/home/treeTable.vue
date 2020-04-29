@@ -40,7 +40,7 @@ export default {
   }
 
   .table {
-    width: calc(100% - 360px);
+    width: calc(100% - 310px);
   }
 }
 </style>

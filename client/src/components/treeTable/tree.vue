@@ -109,7 +109,7 @@ export default {
 <style lang="scss" scoped>
 #tree {
   .tree_box {
-    border: 1px solid #909399;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
 
     .tree_title {
       padding: 10px;

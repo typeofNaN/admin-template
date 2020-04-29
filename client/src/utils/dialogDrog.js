@@ -25,6 +25,8 @@ Vue.directive('dialogDrag', {
     let nowMarginTop = 0
     // 获取弹框头部（这部分可双击全屏）
     const dialogHeaderEl = el.querySelector('.el-dialog__header')
+    // 放大按钮
+    const bigSmallEl = el.querySelector('.el-dialog__header .big_small')
     // 弹窗
     const dragDom = el.querySelector('.el-dialog')
     // 给弹窗加上overflow auto；不然缩小时框内的标签可能超出dialog；
@@ -92,6 +94,32 @@ Vue.directive('dialogDrag', {
         isFullScreen = false
         dialogHeaderEl.style.cursor = 'move'
         dialogHeaderEl.onmousedown = moveDown
+      }
+    }
+
+    if (bigSmallEl) {
+      bigSmallEl.onclick = (e) => {
+        if (isFullScreen === false) {
+          // let nowHight = ''
+          nowHight = dragDom.clientHeight
+          nowWidth = dragDom.clientWidth
+          nowMarginTop = dragDom.style.marginTop
+          dragDom.style.left = 0
+          dragDom.style.top = 0
+          dragDom.style.height = '100VH'
+          dragDom.style.width = '100VW'
+          dragDom.style.marginTop = 0
+          isFullScreen = true
+          dialogHeaderEl.style.cursor = 'initial'
+          dialogHeaderEl.onmousedown = null
+        } else {
+          dragDom.style.height = 'auto'
+          dragDom.style.width = nowWidth + 'px'
+          dragDom.style.marginTop = nowMarginTop
+          isFullScreen = false
+          dialogHeaderEl.style.cursor = 'move'
+          dialogHeaderEl.onmousedown = moveDown
+        }
       }
     }
 

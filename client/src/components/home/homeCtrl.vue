@@ -21,12 +21,14 @@
         type="warning"
         icon="el-icon-edit"
         size="small"
+        :disabled="selectData.length === 0"
         @click="edit"
       >编 辑</el-button>
       <el-button
         type="danger"
         icon="el-icon-delete"
         size="small"
+        :disabled="selectData.length === 0"
       >删 除</el-button>
       <el-button
         type="info"
@@ -73,6 +75,7 @@
       ></el-button>
     </div>
     <el-dialog
+      class="custom_dialog"
       v-dialogDrag
       :visible.sync="dialogFormVisible"
       :close-on-click-modal="false"
@@ -81,7 +84,10 @@
         slot="title"
         class="dialog_title"
         :style="{ backgroundColor: getThemeHeaderBGColor }"
-      >{{ dialogTitle }}</div>
+      >
+        <span>{{ dialogTitle }}</span>
+        <i class="big_small el-icon-full-screen" />
+      </div>
       <el-form
         :model="dialogForm"
         ref="dialogForm"
@@ -171,13 +177,17 @@
         slot="footer"
         class="dialog-footer"
       >
-        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button
+          @click="dialogFormVisible = false"
+          size="small"
+        >取 消</el-button>
         <el-button
           type="primary"
           :style="{
             backgroundColor: getThemeHeaderBGColor,
             borderColor: getThemeHeaderBGColor
           }"
+          size="small"
           @click="submitForm('dialogForm')"
         >确 定</el-button>
       </div>

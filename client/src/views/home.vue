@@ -1,12 +1,18 @@
 <template>
   <div id="home">
     首页
+    <!-- <common-dialog></common-dialog> -->
   </div>
 </template>
 
 <script>
+import CommonDialog from '@/components/public/commonDialog'
+
 export default {
-  name: 'homePage'
+  name: 'homePage',
+  components: {
+    CommonDialog
+  }
 }
 </script>
 

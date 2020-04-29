@@ -42,6 +42,14 @@
           />
         </el-input>
       </el-form-item>
+      <el-form-item prop="validCode">
+        <el-input
+          class="valid_code_input"
+          v-model="signin_form.validCode"
+          :placeholder="$t('signin_page.validcode_placeholder')"
+        />
+        <valid-code :value.sync="validCodes"></valid-code>
+      </el-form-item>
       <el-form-item>
         <el-button
           type="primary"
@@ -72,6 +80,7 @@
 <script>
 import formatterDate from '@/utils/formatterDate'
 import logo from '@/assets/img/logo.png'
+import ValidCode from '@/components/public/validCode'
 
 const roleArr = [
   { role: '管理员', userName: 'admin', password: '123456' },
@@ -84,10 +93,15 @@ export default {
     logoUrl: logo,
     signin_form: {
       userName: 'admin',
-      password: '123456'
+      password: '123456',
+      validCode: ''
     },
+    validCodes: '',
     loading: false
   }),
+  components: {
+    ValidCode
+  },
   computed: {
     signinRules () {
       return {
@@ -110,12 +124,25 @@ export default {
             message: this.$t('signin_page.length_error'),
             trigger: 'blur'
           }
+        ],
+        validCode: [
+          {
+            required: true,
+            message: this.$t('signin_page.validcode_placeholder'),
+            trigger: 'blur'
+          }
         ]
       }
     }
   },
   methods: {
     signin (formName) {
+      let validCode = this.validCodes.toLowerCase()
+
+      if (this.signin_form.validCode.toLowerCase() !== validCode) {
+        this.$message.error(this.$t('signin_page.valid_code_error'))
+        return
+      }
       this.$refs[formName].validate(valid => {
         if (valid) {
           const currentRole = this.validateRole(this.signin_form)
@@ -204,6 +231,13 @@ export default {
     font-size: 30px;
   }
 
+  .valid_code_input {
+    display: inline-block;
+    margin-right: 15px;
+    width: calc(100% - 140px);
+    vertical-align: middle;
+  }
+
   .signin_btn {
     width: 100%;
     height: 50px;
@@ -219,7 +253,7 @@ export default {
     left: 0;
     margin: -20px;
     width: calc(100% + 40px);
-    height: calc(100% + 60px);
+    height: calc(100% + 40px);
     border-radius: 20px;
     background-color: rgba(255, 255, 255, .7);
 

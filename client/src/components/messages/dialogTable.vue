@@ -1,10 +1,9 @@
 <template>
-  <div id="home_table">
+  <div id="dialog_table">
     <el-table
       id="dataTable"
       :data="tableData"
       border
-      stripe
       style="width: 100%"
       v-loading="loading"
       element-loading-background="rgba(255, 255, 255, 0.7)"
@@ -106,28 +105,50 @@
         </template>
       </el-table-column>
     </el-table>
+    <pagination
+      ref="pagination"
+      :count="count"
+      :currentPageSize="currentPageSize"
+      :addLength="tableData.length"
+      @currentChange="currentChange"
+      @sizeChange="sizeChange"
+    ></pagination>
   </div>
 </template>
 
 <script>
-import FileSaver from 'file-saver'
-import XLSX from 'xlsx'
-
 import formatter from '@/utils/formatterDate'
+import Pagination from '@/components/public/pagination'
 
 export default {
-  name: 'homeTable',
-  props: {
-    tableData: {
-      type: Array,
-      default: null
-    }
-  },
+  name: 'dialogTable',
   data: () => ({
+    tableData: [],
     selection: [],
-    loading: true
+    loading: true,
+    count: 0,
+    currentPageSize: 1
   }),
+  mounted () {
+    this.getData()
+  },
+  components: {
+    Pagination
+  },
   methods: {
+    getData (searchData) {
+      this.openLoading()
+      let postData = { ...searchData }
+      this.api.orderApi.getOrderList(postData)
+        .then(data => {
+          setTimeout(() => {
+            this.count = data.count
+            this.tableData = data.list
+            this.closeLoading()
+          }, 1000)
+        })
+    },
+
     formatterDate (obj) {
       if (obj.utc_created) {
         let date = new Date(obj.utc_created)
@@ -147,37 +168,18 @@ export default {
 
     handleSelect (select) {
       this.selection = select
-      this.$emit('selectChange', select)
+      // this.$emit('selectChange', select)
     },
 
-    // 导出为excel表格
-    exportExcel () {
-      const tableDom = document.querySelector('#dataTable')
-      var wb = XLSX.utils.table_to_book(tableDom)
+    currentChange () {},
 
-      var wbout = XLSX.write(wb, {
-        bookType: 'xlsx',
-        bookSST: true,
-        type: 'array'
-      })
-
-      try {
-        FileSaver.saveAs(
-          new Blob([wbout], { type: 'application/octet-stream' }),
-          'sheetjs.xlsx'
-        )
-      } catch (e) {
-        console.log(e, wbout)
-      }
-
-      return wbout
-    }
+    sizeChange () {}
   }
 }
 </script>
 
 <style lang="scss">
-#home_table {
+#dialog_table {
   .el-loading-mask {
     z-index: 99;
   }
