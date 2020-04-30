@@ -1,7 +1,6 @@
 <template>
   <div
     id="border_box"
-    :style="{ borderTop: '4px solid' + getThemeHeaderBGColor }"
   >
     <slot></slot>
   </div>
@@ -21,6 +20,7 @@ export default {
 <style lang="scss" scoped>
 #border_box {
   border-radius: 4px;
+  // border-top: 4px solid #edf0f3;
   box-shadow: 0 0 8px 2px rgba(0, 0, 0, .1);
 }
 </style>

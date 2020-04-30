@@ -24,6 +24,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#layout_account {
+  background-color: rgba(206, 193, 193, 0.2);
+}
+
 .main {
   position: relative;
   display: flex;

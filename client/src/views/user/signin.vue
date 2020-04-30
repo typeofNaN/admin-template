@@ -252,6 +252,8 @@ export default {
     font-size: 20px;
     line-height: 40px;
     padding: 0;
+    background-color: #08dcd0;
+    border-color: #08dcd0;
   }
 
   .loading {
@@ -268,8 +270,8 @@ export default {
     background-color: rgba(255, 255, 255, .7);
 
     i {
-      font-size: 70px;
-      color: #409eff;
+      font-size: 60px;
+      color: #606266;
     }
   }
 }
@@ -287,6 +289,19 @@ export default {
     color: #606266;
     font-size: 18px;
     text-indent: 10px;
+
+    &::-webkit-input-placeholder {
+      font-size: 14px;
+    }
+    &:-moz-placeholder {
+      font-size: 14px;
+    }
+    &::-moz-placeholder {
+      font-size: 14px;
+    }
+    &:-ms-input-placeholder {
+      font-size: 14px;
+    }
   }
 }
 </style>
