@@ -7,10 +7,7 @@
       >栏目列表</div>
       <div class="tree_main">
         <el-checkbox
-          v-model="checkAll"
-          @change="handleCheckAllChange"
-        >选中全部</el-checkbox>
-        <el-checkbox
+          class="expand_all"
           v-model="expandAll"
           @change="handleExpandAllChange"
         >展开全部</el-checkbox>
@@ -42,37 +39,41 @@ export default {
     expandAll: true,
     treeValueStr: '',
     data: [{
-      id: '一级 1',
-      label: '一级 1',
+      id: 'all',
+      label: '选中全部',
       children: [{
-        id: 1,
-        label: '1'
+        id: '一级 1',
+        label: '一级 1',
+        children: [{
+          id: 1,
+          label: '1'
+        }, {
+          id: 2,
+          label: '2'
+        }, {
+          id: 3,
+          label: '3'
+        }]
       }, {
-        id: 2,
-        label: '2'
+        id: '一级 2',
+        label: '一级 2',
+        children: [{
+          id: 4,
+          label: '4'
+        }, {
+          id: 5,
+          label: '5'
+        }]
       }, {
-        id: 3,
-        label: '3'
-      }]
-    }, {
-      id: '一级 2',
-      label: '一级 2',
-      children: [{
-        id: 4,
-        label: '4'
-      }, {
-        id: 5,
-        label: '5'
-      }]
-    }, {
-      id: '一级 3',
-      label: '一级 3',
-      children: [{
-        id: 6,
-        label: '6'
-      }, {
-        id: 7,
-        label: '7'
+        id: '一级 3',
+        label: '一级 3',
+        children: [{
+          id: 6,
+          label: '6'
+        }, {
+          id: 7,
+          label: '7'
+        }]
       }]
     }],
     defaultProps: {
@@ -84,18 +85,19 @@ export default {
     ...mapGetters(['getThemeHeaderBGColor'])
   },
   methods: {
-    handleCheckAllChange (val) {
-      if (this.checkAll) {
-        this.$refs.tree.setCheckedNodes(this.data)
-      } else {
-        this.$refs.tree.setCheckedKeys([])
-      }
-    },
+    // handleCheckAllChange (val) {
+    //   if (this.checkAll) {
+    //     this.$refs.tree.setCheckedNodes(this.data)
+    //   } else {
+    //     this.$refs.tree.setCheckedKeys([])
+    //   }
+    // },
 
     handleExpandAllChange (val) {
       this.expandAll = val
-      for (var i = 0; i < this.$refs.tree.store._getAllNodes().length; i++) {
-        this.$refs.tree.store._getAllNodes()[i].expanded = this.expandAll
+      let treeList = this.data[0].children
+      for (var i = 0; i < treeList.length; i++) {
+        this.$refs.tree.store.nodesMap[treeList[i].id].expanded = this.expandAll
       }
     },
 
@@ -118,11 +120,19 @@ export default {
     .tree_title {
       padding: 10px;
       color: #fff;
-      font-size: 20px;
+      font-size: 14px;
     }
 
     .tree_main {
+      position: relative;
       padding: 10px;
+
+      .expand_all {
+        position: absolute;
+        top: 13px;
+        right: 40px;
+        z-index: 10;
+      }
 
       .tree_dom /deep/ {
         .el-tree > .el-tree-node:after {

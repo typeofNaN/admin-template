@@ -5,7 +5,7 @@
         <router-view />
       </div>
       <div class="copyright">
-        &copy; 智购科技技术部出品 {{ new Date().getFullYear() }}
+        Copyright &copy; 智购科技技术部出品
       </div>
     </div>
     <canvas id="particle-animation"></canvas>
@@ -25,6 +25,7 @@ export default {
 
 <style lang="scss" scoped>
 .main {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,6 +45,10 @@ export default {
   }
 
   .copyright {
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    width: 100%;
     text-align: center;
     font-size: 20px;
     color: #606266;

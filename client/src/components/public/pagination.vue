@@ -4,11 +4,11 @@
       <p>
         总共
         <span>{{ count }}</span>
-        条数据，当前显示第
+        条，当前显示第
         <span>{{ (current - 1) * currentPageSize + 1 }}</span>
         到第
         <span>{{ (current - 1) * currentPageSize + addLength }}</span>
-        条数据，每页显示
+        条，每页显示
         <el-select
           size="mini"
           class="page_size"
@@ -20,7 +20,7 @@
           <el-option label="50" :value="50"></el-option>
           <el-option label="100" :value="100"></el-option>
         </el-select>
-        条数据
+        条
       </p>
     </div>
     <el-pagination
@@ -88,6 +88,7 @@ export default {
 
   .page_msg {
     color: #606266;
+    font-size: 13px;
 
     span {
       margin: 0 2px;

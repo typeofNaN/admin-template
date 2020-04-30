@@ -3,7 +3,7 @@
     id="tags-view-container"
     class="tags-view-container"
   >
-    <scroll-pane
+    <div
       ref="scrollPane"
       class="tags-view-wrapper"
     >
@@ -29,7 +29,7 @@
           @click.prevent.stop="closeSelectedTag(tag)"
         />
       </router-link>
-    </scroll-pane>
+    </div>
     <ul
       v-show="visible"
       :style="{ left: left + 'px', top: top + 'px' }"
@@ -50,7 +50,7 @@
 import path from 'path'
 import { mapGetters } from 'vuex'
 
-import ScrollPane from './scrollPane'
+// import ScrollPane from './scrollPane'
 import { i18nForRouteTitle } from '@/utils/i18n'
 
 export default {
@@ -62,9 +62,9 @@ export default {
     selectedTag: {},
     affixTags: []
   }),
-  components: {
-    ScrollPane
-  },
+  // components: {
+  //   ScrollPane
+  // },
   computed: {
     ...mapGetters([
       'visitedViews',
@@ -79,7 +79,7 @@ export default {
   watch: {
     $route () {
       this.addTags()
-      this.moveToCurrentTag()
+      // this.moveToCurrentTag()
     },
     visible (value) {
       if (value) {
@@ -143,21 +143,21 @@ export default {
 
       return false
     },
-    moveToCurrentTag () {
-      const tags = this.$refs.tag
+    // moveToCurrentTag () {
+    //   const tags = this.$refs.tag
 
-      this.$nextTick(() => {
-        for (const tag of tags) {
-          if (tag.to.path === this.$route.path) {
-            this.$refs.scrollPane.moveToTarget(tag)
-            if (tag.to.fullPath !== this.$route.fullPath) {
-              this.$store.dispatch('updateVisitedView', this.$route)
-            }
-            break
-          }
-        }
-      })
-    },
+    //   this.$nextTick(() => {
+    //     for (const tag of tags) {
+    //       if (tag.to.path === this.$route.path) {
+    //         this.$refs.scrollPane.moveToTarget(tag)
+    //         if (tag.to.fullPath !== this.$route.fullPath) {
+    //           this.$store.dispatch('updateVisitedView', this.$route)
+    //         }
+    //         break
+    //       }
+    //     }
+    //   })
+    // },
 
     refreshSelectedTag (view) {
       this.$store.dispatch('delCachedView', view).then(() => {

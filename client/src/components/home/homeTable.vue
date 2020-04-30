@@ -85,20 +85,18 @@
       </el-table-column>
       <el-table-column
         label="操作"
-        min-width="100"
+        min-width="130"
         fixed="right"
       >
         <template slot-scope="scope">
           <el-button
             type="warning"
-            circle
             size="mini"
             icon="el-icon-edit"
             @click="editItem(scope)"
           ></el-button>
           <el-button
             type="danger"
-            circle
             size="mini"
             icon="el-icon-delete"
             @click="deleteItem(scope)"

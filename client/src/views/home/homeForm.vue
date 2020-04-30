@@ -6,71 +6,74 @@
         <p>输入分页查询搜索条件，表格数据可分页，可调整当前页面数据</p>
       </tips>
     </div>
-    <el-tabs
-      v-model="activeTabName"
-      type="border-card"
-      @tab-click="changeTab"
-    >
-      <el-tab-pane
-        label="分页查询"
-        name="tab1"
+    <border-box>
+      <el-tabs
+        v-model="activeTabName"
+        type="border-card"
+        @tab-click="changeTab"
       >
-        <home-search
-          ref="home_search"
-          :searchForm="searchData"
-          @search="search"
-        ></home-search>
-        <home-ctrl
-          :selectData.sync="selectData"
-          @showSearchForm="showSearchForm"
-          @refresh="refresh"
-          @exportExcel="exportExcel"
-        ></home-ctrl>
-        <home-table
-          ref="home_table"
-          :tableData="tableData"
-          @selectChange="selectChange"
-        ></home-table>
-        <pagination
-          ref="pagination"
-          :count="count"
-          :currentPageSize="currentPageSize"
-          :addLength="tableData.length"
-          @currentChange="currentChange"
-          @sizeChange="sizeChange"
-        ></pagination>
-      </el-tab-pane>
-      <el-tab-pane
-        label="表单"
-        name="tab2"
-      >
-        <home-form></home-form>
-      </el-tab-pane>
-      <el-tab-pane
-        label="表单验证"
-        name="tab3"
-      >
-        <form-validate></form-validate>
-      </el-tab-pane>
-      <el-tab-pane
-        label="简单表格"
-        name="tab4"
-      >
-        <simple-table></simple-table>
-      </el-tab-pane>
-      <el-tab-pane
-        label="复制文本"
-        name="tab5"
-      >
-        <copy-text></copy-text>
-      </el-tab-pane>
-    </el-tabs>
+        <el-tab-pane
+          label="分页查询"
+          name="tab1"
+        >
+          <home-search
+            ref="home_search"
+            :searchForm="searchData"
+            @search="search"
+          ></home-search>
+          <home-ctrl
+            :selectData.sync="selectData"
+            @showSearchForm="showSearchForm"
+            @refresh="refresh"
+            @exportExcel="exportExcel"
+          ></home-ctrl>
+          <home-table
+            ref="home_table"
+            :tableData="tableData"
+            @selectChange="selectChange"
+          ></home-table>
+          <pagination
+            ref="pagination"
+            :count="count"
+            :currentPageSize="currentPageSize"
+            :addLength="tableData.length"
+            @currentChange="currentChange"
+            @sizeChange="sizeChange"
+          ></pagination>
+        </el-tab-pane>
+        <el-tab-pane
+          label="表单"
+          name="tab2"
+        >
+          <home-form></home-form>
+        </el-tab-pane>
+        <el-tab-pane
+          label="表单验证"
+          name="tab3"
+        >
+          <form-validate></form-validate>
+        </el-tab-pane>
+        <el-tab-pane
+          label="简单表格"
+          name="tab4"
+        >
+          <simple-table></simple-table>
+        </el-tab-pane>
+        <el-tab-pane
+          label="复制文本"
+          name="tab5"
+        >
+          <copy-text></copy-text>
+        </el-tab-pane>
+      </el-tabs>
+    </border-box>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 
+import BorderBox from '@/components/public/borderBox'
 import HomeSearch from '@/components/home/homeSearch'
 import HomeCtrl from '@/components/home/homeCtrl'
 import HomeTable from '@/components/home/homeTable'
@@ -106,6 +109,7 @@ export default {
     currentPageSize: 10
   }),
   components: {
+    BorderBox,
     HomeSearch,
     HomeCtrl,
     HomeTable,
