@@ -136,12 +136,14 @@ export default {
         item.meta.group === oldRouter.meta.group
       )
 
-      if (newRouteIndex >= 0 && newRouteIndex <= this.showTopRouters.length) {
-        this.$refs.route_item[newRouteIndex].style.backgroundColor = this.getThemeLogoBGColor
-      }
+      if (newRouteIndex !== oldRouterIndex) {
+        if (newRouteIndex >= 0 && newRouteIndex <= this.showTopRouters.length) {
+          this.$refs.route_item[newRouteIndex].style.backgroundColor = this.getThemeLogoBGColor
+        }
 
-      if (oldRouterIndex >= 0 && oldRouterIndex <= this.showTopRouters.length) {
-        this.$refs.route_item[oldRouterIndex].style.backgroundColor = this.getThemeHeaderBGColor
+        if (oldRouterIndex >= 0 && oldRouterIndex <= this.showTopRouters.length) {
+          this.$refs.route_item[oldRouterIndex].style.backgroundColor = this.getThemeHeaderBGColor
+        }
       }
 
       const parentRouter = this.topRouters.find(item => item.meta.group === newRoute.meta.group)

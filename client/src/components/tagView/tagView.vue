@@ -3,8 +3,9 @@
     id="tags-view-container"
     class="tags-view-container"
   >
-    <div
+    <scroll-pane
       ref="scrollPane"
+      id="tags-view-wrapper"
       class="tags-view-wrapper"
     >
       <router-link
@@ -29,7 +30,44 @@
           @click.prevent.stop="closeSelectedTag(tag)"
         />
       </router-link>
-    </div>
+      <!-- <el-button
+        v-if="hideTagView.length > 0"
+        class="hide_tag_views_btn"
+      >
+        <div
+          class="hide_tag_views"
+        >
+          <el-dropdown trigger="click">
+            <span
+              class="el-dropdown-link"
+              style="color: #606266"
+            >
+              <svg-icon
+                class-name="menu-icon"
+                icon-class="menu"
+              />
+              <svg-icon
+                class-name="dropdown-icon"
+                icon-class="dropdown"
+              />
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item
+                v-for="(tagView, index) in hideTagView"
+                :key="index"
+                @click.native="handleHideTagView(tagView)"
+              >
+                <svg-icon
+                  class-name="tagview_icon"
+                  :icon-class="tagView.icon"
+                />
+                {{ i18nForRouteTitle(tagView.title) }}
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
+      </el-button> -->
+    </scroll-pane>
     <ul
       v-show="visible"
       :style="{ left: left + 'px', top: top + 'px' }"
@@ -49,8 +87,9 @@
 <script>
 import path from 'path'
 import { mapGetters } from 'vuex'
+// import elementResizeDetectorMaker from 'element-resize-detector'
 
-// import ScrollPane from './scrollPane'
+import ScrollPane from './scrollPane'
 import { i18nForRouteTitle } from '@/utils/i18n'
 
 export default {
@@ -60,11 +99,13 @@ export default {
     top: 0,
     left: 0,
     selectedTag: {},
-    affixTags: []
+    affixTags: [],
+    showTagView: [],
+    hideTagView: []
   }),
-  // components: {
-  //   ScrollPane
-  // },
+  components: {
+    ScrollPane
+  },
   computed: {
     ...mapGetters([
       'visitedViews',
@@ -79,7 +120,8 @@ export default {
   watch: {
     $route () {
       this.addTags()
-      // this.moveToCurrentTag()
+      this.moveToCurrentTag()
+      // this.countTagViewNum()
     },
     visible (value) {
       if (value) {
@@ -88,10 +130,17 @@ export default {
         document.body.removeEventListener('click', this.closeMenu)
       }
     }
+    // visitedViews () {
+    //   this.countTagViewNum()
+    // }
   },
   mounted () {
     this.initTags()
     this.addTags()
+    // this.countTagViewNum()
+    // const erd = elementResizeDetectorMaker()
+
+    // erd.listenTo(document.getElementById('tags-view-wrapper'), element => {})
   },
   methods: {
     isActive (route) {
@@ -143,21 +192,21 @@ export default {
 
       return false
     },
-    // moveToCurrentTag () {
-    //   const tags = this.$refs.tag
+    moveToCurrentTag () {
+      const tags = this.$refs.tag
 
-    //   this.$nextTick(() => {
-    //     for (const tag of tags) {
-    //       if (tag.to.path === this.$route.path) {
-    //         this.$refs.scrollPane.moveToTarget(tag)
-    //         if (tag.to.fullPath !== this.$route.fullPath) {
-    //           this.$store.dispatch('updateVisitedView', this.$route)
-    //         }
-    //         break
-    //       }
-    //     }
-    //   })
-    // },
+      this.$nextTick(() => {
+        for (const tag of tags) {
+          if (tag.to.path === this.$route.path) {
+            this.$refs.scrollPane.moveToTarget(tag)
+            if (tag.to.fullPath !== this.$route.fullPath) {
+              this.$store.dispatch('updateVisitedView', this.$route)
+            }
+            break
+          }
+        }
+      })
+    },
 
     refreshSelectedTag (view) {
       this.$store.dispatch('delCachedView', view).then(() => {
@@ -231,6 +280,32 @@ export default {
     },
 
     i18nForRouteTitle
+
+    // countTagViewNum () {
+    //   let parentBoxWidth = document.getElementById('tags-view-wrapper').offsetWidth
+    //   let showNum = ~~(parentBoxWidth / 120)
+
+    //   this.hideTagView = this.visitedViews.slice(showNum, this.visitedViews.length)
+
+    //   let allTagView = [...document.getElementsByClassName('tags-view-item')]
+
+    //   allTagView.forEach((item, index) => {
+    //     if (index + 1 > showNum) {
+    //       item.style.display = 'none'
+    //     }
+    //   })
+    // },
+
+    // handleHideTagView (tag) {
+    //   let currentRoute = this.$route
+    //   if (currentRoute.name !== tag.name) {
+    //     this.$router.push({
+    //       path: tag.path,
+    //       query: tag.query,
+    //       fullPath: tag.fullPath
+    //     })
+    //   }
+    // }
   }
 }
 </script>
@@ -245,11 +320,48 @@ export default {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 0 3px 0 rgba(0, 0, 0, .04);
 
   .tags-view-wrapper {
+    // display: flex;
+
+    // .hide_tag_views_btn {
+    //   display: inline-block;
+    //   margin: 2px 5px;
+    //   height: 30px;
+    //   line-height: 30px;
+    //   padding: 0 10px;
+    //   margin-left: auto;
+    //   border-color: #bdbebd;
+    //   background-color: #f7f7f7;
+
+    //   .hide_tag_views {
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+
+    //     span {
+    //       display: flex;
+    //       justify-content: center;
+    //       align-items: center;
+
+    //       .menu-icon {
+    //         margin-right: 2px;
+    //         width: 20px;
+    //         height: 20px;
+    //       }
+
+    //       .dropdown-icon {
+    //         width: 6px;
+    //         height: 6px;
+    //       }
+    //     }
+    //   }
+    // }
+
     .tags-view-item {
       display: inline-block;
       position: relative;
       margin: 2px 5px 2px 0;
       padding: 0 15px;
+      // max-width: 120px;
       height: 30px;
       line-height: 30px;
       font-size: 13px;

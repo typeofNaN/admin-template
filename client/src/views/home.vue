@@ -1,9 +1,12 @@
 <template>
   <div id="home">
     <border-box>
-      <div class="main">
+      <el-card>
+        <div slot="header">
+          <span>编辑表单</span>
+        </div>
         <home-form></home-form>
-      </div>
+      </el-card>
       <!-- <common-dialog></common-dialog> -->
     </border-box>
   </div>
@@ -23,11 +26,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-#home {
-  .main {
-    padding: 10px;
-  }
-}
-</style>
