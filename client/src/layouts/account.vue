@@ -5,15 +5,21 @@
         <router-view />
       </div>
       <div class="copyright">
-        &copy; zegobird {{ new Date().getFullYear() }}
+        &copy; 智购科技技术部出品 {{ new Date().getFullYear() }}
       </div>
     </div>
+    <canvas id="particle-animation"></canvas>
   </div>
 </template>
 
 <script>
+import particleAnimation from '@/utils/particleAnimation'
+
 export default {
-  name: 'account'
+  name: 'account',
+  mounted () {
+    particleAnimation(document.querySelector('#particle-animation'), { color: '#fdeeeb' })
+  }
 }
 </script>
 
@@ -24,23 +30,31 @@ export default {
   justify-content: center;
   width: 100%;
   height: 100vh;
-  background: url(../assets/img/account_bg.jpg) center no-repeat;
-  background-size: cover;
+  // background: url(../assets/img/account_bg.jpg) center no-repeat;
+  // background-size: cover;
 
   .box {
     margin: 20px auto;
     padding: 20px;
-    width: 500px;
-    height: 560px;
-    background-color: rgba(0, 0, 0, .6);
+    width: 400px;
+    height: 460px;
+    background-color: rgba(255, 255, 255, .4);
     border-radius: 20px;
-    box-shadow: 0 0 2px 4px rgba(0, 0, 0, .2);
+    box-shadow: 0 0 2px 4px rgba(243, 238, 238, 0.9);
   }
 
   .copyright {
     text-align: center;
     font-size: 20px;
-    color: #fff;
+    color: #606266;
   }
+}
+
+#particle-animation {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: -1;
 }
 </style>

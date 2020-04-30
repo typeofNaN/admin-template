@@ -36,11 +36,11 @@ export default {
   justify-content: space-between;
 
   .tree {
-    width: 300px;
+    width: 280px;
   }
 
   .table {
-    width: calc(100% - 310px);
+    width: calc(100% - 290px);
   }
 }
 </style>

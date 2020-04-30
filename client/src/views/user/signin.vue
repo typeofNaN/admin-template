@@ -21,6 +21,7 @@
     >
       <el-form-item prop="userName">
         <el-input
+          size="small"
           v-model="signin_form.userName"
           :placeholder="$t('signin_page.username_placeholder')"
         >
@@ -32,6 +33,7 @@
       </el-form-item>
       <el-form-item prop="password">
         <el-input
+          size="small"
           v-model="signin_form.password"
           show-password
           :placeholder="$t('signin_page.password_placeholder')"
@@ -44,10 +46,16 @@
       </el-form-item>
       <el-form-item prop="validCode">
         <el-input
+          size="small"
           class="valid_code_input"
           v-model="signin_form.validCode"
           :placeholder="$t('signin_page.validcode_placeholder')"
-        />
+        >
+          <i
+            slot="prefix"
+            class="el-input__icon el-icon-position"
+          ></i>
+        </el-input>
         <valid-code :value.sync="validCodes"></valid-code>
       </el-form-item>
       <el-form-item>
@@ -193,7 +201,7 @@ export default {
 <style lang="scss" scoped>
 #signin {
   position: relative;
-  color: #fff;
+  color: #606266;
 
   .signin_logo,
   .signin_title {
@@ -202,8 +210,8 @@ export default {
 
   .signin_logo {
     margin: 0 auto;
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
   }
 
   .lang_setting_box {
@@ -213,22 +221,22 @@ export default {
 
     span,
     i {
-      color: #fff;
       font-size: 16px;
       cursor: pointer;
     }
   }
 
   .signin_title {
-    margin: 20px;
-    color: #fff;
+    margin: 10px;
     font-weight: 500;
+    font-size: 28px;
   }
 
   .el-icon-user-solid,
-  .el-icon-lock {
-    margin-top: 6px;
-    font-size: 30px;
+  .el-icon-lock,
+  .el-icon-position {
+    margin: 2px;
+    font-size: 20px;
   }
 
   .valid_code_input {
@@ -240,8 +248,10 @@ export default {
 
   .signin_btn {
     width: 100%;
-    height: 50px;
-    font-size: 24px;
+    height: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    padding: 0;
   }
 
   .loading {
@@ -268,14 +278,14 @@ export default {
 <style lang="scss">
 #signin {
   .el-form-item__content {
-    line-height: 50px;
+    line-height: 40px;
   }
 
   .el-input__inner {
-    height: 50px;
+    height: 40px;
     background-color: rgba(255, 255, 255, .4);
-    color: #fff;
-    font-size: 20px;
+    color: #606266;
+    font-size: 18px;
     text-indent: 10px;
   }
 }

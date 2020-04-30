@@ -1,23 +1,19 @@
 <template>
   <div id="home">
-    首页
+    <home-form></home-form>
     <!-- <common-dialog></common-dialog> -->
   </div>
 </template>
 
 <script>
 import CommonDialog from '@/components/public/commonDialog'
+import HomeForm from '@/components/home/homeForm'
 
 export default {
   name: 'homePage',
   components: {
-    CommonDialog
+    CommonDialog,
+    HomeForm
   }
 }
 </script>
-
-<style lang="scss" scoped>
-#home {
-  height: 1000px;
-}
-</style>

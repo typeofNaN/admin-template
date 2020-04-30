@@ -73,29 +73,29 @@ Vue.directive('dialogDrag', {
     dialogHeaderEl.onmousedown = moveDown
 
     // 双击头部全屏效果
-    dialogHeaderEl.ondblclick = (e) => {
-      if (isFullScreen === false) {
-        // let nowHight = ''
-        nowHight = dragDom.clientHeight
-        nowWidth = dragDom.clientWidth
-        nowMarginTop = dragDom.style.marginTop
-        dragDom.style.left = 0
-        dragDom.style.top = 0
-        dragDom.style.height = '100VH'
-        dragDom.style.width = '100VW'
-        dragDom.style.marginTop = 0
-        isFullScreen = true
-        dialogHeaderEl.style.cursor = 'initial'
-        dialogHeaderEl.onmousedown = null
-      } else {
-        dragDom.style.height = 'auto'
-        dragDom.style.width = nowWidth + 'px'
-        dragDom.style.marginTop = nowMarginTop
-        isFullScreen = false
-        dialogHeaderEl.style.cursor = 'move'
-        dialogHeaderEl.onmousedown = moveDown
-      }
-    }
+    // dialogHeaderEl.ondblclick = (e) => {
+    //   if (isFullScreen === false) {
+    //     // let nowHight = ''
+    //     nowHight = dragDom.clientHeight
+    //     nowWidth = dragDom.clientWidth
+    //     nowMarginTop = dragDom.style.marginTop
+    //     dragDom.style.left = 0
+    //     dragDom.style.top = 0
+    //     dragDom.style.height = '100VH'
+    //     dragDom.style.width = '100VW'
+    //     dragDom.style.marginTop = 0
+    //     isFullScreen = true
+    //     dialogHeaderEl.style.cursor = 'initial'
+    //     dialogHeaderEl.onmousedown = null
+    //   } else {
+    //     dragDom.style.height = 'auto'
+    //     dragDom.style.width = nowWidth + 'px'
+    //     dragDom.style.marginTop = nowMarginTop
+    //     isFullScreen = false
+    //     dialogHeaderEl.style.cursor = 'move'
+    //     dialogHeaderEl.onmousedown = moveDown
+    //   }
+    // }
 
     if (bigSmallEl) {
       bigSmallEl.onclick = (e) => {

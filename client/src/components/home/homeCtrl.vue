@@ -17,18 +17,49 @@
         }"
         @click="add"
       >添 加</el-button>
+      <el-tooltip
+        v-if="selectData.length === 0"
+        effect="dark"
+        content="请选择一条数据"
+        placement="top"
+      >
+        <span>
+          <el-button
+            type="warning"
+            icon="el-icon-edit"
+            size="small"
+            disabled
+            @click="edit"
+          >编 辑</el-button>
+        </span>
+      </el-tooltip>
       <el-button
+        v-else
         type="warning"
         icon="el-icon-edit"
         size="small"
-        :disabled="selectData.length === 0"
         @click="edit"
       >编 辑</el-button>
+      <el-tooltip
+        v-if="selectData.length === 0"
+        effect="dark"
+        content="请选择一条数据"
+        placement="top"
+      >
+        <span>
+          <el-button
+            type="danger"
+            icon="el-icon-delete"
+            size="small"
+            disabled
+          >删 除</el-button>
+        </span>
+      </el-tooltip>
       <el-button
+        v-else
         type="danger"
         icon="el-icon-delete"
         size="small"
-        :disabled="selectData.length === 0"
       >删 除</el-button>
       <el-button
         type="info"
@@ -86,7 +117,11 @@
         :style="{ backgroundColor: getThemeHeaderBGColor }"
       >
         <span>{{ dialogTitle }}</span>
-        <i class="big_small el-icon-full-screen" />
+        <svg-icon
+          class="big_small"
+          :icon-class="isbigDialog ? 'defaultDialog' : 'bigDialog'"
+          @click="isbigDialog = !isbigDialog"
+        />
       </div>
       <el-form
         :model="dialogForm"
@@ -209,7 +244,8 @@ export default {
   data: () => ({
     dialogFormVisible: false,
     dialogTitle: '',
-    dialogForm: {}
+    dialogForm: {},
+    isbigDialog: false
   }),
   computed: {
     ...mapGetters(['getThemeHeaderBGColor'])

@@ -14,15 +14,19 @@
           v-model="expandAll"
           @change="handleExpandAllChange"
         >展开全部</el-checkbox>
-        <el-tree
-          ref="tree"
-          :data="data"
-          show-checkbox
-          node-key="id"
-          :props="defaultProps"
-          :default-expand-all="expandAll"
-          @check-change="checkChange"
-        ></el-tree>
+        <div class="tree_dom">
+          <el-tree
+            ref="tree"
+            class="tree"
+            :indent="0"
+            :data="data"
+            show-checkbox
+            node-key="id"
+            :props="defaultProps"
+            :default-expand-all="expandAll"
+            @check-change="checkChange"
+          ></el-tree>
+        </div>
       </div>
     </div>
   </div>
@@ -106,7 +110,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #tree {
   .tree_box {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
@@ -119,6 +123,66 @@ export default {
 
     .tree_main {
       padding: 10px;
+
+      .tree_dom /deep/ {
+        .el-tree > .el-tree-node:after {
+          border-top: none;
+        }
+        .el-tree-node {
+          position: relative;
+          padding-left: 16px;
+        }
+        // 节点有间隙，隐藏掉展开按钮就好了,如果觉得空隙没事可以删掉
+        .el-tree-node__expand-icon.is-leaf{
+          display: none;
+        }
+        .el-tree-node__children {
+          padding-left: 16px;
+        }
+
+        .el-tree-node :last-child:before {
+          height: 38px;
+        }
+
+        .el-tree > .el-tree-node:before {
+          border-left: none;
+        }
+
+        .el-tree > .el-tree-node:after {
+          border-top: none;
+        }
+
+        .el-tree-node:before {
+          content: "";
+          left: -4px;
+          position: absolute;
+          right: auto;
+          border-width: 1px;
+        }
+
+        .el-tree-node:after {
+          content: "";
+          left: -4px;
+          position: absolute;
+          right: auto;
+          border-width: 1px;
+        }
+
+        .el-tree-node:before {
+          border-left: 1px dashed #909399;
+          bottom: 0px;
+          height: 100%;
+          top: -26px;
+          width: 1px;
+        }
+
+        .el-tree-node:after {
+          border-top: 1px dashed #909399;
+          height: 20px;
+          top: 12px;
+          width: 24px;
+        }
+      }
     }
   }
 }

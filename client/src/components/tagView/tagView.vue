@@ -252,7 +252,7 @@ export default {
       padding: 0 15px;
       height: 30px;
       line-height: 30px;
-      font-size: 12px;
+      font-size: 13px;
       border: 1px solid #eee;
       color: #495060;
       background: #fff;
@@ -272,7 +272,7 @@ export default {
 
       &.active {
         border-color: #bdbebd;
-        background-color: #f0f0f0;
+        background-color: #f7f7f7;
       }
     }
   }

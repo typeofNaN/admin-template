@@ -256,6 +256,8 @@ export default {
 #toolBar {
   .el-badge__content.is-fixed {
     border: none;
+    top: 3px;
+    right: 7px;
   }
 }
 </style>
