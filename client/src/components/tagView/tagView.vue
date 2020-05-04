@@ -110,8 +110,7 @@ export default {
     ...mapGetters([
       'visitedViews',
       'getSlideBar',
-      'getFixedHeader',
-      'getThemeHeaderBGColor'
+      'getFixedHeader'
     ]),
     routes () {
       return this.$router.options.routes

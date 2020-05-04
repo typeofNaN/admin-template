@@ -11,10 +11,6 @@
         type="primary"
         icon="el-icon-plus"
         size="small"
-        :style="{
-          backgroundColor: getThemeHeaderBGColor,
-          borderColor: getThemeHeaderBGColor
-        }"
         @click="add"
       >添 加</el-button>
       <el-tooltip
@@ -218,10 +214,6 @@
         >取 消</el-button>
         <el-button
           type="primary"
-          :style="{
-            backgroundColor: getThemeHeaderBGColor,
-            borderColor: getThemeHeaderBGColor
-          }"
           size="small"
           @click="submitForm('dialogForm')"
         >确 定</el-button>

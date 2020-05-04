@@ -146,10 +146,6 @@
         <el-button
           type="primary"
           size="small"
-          :style="{
-            backgroundColor: getThemeHeaderBGColor,
-            borderColor: getThemeHeaderBGColor
-          }"
           @click="onSubmit"
         >立即创建</el-button>
         <el-button size="small">取消</el-button>
@@ -159,8 +155,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'homeForm',
   data: () => ({
@@ -378,7 +372,6 @@ export default {
     }]
   }),
   computed: {
-    ...mapGetters(['getThemeHeaderBGColor']),
     transferData () {
       let dt = []
       for (let i = 1; i <= 15; i++) {

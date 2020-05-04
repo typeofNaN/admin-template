@@ -210,10 +210,6 @@
             <el-button
               @click="search"
               type="primary"
-              :style="{
-                backgroundColor: getThemeHeaderBGColor,
-                borderColor: getThemeHeaderBGColor
-              }"
               size="small"
             >查询</el-button>
             <el-button
@@ -229,8 +225,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'homeSearch',
   props: {
@@ -242,9 +236,6 @@ export default {
   data: () => ({
     showSearch: true
   }),
-  computed: {
-    ...mapGetters(['getThemeHeaderBGColor'])
-  },
   methods: {
     search () {
       this.$emit('search', this.searchForm)

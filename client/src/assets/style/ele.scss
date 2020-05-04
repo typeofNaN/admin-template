@@ -5,18 +5,18 @@
 .el-table {
   th,
   td {
-    padding: 4px 0;
-    font-size: 13px;
+    padding: 4px 0 !important;
+    font-size: 13px !important;
   }
 
   th {
     color: #333;
-    min-height: 40px;
+    min-height: 40px !important;
     border-bottom: 1px solid #ddd !important;
 
     .cell {
-      height: 32px;
-      line-height: 32px;
+      height: 32px !important;
+      line-height: 32px !important;
     }
 
     i {
@@ -25,7 +25,7 @@
   }
 
   td {
-    background-color: #fafafa;
+    background-color: #fafafa !important;
   }
 
   tr {
@@ -37,7 +37,10 @@
   }
 }
 .el-table--striped .el-table__body tr.el-table__row--striped td {
-  background: #fff;
+  background: #fff !important;
+}
+.el-table--striped .el-table__body tr.el-table__row--striped.hover-row td {
+  background: #f5f5f5 !important;
 }
 .el-tabs--border-card {
   border: none;
@@ -61,9 +64,8 @@
   }
 }
 
-.el-pagination.is-background .el-pager li:not(.disabled).active {
-  background-color: #909399;  // 进行修改背景和字体
-  color: #fff;
+.el-dialog__headerbtn:hover .el-dialog__close {
+  color: #fff !important;
 }
 
 /* 覆盖element-ui el-dialog弹出动画 */

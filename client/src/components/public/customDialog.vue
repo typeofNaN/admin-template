@@ -19,10 +19,6 @@
         <el-button @click="dialogVisible = false">取 消</el-button>
         <el-button
           type="primary"
-          :style="{
-            backgroundColor: getThemeHeaderBGColor,
-            borderColor: getThemeHeaderBGColor
-          }"
           @click="submit"
         >确 定</el-button>
       </div>

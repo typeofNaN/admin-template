@@ -39,10 +39,6 @@ function makeDialog (option) {
           type="primary"
           size="small"
           @click="confirmDialog"
-          :style="{
-            backgroundColor: '${option.bgColor}',
-            borderColor: '${option.bgColor}'
-          }"
         >确 定</el-button>
       </div>
     </el-dialog>

@@ -64,6 +64,9 @@
 </template>
 
 <script>
+const version = require('element-ui/package.json').version // element-ui version from node_modules
+const ORIGINAL_THEME = '#409EFF' // default color
+
 export default {
   name: 'SettingBar',
   data: () => ({
@@ -71,12 +74,15 @@ export default {
     settingForm: {
       fixedHeader: true,
       themeColor: '#454545'
-    }
+    },
+    chalk: '',
+    theme: ''
   }),
   computed: {
     themeColors () {
       return [
         {
+          type: 'theme-blue',
           title: this.$t('theme_color.dark_blue'),
           logoBGColor: '#367fa9',
           headerBGColor: '#3c8d8c',
@@ -84,6 +90,7 @@ export default {
           textColor: '#ffffff'
         },
         {
+          type: 'theme-pink',
           title: this.$t('theme_color.dark_pink'),
           logoBGColor: '#c17a86',
           headerBGColor: '#dc9da8',
@@ -91,6 +98,7 @@ export default {
           textColor: '#ffffff'
         },
         {
+          type: 'theme-purple',
           title: this.$t('theme_color.dark_purple'),
           logoBGColor: '#555299',
           headerBGColor: '#605ca8',
@@ -98,6 +106,7 @@ export default {
           textColor: '#ffffff'
         },
         {
+          type: 'theme-green',
           title: this.$t('theme_color.dark_green'),
           logoBGColor: '#15a589',
           headerBGColor: '#18bc9c',
@@ -105,6 +114,7 @@ export default {
           textColor: '#ffffff'
         },
         {
+          type: 'theme-red',
           title: this.$t('theme_color.dark_red'),
           logoBGColor: '#e43321',
           headerBGColor: '#e74c3c',
@@ -112,6 +122,7 @@ export default {
           textColor: '#ffffff'
         },
         {
+          type: 'theme-yellow',
           title: this.$t('theme_color.dark_yellow'),
           logoBGColor: '#db8b0b',
           headerBGColor: '#f39c12',
@@ -119,6 +130,7 @@ export default {
           textColor: '#ffffff'
         },
         {
+          type: 'theme-blue',
           title: this.$t('theme_color.light_blue'),
           logoBGColor: '#367fa9',
           headerBGColor: '#3c8d8c',
@@ -126,6 +138,7 @@ export default {
           textColor: '#606266'
         },
         {
+          type: 'theme-pink',
           title: this.$t('theme_color.light_pink'),
           logoBGColor: '#c17a86',
           headerBGColor: '#dc9da8',
@@ -133,6 +146,7 @@ export default {
           textColor: '#606266'
         },
         {
+          type: 'theme-purple',
           title: this.$t('theme_color.light_purple'),
           logoBGColor: '#555299',
           headerBGColor: '#605ca8',
@@ -140,6 +154,7 @@ export default {
           textColor: '#606266'
         },
         {
+          type: 'theme-green',
           title: this.$t('theme_color.light_green'),
           logoBGColor: '#15a589',
           headerBGColor: '#18bc9c',
@@ -147,6 +162,7 @@ export default {
           textColor: '#606266'
         },
         {
+          type: 'theme-red',
           title: this.$t('theme_color.light_red'),
           logoBGColor: '#e43321',
           headerBGColor: '#e74c3c',
@@ -154,6 +170,7 @@ export default {
           textColor: '#606266'
         },
         {
+          type: 'theme-yellow',
           title: this.$t('theme_color.light_yellow'),
           logoBGColor: '#db8b0b',
           headerBGColor: '#f39c12',
@@ -161,6 +178,53 @@ export default {
           textColor: '#606266'
         }
       ]
+    }
+  },
+  mounted () {
+    // this.toggleClass(document.body)
+    this.theme = '#18bc9c'
+  },
+  watch: {
+    async theme (val) {
+      const oldVal = this.chalk ? this.theme : ORIGINAL_THEME
+      if (typeof val !== 'string') return
+      const themeCluster = this.getThemeCluster(val.replace('#', ''))
+      const originalCluster = this.getThemeCluster(oldVal.replace('#', ''))
+
+      const getHandler = (variable, id) => {
+        return () => {
+          const originalCluster = this.getThemeCluster(ORIGINAL_THEME.replace('#', ''))
+          const newStyle = this.updateStyle(this[variable], originalCluster, themeCluster)
+
+          let styleTag = document.getElementById(id)
+          if (!styleTag) {
+            styleTag = document.createElement('style')
+            styleTag.setAttribute('id', id)
+            document.head.appendChild(styleTag)
+          }
+          styleTag.innerText = newStyle
+        }
+      }
+
+      if (!this.chalk) {
+        const url = `https://unpkg.com/element-ui@${version}/lib/theme-chalk/index.css`
+        await this.getCSSString(url, 'chalk')
+      }
+
+      const chalkHandler = getHandler('chalk', 'chalk-style')
+
+      chalkHandler()
+
+      const styles = [].slice.call(document.querySelectorAll('style'))
+        .filter(style => {
+          const text = style.innerText
+          return new RegExp(oldVal, 'i').test(text) && !/Chalk Variables/.test(text)
+        })
+      styles.forEach(style => {
+        const { innerText } = style
+        if (typeof innerText !== 'string') return
+        style.innerText = this.updateStyle(innerText, originalCluster, themeCluster)
+      })
     }
   },
   methods: {
@@ -175,7 +239,93 @@ export default {
 
     changeThemeColor (color) {
       this.$store.commit('changeThemeColor', color)
+      // this.toggleClass(document.body, color.type)
+      this.theme = color.headerBGColor
       this.$message.success(this.$t('setting.change_theme_success'))
+    },
+
+    // toggleClass (element, className = 'theme-green') {
+    //   if (!element || !className) {
+    //     return
+    //   }
+    //   // let classString = element.className
+    //   // const nameIndex = classString.indexOf(className)
+    //   // if (nameIndex === -1) {
+    //   //   classString += ' ' + className
+    //   // } else {
+    //   //   classString =
+    //   //     classString.substr(0, nameIndex) +
+    //   //     classString.substr(nameIndex + className.length)
+    //   // }
+    //   // element.className = classString
+    //   element.className = className
+    // },
+
+    updateStyle (style, oldCluster, newCluster) {
+      let newStyle = style
+      oldCluster.forEach((color, index) => {
+        newStyle = newStyle.replace(new RegExp(color, 'ig'), newCluster[index])
+      })
+      return newStyle
+    },
+
+    getCSSString (url, variable) {
+      return new Promise(resolve => {
+        const xhr = new XMLHttpRequest()
+        xhr.onreadystatechange = () => {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            this[variable] = xhr.responseText.replace(/@font-face{[^}]+}/, '')
+            resolve()
+          }
+        }
+        xhr.open('GET', url)
+        xhr.send()
+      })
+    },
+
+    getThemeCluster (theme) {
+      const tintColor = (color, tint) => {
+        let red = parseInt(color.slice(0, 2), 16)
+        let green = parseInt(color.slice(2, 4), 16)
+        let blue = parseInt(color.slice(4, 6), 16)
+
+        if (tint === 0) { // when primary color is in its rgb space
+          return [red, green, blue].join(',')
+        } else {
+          red += Math.round(tint * (255 - red))
+          green += Math.round(tint * (255 - green))
+          blue += Math.round(tint * (255 - blue))
+
+          red = red.toString(16)
+          green = green.toString(16)
+          blue = blue.toString(16)
+
+          return `#${red}${green}${blue}`
+        }
+      }
+
+      const shadeColor = (color, shade) => {
+        let red = parseInt(color.slice(0, 2), 16)
+        let green = parseInt(color.slice(2, 4), 16)
+        let blue = parseInt(color.slice(4, 6), 16)
+
+        red = Math.round((1 - shade) * red)
+        green = Math.round((1 - shade) * green)
+        blue = Math.round((1 - shade) * blue)
+
+        red = red.toString(16)
+        green = green.toString(16)
+        blue = blue.toString(16)
+
+        return `#${red}${green}${blue}`
+      }
+
+      const clusters = [theme]
+      for (let i = 0; i <= 9; i++) {
+        clusters.push(tintColor(theme, Number((i / 10).toFixed(2))))
+      }
+      clusters.push(shadeColor(theme, 0.1))
+      return clusters
     }
   }
 }

@@ -13,6 +13,13 @@ import './icons'
 import './mock'
 import './utils/dialogDrog'
 
+// import './themes/blue/index.css'
+// import './themes/green/index.css'
+// import './themes/pink/index.css'
+// import './themes/purple/index.css'
+// import './themes/red/index.css'
+// import './themes/yellow/index.css'
+
 import '@/assets/style/style.scss'
 import '@/assets/style/ele.scss'
 

@@ -136,10 +136,6 @@
         <el-button
           type="primary"
           size="small"
-          :style="{
-            backgroundColor: getThemeHeaderBGColor,
-            borderColor: getThemeHeaderBGColor
-          }"
           @click="submitForm('ruleForm')"
         >立即创建</el-button>
         <el-button size="small" @click="resetForm('ruleForm')">重置</el-button>
@@ -149,8 +145,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'formValidate',
   data: () => ({
@@ -249,9 +243,6 @@ export default {
       ]
     }
   }),
-  computed: {
-    ...mapGetters(['getThemeHeaderBGColor'])
-  },
   methods: {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
