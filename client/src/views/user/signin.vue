@@ -50,6 +50,7 @@
           class="valid_code_input"
           v-model="signin_form.validCode"
           :placeholder="$t('signin_page.validcode_placeholder')"
+          @keyup.enter.native="signin('signin_form')"
         >
           <i
             slot="prefix"
