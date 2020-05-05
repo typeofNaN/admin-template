@@ -434,7 +434,7 @@ export default {
 }
 
 .el-menu--collapse {
-  width: 50px;
+  width: 50px !important;
 
   .el-submenu {
     .act {
@@ -512,7 +512,7 @@ export default {
       }
       &:hover {
         .menu_item {
-          margin-left: -16px !important;
+          margin-left: -14px !important;
         }
 
         .svg-icon {

@@ -171,7 +171,7 @@ export default {
 
       setTimeout(() => {
         this.topRoutersOpacity = 1
-      }, 400)
+      }, 1000)
     }
   },
   methods: {

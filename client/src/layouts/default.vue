@@ -40,9 +40,7 @@
           <tag-view/>
         </el-header>
         <el-main>
-          <transition name="fade-transform" mode="out-in">
-            <router-view />
-          </transition>
+          <router-view />
         </el-main>
       </el-container>
     </el-container>
@@ -127,23 +125,7 @@ export default {
 }
 
 .el-aside {
-  overflow: visible;
-  z-index: 999;
-}
-
-/* fade-transform */
-.fade-transform-leave-active,
-.fade-transform-enter-active {
-  transition: all .4s;
-}
-
-.fade-transform-enter {
-  opacity: 0;
-  transform: scale(.8);
-}
-
-.fade-transform-leave-to {
-  opacity: 0;
-  transform: scale(.8);
+  overflow: visible !important;
+  z-index: 999 !important;
 }
 </style>
