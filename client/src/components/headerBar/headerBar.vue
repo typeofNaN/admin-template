@@ -245,6 +245,7 @@ export default {
       padding: 0 15px;
       justify-content: center;
       align-items: center;
+      min-width: 104px;
       height: 100%;
       font-size: 13px;
       border-right: 1px solid rgba(0, 0, 0, .05);
