@@ -1,6 +1,27 @@
 <template>
   <div id="icons">
+    <div
+      v-if="skeleton"
+      class="skeleton"
+    >
+      <div class="skeleton_top">
+        <div class="top_box"></div>
+        <div class="top_box"></div>
+      </div>
+      <el-row>
+        <el-col
+          v-for="i in ele_icons.length"
+          :key="i"
+          :span="2"
+          class="skeleton_box"
+        >
+          <div class="skeleton_icon_box"></div>
+          <div class="skeleton_text_box"></div>
+        </el-col>
+      </el-row>
+    </div>
     <el-tabs
+      v-else
       v-model="activeTabName"
       type="border-card"
     >
@@ -73,10 +94,16 @@ import clipboard from '@/utils/clipboard'
 export default {
   name: 'icons',
   data: () => ({
+    skeleton: true,
     activeTabName: 'tab1',
     ele_icons: eleIcon,
     svg_icons: svgIcon
   }),
+  mounted () {
+    setTimeout(() => {
+      this.skeleton = false
+    }, 1000)
+  },
   methods: {
     generateElementIconCode (symbol) {
       return `<i class="el-icon-${symbol}" />`
@@ -94,6 +121,42 @@ export default {
 
 <style lang="scss" scoped>
 #icons {
+  .skeleton {
+    .skeleton_top {
+      display: flex;
+      height: 40px;
+
+      .top_box {
+        margin-right: 4px;
+        width: 140px;
+        background-color: #eee;
+      }
+    }
+
+    .skeleton_box {
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      .skeleton_icon_box {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: #eee;
+        margin-bottom: 10px;
+      }
+
+      .skeleton_text_box {
+        width: 80px;
+        height: 18px;
+        background-color: #eee;
+        border-radius: 2px;
+      }
+    }
+  }
+
   .icon_item {
     margin: 30px 0;
     height: 60px;
