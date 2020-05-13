@@ -22,10 +22,12 @@
 <script>
 export default {
   name: 'copyText',
-  data: () => ({
-    value: '',
-    value1: ''
-  }),
+  data () {
+    return {
+      value: '',
+      value1: ''
+    }
+  },
   methods: {
     copy1 () {
       const str = '这是一条固定文本'

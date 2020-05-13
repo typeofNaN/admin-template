@@ -88,42 +88,44 @@
 <script>
 export default {
   name: 'tags',
-  data: () => ({
-    tags: [
-      { name: '标签一', type: '' },
-      { name: '标签二', type: 'success' },
-      { name: '标签三', type: 'info' },
-      { name: '标签四', type: 'warning' },
-      { name: '标签五', type: 'danger' }
-    ],
-    items: [
-      { type: '', label: '标签一' },
-      { type: 'success', label: '标签二' },
-      { type: 'info', label: '标签三' },
-      { type: 'danger', label: '标签四' },
-      { type: 'warning', label: '标签五' }
-    ],
-    dynamicTags: ['标签一', '标签二', '标签三'],
-    inputVisible: false,
-    inputValue: '',
-    value1: '',
-    options: [{
-      value: '选项1',
-      label: '黄金糕'
-    }, {
-      value: '选项2',
-      label: '双皮奶'
-    }, {
-      value: '选项3',
-      label: '蚵仔煎'
-    }, {
-      value: '选项4',
-      label: '龙须面'
-    }, {
-      value: '选项5',
-      label: '北京烤鸭'
-    }]
-  }),
+  data () {
+    return {
+      tags: [
+        { name: '标签一', type: '' },
+        { name: '标签二', type: 'success' },
+        { name: '标签三', type: 'info' },
+        { name: '标签四', type: 'warning' },
+        { name: '标签五', type: 'danger' }
+      ],
+      items: [
+        { type: '', label: '标签一' },
+        { type: 'success', label: '标签二' },
+        { type: 'info', label: '标签三' },
+        { type: 'danger', label: '标签四' },
+        { type: 'warning', label: '标签五' }
+      ],
+      dynamicTags: ['标签一', '标签二', '标签三'],
+      inputVisible: false,
+      inputValue: '',
+      value1: '',
+      options: [{
+        value: '选项1',
+        label: '黄金糕'
+      }, {
+        value: '选项2',
+        label: '双皮奶'
+      }, {
+        value: '选项3',
+        label: '蚵仔煎'
+      }, {
+        value: '选项4',
+        label: '龙须面'
+      }, {
+        value: '选项5',
+        label: '北京烤鸭'
+      }]
+    }
+  },
   methods: {
     handleClose (tag) {
       this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1)

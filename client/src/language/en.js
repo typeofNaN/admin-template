@@ -20,6 +20,7 @@ module.exports = {
     tabs: 'tabs',
     icons: 'icons',
     treeTable: 'tree table',
+    h5Setting: 'h5 Setting',
     routineManage: 'routineManage',
     classification: 'classification',
     jurisdiction: 'jurisdiction',

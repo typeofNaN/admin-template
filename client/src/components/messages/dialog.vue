@@ -23,9 +23,11 @@ import TTable from './dialogTable'
 
 export default {
   name: 'm_dialog',
-  data: () => ({
-    dialogVisible: false
-  }),
+  data () {
+    return {
+      dialogVisible: false
+    }
+  },
   computed: {
     ...mapGetters(['getThemeHeaderBGColor'])
   },

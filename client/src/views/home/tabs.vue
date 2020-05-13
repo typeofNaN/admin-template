@@ -41,12 +41,14 @@
 <script>
 export default {
   name: 'tabs',
-  data: () => ({
-    activeTabs1: 'first',
-    activeTabs2: 'first',
-    activeTabs3: 'first',
-    tabPosition: 'left'
-  })
+  data () {
+    return {
+      activeTabs1: 'first',
+      activeTabs2: 'first',
+      activeTabs3: 'first',
+      tabPosition: 'left'
+    }
+  }
 }
 </script>
 

@@ -215,11 +215,13 @@ export default {
       default: null
     }
   },
-  data: () => ({
-    logoUrl: logo,
-    routers: [],
-    darkTheme: true
-  }),
+  data () {
+    return {
+      logoUrl: logo,
+      routers: [],
+      darkTheme: true
+    }
+  },
   watch: {
     aslideRouters (val) {
       this.routers = val

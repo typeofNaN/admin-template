@@ -51,9 +51,11 @@
 <script>
 export default {
   name: 'popover',
-  data: () => ({
-    visible: false
-  })
+  data () {
+    return {
+      visible: false
+    }
+  }
 }
 </script>
 

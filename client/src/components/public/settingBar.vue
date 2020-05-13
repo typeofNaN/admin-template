@@ -69,15 +69,17 @@ const ORIGINAL_THEME = '#409EFF' // default color
 
 export default {
   name: 'SettingBar',
-  data: () => ({
-    settingBar: false,
-    settingForm: {
-      fixedHeader: true,
-      themeColor: '#454545'
-    },
-    chalk: '',
-    theme: ''
-  }),
+  data () {
+    return {
+      settingBar: false,
+      settingForm: {
+        fixedHeader: true,
+        themeColor: '#454545'
+      },
+      chalk: '',
+      theme: ''
+    }
+  },
   computed: {
     themeColors () {
       return [

@@ -15,9 +15,11 @@ import screenfull from 'screenfull'
 
 export default {
   name: 'Screenfull',
-  data: () => ({
-    isFullscreen: false
-  }),
+  data () {
+    return {
+      isFullscreen: false
+    }
+  },
   mounted () {
     this.init()
   },

@@ -9,6 +9,7 @@ const Editor = () => import('@/views/home/richEditor')
 const Tabs = () => import('@/views/home/tabs')
 const Icons = () => import('@/views/home/icons')
 const TreeTable = () => import('@/views/home/treeTable')
+const H5Setting = () => import('@/views/home/h5Setting')
 
 const HomeRoute = {
   path: '/',
@@ -116,6 +117,18 @@ const TreeTableRoute = {
   }
 }
 
+const H5SettingRoute = {
+  path: '/h5Setting',
+  name: 'h5Setting',
+  component: H5Setting,
+  meta: {
+    icon: 'shopping',
+    title: 'h5Setting',
+    group: 'home',
+    isNew: true
+  }
+}
+
 const HomeRouters = {
   path: '/',
   component: DefaultLayout,
@@ -134,7 +147,8 @@ const HomeRouters = {
     EditorRoute,
     TabsRoute,
     IconsRoute,
-    TreeTableRoute
+    TreeTableRoute,
+    H5SettingRoute
   ]
 }
 

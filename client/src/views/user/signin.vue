@@ -98,16 +98,18 @@ const roleArr = [
 
 export default {
   name: 'SignIn',
-  data: () => ({
-    logoUrl: logo,
-    signin_form: {
-      userName: 'admin',
-      password: '123456',
-      validCode: ''
-    },
-    validCodes: '',
-    loading: false
-  }),
+  data () {
+    return {
+      logoUrl: logo,
+      signin_form: {
+        userName: 'admin',
+        password: '123456',
+        validCode: ''
+      },
+      validCodes: '',
+      loading: false
+    }
+  },
   components: {
     ValidCode
   },

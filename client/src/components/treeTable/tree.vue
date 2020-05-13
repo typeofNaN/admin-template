@@ -34,53 +34,55 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'tree',
-  data: () => ({
-    checkAll: false,
-    expandAll: true,
-    treeValueStr: '',
-    data: [{
-      id: 'all',
-      label: '选中全部',
-      children: [{
-        id: '一级 1',
-        label: '一级 1',
+  data () {
+    return {
+      checkAll: false,
+      expandAll: true,
+      treeValueStr: '',
+      data: [{
+        id: 'all',
+        label: '选中全部',
         children: [{
-          id: 1,
-          label: '1'
+          id: '一级 1',
+          label: '一级 1',
+          children: [{
+            id: 1,
+            label: '1'
+          }, {
+            id: 2,
+            label: '2'
+          }, {
+            id: 3,
+            label: '3'
+          }]
         }, {
-          id: 2,
-          label: '2'
+          id: '一级 2',
+          label: '一级 2',
+          children: [{
+            id: 4,
+            label: '4'
+          }, {
+            id: 5,
+            label: '5'
+          }]
         }, {
-          id: 3,
-          label: '3'
+          id: '一级 3',
+          label: '一级 3',
+          children: [{
+            id: 6,
+            label: '6'
+          }, {
+            id: 7,
+            label: '7'
+          }]
         }]
-      }, {
-        id: '一级 2',
-        label: '一级 2',
-        children: [{
-          id: 4,
-          label: '4'
-        }, {
-          id: 5,
-          label: '5'
-        }]
-      }, {
-        id: '一级 3',
-        label: '一级 3',
-        children: [{
-          id: 6,
-          label: '6'
-        }, {
-          id: 7,
-          label: '7'
-        }]
-      }]
-    }],
-    defaultProps: {
-      children: 'children',
-      label: 'label'
+      }],
+      defaultProps: {
+        children: 'children',
+        label: 'label'
+      }
     }
-  }),
+  },
   computed: {
     ...mapGetters(['getThemeHeaderBGColor'])
   },

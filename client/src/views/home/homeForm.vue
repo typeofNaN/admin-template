@@ -86,28 +86,30 @@ import Tips from '@/components/public/tips'
 
 export default {
   name: 'home',
-  data: () => ({
-    activeTabName: 'tab1',
-    searchData: {
-      _id: '',
-      a: '',
-      b: '',
-      c: '',
-      d: '',
-      e: '',
-      f: '',
-      g: '',
-      time: '',
-      is_deleted: '',
-      page: 1,
-      pageSize: 10
-    },
-    tableData: [],
-    selectData: [],
-    count: 0,
-    current: 1,
-    currentPageSize: 10
-  }),
+  data () {
+    return {
+      activeTabName: 'tab1',
+      searchData: {
+        _id: '',
+        a: '',
+        b: '',
+        c: '',
+        d: '',
+        e: '',
+        f: '',
+        g: '',
+        time: '',
+        is_deleted: '',
+        page: 1,
+        pageSize: 10
+      },
+      tableData: [],
+      selectData: [],
+      count: 0,
+      current: 1,
+      currentPageSize: 10
+    }
+  },
   components: {
     BorderBox,
     HomeSearch,

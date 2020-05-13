@@ -133,10 +133,12 @@
 <script>
 export default {
   name: 'step',
-  data: () => ({
-    orderActive: 0,
-    active: 0
-  }),
+  data () {
+    return {
+      orderActive: 0,
+      active: 0
+    }
+  },
   methods: {
     nextOrder () {
       if (this.orderActive > 4) {

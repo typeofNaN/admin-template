@@ -120,9 +120,11 @@ import avatar from '@/assets/img/avatar.jpg'
 
 export default {
   name: 'ToolBar',
-  data: () => ({
-    avatarUrl: avatar
-  }),
+  data () {
+    return {
+      avatarUrl: avatar
+    }
+  },
   components: {
     ScreenFull,
     SettingBar,
@@ -165,7 +167,7 @@ export default {
         this.$router.replace('/account/signin')
         setTimeout(() => {
           this.$store.dispatch('signout')
-        }, 100)
+        }, 1000)
       }).catch(() => {})
     },
 

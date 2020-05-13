@@ -20,6 +20,7 @@ module.exports = {
     tabs: '标签页',
     icons: '图标',
     treeTable: '树形表格',
+    h5Setting: '商城设置',
     routineManage: '常规管理',
     classification: '分类管理',
     jurisdiction: '权限管理',

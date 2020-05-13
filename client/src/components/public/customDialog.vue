@@ -31,9 +31,11 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'custom_dialog',
-  data: () => ({
-    dialogVisible: false
-  }),
+  data () {
+    return {
+      dialogVisible: false
+    }
+  },
   computed: {
     ...mapGetters(['getThemeHeaderBGColor'])
   },

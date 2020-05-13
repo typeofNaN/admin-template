@@ -10,8 +10,10 @@
 <script>
 export default {
   name: 'calendar',
-  data: () => ({
-    date: new Date()
-  })
+  data () {
+    return {
+      date: new Date()
+    }
+  }
 }
 </script>

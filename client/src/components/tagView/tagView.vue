@@ -94,15 +94,17 @@ import { i18nForRouteTitle } from '@/utils/i18n'
 
 export default {
   name: 'TagView',
-  data: () => ({
-    visible: false,
-    top: 0,
-    left: 0,
-    selectedTag: {},
-    affixTags: [],
-    showTagView: [],
-    hideTagView: []
-  }),
+  data () {
+    return {
+      visible: false,
+      top: 0,
+      left: 0,
+      selectedTag: {},
+      affixTags: [],
+      showTagView: [],
+      hideTagView: []
+    }
+  },
   components: {
     ScrollPane
   },

@@ -103,10 +103,12 @@ import DDialog from '@/components/messages/dialog'
 
 export default {
   name: 'messageLayer',
-  data: () => ({
-    activeTabName: 'tab1',
-    loading: false
-  }),
+  data () {
+    return {
+      activeTabName: 'tab1',
+      loading: false
+    }
+  },
   components: {
     Message,
     MessageBox,

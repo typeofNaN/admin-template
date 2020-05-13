@@ -233,12 +233,14 @@ export default {
       default: null
     }
   },
-  data: () => ({
-    dialogFormVisible: false,
-    dialogTitle: '',
-    dialogForm: {},
-    isbigDialog: false
-  }),
+  data () {
+    return {
+      dialogFormVisible: false,
+      dialogTitle: '',
+      dialogForm: {},
+      isbigDialog: false
+    }
+  },
   computed: {
     ...mapGetters(['getThemeHeaderBGColor'])
   },

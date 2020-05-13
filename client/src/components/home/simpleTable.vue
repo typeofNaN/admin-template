@@ -100,29 +100,31 @@ import accountBG from '@/assets/img/account_bg.jpg'
 
 export default {
   name: 'simpleTable',
-  data: () => ({
-    tableData: [
-      {
-        id: 1,
-        name: '张三',
-        avatar: avatar,
-        desc: 'hello world'
+  data () {
+    return {
+      tableData: [
+        {
+          id: 1,
+          name: '张三',
+          avatar: avatar,
+          desc: 'hello world'
+        },
+        {
+          id: 2,
+          name: '李四',
+          avatar: accountBG,
+          desc: 'hello world'
+        }
+      ],
+      dialogVisible: false,
+      form: {
+        name: '',
+        desc: ''
       },
-      {
-        id: 2,
-        name: '李四',
-        avatar: accountBG,
-        desc: 'hello world'
-      }
-    ],
-    dialogVisible: false,
-    form: {
-      name: '',
-      desc: ''
-    },
-    dialogImgVisible: false,
-    dialogImageUrl: ''
-  }),
+      dialogImgVisible: false,
+      dialogImageUrl: ''
+    }
+  },
   methods: {
     add () {
       let obj = { ...this.form }

@@ -18,14 +18,17 @@ import particleAnimation from '@/utils/particleAnimation'
 export default {
   name: 'account',
   mounted () {
-    particleAnimation(document.querySelector('#particle-animation'), { color: '#fdeeeb' })
+    particleAnimation(document.querySelector('#particle-animation'), { color: '#ffffff' })
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.a {
+  color: #faf3f3;
+}
 #layout_account {
-  background-color: rgba(206, 193, 193, 0.2);
+  background-color: rgba(200, 200, 200, 0.2);
 }
 
 .main {
@@ -43,9 +46,10 @@ export default {
     padding: 20px;
     width: 400px;
     height: 460px;
-    background-color: rgba(255, 255, 255, .4);
+    background-color: rgba(255, 255, 255, 1);
     border-radius: 20px;
     box-shadow: 0 0 2px 4px rgba(243, 238, 238, 0.9);
+    z-index: 1;
   }
 
   .copyright {
@@ -54,8 +58,9 @@ export default {
     bottom: 10px;
     width: 100%;
     text-align: center;
-    font-size: 20px;
+    font-size: 16px;
     color: #606266;
+    z-index: 1;
   }
 }
 
@@ -64,6 +69,6 @@ export default {
   height: 100%;
   position: absolute;
   top: 0;
-  z-index: -1;
+  // z-index: -1;
 }
 </style>

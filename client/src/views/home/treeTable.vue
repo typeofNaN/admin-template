@@ -15,9 +15,11 @@ import TTable from '@/views/home/homeForm'
 
 export default {
   name: 'treeTable',
-  data: () => ({
-    tableData: []
-  }),
+  data () {
+    return {
+      tableData: []
+    }
+  },
   components: {
     Tree,
     TTable

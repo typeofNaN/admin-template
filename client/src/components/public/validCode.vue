@@ -34,9 +34,11 @@ export default {
       default: 4
     }
   },
-  data: () => ({
-    codeList: []
-  }),
+  data () {
+    return {
+      codeList: []
+    }
+  },
   mounted () {
     this.createdCode()
   },

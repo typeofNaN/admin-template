@@ -13,6 +13,8 @@ import './icons'
 import './mock'
 import './utils/dialogDrog'
 
+import H5Components from './components/h5Setting'
+
 // import './themes/blue/index.css'
 // import './themes/green/index.css'
 // import './themes/pink/index.css'
@@ -28,6 +30,14 @@ Vue.config.productionTip = false
 Vue.prototype.api = Api
 
 Vue.use(ElementUI)
+
+const eventBus = {
+  install (Vue) {
+    Vue.prototype.$evt = new Vue()
+  }
+}
+Vue.use(eventBus)
+Vue.use(H5Components)
 
 /* eslint-disable no-new */
 new Vue({

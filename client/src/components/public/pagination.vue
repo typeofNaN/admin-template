@@ -51,10 +51,12 @@ export default {
       default: 0
     }
   },
-  data: () => ({
-    current: 1,
-    pageSize: 10
-  }),
+  data () {
+    return {
+      current: 1,
+      pageSize: 10
+    }
+  },
   mounted () {
     this.pageSize = this.currentPageSize
   },

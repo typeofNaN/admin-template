@@ -45,12 +45,14 @@ function makeDialog (option) {
   `
   var vue = new Vue({
     el: dom,
-    data: () => ({
-      title: option.title,
-      size: option.size || 'small',
-      show: true,
-      dialogData: option.data
-    }),
+    data () {
+      return {
+        title: option.title,
+        size: option.size || 'small',
+        show: true,
+        dialogData: option.data
+      }
+    },
     template: tpl,
     computed: {
       customClass () {

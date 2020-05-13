@@ -93,12 +93,14 @@ import clipboard from '@/utils/clipboard'
 
 export default {
   name: 'icons',
-  data: () => ({
-    skeleton: true,
-    activeTabName: 'tab1',
-    ele_icons: eleIcon,
-    svg_icons: svgIcon
-  }),
+  data () {
+    return {
+      skeleton: true,
+      activeTabName: 'tab1',
+      ele_icons: eleIcon,
+      svg_icons: svgIcon
+    }
+  },
   mounted () {
     setTimeout(() => {
       this.skeleton = false

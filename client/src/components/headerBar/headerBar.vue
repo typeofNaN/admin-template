@@ -93,12 +93,14 @@ export default {
       default: null
     }
   },
-  data: () => ({
-    showTopRouters: [],
-    hideTopRouters: [],
-    topRoutersOpacity: 0,
-    logoUrl: logo
-  }),
+  data () {
+    return {
+      showTopRouters: [],
+      hideTopRouters: [],
+      topRoutersOpacity: 0,
+      logoUrl: logo
+    }
+  },
   components: {
     ToolBar
   },

@@ -121,10 +121,12 @@ export default {
       default: null
     }
   },
-  data: () => ({
-    selection: [],
-    loading: true
-  }),
+  data () {
+    return {
+      selection: [],
+      loading: true
+    }
+  },
   methods: {
     formatterDate (obj) {
       if (obj.utc_created) {

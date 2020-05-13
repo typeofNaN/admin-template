@@ -233,9 +233,11 @@ export default {
       default: null
     }
   },
-  data: () => ({
-    showSearch: true
-  }),
+  data () {
+    return {
+      showSearch: true
+    }
+  },
   methods: {
     search () {
       this.$emit('search', this.searchForm)

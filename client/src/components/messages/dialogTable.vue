@@ -122,13 +122,15 @@ import Pagination from '@/components/public/pagination'
 
 export default {
   name: 'dialogTable',
-  data: () => ({
-    tableData: [],
-    selection: [],
-    loading: true,
-    count: 0,
-    currentPageSize: 1
-  }),
+  data () {
+    return {
+      tableData: [],
+      selection: [],
+      loading: true,
+      count: 0,
+      currentPageSize: 1
+    }
+  },
   mounted () {
     this.getData()
   },

@@ -47,7 +47,7 @@ export default {
 <style lang="scss">
 .el-dialog__wrapper {
   width: 100% !important;
-  height: 0 !important;
+  // height: 0 !important;
   overflow: visible;
   .el-dialog {
     z-index: 2000 !important;
