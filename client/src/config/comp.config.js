@@ -28,7 +28,10 @@ module.exports = {
         type: 'slider',
         label: '容器高度',
         attr: 'height',
-        val: '',
+        val: 40,
+        min: 40,
+        max: 80,
+        step: 1,
         unit: 'px',
         isNecessary: false
       }, {
@@ -243,7 +246,7 @@ module.exports = {
         type: 'slider',
         label: '容器高度',
         attr: 'height',
-        val: '',
+        val: 100,
         unit: 'px',
         isNecessary: false
       }, {
@@ -477,449 +480,6 @@ module.exports = {
         name: 'name',
         placeholder: '',
         isNecessary: 1
-      }]
-    }
-  },
-  'swiper-banner': {
-    title: '轮播图',
-    domId: '',
-    domName: '',
-    base: [
-      {
-        type: 'radio',
-        label: '自动播放',
-        attr: 'autoplay',
-        val: true,
-        options: [{
-          name: '是',
-          val: true
-        }, {
-          name: '否',
-          val: false
-        }],
-        isNecessary: false
-      }, {
-        type: 'radio',
-        label: '显示分页',
-        attr: 'pagination',
-        val: true,
-        options: [{
-          name: '是',
-          val: true
-        }, {
-          name: '否',
-          val: false
-        }],
-        isNecessary: false
-      }, {
-        type: 'slider',
-        label: '轮播时长',
-        attr: 'interval',
-        val: 3000,
-        unit: '',
-        min: 1000,
-        max: 5000,
-        step: 1000,
-        isNecessary: false
-      }
-    ],
-    style: [
-      {
-        type: 'color-picker',
-        label: '背景颜色',
-        attr: 'background-color',
-        val: 'rgba(255, 255, 255, 0)',
-        isNecessary: true
-      }, {
-        type: 'slider',
-        label: '上边距',
-        attr: 'padding-top',
-        val: 0,
-        unit: 'px',
-        min: 0,
-        max: 50,
-        step: 1,
-        isNecessary: true
-      }, {
-        type: 'slider',
-        label: '右边距',
-        attr: 'padding-right',
-        val: 0,
-        unit: 'px',
-        min: 0,
-        max: 50,
-        step: 1,
-        isNecessary: true
-      }, {
-        type: 'slider',
-        label: '下边距',
-        attr: 'padding-bottom',
-        val: 0,
-        unit: 'px',
-        min: 0,
-        max: 50,
-        step: 1,
-        isNecessary: true
-      }, {
-        type: 'slider',
-        label: '左边距',
-        attr: 'padding-left',
-        val: 0,
-        unit: 'px',
-        min: 0,
-        max: 50,
-        step: 1,
-        isNecessary: true
-      }
-    ],
-    action: {
-      type: 'swiper-click',
-      title: '图片项配置',
-      config: [{
-        val: '',
-        click: null
-      }]
-    }
-  },
-  'floor-menu': {
-    title: '楼层导航',
-    domId: '',
-    domName: '',
-    assert: {
-      script: ['./js/libs/iscroll.min.js', './js/body/floor-menu.js']
-    },
-    style: [
-      {
-        type: 'color-picker',
-        label: '默认背景',
-        attr: 'background-color',
-        val: '#ffffff',
-        isNecessary: true
-      }, {
-        type: 'color-picker',
-        label: '选中背景',
-        attr: 'background-color:hover',
-        val: '#ffffff',
-        isNecessary: true
-      }, {
-        type: 'color-picker',
-        label: '默认字体',
-        attr: 'color',
-        val: '#4a4a4a',
-        isNecessary: true
-      }, {
-        type: 'color-picker',
-        label: '选中字体',
-        attr: 'color:hover',
-        val: '#D0021B',
-        isNecessary: true
-      }
-    ],
-    action: {
-      type: 'floor-menu-click',
-      title: '导航项配置',
-      config: [{
-        text: '默认项1',
-        click: null
-      }]
-    }
-  },
-  'scroll-left': {
-    title: '横向滚动',
-    domId: '',
-    domName: '',
-    assert: {
-      script: ['./js/libs/iscroll.min.js', './js/body/scroll-left.js']
-    },
-    style: [
-      {
-        type: 'color-picker',
-        label: '背景颜色',
-        attr: 'background-color',
-        val: '',
-        isNecessary: false
-      }
-    ],
-    action: {
-      type: 'left-scroll-click',
-      title: '滚动项配置',
-      config: [
-        {
-          val: '',
-          click: null
-        }
-      ]
-    }
-  },
-  'timeout': {
-    title: '倒计时',
-    domId: '',
-    domName: '',
-    assert: {
-      script: ['./js/body/timeout.js']
-    },
-    style: [
-      {
-        type: 'datetime',
-        label: '截止时间',
-        attr: 'end-time',
-        val: '',
-        isNecessary: true
-      }, {
-        type: 'upload',
-        label: '背景图片',
-        attr: 'background-image',
-        val: '',
-        isNecessary: true
-      }
-    ],
-    action: {
-      type: 'timeout-click',
-      title: '倒计时配置',
-      config: [
-        {
-          show: true,
-          x: 0,
-          y: 0,
-          w: 40,
-          h: 40,
-          font: 16,
-          weight: 400,
-          color: '#333'
-        }, {
-          show: true,
-          x: 50,
-          y: 0,
-          w: 40,
-          h: 40,
-          font: 16,
-          weight: 400,
-          color: '#333'
-        }, {
-          show: true,
-          x: 100,
-          y: 0,
-          w: 40,
-          h: 40,
-          font: 16,
-          weight: 400,
-          color: '#333'
-        }, {
-          show: true,
-          x: 150,
-          y: 0,
-          w: 40,
-          h: 40,
-          font: 16,
-          weight: 400,
-          color: '#333'
-        }
-      ]
-    }
-  },
-  'news-marquee': {
-    title: '倒计时',
-    domId: '',
-    domName: '',
-    assert: {
-      script: ['./js/body/new-marquee.js']
-    },
-    style: [
-      {
-        type: 'radio',
-        label: '是否连续',
-        attr: 'goon',
-        val: false,
-        options: [
-          {
-            name: '连续',
-            val: true
-          }, {
-            name: '不连续',
-            val: false
-          }
-        ]
-      }, {
-        type: 'upload',
-        label: '背景图片',
-        attr: 'background-image',
-        val: '',
-        isNecessary: true
-      }, {
-        type: 'slider',
-        label: '容器高度',
-        attr: 'height',
-        val: 40,
-        unit: 'px',
-        min: 0,
-        max: 100,
-        step: 1,
-        isNecessary: true
-      }, {
-        type: 'slider',
-        label: '右边距',
-        attr: 'padding-right',
-        val: 10,
-        unit: 'px',
-        min: 0,
-        max: 50,
-        step: 1,
-        isNecessary: true
-      }, {
-        type: 'slider',
-        label: '左边距',
-        attr: 'padding-left',
-        val: 10,
-        unit: 'px',
-        min: 0,
-        max: 50,
-        step: 1,
-        isNecessary: true
-      }, {
-        type: 'slider',
-        label: '字体大小',
-        attr: 'font-size',
-        val: 12,
-        unit: 'px',
-        min: 0,
-        max: 60,
-        step: 1,
-        isNecessary: true
-      }, {
-        type: 'font',
-        label: '字体',
-        attr: ['font-weight', 'text-decoration', 'font-style', 'text-align'],
-        val: ['400', 'none', 'inherit', 'left'],
-        isNecessary: false
-      }, {
-        type: 'color-picker',
-        label: '字体颜色',
-        attr: 'color',
-        val: '#333333',
-        isNecessary: true
-      }
-    ],
-    action: {
-      type: 'marquee-click',
-      title: '滚动项配置',
-      config: [{
-        text: '滚动新闻默认文本',
-        click: null
-      }]
-    }
-  },
-  'grid-menu': {
-    title: '网格菜单',
-    domId: '',
-    domName: '',
-    base: [
-      {
-        type: 'slider',
-        label: '最大列数',
-        attr: 'grid-column',
-        val: 4,
-        unit: '',
-        min: 2,
-        max: 5,
-        step: 1,
-        isNecessary: true
-      }
-    ],
-    style: [
-      {
-        type: 'slider',
-        label: '上边距',
-        attr: 'padding-top',
-        val: 0,
-        unit: 'px',
-        min: 0,
-        max: 50,
-        step: 1,
-        isNecessary: true
-      }, {
-        type: 'slider',
-        label: '右边距',
-        attr: 'padding-right',
-        val: 10,
-        unit: 'px',
-        min: 0,
-        max: 50,
-        step: 1,
-        isNecessary: true
-      }, {
-        type: 'slider',
-        label: '下边距',
-        attr: 'padding-bottom',
-        val: 10,
-        unit: 'px',
-        min: 0,
-        max: 50,
-        step: 1,
-        isNecessary: true
-      }, {
-        type: 'slider',
-        label: '左边距',
-        attr: 'padding-left',
-        val: 10,
-        unit: 'px',
-        min: 0,
-        max: 50,
-        step: 1,
-        isNecessary: true
-      }, {
-        type: 'color-picker',
-        label: '字体颜色',
-        attr: 'color',
-        val: '#333333',
-        isNecessary: true
-      }
-    ],
-    action: {
-      type: 'grid-menu-click',
-      title: '点击项配置',
-      config: [
-        {
-          val: '',
-          text: '导航项一',
-          click: null
-        }, {
-          val: '',
-          text: '导航项二',
-          click: null
-        }
-      ]
-    }
-  },
-  'bottom-menu': {
-    title: '底部导航',
-    domId: '',
-    domName: '',
-    style: [
-      {
-        type: 'slider',
-        label: '容器高度',
-        attr: 'height',
-        val: 60,
-        unit: 'px',
-        min: 0,
-        max: 100,
-        step: 1,
-        isNecessary: false
-      }, {
-        type: 'color-picker',
-        label: '背景颜色',
-        attr: 'background-color',
-        val: '#ffffff',
-        isNecessary: false
-      }
-    ],
-    action: {
-      type: 'bottom-menu-click',
-      title: '点击项配置',
-      config: [{
-        val: '',
-        titleName: '',
-        click: null
       }]
     }
   },
@@ -1259,6 +819,208 @@ module.exports = {
       }
     ]
   },
+  timeout: {
+    title: '倒计时',
+    domId: '',
+    domName: '',
+    assert: {
+      script: ['./js/body/timeout.js']
+    },
+    style: [
+      {
+        type: 'datetime',
+        label: '截止时间',
+        attr: 'end-time',
+        val: '',
+        isNecessary: true
+      }, {
+        type: 'upload',
+        label: '背景图片',
+        attr: 'background-image',
+        val: '',
+        isNecessary: true
+      }
+    ],
+    action: {
+      type: 'timeout-click',
+      title: '倒计时配置',
+      config: [
+        {
+          show: true,
+          x: 0,
+          y: 0,
+          w: 40,
+          h: 40,
+          font: 16,
+          weight: 400,
+          color: '#333'
+        }, {
+          show: true,
+          x: 50,
+          y: 0,
+          w: 40,
+          h: 40,
+          font: 16,
+          weight: 400,
+          color: '#333'
+        }, {
+          show: true,
+          x: 100,
+          y: 0,
+          w: 40,
+          h: 40,
+          font: 16,
+          weight: 400,
+          color: '#333'
+        }, {
+          show: true,
+          x: 150,
+          y: 0,
+          w: 40,
+          h: 40,
+          font: 16,
+          weight: 400,
+          color: '#333'
+        }
+      ]
+    }
+  },
+  'floor-title': {
+    title: '楼层标题',
+    domId: '',
+    domName: '',
+    base: [
+      {
+        type: 'text',
+        label: '文本内容',
+        val: '默认文本',
+        isNecessary: true
+      }
+    ],
+    style: [
+      {
+        type: 'font',
+        label: '字体',
+        attr: ['font-weight', 'text-decoration', 'font-style', 'text-align'],
+        val: ['400', 'none', 'inherit', 'left'],
+        isNecessary: false
+      }, {
+        type: 'color-picker',
+        label: '字体颜色',
+        attr: 'color',
+        val: '#333333',
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '容器高度',
+        attr: 'height',
+        val: 40,
+        min: 40,
+        max: 80,
+        step: 1,
+        unit: 'px',
+        isNecessary: false
+      }, {
+        type: 'upload',
+        label: '背景图',
+        attr: 'background-image',
+        val: '',
+        isNecessary: false
+      }, {
+        type: 'color-picker',
+        label: '背景颜色',
+        attr: 'background-color',
+        val: '',
+        isNecessary: false
+      }, {
+        type: 'select',
+        label: '背景尺寸',
+        attr: 'background-size',
+        val: 'contain',
+        options: [
+          {
+            name: '无',
+            val: 'inherit'
+          }, {
+            name: '宽高裁剪',
+            val: 'cover'
+          }, {
+            name: '宽高自适应',
+            val: 'contain'
+          }
+        ]
+      }, {
+        type: 'slider',
+        label: '字体大小',
+        attr: 'font-size',
+        val: 20,
+        unit: 'px',
+        step: 1,
+        max: 40,
+        min: 16,
+        isNecessary: false
+      }, {
+        type: 'slider',
+        label: '文本行距',
+        attr: 'line-height',
+        val: 1.5,
+        step: 0.5,
+        max: 12,
+        min: 0.5,
+        isNecessary: false
+      }, {
+        type: 'slider',
+        label: '字间距',
+        attr: 'letter-spacing',
+        val: 0,
+        step: 1,
+        max: 50,
+        min: 0,
+        unit: 'px',
+        isNecessary: false
+      }, {
+        type: 'slider',
+        label: '上边距',
+        attr: 'padding-top',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '右边距',
+        attr: 'padding-right',
+        val: 15,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '下边距',
+        attr: 'padding-bottom',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '左边距',
+        attr: 'padding-left',
+        val: 15,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }
+    ]
+  },
   'page-faq': {
     title: '页面FAQ',
     domId: '',
@@ -1330,6 +1092,656 @@ module.exports = {
         },
         nickName: '昵称'
       }]
+    }
+  },
+  'bottom-menu': {
+    title: '底部导航',
+    domId: '',
+    domName: '',
+    style: [
+      {
+        type: 'slider',
+        label: '容器高度',
+        attr: 'height',
+        val: 60,
+        unit: 'px',
+        min: 0,
+        max: 100,
+        step: 1,
+        isNecessary: false
+      }, {
+        type: 'color-picker',
+        label: '背景颜色',
+        attr: 'background-color',
+        val: '#ffffff',
+        isNecessary: false
+      }
+    ],
+    action: {
+      type: 'bottom-menu-click',
+      title: '点击项配置',
+      config: [{
+        val: '',
+        titleName: '',
+        click: null
+      }]
+    }
+  },
+  'grid-menu': {
+    title: '网格导航',
+    domId: '',
+    domName: '',
+    base: [
+      {
+        type: 'slider',
+        label: '最大列数',
+        attr: 'grid-column',
+        val: 4,
+        unit: '',
+        min: 2,
+        max: 5,
+        step: 1,
+        isNecessary: true
+      }
+    ],
+    style: [
+      {
+        type: 'slider',
+        label: '上边距',
+        attr: 'padding-top',
+        val: 0,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '右边距',
+        attr: 'padding-right',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '下边距',
+        attr: 'padding-bottom',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '左边距',
+        attr: 'padding-left',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'color-picker',
+        label: '字体颜色',
+        attr: 'color',
+        val: '#333333',
+        isNecessary: true
+      }
+    ],
+    action: {
+      type: 'grid-menu-click',
+      title: '点击项配置',
+      config: [
+        {
+          val: '',
+          text: '导航项一',
+          click: null
+        }, {
+          val: '',
+          text: '导航项二',
+          click: null
+        }
+      ]
+    }
+  },
+  'floor-menu': {
+    title: '楼层导航',
+    domId: '',
+    domName: '',
+    assert: {
+      script: ['./js/libs/iscroll.min.js', './js/body/floor-menu.js']
+    },
+    style: [
+      {
+        type: 'color-picker',
+        label: '默认背景',
+        attr: 'background-color',
+        val: '#ffffff',
+        isNecessary: true
+      }, {
+        type: 'color-picker',
+        label: '选中背景',
+        attr: 'background-color:hover',
+        val: '#ffffff',
+        isNecessary: true
+      }, {
+        type: 'color-picker',
+        label: '默认字体',
+        attr: 'color',
+        val: '#4a4a4a',
+        isNecessary: true
+      }, {
+        type: 'color-picker',
+        label: '选中字体',
+        attr: 'color:hover',
+        val: '#D0021B',
+        isNecessary: true
+      }
+    ],
+    action: {
+      type: 'floor-menu-click',
+      title: '导航项配置',
+      config: [{
+        text: '默认项1',
+        click: null
+      }]
+    }
+  },
+  'layout-repeat': {
+    title: '平铺布局',
+    domId: '',
+    domName: '',
+    base: [
+      {
+        type: 'slider',
+        label: '最大列数',
+        attr: 'grid-column',
+        val: 2,
+        unit: '',
+        min: 1,
+        max: 4,
+        step: 1,
+        isNecessary: true
+      }
+    ],
+    style: [
+      {
+        type: 'slider',
+        label: '上边距',
+        attr: 'padding-top',
+        val: 0,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '右边距',
+        attr: 'padding-right',
+        val: 4,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '下边距',
+        attr: 'padding-bottom',
+        val: 0,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '左边距',
+        attr: 'padding-left',
+        val: 4,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }
+    ],
+    action: {
+      type: 'layout-repeat-click',
+      title: '点击项配置',
+      config: [
+        {
+          val: '',
+          click: null
+        }, {
+          val: '',
+          click: null
+        }
+      ]
+    }
+  },
+  'layout-left': {
+    title: '两栏布局左',
+    domId: '',
+    domName: '',
+    style: [
+      {
+        type: 'slider',
+        label: '上边距',
+        attr: 'padding-top',
+        val: 0,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '右边距',
+        attr: 'padding-right',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '下边距',
+        attr: 'padding-bottom',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '左边距',
+        attr: 'padding-left',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }
+    ],
+    action: {
+      type: 'layout-left-click',
+      title: '点击项配置',
+      config: [
+        {
+          val: '',
+          text: '左边',
+          click: null
+        }, {
+          val: '',
+          text: '右上',
+          click: null
+        }, {
+          val: '',
+          text: '右下',
+          click: null
+        }
+      ]
+    }
+  },
+  'layout-right': {
+    title: '两栏布局右',
+    domId: '',
+    domName: '',
+    style: [
+      {
+        type: 'slider',
+        label: '上边距',
+        attr: 'padding-top',
+        val: 0,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '右边距',
+        attr: 'padding-right',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '下边距',
+        attr: 'padding-bottom',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '左边距',
+        attr: 'padding-left',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }
+    ],
+    action: {
+      type: 'layout-right-click',
+      title: '点击项配置',
+      config: [
+        {
+          val: '',
+          text: '左上',
+          click: null
+        }, {
+          val: '',
+          text: '左下',
+          click: null
+        }, {
+          val: '',
+          text: '右边',
+          click: null
+        }
+      ]
+    }
+  },
+  'goods-search': {
+    title: '商品搜索',
+    domId: '',
+    domName: '',
+    style: [
+      {
+        type: 'color-picker',
+        label: '背景颜色',
+        attr: 'background-color',
+        val: '#ffffff',
+        isNecessary: false
+      }, {
+        type: 'slider',
+        label: '上边距',
+        attr: 'padding-top',
+        val: 4,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '右边距',
+        attr: 'padding-right',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '下边距',
+        attr: 'padding-bottom',
+        val: 4,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '左边距',
+        attr: 'padding-left',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }
+    ],
+    others: {
+      type: 'search-input-style',
+      title: '搜索框样式',
+      config: [
+        {
+          type: 'slider',
+          label: '搜索框高度',
+          attr: 'height',
+          val: 30,
+          step: 1,
+          max: 80,
+          min: 30,
+          unit: 'px',
+          isNecessary: false
+        }, {
+          type: 'radio',
+          label: '图标位置',
+          attr: 'position',
+          val: 'left',
+          options: [
+            {
+              name: '左',
+              val: 'left'
+            }, {
+              name: '右',
+              val: 'right'
+            }
+          ],
+          isNecessary: false
+        }
+      ]
+    }
+  },
+  coupon: {
+    title: '网格菜单',
+    domId: '',
+    domName: '',
+    base: [
+      {
+        type: 'slider',
+        label: '每行个数',
+        attr: 'coupon-column',
+        val: 2,
+        unit: '',
+        min: 1,
+        max: 3,
+        step: 1,
+        isNecessary: true
+      }
+    ],
+    style: [
+      {
+        type: 'slider',
+        label: '上边距',
+        attr: 'padding-top',
+        val: 4,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '右边距',
+        attr: 'padding-right',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '下边距',
+        attr: 'padding-bottom',
+        val: 4,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '左边距',
+        attr: 'padding-left',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }
+    ],
+    action: {
+      type: 'coupon-click',
+      title: '点击项配置',
+      config: [
+        {
+          val: '',
+          click: null
+        }]
+    }
+  },
+  'swiper-banner': {
+    title: '轮播图',
+    domId: '',
+    domName: '',
+    base: [
+      {
+        type: 'radio',
+        label: '自动播放',
+        attr: 'autoplay',
+        val: true,
+        options: [{
+          name: '是',
+          val: true
+        }, {
+          name: '否',
+          val: false
+        }],
+        isNecessary: false
+      }, {
+        type: 'radio',
+        label: '显示分页',
+        attr: 'pagination',
+        val: true,
+        options: [{
+          name: '是',
+          val: true
+        }, {
+          name: '否',
+          val: false
+        }],
+        isNecessary: false
+      }, {
+        type: 'slider',
+        label: '轮播时长',
+        attr: 'interval',
+        val: 3000,
+        unit: '',
+        min: 1000,
+        max: 5000,
+        step: 1000,
+        isNecessary: false
+      }
+    ],
+    style: [
+      {
+        type: 'color-picker',
+        label: '背景颜色',
+        attr: 'background-color',
+        val: 'rgba(255, 255, 255, 0)',
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '上边距',
+        attr: 'padding-top',
+        val: 0,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '右边距',
+        attr: 'padding-right',
+        val: 0,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '下边距',
+        attr: 'padding-bottom',
+        val: 0,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '左边距',
+        attr: 'padding-left',
+        val: 0,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }
+    ],
+    action: {
+      type: 'swiper-click',
+      title: '图片项配置',
+      config: [{
+        val: '',
+        click: null
+      }]
+    }
+  },
+  'scroll-left': {
+    title: '横向滚动',
+    domId: '',
+    domName: '',
+    assert: {
+      script: ['./js/libs/iscroll.min.js', './js/body/scroll-left.js']
+    },
+    style: [
+      {
+        type: 'color-picker',
+        label: '背景颜色',
+        attr: 'background-color',
+        val: '',
+        isNecessary: false
+      }
+    ],
+    action: {
+      type: 'left-scroll-click',
+      title: '滚动项配置',
+      config: [
+        {
+          val: '',
+          click: null
+        }
+      ]
     }
   },
   'horizontal-list': {
@@ -1613,160 +2025,95 @@ module.exports = {
       }]
     }
   },
-  'goods-search': {
-    title: '商品搜索',
+  'news-marquee': {
+    title: '倒计时',
     domId: '',
     domName: '',
+    assert: {
+      script: ['./js/body/new-marquee.js']
+    },
     style: [
       {
-        type: 'color-picker',
-        label: '背景颜色',
-        attr: 'background-color',
-        val: '#ffffff',
+        type: 'radio',
+        label: '是否连续',
+        attr: 'goon',
+        val: false,
+        options: [
+          {
+            name: '连续',
+            val: true
+          }, {
+            name: '不连续',
+            val: false
+          }
+        ]
+      }, {
+        type: 'upload',
+        label: '背景图片',
+        attr: 'background-image',
+        val: '',
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '容器高度',
+        attr: 'height',
+        val: 40,
+        unit: 'px',
+        min: 0,
+        max: 100,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '右边距',
+        attr: 'padding-right',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '左边距',
+        attr: 'padding-left',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '字体大小',
+        attr: 'font-size',
+        val: 12,
+        unit: 'px',
+        min: 0,
+        max: 60,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'font',
+        label: '字体',
+        attr: ['font-weight', 'text-decoration', 'font-style', 'text-align'],
+        val: ['400', 'none', 'inherit', 'left'],
         isNecessary: false
       }, {
-        type: 'slider',
-        label: '上边距',
-        attr: 'padding-top',
-        val: 4,
-        unit: 'px',
-        min: 0,
-        max: 50,
-        step: 1,
-        isNecessary: true
-      }, {
-        type: 'slider',
-        label: '右边距',
-        attr: 'padding-right',
-        val: 10,
-        unit: 'px',
-        min: 0,
-        max: 50,
-        step: 1,
-        isNecessary: true
-      }, {
-        type: 'slider',
-        label: '下边距',
-        attr: 'padding-bottom',
-        val: 4,
-        unit: 'px',
-        min: 0,
-        max: 50,
-        step: 1,
-        isNecessary: true
-      }, {
-        type: 'slider',
-        label: '左边距',
-        attr: 'padding-left',
-        val: 10,
-        unit: 'px',
-        min: 0,
-        max: 50,
-        step: 1,
-        isNecessary: true
-      }
-    ],
-    others: {
-      type: 'search-input-style',
-      title: '搜索框样式',
-      config: [
-        {
-          type: 'slider',
-          label: '搜索框高度',
-          attr: 'height',
-          val: 30,
-          step: 1,
-          max: 80,
-          min: 30,
-          unit: 'px',
-          isNecessary: false
-        }, {
-          type: 'radio',
-          label: '图标位置',
-          attr: 'position',
-          val: 'left',
-          options: [
-            {
-              name: '左',
-              val: 'left'
-            }, {
-              name: '右',
-              val: 'right'
-            }
-          ],
-          isNecessary: false
-        }
-      ]
-    }
-  },
-  coupon: {
-    title: '网格菜单',
-    domId: '',
-    domName: '',
-    base: [
-      {
-        type: 'slider',
-        label: '每行个数',
-        attr: 'coupon-column',
-        val: 2,
-        unit: '',
-        min: 1,
-        max: 3,
-        step: 1,
-        isNecessary: true
-      }
-    ],
-    style: [
-      {
-        type: 'slider',
-        label: '上边距',
-        attr: 'padding-top',
-        val: 4,
-        unit: 'px',
-        min: 0,
-        max: 50,
-        step: 1,
-        isNecessary: true
-      }, {
-        type: 'slider',
-        label: '右边距',
-        attr: 'padding-right',
-        val: 10,
-        unit: 'px',
-        min: 0,
-        max: 50,
-        step: 1,
-        isNecessary: true
-      }, {
-        type: 'slider',
-        label: '下边距',
-        attr: 'padding-bottom',
-        val: 4,
-        unit: 'px',
-        min: 0,
-        max: 50,
-        step: 1,
-        isNecessary: true
-      }, {
-        type: 'slider',
-        label: '左边距',
-        attr: 'padding-left',
-        val: 10,
-        unit: 'px',
-        min: 0,
-        max: 50,
-        step: 1,
+        type: 'color-picker',
+        label: '字体颜色',
+        attr: 'color',
+        val: '#333333',
         isNecessary: true
       }
     ],
     action: {
-      type: 'coupon-click',
-      title: '点击项配置',
-      config: [
-        {
-          val: '',
-          click: null
-        }]
+      type: 'marquee-click',
+      title: '滚动项配置',
+      config: [{
+        text: '滚动新闻默认文本',
+        click: null
+      }]
     }
   }
 }

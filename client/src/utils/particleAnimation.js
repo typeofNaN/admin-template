@@ -1,5 +1,5 @@
 export default function (element, config) {
-  const { color = '#fdebeb' } = config || {}
+  const { color = '#fdebeb', circleNum = 50 } = config || {}
 
   // 圆形类
   class Circle {
@@ -35,8 +35,8 @@ export default function (element, config) {
     }
 
     move (w, h) {
-      this._mx = (this.x < w && this.x > 0) ? this._mx : (-this._mx)
-      this._my = (this.y < h && this.y > 0) ? this._my : (-this._my)
+      this._mx = (this.x < w && this.x > 0) ? this._mx : -this._mx
+      this._my = (this.y < h && this.y > 0) ? this._my : -this._my
       this.x += this._mx / 2
       this.y += this._my / 2
     }
@@ -84,7 +84,7 @@ export default function (element, config) {
     draw()
   }
 
-  window.addEventListener('load', init(80))
+  window.addEventListener('load', init(circleNum))
 
   window.onmousemove = (e) => {
     e = e || window.event

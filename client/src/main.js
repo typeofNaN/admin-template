@@ -11,7 +11,7 @@ import Api from './service'
 import i18n from './language'
 import './icons'
 import './mock'
-import './utils/dialogDrog'
+import './utils/dialogDrag'
 
 import H5Components from './components/h5Setting'
 
@@ -31,12 +31,12 @@ Vue.prototype.api = Api
 
 Vue.use(ElementUI)
 
-const eventBus = {
+const evt = {
   install (Vue) {
     Vue.prototype.$evt = new Vue()
   }
 }
-Vue.use(eventBus)
+Vue.use(evt)
 Vue.use(H5Components)
 
 /* eslint-disable no-new */

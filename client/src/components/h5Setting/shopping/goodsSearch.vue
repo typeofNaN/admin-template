@@ -79,6 +79,7 @@ export default {
   justify-content: center;
   align-items: center;
   border: 1px solid #909299;
+  background-color: #fff;
 
   .search_input {
     border: none;

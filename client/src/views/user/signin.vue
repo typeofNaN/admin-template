@@ -87,7 +87,7 @@
 </template>
 
 <script>
-import formatterDate from '@/utils/formatterDate'
+import utils from '@/utils/tools'
 import logo from '@/assets/img/logo.png'
 import ValidCode from '@/components/public/validCode'
 
@@ -164,7 +164,7 @@ export default {
             let msg = this.$t('signin_page.signin_success')
             this.$message.success(`${msg} ${currentRole.userName}`)
 
-            currentRole.signinTime = formatterDate(new Date(), 'yyyy-MM-dd HH:mm:ss')
+            currentRole.signinTime = utils.parseTime(new Date())
 
             this.$store.dispatch('signin', {
               currentRole,
@@ -184,12 +184,10 @@ export default {
     },
 
     validateRole (roleObj) {
-      const currentRole = roleArr.find(role =>
+      return roleArr.find(role =>
         roleObj.userName === role.userName &&
         roleObj.password === role.password
       )
-
-      return currentRole
     },
 
     changeLanguage (command) {

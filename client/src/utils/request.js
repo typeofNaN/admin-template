@@ -2,24 +2,18 @@ import Axios from 'axios'
 import { Message } from 'element-ui'
 
 const request = Axios.create({
-  baseURL: 'http://localhost:5003/api/'
+  baseURL: process.env.API_URL
 })
 
-request.interceptors.request.use(req => {
-  return req
-}, error => {
-  return Promise.reject(error)
-})
+request.interceptors.request.use(req => req, err => Promise.reject(err))
 
 request.interceptors.response.use(res => {
   if (res.data.code === 0) {
     return res.data.data
   } else {
-    Message.error('数据请求失败！')
+    Message.error('接口数据请求失败！')
     return false
   }
-}, error => {
-  return Promise.reject(error)
-})
+}, err => Promise.reject(err))
 
 export default request

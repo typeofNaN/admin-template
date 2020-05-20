@@ -32,9 +32,9 @@ module.exports = [
         text: '倒计时',
         icon: 'countDown'
       }, {
-        key: 'goods-search',
-        text: '商品搜索',
-        icon: 'search'
+        key: 'floor-title',
+        text: '楼层标题',
+        icon: 'floorTitle'
       }
     ]
   }, {
@@ -47,12 +47,30 @@ module.exports = [
         icon: 'tabbar'
       }, {
         key: 'grid-menu',
-        text: '网格菜单',
+        text: '网格导航',
         icon: 'grid'
       }, {
         key: 'floor-menu',
         text: '楼层导航',
         icon: 'floorNav'
+      }
+    ]
+  }, {
+    title: '布局组件',
+    collapse: false,
+    items: [
+      {
+        key: 'layout-repeat',
+        text: '平铺布局',
+        icon: 'layoutRepeat'
+      }, {
+        key: 'layout-left',
+        text: '两栏布局左',
+        icon: 'layoutLeft'
+      }, {
+        key: 'layout-right',
+        text: '两栏布局右',
+        icon: 'layoutRight'
       }
     ]
   // }, {
@@ -78,6 +96,10 @@ module.exports = [
     collapse: false,
     items: [
       {
+        key: 'goods-search',
+        text: '商品搜索',
+        icon: 'search'
+      }, {
         key: 'coupon',
         text: '优惠券',
         icon: 'coupon'

@@ -18,7 +18,7 @@
           @dragover.prevent
         >
           <template v-for="(comp, idx) in compList">
-            <!--占位提示控件-->
+            <!-- 占位提示控件 -->
             <div
               v-if="comp.type === 'placeholder'"
               :key="idx"
@@ -38,95 +38,119 @@
               :data-index="idx"
               @click.capture="clickComp"
             >
-              <!--文本控件-->
+              <!-- 文本控件 -->
               <base-text
                 v-if="comp.type === 'text'"
                 :component="comp"
               ></base-text>
-              <!--图片控件-->
+              <!-- 图片控件 -->
               <base-image
                 v-if="comp.type === 'img'"
                 :component="comp"
               ></base-image>
-              <!--表单控件-->
+              <!-- 表单控件 -->
               <base-form
                 v-if="comp.type === 'form'"
                 :component="comp"
               ></base-form>
-              <!--轮播图控件-->
-              <swiper-banner
-                v-if="comp.type === 'swiper-banner'"
-                :component="comp"
-              ></swiper-banner>
-              <!--楼层导航控件-->
-              <floor-menu
-                v-if="comp.type === 'floor-menu'"
-                :component="comp"
-              ></floor-menu>
-              <!--横向滚动控件-->
-              <scroll-left
-                v-if="comp.type === 'scroll-left'"
-                :component="comp"
-              ></scroll-left>
-              <!--倒计时控件-->
-              <timeout
-                v-if="comp.type === 'timeout'"
-                :component="comp"
-              ></timeout>
-              <!--滚动新闻控件-->
-              <news-marquee
-                v-if="comp.type === 'news-marquee'"
-                :component="comp"
-              ></news-marquee>
-              <!--网格菜单控件-->
-              <grid-menu
-                v-if="comp.type === 'grid-menu'"
-                :component="comp"
-              ></grid-menu>
-              <!--页面标题-->
+              <!-- 页面标题 -->
               <page-title
                 v-if="comp.type === 'page-title'"
                 :component="comp"
               ></page-title>
-              <!--页面段落-->
+              <!-- 页面段落 -->
               <page-paragraph
                 v-if="comp.type === 'page-paragraph'"
                 :component="comp"
               ></page-paragraph>
-              <!--页面引言-->
+              <!-- 页面引言 -->
               <page-intro
                 v-if="comp.type === 'page-intro'"
                 :component="comp"
               ></page-intro>
-              <!--页面FAQ-->
+              <!-- 倒计时控件 -->
+              <timeout
+                v-if="comp.type === 'timeout'"
+                :component="comp"
+              ></timeout>
+              <!-- 楼层标题 -->
+              <floor-title
+                v-if="comp.type === 'floor-title'"
+                :component="comp"
+              ></floor-title>
+              <!-- 页面FAQ -->
               <page-faq
                 v-if="comp.type === 'page-faq'"
                 :component="comp"
               ></page-faq>
-              <!--横向列表-->
-              <horizontal-list
-                v-if="comp.type === 'horizontal-list'"
+
+              <!-- 网格菜单控件 -->
+              <grid-menu
+                v-if="comp.type === 'grid-menu'"
                 :component="comp"
-              ></horizontal-list>
-              <!--纵向列表-->
-              <vertical-list
-                v-if="comp.type === 'vertical-list'"
+              ></grid-menu>
+               <!-- 楼层导航控件 -->
+              <floor-menu
+                v-if="comp.type === 'floor-menu'"
                 :component="comp"
-              ></vertical-list>
+              ></floor-menu>
+
+              <!-- 平铺布局 -->
+              <layout-repeat
+                v-if="comp.type === 'layout-repeat'"
+                :component="comp"
+              ></layout-repeat>
+              <!-- 两栏布局左 -->
+              <layout-left
+                v-if="comp.type === 'layout-left'"
+                :component="comp"
+              ></layout-left>
+              <!-- 两栏布局右 -->
+              <layout-right
+                v-if="comp.type === 'layout-right'"
+                :component="comp"
+              ></layout-right>
 
               <!-- 商品搜索 -->
               <goods-search
                 v-if="comp.type === 'goods-search'"
                 :component="comp"
               ></goods-search>
-
               <!-- 优惠券 -->
               <coupon
                 v-if="comp.type === 'coupon'"
                 :component="comp"
               ></coupon>
 
-              <!--控件操作-->
+              <!-- 轮播图控件 -->
+              <swiper-banner
+                v-if="comp.type === 'swiper-banner'"
+                :component="comp"
+              ></swiper-banner>
+              <!-- 横向滚动控件 -->
+              <scroll-left
+                v-if="comp.type === 'scroll-left'"
+                :component="comp"
+              ></scroll-left>
+
+              <!-- 横向列表 -->
+              <horizontal-list
+                v-if="comp.type === 'horizontal-list'"
+                :component="comp"
+              ></horizontal-list>
+              <!-- 纵向列表 -->
+              <vertical-list
+                v-if="comp.type === 'vertical-list'"
+                :component="comp"
+              ></vertical-list>
+
+              <!-- 滚动新闻控件 -->
+              <news-marquee
+                v-if="comp.type === 'news-marquee'"
+                :component="comp"
+              ></news-marquee>
+
+              <!-- 控件操作 -->
               <div class="comp-menu">
                 <a
                   href="javascript:void(0)"
@@ -156,7 +180,7 @@
           </template>
         </div>
 
-        <!--底部导航控件-->
+        <!-- 底部导航控件 -->
         <div
           v-if="bottomMenu"
           :class="['absolute-tpl', bottomMenu.active ? 'current' : '']"
@@ -176,6 +200,7 @@
       </div>
     </div>
     <div class="h5_right">
+      <preview-dialog :show.sync="previewShow"></preview-dialog>
       <app-opt
         v-if="currentConfig"
         :option="currentConfig"
@@ -198,7 +223,7 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import util from '@/utils/util.js'
+import util from '@/utils/tools.js'
 // 页面默认配置
 import pageOption from '@/config/page.config.js'
 // 组件默认配置
@@ -210,6 +235,7 @@ import AppToolbar from '@/components/h5Setting/toolbar.vue'
 import appOpt from '@/components/h5Setting/option.vue'
 import appPageOpt from '@/components/h5Setting/pageOption.vue'
 import clickConfig from '@/components/h5Setting/clickToUrl.vue'
+import previewDialog from '@/components/h5Setting/preview.vue'
 
 export default {
   name: 'H5Setting',
@@ -218,8 +244,8 @@ export default {
     AppToolbar,
     appOpt,
     appPageOpt,
-    clickConfig
-    // previewDialog
+    clickConfig,
+    previewDialog
   },
   data () {
     return {
@@ -233,7 +259,7 @@ export default {
         type: 'placeholder'
       }],
       bottomMenu: null,
-      pageConfig: util.copyObj(pageOption),
+      pageConfig: JSON.parse(localStorage.getItem('pageConfig')) || util.copyObj(pageOption),
       currentIndex: -1,
       currentConfig: null
     }
@@ -281,7 +307,8 @@ export default {
           menu: val,
           config: this.compList
         }))
-      }
+      },
+      deep: true
     }
   },
   methods: {
@@ -487,12 +514,12 @@ export default {
   .h5_left {
     width: 296px;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     border: 1px solid #dcdfe6;
   }
 
   .h5_main {
-    width: calc(100% - 580px);
+    width: calc(100% - 680px);
     background-color: #f2f3f4;
     border-top: 1px solid #dcdfe6;
     border-bottom: 1px solid #dcdfe6;
@@ -647,9 +674,9 @@ export default {
   }
 
   .h5_right {
-    width: 380px;
+    width: 370px;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     border: 1px solid #dcdfe6;
   }
 }

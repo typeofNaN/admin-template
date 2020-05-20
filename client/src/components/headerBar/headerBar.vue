@@ -113,12 +113,7 @@ export default {
       'getThemeTextColor'
     ]),
     currentRouterIndex () {
-      const currentRouter = this.$route
-      const currentRouterIndex = this.topRouters.findIndex(a =>
-        a.meta.group === currentRouter.meta.group
-      )
-
-      return currentRouterIndex
+      return this.topRouters.findIndex(a => a.meta.group === this.$route.meta.group)
     }
   },
   watch: {
@@ -182,8 +177,7 @@ export default {
     },
 
     handleRouter (route, index) {
-      const currentRoute = this.$route
-      if (currentRoute.meta.group !== route.meta.group) {
+      if (this.$route.meta.group !== route.meta.group) {
         if (this.currentRouterIndex <= this.showTopRouters.length) {
           this.$refs.route_item[this.currentRouterIndex].style.backgroundColor = this.getThemeHeaderBGColor
           this.$refs.route_item[index].style.backgroundColor = this.getThemeLogoBGColor
@@ -194,9 +188,7 @@ export default {
     },
 
     handleHideTopRouter (route) {
-      const currentRoute = this.$route
-
-      if (currentRoute.meta.group !== route.meta.group) {
+      if (this.$route.meta.group !== route.meta.group) {
         if (this.currentRouterIndex < this.showTopRouters.length) {
           this.$refs.route_item[this.currentRouterIndex].style.backgroundColor = this.getThemeHeaderBGColor
         }

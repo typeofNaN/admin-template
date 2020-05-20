@@ -103,6 +103,7 @@ export default {
     .swiper_img {
       width: 100%;
       height: auto;
+      -webkit-user-drag: none;
     }
   }
 }

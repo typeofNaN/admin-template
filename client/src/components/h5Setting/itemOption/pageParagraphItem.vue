@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import util from '@/utils/util.js'
+import util from '@/utils/tools.js'
 import compConfig from '@/config/comp.config.js'
 
 export default {

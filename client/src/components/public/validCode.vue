@@ -1,18 +1,18 @@
 <template>
   <div
     id="ValidCode"
-    :style="`width:${width}; height:${height}`"
+    :style="{ width, height }"
   >
     <div
       class="ValidCode disabled-select"
-      :style="`width:${width}; height:${height}`"
+      :style="{ width, height }"
       @click="refreshCode"
     >
       <span
         v-for="(item, index) in codeList"
         :key="index"
         :style="getStyle(item)"
-      >{{item.code}}</span>
+      >{{ item.code }}</span>
     </div>
   </div>
 </template>

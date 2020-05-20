@@ -43,15 +43,11 @@ export default {
     },
 
     init () {
-      if (screenfull.isEnabled) {
-        screenfull.on('change', this.change)
-      }
+      screenfull.isEnabled && screenfull.on('change', this.change)
     },
 
     destroy () {
-      if (screenfull.isEnabled) {
-        screenfull.off('change', this.change)
-      }
+      screenfull.isEnabled && screenfull.off('change', this.change)
     }
   }
 }

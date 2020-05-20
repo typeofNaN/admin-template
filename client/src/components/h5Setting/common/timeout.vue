@@ -157,9 +157,9 @@ export default {
 
   img {
     display: block;
+    margin: 0;
     width: 100%;
     height: auto;
-    margin: 0;
     border: 0;
     -webkit-user-drag: none;
   }

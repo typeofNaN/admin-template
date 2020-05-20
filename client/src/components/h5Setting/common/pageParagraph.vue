@@ -55,14 +55,14 @@ export default {
 
 <style lang="scss" scoped>
 .page-paragraph__title {
-  margin-bottom: 10px;
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 
   .title-icon {
-    margin-right: 10px;
     display: flex;
     align-items: center;
+    margin-right: 10px;
 
     > i.theme-1 {
       display: block;

@@ -114,7 +114,6 @@ export default {
       return `<svg-icon icon-class="${symbol}" />`
     },
     handleClipboard (text, event) {
-      console.log(1)
       clipboard(text, event)
     }
   }

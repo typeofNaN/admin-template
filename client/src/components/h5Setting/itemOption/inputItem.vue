@@ -67,23 +67,23 @@
         </el-form-item>
         <div class="list-item-opt">
           <a
-            v-if="idx !== 0"
+            v-if="index !== 0"
             href="javascript:;"
-            @click="upInput(idx)"
+            @click="upInput(index)"
           >
             <i class="el-icon-arrow-up"></i>
           </a>
           <a
-            v-if="idx !== inputs.length - 1"
+            v-if="index !== inputs.length - 1"
             href="javascript:;"
-            @click="downInput(idx)"
+            @click="downInput(index)"
           >
             <i class="el-icon-arrow-down"></i>
           </a>
           <a
-            v-if="idx > 0"
+            v-if="index > 0"
             href="javascript:;"
-            @click="delInput(idx)"
+            @click="delInput(index)"
           >
             <i class="el-icon-delete"></i>
           </a>
@@ -100,7 +100,7 @@
 </template>
 
 <script>
-import util from '@/utils/util.js'
+import util from '@/utils/tools.js'
 import compConfig from '@/config/comp.config.js'
 
 export default {

@@ -61,10 +61,10 @@ export default {
 <style lang="scss" scoped>
 .bottom-menu {
   display: flex;
-  -webkit-box-pack: justify;
-  -webkit-box-align: center;
   justify-content: space-between;
   align-content: center;
+  -webkit-box-pack: justify;
+  -webkit-box-align: center;
 
   .menu-item {
     display: block;

@@ -1,6 +1,6 @@
 const Mock = require('mockjs')
 const Random = Mock.Random
-const domain = 'http://localhost:5003/api'
+const domain = process.env.API_URL
 const code = 0
 
 // 随机生成文章数据
@@ -17,11 +17,7 @@ const orderList = req => {
   let list = []
   let pageSize
 
-  if (reqData && reqData.pageSize) {
-    pageSize = reqData.pageSize
-  } else {
-    pageSize = 10
-  }
+  pageSize = reqData && reqData.pageSize ? reqData.pageSize : 10
 
   let count = Random.integer(1000, 5000)
 
@@ -52,5 +48,5 @@ const orderList = req => {
 }
 
 export default (() => {
-  Mock.mock(`${domain}/order/orderList`, 'post', orderList)
+  Mock.mock(`${domain}order/orderList`, 'post', orderList)
 })()

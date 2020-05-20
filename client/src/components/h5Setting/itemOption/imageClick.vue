@@ -22,7 +22,7 @@
             :src="img"
           >
         </div>
-        <!--拖动区域的模板-->
+        <!-- 拖动区域的模板 -->
         <div
           class="crop-box"
           id="cropBox-0"

@@ -18,7 +18,11 @@ import particleAnimation from '@/utils/particleAnimation'
 export default {
   name: 'account',
   mounted () {
-    particleAnimation(document.querySelector('#particle-animation'), { color: '#ffffff' })
+    let config = {
+      color: '#ffffff',
+      circleNum: 80
+    }
+    particleAnimation(document.querySelector('#particle-animation'), config)
   }
 }
 </script>

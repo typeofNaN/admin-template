@@ -83,11 +83,11 @@ export default {
 <style lang="scss" scoped>
 .marquee-box {
   position: relative;
+  margin: 0;
+  padding: 0;
   width: 100%;
   height: 100%;
   list-style: none;
-  padding: 0;
-  margin: 0;
   overflow: hidden;
 
   .marquee-item {

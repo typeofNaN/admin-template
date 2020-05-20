@@ -65,7 +65,7 @@
 
 <script>
 // https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1812758380,2896734985&fm=26&gp=0.jpg
-import util from '@/utils/util.js'
+import util from '@/utils/tools.js'
 import compConfig from '@/config/comp.config.js'
 import upload from '@/components/h5Setting/upload.vue'
 

@@ -88,16 +88,16 @@ export default {
   background-color: #fff;
 
   .page-list-item {
-    position: relative;
     display: flex;
     align-items: center;
+    position: relative;
 
     &:after {
-      content: " ";
       position: absolute;
       left: 0;
       bottom: 0;
       right: 0;
+      content: " ";
       height: 1px;
       background-color: #E5E5E5;
       -webkit-transform-origin: 0 0;

@@ -63,26 +63,11 @@
             @click="imageClickShow = true"
           >点击区域配置</el-button>
         </template>
-        <template v-if="option.action.type === 'swiper-click'">
-          <banner-item :banners="option.action.config"></banner-item>
-        </template>
-        <template v-if="option.action.type === 'bottom-menu-click'">
-          <bottom-menu-item :items="option.action.config"></bottom-menu-item>
-        </template>
-        <template v-if="option.action.type === 'floor-menu-click'">
-          <floor-menu-item :menus="option.action.config"></floor-menu-item>
-        </template>
-        <template v-if="option.action.type === 'left-scroll-click'">
-          <scroll-item :scrolls="option.action.config"></scroll-item>
-        </template>
-        <template v-if="option.action.type === 'horizontal-item-click'">
-          <horizontal-item :items="option.action.config"></horizontal-item>
-        </template>
-        <template v-if="option.action.type === 'vertical-item-click'">
-          <vertical-item :items="option.action.config"></vertical-item>
-        </template>
         <template v-if="option.action.type === 'form-submit'">
           <input-item :forms="option.action.config"></input-item>
+        </template>
+        <template v-if="option.action.type === 'page-paragraph-list'">
+          <page-paragraph-item :paragraphs="option.action.config"></page-paragraph-item>
         </template>
         <template v-if="option.action.type === 'timeout-click'">
           <timeout-item
@@ -98,20 +83,50 @@
             @click="timeoutClickShow = true"
           >时间项配置</el-button>
         </template>
-        <template v-if="option.action.type === 'grid-menu-click'">
-          <grid-menu-item :grids="option.action.config"></grid-menu-item>
-        </template>
-        <template v-if="option.action.type === 'marquee-click'">
-          <marquee-item :marquees="option.action.config"></marquee-item>
-        </template>
-        <template v-if="option.action.type === 'page-paragraph-list'">
-          <page-paragraph-item :paragraphs="option.action.config"></page-paragraph-item>
-        </template>
         <template v-if="option.action.type === 'page-faq-list'">
           <page-faq-item :paragraphs="option.action.config"></page-faq-item>
         </template>
+
+        <template v-if="option.action.type === 'bottom-menu-click'">
+          <bottom-menu-item :items="option.action.config"></bottom-menu-item>
+        </template>
+        <template v-if="option.action.type === 'grid-menu-click'">
+          <grid-menu-item :grids="option.action.config"></grid-menu-item>
+        </template>
+        <template v-if="option.action.type === 'floor-menu-click'">
+          <floor-menu-item :menus="option.action.config"></floor-menu-item>
+        </template>
+
+        <template v-if="option.action.type === 'layout-repeat-click'">
+          <layout-repeat-item :grids="option.action.config"></layout-repeat-item>
+        </template>
+        <template v-if="option.action.type === 'layout-left-click'">
+          <layout-left-item :grids="option.action.config"></layout-left-item>
+        </template>
+        <template v-if="option.action.type === 'layout-right-click'">
+          <layout-right-item :grids="option.action.config"></layout-right-item>
+        </template>
+
         <template v-if="option.action.type === 'coupon-click'">
-          <coupon :coupons="option.action.config"></coupon>
+          <coupon-item :coupons="option.action.config"></coupon-item>
+        </template>
+
+        <template v-if="option.action.type === 'swiper-click'">
+          <banner-item :banners="option.action.config"></banner-item>
+        </template>
+        <template v-if="option.action.type === 'left-scroll-click'">
+          <scroll-item :scrolls="option.action.config"></scroll-item>
+        </template>
+
+        <template v-if="option.action.type === 'horizontal-item-click'">
+          <horizontal-item :items="option.action.config"></horizontal-item>
+        </template>
+        <template v-if="option.action.type === 'vertical-item-click'">
+          <vertical-item :items="option.action.config"></vertical-item>
+        </template>
+
+        <template v-if="option.action.type === 'marquee-click'">
+          <marquee-item :marquees="option.action.config"></marquee-item>
         </template>
       </template>
     </el-form>
@@ -120,20 +135,30 @@
 
 <script>
 import formItem from './formItem.vue'
+
 import imageClick from '@/components/h5Setting/itemOption/imageClick.vue'
+import inputItem from '@/components/h5Setting/itemOption/inputItem.vue'
+import pageParagraphItem from '@/components/h5Setting/itemOption/pageParagraphItem.vue'
 import timeoutItem from '@/components/h5Setting/itemOption/timeoutItem.vue'
-import bannerItem from '@/components/h5Setting/itemOption/bannerItem.vue'
+import pageFaqItem from '@/components/h5Setting/itemOption/pageFaqItem.vue'
+
 import bottomMenuItem from '@/components/h5Setting/itemOption/bottomMenuItem.vue'
+import gridMenuItem from '@/components/h5Setting/itemOption/gridMenuItem.vue'
 import floorMenuItem from '@/components/h5Setting/itemOption/floorMenuItem.vue'
+
+import layoutRepeatItem from '@/components/h5Setting/itemOption/layoutRepeatItem.vue'
+import layoutLeftItem from '@/components/h5Setting/itemOption/layoutLeftItem.vue'
+import layoutRightItem from '@/components/h5Setting/itemOption/layoutRightItem.vue'
+
+import couponItem from '@/components/h5Setting/itemOption/couponItem.vue'
+
+import bannerItem from '@/components/h5Setting/itemOption/bannerItem.vue'
+import scrollItem from '@/components/h5Setting/itemOption/scrollItem.vue'
+
 import horizontalItem from '@/components/h5Setting/itemOption/horizontalItem.vue'
 import verticalItem from '@/components/h5Setting/itemOption/verticalItem.vue'
-import scrollItem from '@/components/h5Setting/itemOption/scrollItem.vue'
-import inputItem from '@/components/h5Setting/itemOption/inputItem.vue'
-import gridMenuItem from '@/components/h5Setting/itemOption/gridMenuItem.vue'
+
 import marqueeItem from '@/components/h5Setting/itemOption/marqueeItem.vue'
-import pageParagraphItem from '@/components/h5Setting/itemOption/pageParagraphItem.vue'
-import pageFaqItem from '@/components/h5Setting/itemOption/pageFaqItem.vue'
-import coupon from '@/components/h5Setting/itemOption/coupon.vue'
 
 export default {
   name: 'AppOption',
@@ -146,19 +171,22 @@ export default {
   components: {
     formItem,
     imageClick,
+    inputItem,
+    pageParagraphItem,
     timeoutItem,
-    bannerItem,
+    pageFaqItem,
     bottomMenuItem,
+    gridMenuItem,
     floorMenuItem,
+    layoutRepeatItem,
+    layoutLeftItem,
+    layoutRightItem,
+    couponItem,
+    bannerItem,
     scrollItem,
     horizontalItem,
     verticalItem,
-    inputItem,
-    gridMenuItem,
-    marqueeItem,
-    pageParagraphItem,
-    pageFaqItem,
-    coupon
+    marqueeItem
   },
   props: {
     option: {
@@ -174,7 +202,6 @@ export default {
   width: 360px;
   padding: 0 10px 0 5px;
   overflow: auto;
-  border-left: 1px solid #e8e8e8;
 
   h2 {
     margin: 13px 0;

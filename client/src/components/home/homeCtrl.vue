@@ -102,7 +102,7 @@
       ></el-button>
     </div>
     <el-dialog
-      class="custom_dialog"
+      class="custom_dialog commonDragDialog"
       v-dialogDrag
       :visible.sync="dialogFormVisible"
       :close-on-click-modal="false"
@@ -273,19 +273,14 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           let postData = { ...this.dialogForm }
-
-          const funcName = this.dialogTitle === '添加'
-            ? 'addOrder'
-            : 'editOrder'
+          const funcName = this.dialogTitle === '添加' ? 'addOrder' : 'editOrder'
 
           this.api.orderApi[funcName](postData)
             .then(res => {
-              if (res.data.code === 0) {
-                this.$message.success(`${this.dialogTitle}成功！`)
-                this.$refs[formName].resetFields()
-                this.dialogFormVisibla = false
-                this.refresh()
-              }
+              this.$message.success(`${this.dialogTitle}成功！`)
+              this.$refs[formName].resetFields()
+              this.dialogFormVisibla = false
+              this.refresh()
             })
         } else {
           this.$message.danger('所填信息有误，请重新填写！')

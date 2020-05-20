@@ -84,6 +84,7 @@ export default {
 .comp-content {
   background-repeat: no-repeat;
 }
+
 .page-list {
   background-color: #fff;
 
@@ -95,11 +96,11 @@ export default {
     box-sizing: border-box;
 
     &:after {
-      content: " ";
       position: absolute;
       top: 0;
       bottom: 0;
       right: 0;
+      content: " ";
       width: 1px;
       background-color: #E5E5E5;
       color: #E5E5E5;

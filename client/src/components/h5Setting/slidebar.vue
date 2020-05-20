@@ -61,8 +61,6 @@ export default {
 
 <style lang="scss" scoped>
 .app-sidebar {
-  width: 290px;
-  border-right: 1px solid #e8e8e8;
   padding-left: 14px;
   padding-bottom: 20px;
   box-sizing: border-box;

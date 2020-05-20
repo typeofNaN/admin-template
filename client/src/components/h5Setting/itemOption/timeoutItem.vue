@@ -141,12 +141,11 @@
                 class="small"
                 label="字体大小："
               >
-                <el-input-number
-                  size="mini"
+                <el-slider
                   v-model="areas[0].font"
                   :min="20"
-                  :max="200"
-                ></el-input-number>
+                  :max="90"
+                ></el-slider>
               </el-form-item>
               <el-form-item
                 class="small"
@@ -191,12 +190,11 @@
                 class="small"
                 label="字体大小："
               >
-                <el-input-number
-                  size="mini"
+                <el-slider
                   v-model="areas[1].font"
-                  :min="10"
-                  :max="200"
-                ></el-input-number>
+                  :min="20"
+                  :max="90"
+                ></el-slider>
               </el-form-item>
               <el-form-item
                 class="small"
@@ -241,12 +239,11 @@
                 class="small"
                 label="字体大小："
               >
-                <el-input-number
-                  size="mini"
+                <el-slider
                   v-model="areas[2].font"
                   :min="20"
-                  :max="200"
-                ></el-input-number>
+                  :max="90"
+                ></el-slider>
               </el-form-item>
               <el-form-item
                 class="small"
@@ -291,12 +288,11 @@
                 class="small"
                 label="字体大小："
               >
-                <el-input-number
-                  size="mini"
+                <el-slider
                   v-model="areas[3].font"
                   :min="20"
-                  :max="200"
-                ></el-input-number>
+                  :max="90"
+                ></el-slider>
               </el-form-item>
               <el-form-item
                 class="small"
@@ -603,11 +599,6 @@ export default {
           height: 100%;
           border: 1px solid #fff;
           cursor: move;
-
-          .crop-box-text {
-            //font-size: 24px;
-            //color: #333;
-          }
         }
 
         .crop-box-tips {

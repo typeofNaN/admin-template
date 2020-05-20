@@ -19,8 +19,8 @@ Vue.directive('dialogDrag', {
     let isFullScreen = false
     // 当前宽高
     let nowWidth = 0
-    let nowHight = 0
-    console.log(nowHight)
+    // let nowHight = 0
+
     // 当前顶部高度
     let nowMarginTop = 0
     // 获取弹框头部（这部分可双击全屏）
@@ -101,7 +101,7 @@ Vue.directive('dialogDrag', {
       bigSmallEl.onclick = (e) => {
         if (isFullScreen === false) {
           // let nowHight = ''
-          nowHight = dragDom.clientHeight
+          // nowHight = dragDom.clientHeight
           nowWidth = dragDom.clientWidth
           nowMarginTop = dragDom.style.marginTop
           dragDom.style.left = 0

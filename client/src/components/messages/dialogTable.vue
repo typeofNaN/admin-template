@@ -117,7 +117,7 @@
 </template>
 
 <script>
-import formatter from '@/utils/formatterDate'
+import utils from '@/utils/tools'
 import Pagination from '@/components/public/pagination'
 
 export default {
@@ -153,8 +153,7 @@ export default {
 
     formatterDate (obj) {
       if (obj.utc_created) {
-        let date = new Date(obj.utc_created)
-        return formatter(date, 'yyyy-MM-dd HH:mm:ss')
+        return utils.parseTime(new Date(obj.utc_created))
       } else {
         return '--'
       }

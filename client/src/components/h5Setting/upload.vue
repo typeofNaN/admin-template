@@ -29,8 +29,12 @@
               上传图片 或
               <em>
                 <a
-                  href="javascript:;"
+                  href="javascript: void(0);"
                   @click.prevent="dialogShow=true"
+                  :style="{
+                    color: getThemeHeaderBGColor,
+                    textDecoration: 'none'
+                  }"
                 >图片地址</a>
               </em>
             </div>
@@ -152,6 +156,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'upload',
   data () {
@@ -175,6 +181,9 @@ export default {
       type: Object,
       default: null
     }
+  },
+  computed: {
+    ...mapGetters(['getThemeHeaderBGColor'])
   },
   methods: {
     upload (e) {
@@ -346,7 +355,7 @@ export default {
   top: 0;
   opacity: 0;
   width: 150px;
-  height: 115px;
+  height: 100px;
   cursor: pointer;
 }
 </style>

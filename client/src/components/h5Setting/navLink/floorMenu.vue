@@ -4,7 +4,10 @@
       class="floor-menu"
       :style="{ backgroundColor: backgroundColor }"
     >
-      <div class="floor-menu-list">
+      <div
+        id="floor_nav_menu"
+        class="floor-menu-list"
+      >
         <div class="floor-menu-inner">
           <a
             v-for="(item, index) in items"
@@ -15,18 +18,13 @@
           >{{ item.text }}</a>
         </div>
       </div>
-      <div class="floor-menu-down">
-        <svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg">
-          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <polygon :fill="fillColor" fill-rule="nonzero" points="28 15.1144797 28.7045635 15.8241207 20.4099341 24.0594021 12 15.709641 12.7045635 15 20.4099341 22.6502388"></polygon>
-          </g>
-        </svg>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
+import IScroll from 'iscroll'
+
 export default {
   name: 'FloorMenu',
   props: {
@@ -39,7 +37,8 @@ export default {
     return {
       items: this.component.action.config,
       backgroundColor: this.component.style[0].val,
-      fillColor: this.component.style[2].val
+      fillColor: this.component.style[2].val,
+      noScroll: null
     }
   },
   watch: {
@@ -52,6 +51,9 @@ export default {
       deep: true
     }
   },
+  mounted () {
+    this.initScroll()
+  },
   methods: {
     getItemStyle (idx) {
       const ret = []
@@ -63,47 +65,57 @@ export default {
         ret.push('color:' + this.component.style[2].val)
       }
       return ret.join(';')
+    },
+    initScroll () {
+      this.noScroll = null
+      setTimeout(() => {
+        this.noScroll = new IScroll('#floor_nav_menu', {
+          scrollX: true,
+          scrollY: false,
+          eventPassthrough: true,
+          preventDefault: false
+        })
+      }, 0)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.comp-content {
+  overflow-x: hidden;
+}
+
 .floor-menu {
-  position: relative;
   display: flex;
+  position: relative;
   width: 100%;
   height: 40px;
   line-height: 40px;
 
   .floor-menu-list {
-    width: 335px;
+    width: 100%;
     height: 40px;
-    overflow-y: hidden;
-    overflow-x: auto;
+    // overflow-y: hidden;
+    // overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 
     .floor-menu-inner {
-      position: relative;
       display: flex;
+      position: relative;
       padding: 0 8px;
       height: 40px;
       white-space: nowrap;
+      transform: translateZ(0);
 
       .floor-item {
         display: block;
-        line-height: 40px;
         padding: 0 16px;
+        line-height: 40px;
         font-size: 14px;
         text-decoration: none;
       }
     }
-  }
-
-  .floor-menu-down {
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    box-shadow: -5px 0 5px -5px #333;
   }
 }
 </style>

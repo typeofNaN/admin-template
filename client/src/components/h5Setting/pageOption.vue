@@ -58,7 +58,6 @@ export default {
   width: 360px;
   padding: 0 10px 0 5px;
   overflow: auto;
-  border-left: 1px solid #e8e8e8;
 
   h2 {
     margin: 13px 0;

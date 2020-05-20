@@ -76,14 +76,12 @@ export default {
     ]),
     topRouters () {
       const allRouter = this.$router.options.routes
-      const filterRouter = allRouter.filter(route => route.meta.showInHome)
-      return filterRouter
+      return allRouter.filter(route => route.meta.showInHome)
     }
   },
   mounted () {
     const allRouter = this.$router.options.routes
-    const currentRouter = this.$route
-    const indexRouter = allRouter.find(item => item.meta.group === currentRouter.meta.group)
+    const indexRouter = allRouter.find(item => item.meta.group === this.$route.meta.group)
     this.changeSlideRouter(indexRouter)
   },
   methods: {

@@ -3,11 +3,11 @@
     :class="['comp-content', component.active ? 'active' : '']"
     :style="getStyle"
   >
-    <ul class="coupon-menu">
+    <ul class="grid-menu">
       <li
         v-for="(item, index) in items"
         :key="index"
-        class="coupon-menu-item"
+        class="grid-menu-item"
         :style="getItemStyle"
       >
         <img
@@ -20,7 +20,6 @@
         >
           <i class="el-icon-picture-outline"></i>
         </div>
-        <span v-if="item.text">{{ item.text }}</span>
       </li>
     </ul>
   </div>
@@ -28,7 +27,7 @@
 
 <script>
 export default {
-  name: 'Coupon',
+  name: 'LayoutRepeat',
   props: {
     component: {
       type: Object,
@@ -69,18 +68,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.coupon-menu {
+.grid-menu {
   position: relative;
   margin: 0;
+  list-style: none;
   margin-block-start: 0;
   margin-block-end: 0;
   padding-inline-start: 0;
-  list-style: none;
 
-  .coupon-menu-item {
-    padding: 2px;
+  .grid-menu-item {
     display: inline-block;
+    padding: 0 1px;
     vertical-align: middle;
+    text-align: center;
+    font-size: 0;
     list-style-type: none;
 
     > .image-placeholder {
@@ -98,11 +99,9 @@ export default {
     }
 
     > img {
-      display: block;
       margin: 0 auto;
       width: 100%;
       height: auto;
-      -webkit-user-drag: none;
     }
   }
 }

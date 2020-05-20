@@ -138,7 +138,7 @@
           size="small"
           @click="submitForm('ruleForm')"
         >立即创建</el-button>
-        <el-button size="small" @click="resetForm('ruleForm')">重置</el-button>
+        <el-button size="small" @click="resetForm('ruleForm')">重 置</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -248,11 +248,7 @@ export default {
   methods: {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
-        if (valid) {
-          this.$message.success('验证成功！')
-        } else {
-          this.$message.error('验证失败，请重新输入！')
-        }
+        valid ? this.$message.success('验证成功！') : this.$message.error('验证失败，请重新输入！')
       })
     },
     resetForm (formName) {
