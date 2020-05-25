@@ -103,7 +103,7 @@
     </div>
     <el-dialog
       class="custom_dialog commonDragDialog"
-      v-dialogDrag
+      v-el-drag-dialog
       :visible.sync="dialogFormVisible"
       :close-on-click-modal="false"
     >
@@ -225,8 +225,11 @@
 <script>
 import { mapGetters } from 'vuex'
 
+import elDragDialog from '@/directive/el-drag-dialog'
+
 export default {
   name: 'homeCtrl',
+  directives: { elDragDialog },
   props: {
     selectData: {
       type: Array,

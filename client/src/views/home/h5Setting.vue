@@ -8,6 +8,7 @@
         @showPageSet="showPageSet"
         @savePageSet="savePageSet"
         @showPreview="showPreview"
+        @reset="reset"
       ></app-toolbar>
       <div class="scroll-y">
         <div
@@ -121,6 +122,11 @@
                 v-if="comp.type === 'coupon'"
                 :component="comp"
               ></coupon>
+              <!-- 自定义商品 -->
+              <goods
+                v-if="comp.type === 'goods'"
+                :component="comp"
+              ></goods>
 
               <!-- 轮播图控件 -->
               <swiper-banner
@@ -238,7 +244,7 @@ import clickConfig from '@/components/h5Setting/clickToUrl.vue'
 import previewDialog from '@/components/h5Setting/preview.vue'
 
 export default {
-  name: 'H5Setting',
+  name: 'h5Setting',
   components: {
     AppSidebar,
     AppToolbar,
@@ -327,6 +333,17 @@ export default {
     showPreview () {
       localStorage.setItem('pageConfig', JSON.stringify(this.pageConfig))
       this.previewShow = true
+    },
+    reset () {
+      this.$confirm('确定要重置此页面吗，不可撤回？', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+        center: true
+      }).then(() => {
+        localStorage.setItem('pageDateSet', '')
+        this.compList = [{ type: 'placeholder' }]
+      }).catch(() => {})
     },
     readLocalData () {
       const tmp = localStorage.getItem('pageDateSet')

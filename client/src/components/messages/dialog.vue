@@ -2,7 +2,7 @@
   <div id="m_dialog">
     <el-button @click="dialogVisible = true">带查询分页弹窗</el-button>
     <el-dialog
-      v-dialogDrag
+      v-el-drag-dialog
       :visible.sync="dialogVisible"
       :close-on-click-modal="false"
       class="commonDragDialog"
@@ -21,9 +21,11 @@
 import { mapGetters } from 'vuex'
 
 import TTable from './dialogTable'
+import elDragDialog from '@/directive/el-drag-dialog'
 
 export default {
   name: 'm_dialog',
+  directives: { elDragDialog },
   data () {
     return {
       dialogVisible: false

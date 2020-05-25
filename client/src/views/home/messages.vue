@@ -102,7 +102,7 @@ import Step from '@/components/public/step'
 import DDialog from '@/components/messages/dialog'
 
 export default {
-  name: 'messageLayer',
+  name: 'message_layer',
   data () {
     return {
       activeTabName: 'tab1',

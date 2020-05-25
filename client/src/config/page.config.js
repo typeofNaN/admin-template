@@ -8,32 +8,6 @@ module.exports = {
       placeholder: '页面名称',
       val: '',
       isNecessary: true
-    }, {
-      type: 'radio',
-      label: '回到顶部',
-      attr: 'gotop',
-      val: true,
-      options: [
-        {
-          name: '显示',
-          val: true
-        }, {
-          name: '不显示',
-          val: false
-        }
-      ],
-      isNecessary: false
-    }, {
-      type: 'text',
-      label: '文件名称',
-      attr: 'page-name',
-      rules: {
-        regex: '^[0-9a-zA-Z_]{1,}$',
-        tips: '只能输入字母、数字或者下划线'
-      },
-      placeholder: '文件名称',
-      val: '',
-      isNecessary: true
     }
   ],
   style: [

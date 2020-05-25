@@ -264,10 +264,10 @@ export default {
               this.$alert('图片高度必须为 ' + this.item.limit.h + 'px', '提示')
             }
           } else {
-            if (img.naturalWidth > 750) {
-              invalide = false
-              this.$alert('图片宽度不能超过750px', '提示')
-            }
+            // if (img.naturalWidth > 750) {
+            //   invalide = false
+            //   this.$alert('图片宽度不能超过750px', '提示')
+            // }
           }
           if (invalide) {
             const width = 750

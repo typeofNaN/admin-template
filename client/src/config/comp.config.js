@@ -1264,7 +1264,7 @@ module.exports = {
         val: 2,
         unit: '',
         min: 1,
-        max: 4,
+        max: 5,
         step: 1,
         isNecessary: true
       }
@@ -1284,7 +1284,7 @@ module.exports = {
         type: 'slider',
         label: '右边距',
         attr: 'padding-right',
-        val: 4,
+        val: 0,
         unit: 'px',
         min: 0,
         max: 50,
@@ -1304,7 +1304,7 @@ module.exports = {
         type: 'slider',
         label: '左边距',
         attr: 'padding-left',
-        val: 4,
+        val: 0,
         unit: 'px',
         min: 0,
         max: 50,
@@ -1345,7 +1345,7 @@ module.exports = {
         type: 'slider',
         label: '右边距',
         attr: 'padding-right',
-        val: 10,
+        val: 0,
         unit: 'px',
         min: 0,
         max: 50,
@@ -1355,7 +1355,7 @@ module.exports = {
         type: 'slider',
         label: '下边距',
         attr: 'padding-bottom',
-        val: 10,
+        val: 0,
         unit: 'px',
         min: 0,
         max: 50,
@@ -1365,7 +1365,7 @@ module.exports = {
         type: 'slider',
         label: '左边距',
         attr: 'padding-left',
-        val: 10,
+        val: 0,
         unit: 'px',
         min: 0,
         max: 50,
@@ -1412,7 +1412,7 @@ module.exports = {
         type: 'slider',
         label: '右边距',
         attr: 'padding-right',
-        val: 10,
+        val: 0,
         unit: 'px',
         min: 0,
         max: 50,
@@ -1422,7 +1422,7 @@ module.exports = {
         type: 'slider',
         label: '下边距',
         attr: 'padding-bottom',
-        val: 10,
+        val: 0,
         unit: 'px',
         min: 0,
         max: 50,
@@ -1432,7 +1432,7 @@ module.exports = {
         type: 'slider',
         label: '左边距',
         attr: 'padding-left',
-        val: 10,
+        val: 0,
         unit: 'px',
         min: 0,
         max: 50,
@@ -1614,6 +1614,102 @@ module.exports = {
           val: '',
           click: null
         }]
+    }
+  },
+  goods: {
+    title: '自定义商品',
+    domId: '',
+    domName: '',
+    style: [
+      {
+        type: 'color-picker',
+        label: '背景颜色',
+        attr: 'background-color',
+        val: '#ffffff',
+        isNecessary: false
+      }, {
+        type: 'slider',
+        label: '上内边距',
+        attr: 'padding-top',
+        val: 10,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }, {
+        type: 'slider',
+        label: '下内边距',
+        attr: 'padding-bottom',
+        val: 0,
+        unit: 'px',
+        min: 0,
+        max: 50,
+        step: 1,
+        isNecessary: true
+      }
+    ],
+    others: {
+      type: 'item-style',
+      title: '列表项样式',
+      config: [
+        {
+          type: 'slider',
+          label: '上内边距',
+          attr: 'goods-list-item_padding-top',
+          val: 0,
+          unit: 'px',
+          min: 0,
+          max: 50,
+          step: 1,
+          isNecessary: true
+        }, {
+          type: 'slider',
+          label: '下内边距',
+          attr: 'goods-list-item_padding-bottom',
+          val: 4,
+          unit: 'px',
+          min: 0,
+          max: 50,
+          step: 1,
+          isNecessary: true
+        }, {
+          type: 'slider',
+          label: '左内边距',
+          attr: 'goods-list-item_padding-left',
+          val: 4,
+          unit: 'px',
+          min: 0,
+          max: 50,
+          step: 1,
+          isNecessary: true
+        }, {
+          type: 'slider',
+          label: '右内边距',
+          attr: 'goods-list-item_padding-right',
+          val: 4,
+          unit: 'px',
+          min: 0,
+          max: 50,
+          step: 1,
+          isNecessary: true
+        }
+      ]
+    },
+    action: {
+      type: 'goods-item-click',
+      title: '列表项配置',
+      config: [{
+        val: '',
+        name: '商品名称',
+        price: 0,
+        click: null
+      }, {
+        val: '',
+        name: '商品名称',
+        price: 0,
+        click: null
+      }]
     }
   },
   'swiper-banner': {
@@ -2026,7 +2122,7 @@ module.exports = {
     }
   },
   'news-marquee': {
-    title: '倒计时',
+    title: '滚动新闻',
     domId: '',
     domName: '',
     assert: {

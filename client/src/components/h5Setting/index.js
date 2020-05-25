@@ -18,6 +18,7 @@ import LayoutRight from './lay/layoutRight'
 
 import GoodsSearch from './shopping/goodsSearch'
 import Coupon from './shopping/coupon'
+import Goods from './shopping/goods'
 
 import SwiperBanner from './swiper/swiperBanner'
 import ScrollLeft from './swiper/scrollLeft'
@@ -49,6 +50,7 @@ export default {
 
     Vue.component(GoodsSearch.name, GoodsSearch)
     Vue.component(Coupon.name, Coupon)
+    Vue.component(Goods.name, Goods)
 
     Vue.component(SwiperBanner.name, SwiperBanner)
     Vue.component(ScrollLeft.name, ScrollLeft)

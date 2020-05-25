@@ -13,7 +13,7 @@ const H5Setting = () => import('@/views/home/h5Setting')
 
 const HomeRoute = {
   path: '/',
-  name: 'control',
+  name: 'homePage',
   component: Home,
   meta: {
     icon: 'dashboard',

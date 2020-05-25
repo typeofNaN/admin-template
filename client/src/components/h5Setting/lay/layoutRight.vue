@@ -100,21 +100,13 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 49%;
+      height: 50%;
       border-radius: 4px;
       overflow: hidden;
 
       img {
         width: 100%;
       }
-    }
-
-    .top {
-      margin-bottom: 1%;
-    }
-
-    .bot {
-      margin-top: 1%;
     }
   }
 

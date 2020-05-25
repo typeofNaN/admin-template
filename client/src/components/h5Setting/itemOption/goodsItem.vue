@@ -1,8 +1,8 @@
 <template>
   <div>
-    <template v-if="items && items.length">
+    <template v-if="list && list.length">
       <div
-        v-for="(item, index) in items"
+        v-for="(item, index) in list"
         :key="index"
         class="form-list-panel"
       >
@@ -11,23 +11,25 @@
           :index="index"
           :item="item"
         ></upload>
-        <template v-if="item.click">
-          <el-form-item
-            class="small"
-            label="跳转到："
-          >
-            <span style="word-break: break-all;">{{ item.click.href }}</span>
-          </el-form-item>
-        </template>
         <el-form-item
           class="small"
-          label="点击配置："
+          label="商品名："
         >
-          <el-button
-            icon="el-icon-edit"
-            round
-            @click="showClick(item, index)"
-          >配置跳转</el-button>
+          <el-input
+            v-model="item.name"
+            :maxlength="128"
+            placeholder="必填"
+          ></el-input>
+        </el-form-item>
+        <el-form-item
+          class="small"
+          label="商品价格："
+        >
+          <el-input
+            v-model="item.price"
+            :maxlength="128"
+            placeholder="必填"
+          ></el-input>
         </el-form-item>
         <div class="list-item-opt">
           <a
@@ -38,7 +40,7 @@
             <i class="el-icon-arrow-up"></i>
           </a>
           <a
-            v-if="index !== items.length - 1"
+            v-if="index !== list.length - 1"
             href="javascript:;"
             @click="downItem(index)"
           >
@@ -59,58 +61,51 @@
       style="margin-top:15px;"
       round
       @click="addItem"
-    >添加点击项</el-button>
+    >添加列表项</el-button>
   </div>
 </template>
 
 <script>
 import util from '@/utils/tools.js'
-import compConfig from '@/config/comp.config.js'
 import upload from '@/components/h5Setting/upload.vue'
+import compConfig from '@/config/comp.config.js'
 
 export default {
-  data () {
-    return {
-      defaultConf: util.copyObj(compConfig['grid-menu']),
-      items: this.grids
-    }
-  },
   components: {
     upload
   },
+  data () {
+    return {
+      list: this.items,
+      defaultConf: util.copyObj(compConfig['goods'])
+    }
+  },
   props: {
-    grids: {
+    items: {
       type: Array,
       default: null
     }
   },
-  watch: {
-    grids: {
-      handler (val) {
-        this.items = val
-      },
-      deep: true
-    }
-  },
   methods: {
-    showClick (banner, idx) {
-      this.$evt.$emit('click:show', idx, ['outside'])
-    },
     upItem (idx) {
-      const tmp = util.copyObj(this.items[idx])
-      this.items.splice(idx, 1)
-      this.items.splice(idx - 1, 0, tmp)
+      const tmp = util.copyObj(this.list[idx])
+      this.list.splice(idx, 1)
+      this.list.splice(idx - 1, 0, tmp)
     },
     downItem (idx) {
-      const tmp = util.copyObj(this.items[idx])
-      this.items.splice(idx, 1)
-      this.items.splice(idx + 1, 0, tmp)
+      const tmp = util.copyObj(this.list[idx])
+      this.list.splice(idx, 1)
+      this.list.splice(idx + 1, 0, tmp)
     },
     delItem (idx) {
-      this.items.splice(idx, 1)
+      this.list.splice(idx, 1)
     },
     addItem () {
-      this.items.push(util.copyObj(this.defaultConf.action.config[0]))
+      if (this.list.length < 20) {
+        this.list.push(util.copyObj(this.defaultConf.action.config[0]))
+      } else {
+        this.$alert('最多添加20个列表项！')
+      }
     }
   }
 }

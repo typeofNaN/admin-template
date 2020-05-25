@@ -85,7 +85,7 @@ import CopyText from '@/components/public/copyText'
 import Tips from '@/components/public/tips'
 
 export default {
-  name: 'home',
+  name: 'homeform',
   data () {
     return {
       activeTabName: 'tab1',

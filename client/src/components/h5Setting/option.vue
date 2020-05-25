@@ -110,6 +110,9 @@
         <template v-if="option.action.type === 'coupon-click'">
           <coupon-item :coupons="option.action.config"></coupon-item>
         </template>
+        <template v-if="option.action.type === 'goods-item-click'">
+          <goods-item :items="option.action.config"></goods-item>
+        </template>
 
         <template v-if="option.action.type === 'swiper-click'">
           <banner-item :banners="option.action.config"></banner-item>
@@ -151,6 +154,7 @@ import layoutLeftItem from '@/components/h5Setting/itemOption/layoutLeftItem.vue
 import layoutRightItem from '@/components/h5Setting/itemOption/layoutRightItem.vue'
 
 import couponItem from '@/components/h5Setting/itemOption/couponItem.vue'
+import goodsItem from '@/components/h5Setting/itemOption/goodsItem.vue'
 
 import bannerItem from '@/components/h5Setting/itemOption/bannerItem.vue'
 import scrollItem from '@/components/h5Setting/itemOption/scrollItem.vue'
@@ -182,6 +186,7 @@ export default {
     layoutLeftItem,
     layoutRightItem,
     couponItem,
+    goodsItem,
     bannerItem,
     scrollItem,
     horizontalItem,

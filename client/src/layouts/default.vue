@@ -40,7 +40,9 @@
           <tag-view/>
         </el-header>
         <el-main>
-          <router-view />
+          <!-- <keep-alive :include="cachedViews"> -->
+            <router-view :key="key" />
+          <!-- </keep-alive> -->
         </el-main>
       </el-container>
     </el-container>
@@ -77,6 +79,12 @@ export default {
     topRouters () {
       const allRouter = this.$router.options.routes
       return allRouter.filter(route => route.meta.showInHome)
+    },
+    cachedViews () {
+      return this.$store.state.cachedViews
+    },
+    key () {
+      return this.$route.path
     }
   },
   mounted () {

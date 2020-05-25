@@ -78,7 +78,6 @@ export default {
 
   .grid-menu-item {
     display: inline-block;
-    padding: 0 1px;
     vertical-align: middle;
     text-align: center;
     font-size: 0;

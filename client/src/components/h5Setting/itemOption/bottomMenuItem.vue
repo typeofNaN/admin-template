@@ -113,7 +113,7 @@ export default {
       this.menus.splice(idx - 1, 0, tmp)
     },
     downItem (idx) {
-      const tmp = util.copyObj(this.slides[idx])
+      const tmp = util.copyObj(this.menus[idx])
       this.menus.splice(idx, 1)
       this.menus.splice(idx + 1, 0, tmp)
     },

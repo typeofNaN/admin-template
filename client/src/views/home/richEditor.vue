@@ -12,7 +12,7 @@ import 'quill/dist/quill.bubble.css'
 import { quillEditor } from 'vue-quill-editor'
 
 export default {
-  name: 'richEditor',
+  name: 'editor',
   components: {
     quillEditor
   }

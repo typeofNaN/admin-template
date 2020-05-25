@@ -21,13 +21,13 @@
           <p>3、预览仅供参考，不代表真机效果；</p>
         </div>
         <div
-          v-for="(comp, idx) in compList"
-          :key="idx"
+          v-for="(comp, index) in compList"
+          :key="index"
         >
           <div
             v-if="comp.type !== 'placeholder'"
-            :key="idx"
-            :data-index="idx"
+            :key="index"
+            :data-index="index"
           >
             <!-- 文本控件 -->
             <base-text
@@ -112,6 +112,11 @@
               v-if="comp.type === 'coupon'"
               :component="comp"
             ></coupon>
+            <!-- 自定义商品 -->
+            <goods
+              v-if="comp.type === 'goods'"
+              :component="comp"
+            ></goods>
 
             <!-- 轮播图控件 -->
             <swiper-banner
@@ -171,9 +176,14 @@ export default {
     show: {
       handler (val) {
         this.visible = this.show
-        this.compList = JSON.parse(localStorage.getItem('pageDateSet')).config || []
-        this.pageStyle = JSON.parse(localStorage.getItem('pageConfig')).style || []
-        this.bottomMenu = JSON.parse(localStorage.getItem('pageDateSet')).menu || null
+        if (localStorage.getItem('pageConfig')) {
+          this.pageStyle = JSON.parse(localStorage.getItem('pageConfig')).style || []
+        }
+
+        if (localStorage.getItem('pageDateSet')) {
+          this.compList = JSON.parse(localStorage.getItem('pageDateSet')).config || []
+          this.bottomMenu = JSON.parse(localStorage.getItem('pageDateSet')).menu || null
+        }
       },
       immediate: true
     }
@@ -218,7 +228,7 @@ export default {
     .pre-desc {
       position: absolute;
       left: 110%;
-      top: 20%;
+      top: 200px;
       width: 180px;
       height: 250px;
       padding: 10px;

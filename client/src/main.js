@@ -11,7 +11,7 @@ import Api from './service'
 import i18n from './language'
 import './icons'
 import './mock'
-import './utils/dialogDrag'
+// import './utils/dialogDrag'
 
 import H5Components from './components/h5Setting'
 

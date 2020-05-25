@@ -62,8 +62,8 @@
                 : '0px solid ' + getThemeLogoBGColor,
               backgroundColor: route.isActive
                 ? getIsThemeLight
-                  ? 'rgb(244, 244, 245)'
-                  :'rgb(27, 36, 40)'
+                  ? '#f4f4f5'
+                  : '#1b2428'
                 : '',
               padding: getSlideBar
                 ? route.isActive ? '0 16px' : '0 20px'
@@ -153,8 +153,8 @@
             :style="{
               backgroundColor: route.isActive
                 ? getIsThemeLight
-                  ? 'rgb(244, 244, 245) !important'
-                  :'rgb(27, 36, 40) !important'
+                  ? '#f4f4f5 !important'
+                  :'#1b2428 !important'
                 : '',
               margin: getSlideBar ? '0 -20px' : '0 -14px',
               padding: getSlideBar
@@ -179,7 +179,7 @@
             <span v-else>{{ i18nForRouteTitle(route.meta.title) }}</span>
             <div
               class="collapse_title"
-              :style="{ backgroundColor: getIsThemeLight ? 'rgb(244, 244, 245)' : 'rgb(27, 36, 40)' }"
+              :style="{ backgroundColor: getIsThemeLight ? '#f4f4f5' : '#1b2428' }"
             >
               <el-badge
                 v-if="route.meta.isNew"
@@ -232,7 +232,7 @@ export default {
     }
   },
   mounted () {
-    this.handSlideRoutes(0)
+    this.handSlideRoutes()
   },
   computed: {
     ...mapGetters([
@@ -250,9 +250,7 @@ export default {
   },
   methods: {
     toRoute (path) {
-      const currentRoutePath = this.$route.path
-
-      if (currentRoutePath !== path) {
+      if (this.$route.path !== path) {
         this.$router.push(path)
       }
     },
@@ -262,7 +260,7 @@ export default {
       this.$router.push(route.path)
     },
 
-    handSlideRoutes (timer) {
+    handSlideRoutes (timer = 0) {
       setTimeout(() => {
         const currentRoute = this.$route
         const handleRouters = this.aslideRouters.map(item => {

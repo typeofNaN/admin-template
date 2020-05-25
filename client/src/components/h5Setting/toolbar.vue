@@ -10,7 +10,7 @@
         class="bar-btn"
         @click="saveAll"
       >
-        <i class="el-icon-edit"></i>
+        <i class="el-icon-success"></i>
         <span>保存</span>
       </div>
       <div
@@ -19,6 +19,13 @@
       >
         <i class="el-icon-view"></i>
         <span>预览</span>
+      </div>
+      <div
+        class="bar-btn"
+        @click="reset"
+      >
+        <i class="el-icon-refresh"></i>
+        <span>重置</span>
       </div>
       <div
         class="bar-btn"
@@ -43,6 +50,9 @@ export default {
     },
     saveAll () {
       this.$emit('savePageSet')
+    },
+    reset () {
+      this.$emit('reset')
     }
   }
 }

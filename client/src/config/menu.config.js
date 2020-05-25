@@ -103,6 +103,10 @@ module.exports = [
         key: 'coupon',
         text: '优惠券',
         icon: 'coupon'
+      }, {
+        key: 'goods',
+        text: '自定义商品',
+        icon: 'shopping'
       }
     ]
   }, {
