@@ -44,7 +44,7 @@
           />
         </el-input>
       </el-form-item>
-      <el-form-item prop="validCode">
+      <!-- <el-form-item prop="validCode">
         <el-input
           size="small"
           class="valid_code_input"
@@ -58,12 +58,12 @@
           ></i>
         </el-input>
         <valid-code :value.sync="validCodes"></valid-code>
-      </el-form-item>
+      </el-form-item> -->
       <el-form-item>
         <el-button
           type="primary"
           class="signin_btn"
-          @click="signin('signin_form')"
+          @click="showDialog = true"
         >{{ $t('signin_page.signin_btn_text') }}</el-button>
       </el-form-item>
     </el-form>
@@ -83,6 +83,26 @@
     >
       <i class="el-icon-loading"></i>
     </div>
+    <el-dialog
+      title="请完成登录图片验证"
+      :visible.sync="showDialog"
+      :append-to-body="true"
+      :close-on-click-modal="false"
+      width="350px"
+    >
+      <slide-verify
+        ref="slideblock"
+        :l="42"
+        :r="8"
+        :w="310"
+        :h="200"
+        slider-text="向右滑动验证"
+        :imgs="imgList"
+        @success="onSuccess"
+        @fail="onFail"
+        @refresh="onRefresh"
+      ></slide-verify>
+    </el-dialog>
   </div>
 </template>
 
@@ -107,7 +127,20 @@ export default {
         validCode: ''
       },
       validCodes: '',
-      loading: false
+      loading: false,
+      showDialog: false,
+      imgList: [
+        require('@/assets/img/imgvalid/imgvalid0.jpg'),
+        require('@/assets/img/imgvalid/imgvalid1.jpg'),
+        require('@/assets/img/imgvalid/imgvalid2.jpg'),
+        require('@/assets/img/imgvalid/imgvalid3.jpg'),
+        require('@/assets/img/imgvalid/imgvalid4.jpg'),
+        require('@/assets/img/imgvalid/imgvalid5.jpg'),
+        require('@/assets/img/imgvalid/imgvalid6.jpg'),
+        require('@/assets/img/imgvalid/imgvalid7.jpg'),
+        require('@/assets/img/imgvalid/imgvalid8.jpg'),
+        require('@/assets/img/imgvalid/imgvalid9.jpg')
+      ]
     }
   },
   components: {
@@ -135,29 +168,36 @@ export default {
             message: this.$t('signin_page.length_error'),
             trigger: 'blur'
           }
-        ],
-        validCode: [
-          {
-            required: true,
-            message: this.$t('signin_page.validcode_placeholder'),
-            trigger: 'blur'
-          }
         ]
+        // validCode: [
+        //   {
+        //     required: true,
+        //     message: this.$t('signin_page.validcode_placeholder'),
+        //     trigger: 'blur'
+        //   }
+        // ]
       }
     }
   },
   methods: {
+    onSuccess () {
+      this.signin('signin_form')
+    },
+    onFail () {
+      this.$message.error('验证失败，请重试！')
+    },
+    onRefresh () {
+    },
     signin (formName) {
-      let validCode = this.validCodes.toLowerCase()
+      // let validCode = this.validCodes.toLowerCase()
 
-      if (this.signin_form.validCode.toLowerCase() !== validCode) {
-        this.$message.error(this.$t('signin_page.valid_code_error'))
-        return
-      }
+      // if (this.signin_form.validCode.toLowerCase() !== validCode) {
+      //   this.$message.error(this.$t('signin_page.valid_code_error'))
+      //   return
+      // }
       this.$refs[formName].validate(valid => {
         if (valid) {
           const currentRole = this.validateRole(this.signin_form)
-
           if (currentRole) {
             this.loading = true
 
@@ -180,6 +220,8 @@ export default {
         } else {
           this.$message.error(this.$t('signin_page.rule_error'))
         }
+        this.$refs.slideblock.reset()
+        this.showDialog = false
       })
     },
 
@@ -257,6 +299,12 @@ export default {
     border-color: #08dcd0;
   }
 
+  .image_validate {
+    position: absolute;
+    bottom: 150px;
+    right: -20px;
+  }
+
   .loading {
     display: flex;
     justify-content: center;
@@ -303,6 +351,20 @@ export default {
     &:-ms-input-placeholder {
       font-size: 14px;
     }
+  }
+}
+
+.slide-verify-slider-mask {
+  border: 0 solid #67f520 !important;
+  background-color: #67f520 !important;
+}
+
+.slide-verify-slider-mask-item {
+  background-color: #08dcd0 !important;
+  cursor: move !important;
+
+  &:hover {
+    background-color: #08dcd0 !important;
   }
 }
 </style>

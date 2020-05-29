@@ -12,6 +12,7 @@ module.exports = {
   // routers
   routes: {
     control: '控制台',
+    charts: '图表',
     homeform: '表单',
     message_layer: '消息',
     calendar: '日历',

@@ -167,7 +167,7 @@ export default {
         delivery: false,
         type: [],
         resource: '',
-        color: '#409eff',
+        color: '',
         rate: null,
         transfer: [],
         inputNumber: 1,

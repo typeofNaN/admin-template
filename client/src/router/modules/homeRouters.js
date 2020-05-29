@@ -1,6 +1,7 @@
 const DefaultLayout = () => import('@/layouts/default')
 
 const Home = () => import('@/views/home')
+const Charts = () => import('@/views/home/charts')
 const HomeForm = () => import('@/views/home/homeForm')
 const Message = () => import('@/views/home/messages')
 const Calendar = () => import('@/views/home/calendar')
@@ -18,6 +19,18 @@ const HomeRoute = {
   meta: {
     icon: 'dashboard',
     title: 'control',
+    group: 'home',
+    affix: true
+  }
+}
+
+const ChartsRoute = {
+  path: '/charts',
+  name: 'charts',
+  component: Charts,
+  meta: {
+    icon: 'statistics',
+    title: 'charts',
     group: 'home',
     affix: true
   }
@@ -140,6 +153,7 @@ const HomeRouters = {
   },
   children: [
     HomeRoute,
+    ChartsRoute,
     HomeFormRoute,
     MessageRoute,
     CalendarRoute,

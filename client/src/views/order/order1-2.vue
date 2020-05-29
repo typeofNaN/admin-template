@@ -356,7 +356,6 @@ export default {
     height: 170px;
     #codeImg,
     #sliderBlock {
-      padding: 7px 7px 0 7px;
       width: inherit;
       height: inherit;
     }

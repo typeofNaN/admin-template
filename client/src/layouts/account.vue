@@ -44,6 +44,7 @@ export default {
   height: 100vh;
   // background: url(../assets/img/account_bg.jpg) center no-repeat;
   // background-size: cover;
+  // z-index: 3000;
 
   .box {
     margin: 20px auto;

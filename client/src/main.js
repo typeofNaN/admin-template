@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import SlideVerify from 'vue-monoplasty-slide-verify'
 
 import App from './App'
 import router from './router'
@@ -30,6 +31,7 @@ Vue.config.productionTip = false
 Vue.prototype.api = Api
 
 Vue.use(ElementUI)
+Vue.use(SlideVerify)
 
 const evt = {
   install (Vue) {

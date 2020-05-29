@@ -12,6 +12,7 @@ module.exports = {
   // routers
   routes: {
     control: 'Control',
+    charts: 'charts',
     homeform: 'home form',
     message_layer: 'message',
     calendar: 'calendar',
