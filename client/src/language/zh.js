@@ -12,10 +12,7 @@ module.exports = {
   // routers
   routes: {
     control: '控制台',
-<<<<<<< HEAD
-=======
     map: '谷歌地图',
->>>>>>> master
     charts: '图表',
     homeform: '表单',
     message_layer: '消息',
@@ -26,10 +23,7 @@ module.exports = {
     icons: '图标',
     treeTable: '树形表格',
     h5Setting: '商城设置',
-<<<<<<< HEAD
-=======
     print: '打印',
->>>>>>> master
     routineManage: '常规管理',
     classification: '分类管理',
     jurisdiction: '权限管理',

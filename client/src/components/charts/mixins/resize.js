@@ -14,10 +14,6 @@ export default {
   watch: {
     getSlideBar () {
       if (this.chart) {
-<<<<<<< HEAD
-=======
-        console.log(1)
->>>>>>> master
         this.chart.resize()
       }
     }
