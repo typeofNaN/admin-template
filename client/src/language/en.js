@@ -12,6 +12,10 @@ module.exports = {
   // routers
   routes: {
     control: 'Control',
+<<<<<<< HEAD
+=======
+    map: 'google map',
+>>>>>>> master
     charts: 'charts',
     homeform: 'home form',
     message_layer: 'message',
@@ -22,6 +26,10 @@ module.exports = {
     icons: 'icons',
     treeTable: 'tree table',
     h5Setting: 'h5 Setting',
+<<<<<<< HEAD
+=======
+    print: 'print',
+>>>>>>> master
     routineManage: 'routineManage',
     classification: 'classification',
     jurisdiction: 'jurisdiction',

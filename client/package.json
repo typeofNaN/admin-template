@@ -1,5 +1,5 @@
 {
-  "name": "admin-start",
+  "name": "admin-template",
   "version": "1.0.0",
   "description": "It is the public component module of science and engineering of background management system",
   "author": "typeofNaN",
@@ -24,6 +24,10 @@
     "vue": "^2.5.2",
     "vue-i18n": "^8.17.0",
     "vue-monoplasty-slide-verify": "^1.1.2",
+<<<<<<< HEAD
+=======
+    "vue-print-nb": "^1.5.0",
+>>>>>>> master
     "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.0.1",
     "vuex": "^3.1.3"
@@ -63,6 +67,7 @@
     "file-loader": "^1.1.4",
     "file-saver": "^2.0.2",
     "friendly-errors-webpack-plugin": "^1.6.1",
+    "google-charts": "^2.0.0",
     "html-webpack-plugin": "^2.30.1",
     "iscroll": "^5.2.0",
     "jest": "^22.0.4",

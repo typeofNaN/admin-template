@@ -27,26 +27,20 @@
           ></el-option>
         </el-select>
       </el-form-item>
+      <el-form-item label="活动日期">
+        <el-date-picker
+          type="date"
+          placeholder="选择日期"
+          v-model="form.date1"
+          size="small"
+        ></el-date-picker>
+      </el-form-item>
       <el-form-item label="活动时间">
-        <el-col :span="4">
-          <el-date-picker
-            type="date"
-            placeholder="选择日期"
-            v-model="form.date1"
-            size="small"
-          ></el-date-picker>
-        </el-col>
-        <el-col
-          class="line"
-          :span="1"
-        >-</el-col>
-        <el-col :span="4">
-          <el-time-picker
-            placeholder="选择时间"
-            v-model="form.date2"
-            size="small"
-          ></el-time-picker>
-        </el-col>
+        <el-time-picker
+          placeholder="选择时间"
+          v-model="form.date2"
+          size="small"
+        ></el-time-picker>
       </el-form-item>
       <el-form-item label="即时配送">
         <el-switch v-model="form.delivery"></el-switch>

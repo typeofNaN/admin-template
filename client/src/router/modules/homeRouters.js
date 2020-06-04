@@ -1,6 +1,10 @@
 const DefaultLayout = () => import('@/layouts/default')
 
 const Home = () => import('@/views/home')
+<<<<<<< HEAD
+=======
+const Map = () => import('@/views/home/map')
+>>>>>>> master
 const Charts = () => import('@/views/home/charts')
 const HomeForm = () => import('@/views/home/homeForm')
 const Message = () => import('@/views/home/messages')
@@ -11,6 +15,10 @@ const Tabs = () => import('@/views/home/tabs')
 const Icons = () => import('@/views/home/icons')
 const TreeTable = () => import('@/views/home/treeTable')
 const H5Setting = () => import('@/views/home/h5Setting')
+<<<<<<< HEAD
+=======
+const Print = () => import('@/views/home/print')
+>>>>>>> master
 
 const HomeRoute = {
   path: '/',
@@ -24,6 +32,20 @@ const HomeRoute = {
   }
 }
 
+<<<<<<< HEAD
+=======
+const MapRoute = {
+  path: '/map',
+  name: 'map',
+  component: Map,
+  meta: {
+    icon: 'statistics',
+    title: 'map',
+    group: 'home'
+  }
+}
+
+>>>>>>> master
 const ChartsRoute = {
   path: '/charts',
   name: 'charts',
@@ -31,8 +53,12 @@ const ChartsRoute = {
   meta: {
     icon: 'statistics',
     title: 'charts',
+<<<<<<< HEAD
     group: 'home',
     affix: true
+=======
+    group: 'home'
+>>>>>>> master
   }
 }
 
@@ -142,6 +168,21 @@ const H5SettingRoute = {
   }
 }
 
+<<<<<<< HEAD
+=======
+const PrintRoute = {
+  path: '/print',
+  name: 'print',
+  component: Print,
+  meta: {
+    icon: 'shopping',
+    title: 'print',
+    group: 'home',
+    isNew: true
+  }
+}
+
+>>>>>>> master
 const HomeRouters = {
   path: '/',
   component: DefaultLayout,
@@ -153,6 +194,10 @@ const HomeRouters = {
   },
   children: [
     HomeRoute,
+<<<<<<< HEAD
+=======
+    MapRoute,
+>>>>>>> master
     ChartsRoute,
     HomeFormRoute,
     MessageRoute,
@@ -162,7 +207,12 @@ const HomeRouters = {
     TabsRoute,
     IconsRoute,
     TreeTableRoute,
+<<<<<<< HEAD
     H5SettingRoute
+=======
+    H5SettingRoute,
+    PrintRoute
+>>>>>>> master
   ]
 }
 

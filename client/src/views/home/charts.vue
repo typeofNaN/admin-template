@@ -1,6 +1,12 @@
 <template>
   <div class="dashboard-editor-container">
+<<<<<<< HEAD
     <map-chart />
+=======
+    <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
+      <map-chart />
+    </el-row>
+>>>>>>> master
 
     <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
       <line-chart :chart-data="lineChartData" />

@@ -16,6 +16,12 @@ import './mock'
 
 import H5Components from './components/h5Setting'
 
+<<<<<<< HEAD
+=======
+// import Print from './utils/print'
+import Print from 'vue-print-nb'
+
+>>>>>>> master
 // import './themes/blue/index.css'
 // import './themes/green/index.css'
 // import './themes/pink/index.css'
@@ -30,8 +36,16 @@ Vue.config.productionTip = false
 
 Vue.prototype.api = Api
 
+<<<<<<< HEAD
 Vue.use(ElementUI)
 Vue.use(SlideVerify)
+=======
+Vue.use(ElementUI, {
+  size: 'mini'
+})
+Vue.use(SlideVerify)
+Vue.use(Print)
+>>>>>>> master
 
 const evt = {
   install (Vue) {

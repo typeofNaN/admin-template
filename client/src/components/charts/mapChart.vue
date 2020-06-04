@@ -70,7 +70,11 @@ export default {
           text: '缅甸各城市数据统计分析',
           left: 'center',
           textStyle: {
+<<<<<<< HEAD
             color: '#fff'
+=======
+            color: '#3c8d8c'
+>>>>>>> master
           }
         },
         tooltip: {
@@ -86,14 +90,22 @@ export default {
                 'featureType': 'water',
                 'elementType': 'all',
                 'stylers': {
+<<<<<<< HEAD
                   'color': '#044161'
+=======
+                  // 'color': '#044161'
+>>>>>>> master
                 }
               },
               {
                 'featureType': 'land',
                 'elementType': 'all',
                 'stylers': {
+<<<<<<< HEAD
                   'color': '#004981'
+=======
+                  // 'color': '#004981'
+>>>>>>> master
                 }
               },
               {
@@ -114,14 +126,22 @@ export default {
                 'featureType': 'highway',
                 'elementType': 'geometry',
                 'stylers': {
+<<<<<<< HEAD
                   'color': '#004981'
+=======
+                  // 'color': '#004981'
+>>>>>>> master
                 }
               },
               {
                 'featureType': 'highway',
                 'elementType': 'geometry.fill',
                 'stylers': {
+<<<<<<< HEAD
                   'color': '#005b96',
+=======
+                  // 'color': '#005b96',
+>>>>>>> master
                   'lightness': 1
                 }
               },
@@ -136,14 +156,22 @@ export default {
                 'featureType': 'arterial',
                 'elementType': 'geometry',
                 'stylers': {
+<<<<<<< HEAD
                   'color': '#004981'
+=======
+                  // 'color': '#004981'
+>>>>>>> master
                 }
               },
               {
                 'featureType': 'arterial',
                 'elementType': 'geometry.fill',
                 'stylers': {
+<<<<<<< HEAD
                   'color': '#00508b'
+=======
+                  // 'color': '#00508b'
+>>>>>>> master
                 }
               },
               {
@@ -200,7 +228,11 @@ export default {
                 'featureType': 'building',
                 'elementType': 'all',
                 'stylers': {
+<<<<<<< HEAD
                   'color': '#1a5787'
+=======
+                  // 'color': '#1a5787'
+>>>>>>> master
                 }
               },
               {
