@@ -16,11 +16,7 @@ export default {
       this.setDevice()
     })
 
-    if (this.isMobile()) {
-      this.$store.commit('closeSlideBar')
-    } else {
-      this.$store.commit('openSlideBar')
-    }
+    this.isMobile() ? this.$store.commit('closeSlideBar') : this.$store.commit('openSlideBar')
   },
   methods: {
     isMobile () {
@@ -29,9 +25,7 @@ export default {
     },
 
     setDevice () {
-      const isPhone = this.isMobile()
-
-      this.$store.commit('setDevice', isPhone ? 'mobile' : 'desktop')
+      this.$store.commit('setDevice', this.isMobile() ? 'mobile' : 'desktop')
     }
   }
 }

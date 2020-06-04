@@ -1,4 +1,74 @@
-/* 覆盖element-ui el-dialog弹出动画*/
+.el-table--border {
+  border: 1px solid #f4f4f4;
+}
+
+.el-table {
+  th,
+  td {
+    padding: 4px 0 !important;
+    font-size: 13px !important;
+  }
+
+  th {
+    color: #333;
+    min-height: 40px !important;
+    border-bottom: 1px solid #ddd !important;
+
+    .cell {
+      height: 32px !important;
+      line-height: 32px !important;
+    }
+
+    i {
+      color: #333;
+    }
+  }
+
+  td {
+    background-color: #fafafa !important;
+  }
+
+  tr {
+    &.hover-row {
+      td {
+        background: #f5f5f5 !important;
+      }
+    }
+  }
+}
+.el-table--striped .el-table__body tr.el-table__row--striped td {
+  background: #fff !important;
+}
+.el-table--striped .el-table__body tr.el-table__row--striped.hover-row td {
+  background: #f5f5f5 !important;
+}
+.el-tabs--border-card {
+  border: none;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,.12), 0 0 10px 0 rgba(0,0,0,.04);
+}
+
+.el-upload-list {
+  .el-upload-list__item {
+    position: relative;
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+    }
+  }
+}
+
+.commonDragDialog .el-dialog__headerbtn:hover .el-dialog__close {
+  color: #fff !important;
+}
+
+/* 覆盖element-ui el-dialog弹出动画 */
 .el-dialog__wrapper {
   transition-duration: 0.3s;
 }
@@ -27,11 +97,22 @@
 }
 
 @keyframes anim-open {
-  0% { opacity: 0;  transform: scale3d(0, 0, 1); }
-  100% { opacity: 1; transform: scale3d(1, 1, 1); }
+  0% {
+    opacity: 0;
+    transform: scale3d(0, 0, 1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
 }
 
 @keyframes anim-close {
-  0% { opacity: 1; }
-  100% { opacity: 0; transform: scale3d(0.5, 0.5, 1); }
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale3d(0.5, 0.5, 1);
+  }
 }

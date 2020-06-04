@@ -62,8 +62,8 @@
                 : '0px solid ' + getThemeLogoBGColor,
               backgroundColor: route.isActive
                 ? getIsThemeLight
-                  ? 'rgb(244, 244, 245)'
-                  :'rgb(27, 36, 40)'
+                  ? '#f4f4f5'
+                  : '#1b2428'
                 : '',
               padding: getSlideBar
                 ? route.isActive ? '0 16px' : '0 20px'
@@ -87,6 +87,20 @@
             <span v-else slot="title">{{ i18nForRouteTitle(route.meta.title) }}</span>
           </div>
           <template>
+            <el-menu-item-group class="coll">
+              <el-menu-item>
+                <div class="collapse_submenu_tite">
+                  <el-badge
+                    v-if="route.meta.isNew"
+                    value="new"
+                    class="item_new"
+                  >
+                    <span slot="title">{{ i18nForRouteTitle(route.meta.title) }}</span>
+                  </el-badge>
+                  <span v-else slot="title">{{ i18nForRouteTitle(route.meta.title) }}</span>
+                </div>
+              </el-menu-item>
+            </el-menu-item-group>
             <el-menu-item-group
               v-for="(routeChild, idx) in route.children"
               :key="idx"
@@ -139,8 +153,8 @@
             :style="{
               backgroundColor: route.isActive
                 ? getIsThemeLight
-                  ? 'rgb(244, 244, 245) !important'
-                  :'rgb(27, 36, 40) !important'
+                  ? '#f4f4f5 !important'
+                  :'#1b2428 !important'
                 : '',
               margin: getSlideBar ? '0 -20px' : '0 -14px',
               padding: getSlideBar
@@ -163,6 +177,19 @@
               <span>{{ i18nForRouteTitle(route.meta.title) }}</span>
             </el-badge>
             <span v-else>{{ i18nForRouteTitle(route.meta.title) }}</span>
+            <div
+              class="collapse_title"
+              :style="{ backgroundColor: getIsThemeLight ? '#f4f4f5' : '#1b2428' }"
+            >
+              <el-badge
+                v-if="route.meta.isNew"
+                value="new"
+                class="item_new"
+              >
+                <span>{{ i18nForRouteTitle(route.meta.title) }}</span>
+              </el-badge>
+              <span v-else>{{ i18nForRouteTitle(route.meta.title) }}</span>
+            </div>
           </div>
         </el-menu-item>
       </template>
@@ -188,11 +215,13 @@ export default {
       default: null
     }
   },
-  data: () => ({
-    logoUrl: logo,
-    routers: [],
-    darkTheme: true
-  }),
+  data () {
+    return {
+      logoUrl: logo,
+      routers: [],
+      darkTheme: true
+    }
+  },
   watch: {
     aslideRouters (val) {
       this.routers = val
@@ -203,7 +232,7 @@ export default {
     }
   },
   mounted () {
-    this.handSlideRoutes(0)
+    this.handSlideRoutes()
   },
   computed: {
     ...mapGetters([
@@ -221,9 +250,7 @@ export default {
   },
   methods: {
     toRoute (path) {
-      const currentRoutePath = this.$route.path
-
-      if (currentRoutePath !== path) {
+      if (this.$route.path !== path) {
         this.$router.push(path)
       }
     },
@@ -233,7 +260,7 @@ export default {
       this.$router.push(route.path)
     },
 
-    handSlideRoutes (timer) {
+    handSlideRoutes (timer = 0) {
       setTimeout(() => {
         const currentRoute = this.$route
         const handleRouters = this.aslideRouters.map(item => {
@@ -317,8 +344,9 @@ export default {
   }
 
   .slide_icon {
-    width: 14px;
-    height: 14px;
+    width: 13px;
+    height: 13px;
+    vertical-align: middle;
   }
 }
 </style>
@@ -394,6 +422,8 @@ export default {
       .el-badge__content.is-fixed {
         top: 50%;
         line-height: 14px;
+        border: none;
+        height: 18px;
       }
     }
   }
@@ -404,7 +434,7 @@ export default {
 }
 
 .el-menu--collapse {
-  width: 50px;
+  width: 50px !important;
 
   .el-submenu {
     .act {
@@ -482,7 +512,7 @@ export default {
       }
       &:hover {
         .menu_item {
-          margin-left: -16px !important;
+          margin-left: -14px !important;
         }
 
         .svg-icon {
@@ -497,6 +527,58 @@ export default {
     justify-content: center;
     align-items: center;
     height: 100%;
+    position: relative;
+    z-index: 999;
+
+    &:hover {
+      .collapse_title {
+        display: block;
+      }
+    }
+  }
+}
+.el-menu-item {
+  .menu_item {
+    .collapse_title {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 42px;
+      padding-left: 20px;
+      width: 200px;
+      height: 100%;
+      z-index: 999;
+
+      span,
+      sup {
+        display: block !important;
+        width: auto;
+        height: auto;
+        visibility: visible;
+      }
+
+      span {
+        width: 120px;
+      }
+
+      .sup {
+        right: 10px;
+      }
+    }
+  }
+}
+
+.collapse_submenu_tite {
+  padding-left: 18px;
+}
+
+.coll {
+  display: none;
+}
+
+.el-menu--vertical {
+  .coll {
+    display: block;
   }
 }
 

@@ -12,6 +12,8 @@ module.exports = {
   // routers
   routes: {
     control: 'Control',
+    map: 'google map',
+    charts: 'charts',
     homeform: 'home form',
     message_layer: 'message',
     calendar: 'calendar',
@@ -19,6 +21,9 @@ module.exports = {
     editor: 'editor',
     tabs: 'tabs',
     icons: 'icons',
+    treeTable: 'tree table',
+    h5Setting: 'h5 Setting',
+    print: 'print',
     routineManage: 'routineManage',
     classification: 'classification',
     jurisdiction: 'jurisdiction',
@@ -34,6 +39,7 @@ module.exports = {
     demo: 'demo',
     wechat: 'wechat',
     message: 'message',
+    error: 'error',
     order: 'Order',
     order1: 'Order1',
     order11: 'Order11',
@@ -84,13 +90,15 @@ module.exports = {
   // signin page
   signin_page: {
     title: 'System Signin',
-    username_placeholder: 'Place enter your username',
-    password_placeholder: 'Place enter password',
+    username_placeholder: 'Pleace enter your username',
+    password_placeholder: 'Pleace enter password',
+    validcode_placeholder: 'Pleace enter valid code',
     signin_btn_text: 'Sign In',
     user_name: 'user name',
     password: 'password',
     signin_success: 'Sign in success,welcome',
     name_pwd_error: 'Wrong user name or password, please re-enter!',
+    valid_code_error: 'Valid code error',
     rule_error: 'The format of the input information is wrong, please input again!',
     length_error: '6 to 18 characters in length'
   }

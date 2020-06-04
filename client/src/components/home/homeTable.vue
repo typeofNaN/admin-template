@@ -4,6 +4,7 @@
       id="dataTable"
       :data="tableData"
       border
+      stripe
       style="width: 100%"
       v-loading="loading"
       element-loading-background="rgba(255, 255, 255, 0.7)"
@@ -31,12 +32,14 @@
         prop="b"
         label="字段B"
         sortable
+        show-overflow-tooltip
         min-width="100"
       ></el-table-column>
       <el-table-column
         prop="c"
         label="字段C"
         sortable
+        show-overflow-tooltip
         min-width="100"
       ></el-table-column>
       <el-table-column
@@ -61,6 +64,7 @@
         prop="g"
         label="字段G"
         sortable
+        show-overflow-tooltip
         min-width="100"
       ></el-table-column>
       <el-table-column
@@ -81,20 +85,18 @@
       </el-table-column>
       <el-table-column
         label="操作"
-        min-width="100"
+        min-width="130"
         fixed="right"
       >
         <template slot-scope="scope">
           <el-button
             type="warning"
-            circle
             size="mini"
             icon="el-icon-edit"
             @click="editItem(scope)"
           ></el-button>
           <el-button
             type="danger"
-            circle
             size="mini"
             icon="el-icon-delete"
             @click="deleteItem(scope)"
@@ -109,7 +111,7 @@
 import FileSaver from 'file-saver'
 import XLSX from 'xlsx'
 
-import formatter from '@/utils/formatterDate'
+import utils from '@/utils/tools'
 
 export default {
   name: 'homeTable',
@@ -119,15 +121,16 @@ export default {
       default: null
     }
   },
-  data: () => ({
-    selection: [],
-    loading: true
-  }),
+  data () {
+    return {
+      selection: [],
+      loading: true
+    }
+  },
   methods: {
     formatterDate (obj) {
       if (obj.utc_created) {
-        let date = new Date(obj.utc_created)
-        return formatter(date, 'yyyy-MM-dd HH:mm:ss')
+        return utils.parseTime(new Date(obj.utc_created))
       } else {
         return '--'
       }

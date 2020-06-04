@@ -93,12 +93,14 @@ export default {
       default: null
     }
   },
-  data: () => ({
-    showTopRouters: [],
-    hideTopRouters: [],
-    topRoutersOpacity: 0,
-    logoUrl: logo
-  }),
+  data () {
+    return {
+      showTopRouters: [],
+      hideTopRouters: [],
+      topRoutersOpacity: 0,
+      logoUrl: logo
+    }
+  },
   components: {
     ToolBar
   },
@@ -111,12 +113,7 @@ export default {
       'getThemeTextColor'
     ]),
     currentRouterIndex () {
-      const currentRouter = this.$route
-      const currentRouterIndex = this.topRouters.findIndex(a =>
-        a.meta.group === currentRouter.meta.group
-      )
-
-      return currentRouterIndex
+      return this.topRouters.findIndex(a => a.meta.group === this.$route.meta.group)
     }
   },
   watch: {
@@ -136,12 +133,14 @@ export default {
         item.meta.group === oldRouter.meta.group
       )
 
-      if (newRouteIndex >= 0 && newRouteIndex <= this.showTopRouters.length) {
-        this.$refs.route_item[newRouteIndex].style.backgroundColor = this.getThemeLogoBGColor
-      }
+      if (newRouteIndex !== oldRouterIndex) {
+        if (newRouteIndex >= 0 && newRouteIndex <= this.showTopRouters.length) {
+          this.$refs.route_item[newRouteIndex].style.backgroundColor = this.getThemeLogoBGColor
+        }
 
-      if (oldRouterIndex >= 0 && oldRouterIndex <= this.showTopRouters.length) {
-        this.$refs.route_item[oldRouterIndex].style.backgroundColor = this.getThemeHeaderBGColor
+        if (oldRouterIndex >= 0 && oldRouterIndex <= this.showTopRouters.length) {
+          this.$refs.route_item[oldRouterIndex].style.backgroundColor = this.getThemeHeaderBGColor
+        }
       }
 
       const parentRouter = this.topRouters.find(item => item.meta.group === newRoute.meta.group)
@@ -169,7 +168,7 @@ export default {
 
       setTimeout(() => {
         this.topRoutersOpacity = 1
-      }, 400)
+      }, 1000)
     }
   },
   methods: {
@@ -178,8 +177,7 @@ export default {
     },
 
     handleRouter (route, index) {
-      const currentRoute = this.$route
-      if (currentRoute.meta.group !== route.meta.group) {
+      if (this.$route.meta.group !== route.meta.group) {
         if (this.currentRouterIndex <= this.showTopRouters.length) {
           this.$refs.route_item[this.currentRouterIndex].style.backgroundColor = this.getThemeHeaderBGColor
           this.$refs.route_item[index].style.backgroundColor = this.getThemeLogoBGColor
@@ -190,9 +188,7 @@ export default {
     },
 
     handleHideTopRouter (route) {
-      const currentRoute = this.$route
-
-      if (currentRoute.meta.group !== route.meta.group) {
+      if (this.$route.meta.group !== route.meta.group) {
         if (this.currentRouterIndex < this.showTopRouters.length) {
           this.$refs.route_item[this.currentRouterIndex].style.backgroundColor = this.getThemeHeaderBGColor
         }
@@ -243,6 +239,7 @@ export default {
       padding: 0 15px;
       justify-content: center;
       align-items: center;
+      min-width: 104px;
       height: 100%;
       font-size: 13px;
       border-right: 1px solid rgba(0, 0, 0, .05);

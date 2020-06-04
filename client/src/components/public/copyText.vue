@@ -22,19 +22,19 @@
 <script>
 export default {
   name: 'copyText',
-  data: () => ({
-    value: '',
-    value1: ''
-  }),
+  data () {
+    return {
+      value: '',
+      value1: ''
+    }
+  },
   methods: {
     copy1 () {
-      const str = '这是一条固定文本'
-      this.copyText(str)
+      this.copyText('这是一条固定文本')
     },
 
     copy2 () {
-      const str = this.value
-      this.copyText(str)
+      this.copyText(this.value)
     },
 
     copyText (copyStr) {

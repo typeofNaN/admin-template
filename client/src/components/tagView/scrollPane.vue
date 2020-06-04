@@ -14,9 +14,11 @@ const tagAndTagSpacing = 4
 
 export default {
   name: 'ScrollPane',
-  data: () => ({
-    left: 0
-  }),
+  data () {
+    return {
+      left: 0
+    }
+  },
   computed: {
     scrollWrapper () {
       return this.$refs.scrollContainer.$refs.wrap

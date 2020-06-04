@@ -38,6 +38,9 @@ module.exports = {
       '@': resolve('src'),
     }
   },
+  externals: {
+    'google': 'google'
+  },
   module: {
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),

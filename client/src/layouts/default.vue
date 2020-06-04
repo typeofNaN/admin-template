@@ -15,7 +15,7 @@
       </el-aside>
       <el-container
         :style="{
-          paddingTop: getFixedHeader ? '80px' : '0',
+          paddingTop: getFixedHeader ? '94px' : '0',
           marginLeft: getIsMobile
             ? getSlideBar ? '230px' : '0px'
             : getSlideBar ? '230px' : '50px'
@@ -29,7 +29,7 @@
               ? getSlideBar ? 'calc(100% - 230px)' : 'calc(100% - 0px)'
               : getSlideBar ? 'calc(100% - 230px)' : 'calc(100% - 50px)'
             : '100%',
-            height: '80px'
+            height: '94px'
           }"
           :class="getFixedHeader ? 'fixedHeader' : 'noFixedheader'"
         >
@@ -40,7 +40,9 @@
           <tag-view/>
         </el-header>
         <el-main>
-          <router-view />
+          <!-- <keep-alive :include="cachedViews"> -->
+            <router-view :key="key" />
+          <!-- </keep-alive> -->
         </el-main>
       </el-container>
     </el-container>
@@ -56,9 +58,11 @@ import TagView from '@/components/tagView/tagView'
 
 export default {
   name: 'default',
-  data: () => ({
-    aslideRouters: []
-  }),
+  data () {
+    return {
+      aslideRouters: []
+    }
+  },
   components: {
     HeaderBar,
     SlideBar,
@@ -74,14 +78,18 @@ export default {
     ]),
     topRouters () {
       const allRouter = this.$router.options.routes
-      const filterRouter = allRouter.filter(route => route.meta.showInHome)
-      return filterRouter
+      return allRouter.filter(route => route.meta.showInHome)
+    },
+    cachedViews () {
+      return this.$store.state.cachedViews
+    },
+    key () {
+      return this.$route.path
     }
   },
   mounted () {
     const allRouter = this.$router.options.routes
-    const currentRouter = this.$route
-    const indexRouter = allRouter.find(item => item.meta.group === currentRouter.meta.group)
+    const indexRouter = allRouter.find(item => item.meta.group === this.$route.meta.group)
     this.changeSlideRouter(indexRouter)
   },
   methods: {
@@ -105,7 +113,7 @@ export default {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 200;
+    z-index: 1999;
   }
 
   .noFixedheader {
@@ -116,10 +124,15 @@ export default {
 
 <style lang="scss">
 .el-header {
-  padding: 0;
+  padding: 0 !important;
 }
 
 .el-main {
-  padding: 20px 8px;
+  padding: 8px !important;
+}
+
+.el-aside {
+  overflow: visible !important;
+  z-index: 2000 !important;
 }
 </style>

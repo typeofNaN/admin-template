@@ -80,6 +80,12 @@
       >
         <step></step>
       </el-tab-pane>
+      <el-tab-pane
+        label="dialog弹窗"
+        name="tab10"
+      >
+        <d-dialog></d-dialog>
+      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -93,13 +99,16 @@ import Popover from '@/components/messages/popover'
 import Popconfirm from '@/components/messages/popconfirm'
 import Tips from '@/components/public/tips'
 import Step from '@/components/public/step'
+import DDialog from '@/components/messages/dialog'
 
 export default {
-  name: 'messageLayer',
-  data: () => ({
-    activeTabName: 'tab1',
-    loading: false
-  }),
+  name: 'message_layer',
+  data () {
+    return {
+      activeTabName: 'tab1',
+      loading: false
+    }
+  },
   components: {
     Message,
     MessageBox,
@@ -108,7 +117,8 @@ export default {
     Popover,
     Popconfirm,
     Tips,
-    Step
+    Step,
+    DDialog
   },
   methods: {
     changeTab (tab, event) {
@@ -129,8 +139,7 @@ export default {
 <style lang="scss">
 #message_layer {
   .el-tabs__header {
-    padding: 8px 0 0 0;
-    background-color: #e8edf0;
+    background-color: #f2f4f5;
 
     .el-tabs__item {
       margin-right: 4px;
@@ -139,12 +148,12 @@ export default {
       border: none;
       height: 40px;
       font-size: 13px;
-      background-color: #d8e0e6;
+      background-color: #e8edf0;
       color: #95a5a6;
 
       &:hover {
         color: #7b8a8b;
-        background-color: #b8c7ce;
+        background-color: #dee2e4;
       }
 
       &.is-active {

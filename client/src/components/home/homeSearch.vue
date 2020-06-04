@@ -233,9 +233,11 @@ export default {
       default: null
     }
   },
-  data: () => ({
-    showSearch: true
-  }),
+  data () {
+    return {
+      showSearch: true
+    }
+  },
   methods: {
     search () {
       this.$emit('search', this.searchForm)
@@ -258,6 +260,10 @@ export default {
     .el-form-item__content {
       max-width: 202px;
     }
+  }
+
+  .el-form-item {
+    margin-bottom: 10px;
   }
 }
 </style>

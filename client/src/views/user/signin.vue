@@ -21,6 +21,7 @@
     >
       <el-form-item prop="userName">
         <el-input
+          size="small"
           v-model="signin_form.userName"
           :placeholder="$t('signin_page.username_placeholder')"
         >
@@ -32,6 +33,7 @@
       </el-form-item>
       <el-form-item prop="password">
         <el-input
+          size="small"
           v-model="signin_form.password"
           show-password
           :placeholder="$t('signin_page.password_placeholder')"
@@ -42,11 +44,26 @@
           />
         </el-input>
       </el-form-item>
+      <!-- <el-form-item prop="validCode">
+        <el-input
+          size="small"
+          class="valid_code_input"
+          v-model="signin_form.validCode"
+          :placeholder="$t('signin_page.validcode_placeholder')"
+          @keyup.enter.native="signin('signin_form')"
+        >
+          <i
+            slot="prefix"
+            class="el-input__icon el-icon-position"
+          ></i>
+        </el-input>
+        <valid-code :value.sync="validCodes"></valid-code>
+      </el-form-item> -->
       <el-form-item>
         <el-button
           type="primary"
           class="signin_btn"
-          @click="signin('signin_form')"
+          @click="showDialog = true"
         >{{ $t('signin_page.signin_btn_text') }}</el-button>
       </el-form-item>
     </el-form>
@@ -66,12 +83,33 @@
     >
       <i class="el-icon-loading"></i>
     </div>
+    <el-dialog
+      title="请完成登录图片验证"
+      :visible.sync="showDialog"
+      :append-to-body="true"
+      :close-on-click-modal="false"
+      width="350px"
+    >
+      <slide-verify
+        ref="slideblock"
+        :l="42"
+        :r="8"
+        :w="310"
+        :h="200"
+        slider-text="向右滑动验证"
+        :imgs="imgList"
+        @success="onSuccess"
+        @fail="onFail"
+        @refresh="onRefresh"
+      ></slide-verify>
+    </el-dialog>
   </div>
 </template>
 
 <script>
-import formatterDate from '@/utils/formatterDate'
+import utils from '@/utils/tools'
 import logo from '@/assets/img/logo.png'
+import ValidCode from '@/components/public/validCode'
 
 const roleArr = [
   { role: '管理员', userName: 'admin', password: '123456' },
@@ -80,14 +118,34 @@ const roleArr = [
 
 export default {
   name: 'SignIn',
-  data: () => ({
-    logoUrl: logo,
-    signin_form: {
-      userName: 'admin',
-      password: '123456'
-    },
-    loading: false
-  }),
+  data () {
+    return {
+      logoUrl: logo,
+      signin_form: {
+        userName: 'admin',
+        password: '123456',
+        validCode: ''
+      },
+      validCodes: '',
+      loading: false,
+      showDialog: false,
+      imgList: [
+        require('@/assets/img/imgvalid/imgvalid0.jpg'),
+        require('@/assets/img/imgvalid/imgvalid1.jpg'),
+        require('@/assets/img/imgvalid/imgvalid2.jpg'),
+        require('@/assets/img/imgvalid/imgvalid3.jpg'),
+        require('@/assets/img/imgvalid/imgvalid4.jpg'),
+        require('@/assets/img/imgvalid/imgvalid5.jpg'),
+        require('@/assets/img/imgvalid/imgvalid6.jpg'),
+        require('@/assets/img/imgvalid/imgvalid7.jpg'),
+        require('@/assets/img/imgvalid/imgvalid8.jpg'),
+        require('@/assets/img/imgvalid/imgvalid9.jpg')
+      ]
+    }
+  },
+  components: {
+    ValidCode
+  },
   computed: {
     signinRules () {
       return {
@@ -111,22 +169,42 @@ export default {
             trigger: 'blur'
           }
         ]
+        // validCode: [
+        //   {
+        //     required: true,
+        //     message: this.$t('signin_page.validcode_placeholder'),
+        //     trigger: 'blur'
+        //   }
+        // ]
       }
     }
   },
   methods: {
+    onSuccess () {
+      this.signin('signin_form')
+    },
+    onFail () {
+      this.$message.error('验证失败，请重试！')
+    },
+    onRefresh () {
+    },
     signin (formName) {
+      // let validCode = this.validCodes.toLowerCase()
+
+      // if (this.signin_form.validCode.toLowerCase() !== validCode) {
+      //   this.$message.error(this.$t('signin_page.valid_code_error'))
+      //   return
+      // }
       this.$refs[formName].validate(valid => {
         if (valid) {
           const currentRole = this.validateRole(this.signin_form)
-
           if (currentRole) {
             this.loading = true
 
             let msg = this.$t('signin_page.signin_success')
             this.$message.success(`${msg} ${currentRole.userName}`)
 
-            currentRole.signinTime = formatterDate(new Date(), 'yyyy-MM-dd HH:mm:ss')
+            currentRole.signinTime = utils.parseTime(new Date())
 
             this.$store.dispatch('signin', {
               currentRole,
@@ -142,16 +220,16 @@ export default {
         } else {
           this.$message.error(this.$t('signin_page.rule_error'))
         }
+        this.$refs.slideblock.reset()
+        this.showDialog = false
       })
     },
 
     validateRole (roleObj) {
-      const currentRole = roleArr.find(role =>
+      return roleArr.find(role =>
         roleObj.userName === role.userName &&
         roleObj.password === role.password
       )
-
-      return currentRole
     },
 
     changeLanguage (command) {
@@ -166,7 +244,7 @@ export default {
 <style lang="scss" scoped>
 #signin {
   position: relative;
-  color: #fff;
+  color: #606266;
 
   .signin_logo,
   .signin_title {
@@ -175,8 +253,8 @@ export default {
 
   .signin_logo {
     margin: 0 auto;
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
   }
 
   .lang_setting_box {
@@ -186,28 +264,45 @@ export default {
 
     span,
     i {
-      color: #fff;
       font-size: 16px;
       cursor: pointer;
     }
   }
 
   .signin_title {
-    margin: 20px;
-    color: #fff;
+    margin: 10px;
     font-weight: 500;
+    font-size: 28px;
   }
 
   .el-icon-user-solid,
-  .el-icon-lock {
-    margin-top: 6px;
-    font-size: 30px;
+  .el-icon-lock,
+  .el-icon-position {
+    margin: 2px;
+    font-size: 20px;
+  }
+
+  .valid_code_input {
+    display: inline-block;
+    margin-right: 15px;
+    width: calc(100% - 140px);
+    vertical-align: middle;
   }
 
   .signin_btn {
     width: 100%;
-    height: 50px;
-    font-size: 24px;
+    height: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    padding: 0;
+    background-color: #08dcd0;
+    border-color: #08dcd0;
+  }
+
+  .image_validate {
+    position: absolute;
+    bottom: 150px;
+    right: -20px;
   }
 
   .loading {
@@ -219,13 +314,13 @@ export default {
     left: 0;
     margin: -20px;
     width: calc(100% + 40px);
-    height: calc(100% + 60px);
+    height: calc(100% + 40px);
     border-radius: 20px;
     background-color: rgba(255, 255, 255, .7);
 
     i {
-      font-size: 70px;
-      color: #409eff;
+      font-size: 60px;
+      color: #606266;
     }
   }
 }
@@ -234,15 +329,42 @@ export default {
 <style lang="scss">
 #signin {
   .el-form-item__content {
-    line-height: 50px;
+    line-height: 40px;
   }
 
   .el-input__inner {
-    height: 50px;
+    height: 40px;
     background-color: rgba(255, 255, 255, .4);
-    color: #fff;
-    font-size: 20px;
+    color: #606266;
+    font-size: 18px;
     text-indent: 10px;
+
+    &::-webkit-input-placeholder {
+      font-size: 14px;
+    }
+    &:-moz-placeholder {
+      font-size: 14px;
+    }
+    &::-moz-placeholder {
+      font-size: 14px;
+    }
+    &:-ms-input-placeholder {
+      font-size: 14px;
+    }
+  }
+}
+
+.slide-verify-slider-mask {
+  border: 0 solid #67f520 !important;
+  background-color: #67f520 !important;
+}
+
+.slide-verify-slider-mask-item {
+  background-color: #08dcd0 !important;
+  cursor: move !important;
+
+  &:hover {
+    background-color: #08dcd0 !important;
   }
 }
 </style>

@@ -1,31 +1,19 @@
-import Vue from 'vue'
+import { Message } from 'element-ui'
 import Clipboard from 'clipboard'
-
-function clipboardSuccess () {
-  Vue.prototype.$message({
-    message: 'Copy successfully',
-    type: 'success',
-    duration: 1500
-  })
-}
-
-function clipboardError () {
-  Vue.prototype.$message({
-    message: 'Copy failed',
-    type: 'error'
-  })
-}
 
 export default function handleClipboard (text, event) {
   const clipboard = new Clipboard(event.target, {
     text: () => text
   })
   clipboard.on('success', () => {
-    clipboardSuccess()
+    Message.success({
+      message: 'Copy successfully',
+      duration: 1500
+    })
     clipboard.destroy()
   })
   clipboard.on('error', () => {
-    clipboardError()
+    Message.error('Copy failed')
     clipboard.destroy()
   })
   clipboard.onClick(event)

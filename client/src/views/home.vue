@@ -1,17 +1,28 @@
 <template>
   <div id="home">
-    首页
+    <border-box>
+      <el-card>
+        <div slot="header">
+          <span>编辑表单</span>
+        </div>
+        <home-form></home-form>
+      </el-card>
+      <!-- <common-dialog></common-dialog> -->
+    </border-box>
   </div>
 </template>
 
 <script>
+import CommonDialog from '@/components/public/commonDialog'
+import HomeForm from '@/components/home/homeForm'
+import BorderBox from '@/components/public/borderBox'
+
 export default {
-  name: 'homePage'
+  name: 'homePage',
+  components: {
+    CommonDialog,
+    HomeForm,
+    BorderBox
+  }
 }
 </script>
-
-<style lang="scss" scoped>
-#home {
-  height: 1000px;
-}
-</style>

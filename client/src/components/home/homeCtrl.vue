@@ -13,13 +13,46 @@
         size="small"
         @click="add"
       >添 加</el-button>
+      <el-tooltip
+        v-if="selectData.length === 0"
+        effect="dark"
+        content="请选择一条数据"
+        placement="top"
+      >
+        <span>
+          <el-button
+            type="warning"
+            icon="el-icon-edit"
+            size="small"
+            disabled
+            @click="edit"
+          >编 辑</el-button>
+        </span>
+      </el-tooltip>
       <el-button
+        v-else
         type="warning"
         icon="el-icon-edit"
         size="small"
         @click="edit"
       >编 辑</el-button>
+      <el-tooltip
+        v-if="selectData.length === 0"
+        effect="dark"
+        content="请选择一条数据"
+        placement="top"
+      >
+        <span>
+          <el-button
+            type="danger"
+            icon="el-icon-delete"
+            size="small"
+            disabled
+          >删 除</el-button>
+        </span>
+      </el-tooltip>
       <el-button
+        v-else
         type="danger"
         icon="el-icon-delete"
         size="small"
@@ -69,9 +102,23 @@
       ></el-button>
     </div>
     <el-dialog
+      class="custom_dialog commonDragDialog"
+      v-el-drag-dialog
       :visible.sync="dialogFormVisible"
-      :title="dialogTitle"
+      :close-on-click-modal="false"
     >
+      <div
+        slot="title"
+        class="dialog_title"
+        :style="{ backgroundColor: getThemeHeaderBGColor }"
+      >
+        <span>{{ dialogTitle }}</span>
+        <svg-icon
+          class="big_small"
+          :icon-class="isbigDialog ? 'defaultDialog' : 'bigDialog'"
+          @click="isbigDialog = !isbigDialog"
+        />
+      </div>
       <el-form
         :model="dialogForm"
         ref="dialogForm"
@@ -161,9 +208,13 @@
         slot="footer"
         class="dialog-footer"
       >
-        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button
+          @click="dialogFormVisible = false"
+          size="small"
+        >取 消</el-button>
         <el-button
           type="primary"
+          size="small"
           @click="submitForm('dialogForm')"
         >确 定</el-button>
       </div>
@@ -172,19 +223,30 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
+import elDragDialog from '@/directive/el-drag-dialog'
+
 export default {
   name: 'homeCtrl',
+  directives: { elDragDialog },
   props: {
     selectData: {
       type: Array,
       default: null
     }
   },
-  data: () => ({
-    dialogFormVisible: false,
-    dialogTitle: '',
-    dialogForm: {}
-  }),
+  data () {
+    return {
+      dialogFormVisible: false,
+      dialogTitle: '',
+      dialogForm: {},
+      isbigDialog: false
+    }
+  },
+  computed: {
+    ...mapGetters(['getThemeHeaderBGColor'])
+  },
   methods: {
     showSearchForm () {
       this.$emit('showSearchForm')
@@ -214,19 +276,14 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           let postData = { ...this.dialogForm }
-
-          const funcName = this.dialogTitle === '添加'
-            ? 'addOrder'
-            : 'editOrder'
+          const funcName = this.dialogTitle === '添加' ? 'addOrder' : 'editOrder'
 
           this.api.orderApi[funcName](postData)
             .then(res => {
-              if (res.data.code === 0) {
-                this.$message.success(`${this.dialogTitle}成功！`)
-                this.$refs[formName].resetFields()
-                this.dialogFormVisibla = false
-                this.refresh()
-              }
+              this.$message.success(`${this.dialogTitle}成功！`)
+              this.$refs[formName].resetFields()
+              this.dialogFormVisibla = false
+              this.refresh()
             })
         } else {
           this.$message.danger('所填信息有误，请重新填写！')

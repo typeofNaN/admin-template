@@ -6,71 +6,74 @@
         <p>输入分页查询搜索条件，表格数据可分页，可调整当前页面数据</p>
       </tips>
     </div>
-    <el-tabs
-      v-model="activeTabName"
-      type="border-card"
-      @tab-click="changeTab"
-    >
-      <el-tab-pane
-        label="分页查询"
-        name="tab1"
+    <border-box>
+      <el-tabs
+        v-model="activeTabName"
+        type="border-card"
+        @tab-click="changeTab"
       >
-        <home-search
-          ref="home_search"
-          :searchForm="searchData"
-          @search="search"
-        ></home-search>
-        <home-ctrl
-          :selectData.sync="selectData"
-          @showSearchForm="showSearchForm"
-          @refresh="refresh"
-          @exportExcel="exportExcel"
-        ></home-ctrl>
-        <home-table
-          ref="home_table"
-          :tableData="tableData"
-          @selectChange="selectChange"
-        ></home-table>
-        <pagination
-          ref="pagination"
-          :count="count"
-          :currentPageSize="currentPageSize"
-          :addLength="tableData.length"
-          @currentChange="currentChange"
-          @sizeChange="sizeChange"
-        ></pagination>
-      </el-tab-pane>
-      <el-tab-pane
-        label="表单"
-        name="tab2"
-      >
-        <home-form></home-form>
-      </el-tab-pane>
-      <el-tab-pane
-        label="表单验证"
-        name="tab3"
-      >
-        <form-validate></form-validate>
-      </el-tab-pane>
-      <el-tab-pane
-        label="简单表格"
-        name="tab4"
-      >
-        <simple-table></simple-table>
-      </el-tab-pane>
-      <el-tab-pane
-        label="复制文本"
-        name="tab5"
-      >
-        <copy-text></copy-text>
-      </el-tab-pane>
-    </el-tabs>
+        <el-tab-pane
+          label="分页查询"
+          name="tab1"
+        >
+          <home-search
+            ref="home_search"
+            :searchForm="searchData"
+            @search="search"
+          ></home-search>
+          <home-ctrl
+            :selectData.sync="selectData"
+            @showSearchForm="showSearchForm"
+            @refresh="refresh"
+            @exportExcel="exportExcel"
+          ></home-ctrl>
+          <home-table
+            ref="home_table"
+            :tableData="tableData"
+            @selectChange="selectChange"
+          ></home-table>
+          <pagination
+            ref="pagination"
+            :count="count"
+            :currentPageSize="currentPageSize"
+            :addLength="tableData.length"
+            @currentChange="currentChange"
+            @sizeChange="sizeChange"
+          ></pagination>
+        </el-tab-pane>
+        <el-tab-pane
+          label="表单"
+          name="tab2"
+        >
+          <home-form></home-form>
+        </el-tab-pane>
+        <el-tab-pane
+          label="表单验证"
+          name="tab3"
+        >
+          <form-validate></form-validate>
+        </el-tab-pane>
+        <el-tab-pane
+          label="简单表格"
+          name="tab4"
+        >
+          <simple-table></simple-table>
+        </el-tab-pane>
+        <el-tab-pane
+          label="复制文本"
+          name="tab5"
+        >
+          <copy-text></copy-text>
+        </el-tab-pane>
+      </el-tabs>
+    </border-box>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 
+import BorderBox from '@/components/public/borderBox'
 import HomeSearch from '@/components/home/homeSearch'
 import HomeCtrl from '@/components/home/homeCtrl'
 import HomeTable from '@/components/home/homeTable'
@@ -82,30 +85,33 @@ import CopyText from '@/components/public/copyText'
 import Tips from '@/components/public/tips'
 
 export default {
-  name: 'home',
-  data: () => ({
-    activeTabName: 'tab1',
-    searchData: {
-      _id: '',
-      a: '',
-      b: '',
-      c: '',
-      d: '',
-      e: '',
-      f: '',
-      g: '',
-      time: '',
-      is_deleted: '',
-      page: 1,
-      pageSize: 10
-    },
-    tableData: [],
-    selectData: [],
-    count: 0,
-    current: 1,
-    currentPageSize: 10
-  }),
+  name: 'homeform',
+  data () {
+    return {
+      activeTabName: 'tab1',
+      searchData: {
+        _id: '',
+        a: '',
+        b: '',
+        c: '',
+        d: '',
+        e: '',
+        f: '',
+        g: '',
+        time: '',
+        is_deleted: '',
+        page: 1,
+        pageSize: 10
+      },
+      tableData: [],
+      selectData: [],
+      count: 0,
+      current: 1,
+      currentPageSize: 10
+    }
+  },
   components: {
+    BorderBox,
     HomeSearch,
     HomeCtrl,
     HomeTable,
@@ -181,6 +187,16 @@ export default {
 
     changeTab (tab, event) {
       console.log(tab, event)
+    },
+
+    getTreeValue (val) {
+      let postData = { ...this.searchData }
+      this.current = 1
+      this.$refs.pagination.resetCurrentPage(this.current)
+      postData.page = this.current
+      postData._id = val
+      postData.pageSize = this.currentPageSize
+      this.getData(postData)
     }
   }
 }
@@ -190,12 +206,10 @@ export default {
 #home {
   .tips {
     margin-bottom: 10px;
-    background-color: #e8edf0;
   }
 
   .el-tabs__header {
-    padding: 8px 0 0 0;
-    background-color: #e8edf0;
+    background-color: #f2f4f5;
 
     .el-tabs__item {
       margin-right: 4px;
@@ -204,12 +218,12 @@ export default {
       border: none;
       height: 40px;
       font-size: 13px;
-      background-color: #d8e0e6;
+      background-color: #e8edf0;
       color: #95a5a6;
 
       &:hover {
         color: #7b8a8b;
-        background-color: #b8c7ce;
+        background-color: #dee2e4;
       }
 
       &.is-active {

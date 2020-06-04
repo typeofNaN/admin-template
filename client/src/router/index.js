@@ -6,9 +6,15 @@ import beforeRouterCheck from './beforeRouterCheck'
 
 Vue.use(Router)
 
+// function getAbsolutePath () {
+//   let path = location.pathname
+//   return path.substring(0, path.lastIndexOf('/') + 1)
+// }
+
 const router = new Router({
   routes
-  // mode: 'history'
+  // mode: 'history',
+  // base: getAbsolutePath()
 })
 
 router.beforeEach(beforeRouterCheck)

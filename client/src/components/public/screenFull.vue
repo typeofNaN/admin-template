@@ -15,9 +15,11 @@ import screenfull from 'screenfull'
 
 export default {
   name: 'Screenfull',
-  data: () => ({
-    isFullscreen: false
-  }),
+  data () {
+    return {
+      isFullscreen: false
+    }
+  },
   mounted () {
     this.init()
   },
@@ -41,15 +43,11 @@ export default {
     },
 
     init () {
-      if (screenfull.isEnabled) {
-        screenfull.on('change', this.change)
-      }
+      screenfull.isEnabled && screenfull.on('change', this.change)
     },
 
     destroy () {
-      if (screenfull.isEnabled) {
-        screenfull.off('change', this.change)
-      }
+      screenfull.isEnabled && screenfull.off('change', this.change)
     }
   }
 }

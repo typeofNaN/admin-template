@@ -23,9 +23,11 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'notice',
-  data: () => ({
-    show: false
-  }),
+  data () {
+    return {
+      show: false
+    }
+  },
   computed: {
     ...mapGetters(['getThemeHeaderBGColor'])
   },

@@ -18,6 +18,7 @@ import wechatRouters from './modules/wechatRouters'
 import messageRouters from './modules/messageRouters'
 import orderRouters from './modules/orderRouters'
 import customerRouters from './modules/customerRouters'
+import errorPageRouters from './modules/errorPageRouters'
 
 export default [
   homeRouters,
@@ -39,5 +40,6 @@ export default [
   wechatRouters,
   messageRouters,
   accountRouters,
-  errorRouters
+  errorRouters,
+  errorPageRouters
 ]
